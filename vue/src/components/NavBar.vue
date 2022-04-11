@@ -36,6 +36,7 @@
     <div class="center-header-container">
         <a><!--Middle Col click logo to return home-->
             <img href="#" id="logo"/>
+            <img href="#" id="logo-slogan"/>
         </a>
     </div> 
     <div class="right-header-container"> <!-- Right Column --> 
@@ -52,5 +53,27 @@ export default {
 </script>
 
 <style>
+
+.board {
+  background-color: #f7fafc;
+  border-radius: 10px;
+  padding: 0 20px 20px 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 10px 0;
+  font-size: 0.75rem;
+}
+
+/* Potential Colors
+
+ purple - #9999FF
+ purple light - #E6E6FF 
+ deep blue - #2C00CC 
+
+*/
 
 </style>
