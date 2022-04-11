@@ -3,7 +3,7 @@
     <div class="left-column">
         <div>
             <h1 class="">Available Doctors</h1>
-            <input type="text" value="Search By Doctor"/>
+            <input type="text" placeholder="Search By Doctor"/>
         </div> 
         <table>
         <tbody>
@@ -13,34 +13,31 @@
                 </td>
                 <td>{{name}}</td>
                 <td>{{location}}</td>
-                <td>{{phone-number}</td>
-                <td>{{rating}</td>
-                <td>{{reviews}</td>
+                <td>{{phone-number}}</td>
+                <td>{{rating}}</td>
+                <td>{{reviews}}</td>
             </tr>
         </tbody>
         </table>
     </div>
 
-    <div class="middle-column">
-        <h1 class="welcome"></h1>
-        <img src="" alt="">
-        <p></p> 
 
-        <h1 class="about-us"></h1>
-        <img src="" alt="">
-        <p></p>
 
-        <h1 class="testimonials"></h1>
-        <img src="" alt="">
-        <p></p>
+    <div v-if="active" class="middle-column"><!--Change V-if {This will be to show Landing Page}-->
+        <landing-center-column/>
     </div>
+    <div v-if="authenticated" class="middle-column"><!--Change V-if {This will be to show notification for Auth Users only!!}-->
+        <notification-column/>
+        
+    </div>
+
+
 
     <div class="right-column">
          <div>
             <h1 class="">Available Doctors</h1>
             <input type="text" value="Search By Doctor"/>
         </div> 
-
         <table>
         <tbody>
             <tr>
@@ -49,20 +46,33 @@
                 </td>
                 <td>{{name}}</td>
                 <td>{{location}}</td>
-                <td>{{phone-number}</td>
-                <td>{{rating}</td>
-                <td>{{reviews}</td>
+                <td>{{phone-number}}</td>
+                <td>{{rating}}</td>
+                <td>{{reviews}}</td>
             </tr>
         </tbody>
         </table>
     </div>
 
-
 </div>
+
 </template>
 
 <script>
-export default {
+    import LandingCenterColumn from '@/components/LandingCenterColumn.vue'
+    import NotificationColumn from '@/components/NotificationColumn.vue'
+    export default {
+        data(){
+            return {
+                authenticated: "True",
+                active: "True"
+            }
+             
+        },
+        components:{
+            LandingCenterColumn,
+            NotificationColumn
+        }
 
 }
 </script>
