@@ -1,0 +1,35 @@
+<template>
+  <div>
+      <button id="updateInfo">Update Profile Information</button>
+      <tbody>
+          <tr>
+              <td>{{doctor.firstName}}</td><!--first name -->
+              <td>{{doctor.lastName}}</td><!--last name -->
+              <td>{{doctor.Address}}</td><!-- Address -->
+              <td>{{doctor.phoneNumber}}</td><!--Phone # -->
+          </tr>
+      </tbody>
+    <button id="updateAvailability">Update Availability and Location</button>
+    <button id="createAvailability">Create Availability</button>
+    <button id="deleteAvailability">Delete Availability</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      doctor: {
+        lastName: "kyle",
+        firstName: "martin",
+        Address: "1001 Spruce St",
+        phoneNumber: "555-555-5555"
+}
+    }
+  },
+}
+</script>
+
+<style>
+
+</style>
