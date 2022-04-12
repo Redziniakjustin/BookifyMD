@@ -1,6 +1,8 @@
 <template>
   <div class="header-container">
     <div class="left-header-container"><!--Left Column {Site Navigation} Dropdown?-->
+        <h3> Dropdown Menu </h3><!-- DELETE -->
+        
         <label></label>
         <optgroup> <!-- Patient -->
             <option>
@@ -33,15 +35,19 @@
             </option>
         </optgroup>      
     </div> 
+
+
     <div class="center-header-container">
         <a><!--Middle Col click logo to return home-->
-            <img href="#" id="logo"/>
-            <img href="#" id="logo-slogan"/>
+            <img href="#" id="logo" alt="BookifyMD Logo Here"/>
+            <img href="#" id="logo-slogan" alt="BookifyMD Slogan Here"/>
         </a>
     </div> 
+
+
     <div class="right-header-container"> <!-- Right Column --> 
-        <h3></h3><!--Log In / Log Out -->
-        <h3></h3><!--Register / Profile -->
+        <h3>Log In</h3><!--Log In / Log Out -->
+        <h3>Register</h3><!--Register / Profile -->
     </div>
   </div>
 </template>
@@ -53,12 +59,6 @@ export default {
 </script>
 
 <style>
-
-.board {
-  background-color: #f7fafc;
-  border-radius: 10px;
-  padding: 0 20px 20px 20px;
-}
 
 .header-container {
   display: flex;

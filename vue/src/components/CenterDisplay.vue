@@ -1,9 +1,10 @@
 <template>
-<div class=""> 
+<div class="display-container"> 
     <div class="left-column">
         <div>
             <h1 class="">Available Doctors</h1>
             <input type="text" placeholder="Search By Doctor"/>
+            <input type="submit">
         </div> 
         <table>
         <tbody>
@@ -35,8 +36,10 @@
 
     <div class="right-column">
          <div>
-            <h1 class="">Available Doctors</h1>
-            <input type="text" value="Search By Doctor"/>
+            <h1 class="">Available Healthcare Providers</h1>
+            <input type="text" placeholder="Search By Provider"/>
+            <input type="submit">
+            
         </div> 
         <table>
         <tbody>
@@ -78,5 +81,32 @@
 </script>
 
 <style>
+.display-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 10px 0;
+  font-size: 0.75rem;
+}
 
+.left-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.middle-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.right-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 </style>
