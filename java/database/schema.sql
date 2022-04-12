@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
 CREATE SEQUENCE seq_user_id
@@ -22,18 +22,39 @@ INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULi
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
 
-COMMIT TRANSACTION;
 
--- profile TABLE CREATE --
 
-BEGIN TRANSACTION;
+-- 2 DOCTOR TABLE CREATE --
 
-DROP TABLE IF EXISTS profile;
 
-CREATE TABLE profile (
-		contact_id serial,
-		office_id int, 
-		user_id int NOT NULL,
+
+DROP TABLE IF EXISTS doctor CASCADE;
+
+CREATE TABLE doctor (
+		doctor_id serial,
+		user_id int,
+		first_name varchar NOT NULL,
+		last_name varchar NOT NULL,
+		phone int NOT NULL, 
+		email varchar(50) NOT NULL,
+		cost_hourly int, 
+		CONSTRAINT PK_doctor_id PRIMARY KEY (doctor_id),
+		CONSTRAINT FK_doctor_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+	
+	);
+
+
+
+
+-- 3 PATIENT TABLE CREATE --
+
+
+
+DROP TABLE IF EXISTS patient CASCADE; 
+
+CREATE TABLE patient (
+		patient_id serial,
+		user_id int,
 		first_name varchar NOT NULL,
 		last_name varchar NOT NULL,
 		phone int NOT NULL, 
@@ -42,28 +63,41 @@ CREATE TABLE profile (
 		state_name varchar(100),
 		zip varchar(15),
 		email varchar(50) NOT NULL,
-		is_doctor boolean,
-		is_patient boolean, 
-		cost_hourly int, 
-		CONSTRAINT PK_profile PRIMARY KEY (contact_id),
-		CONSTRAINT FK_profile_user FOREIGN KEY (user_id) REFERENCES users(user_id),
-		CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
+		CONSTRAINT PK_patient_id PRIMARY KEY (patient_id),
+		CONSTRAINT FK_patient_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+	
 	);
 
-ROLLBACK;
-
-COMMIT TRANSACTION;
 
 
--- OFFICE TABLE CREATE --
+-- 4 doctor_office TABLE CREATE --
 
-BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS office;
+
+DROP TABLE IF EXISTS doctor_office CASCADE;
+
+CREATE TABLE doctor_office(
+		doctor_office_id serial,
+		doctor_id int,	
+		office_id int, 
+		CONSTRAINT PK_doctor_office_id PRIMARY KEY (doctor_office_id),
+		CONSTRAINT FK_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
+		CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
+	
+	);
+
+
+
+-- 5 OFFICE TABLE CREATE --
+
+
+
+DROP TABLE IF EXISTS office CASCADE;
 
 CREATE TABLE office (
 		office_id serial,
 		doctor_id int NOT NULL,
+		avail_id int NOT NULL,
 		office_name varchar(50) UNIQUE, 
 		street_address varchar(100) NOT NULL, 
 		city varchar(100),
@@ -72,24 +106,22 @@ CREATE TABLE office (
 		email varchar(50) NOT NULL,
 		office_hours time NOT NULL, 
 		delay_status boolean,
-		CONSTRAINT PK_office PRIMARY KEY (office_id)
+		CONSTRAINT PK_office PRIMARY KEY (office_id),
+		CONSTRAINT FK_doctor_avail FOREIGN KEY (avail_id) REFERENCES doctor_availability(avail_id),
+		CONSTRAINT FK_office_doctor_office FOREIGN KEY (doctor_id) REFERENCES doctor_office(doctor_office_id)
 	
 	);
 		
 
 
-ROLLBACK;
 
-COMMIT TRANSACTION;
+-- 6 appointments TABLE CREATE --
 
 
--- appointments TABLE CREATE --
 
-BEGIN TRANSACTION;
+DROP TABLE IF EXISTS appointment cascade; 
 
-DROP TABLE IF EXISTS appointments;
-
-CREATE TABLE appointments (
+CREATE TABLE appointment (
 		appointment_id serial,
 		doctor_id int NOT NULL,
 		patient_id int NOT NULL,
@@ -98,51 +130,62 @@ CREATE TABLE appointments (
 		appointment_status varchar(20),
 		description varchar(50) NOT NULL, 
 		reason_selected varchar(50), 
-		CONSTRAINT PK_appointments PRIMARY KEY (appointment_id),
-		CONSTRAINT FK_doctor_profile FOREIGN KEY (doctor_id) REFERENCES profile(contact_id),
-		CONSTRAINT FK_patient_profile  FOREIGN KEY (patient_id) REFERENCES profile(contact_id),
-		CONSTRAINT FK_office_profile  FOREIGN KEY (office_id) REFERENCES profile(contact_id)
+		CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
+		CONSTRAINT FK_appointments_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
+		CONSTRAINT FK_appointments_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+		CONSTRAINT FK_appointments_office  FOREIGN KEY (office_id) REFERENCES office(office_id)
 		
 	);
 
-ROLLBACK;
 
-COMMIT TRANSACTION;
 
--- Reviews TABLE CREATE --
+-- 7 Reviews TABLE CREATE --
 
-BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS review;
+
+DROP TABLE IF EXISTS review CASCADE;
 
 CREATE TABLE review (
 		review_id serial,
-		user_id int NOT NULL,
+		patient_id int NOT NULL,
 		office_id int NOT NULL,
 		doctor_id int NOT NULL,
 		review_date date NOT NULL,
 		review_desc varchar (100),
 		review_rating int, 
 		CONSTRAINT PK_review_id PRIMARY KEY (review_id),
-		CONSTRAINT FK_doctor_id FOREIGN KEY (doctor_id) REFERENCES profile(contact_id),
-		CONSTRAINT FK_office FOREIGN KEY (office_id) REFERENCES office(office_id)
+		CONSTRAINT FK_review_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
+		CONSTRAINT FK_review_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+		CONSTRAINT FK_review_office  FOREIGN KEY (office_id) REFERENCES office(office_id)
 	);
 
-ROLLBACK;
-
-COMMIT TRANSACTION;
 
 
 
+-- 8 patient_app TABLE CREATE --
+
+
+
+DROP TABLE IF EXISTS patient_app CASCADE;
+
+CREATE TABLE patient_app(
+		patient_app_id serial,
+		patient_id int,	
+		appointment_id int, 
+		CONSTRAINT PK_pa_id PRIMARY KEY (patient_app_id),
+		CONSTRAINT FK_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+		CONSTRAINT FK_appointment_id FOREIGN KEY (appointment_id) REFERENCES appointment(appointment_id)
+	
+	);
 
 
 
 
--- office_doctor_avail TABLE CREATE --
+-- 9 office_doctor_avail TABLE CREATE --
 
-BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS doctor_availability;
+
+DROP TABLE IF EXISTS doctor_availability CASCADE;
 
 CREATE TABLE doctor_availability(
 		avail_id serial,
@@ -159,4 +202,5 @@ CREATE TABLE doctor_availability(
 ROLLBACK;
 
 COMMIT TRANSACTION;
+
 
