@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Profile</h1> <!--TEMP-->
     <div v-if="user.role=='patient'">
       <patient-profile/>  
     </div>
@@ -16,7 +17,8 @@ export default {
   data() {
     return {
       user: {
-        role: "doctor"
+        // role: "doctor"
+        role: "patient"
       }
     }
   },

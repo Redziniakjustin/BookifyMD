@@ -8,6 +8,7 @@
               <td>{{patient.phoneNumber}}</td><!--Phone # -->
           </tr>
       </tbody>
+      
       <button>Update Information</button>
       <patient-profile-info-form/><!--Add  CSS to make hidden and visible during on-click event with button-->
   </div>
@@ -17,7 +18,18 @@
 import PatientProfileInfoForm from './PatientProfileInfoForm'
 
 export default {
-  components: { PatientProfileInfoForm },
+  data() {
+    return {
+      patient: {
+        lastName: "kyle",
+        firstName: "martin",
+        Address: "1001 Spruce St",
+        phoneNumber: "555-555-5555"
+}
+    }
+  },
+  components: { 
+    PatientProfileInfoForm },
 
 }
 </script>

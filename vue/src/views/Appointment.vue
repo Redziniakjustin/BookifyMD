@@ -3,10 +3,10 @@
 
     
 <!-- MOVE -->
-  <router-link :to="{ name:'home' }"> Take Me Home </router-link>
-  <router-link :to="{ name:'review' }"> Take Me Home </router-link>
-  <router-link :to="{ name:'profile' }"> Take Me Home </router-link>
-  <router-link :to="{ name:'appointment' }"> Take Me Home </router-link>
+  <router-link :to="{ name:'home' }"> Home </router-link>
+  <router-link :to="{ name:'review' }"> Review </router-link>
+  <router-link :to="{ name:'profile' }"> Profile </router-link>
+  <router-link :to="{ name:'appointment' }"> Appointment </router-link>
 
       
   </div>

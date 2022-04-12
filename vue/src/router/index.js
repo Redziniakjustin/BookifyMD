@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import Profile from "../views/Profile.vue"
 import Review from "../views/Review.vue"
+import Schedule from "../views/Schedule.vue"
 import Appointment from "../views/Appointment.vue"
 
 import store from '../store/index'
@@ -80,7 +81,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }, 
+    },
+    {
+      path: "/schedule",
+      name: "schedule",
+      component: Schedule,
+      meta: {
+        requiresAuth: false
+      }
+    },  
   ]
 })
 
