@@ -5,7 +5,7 @@
         <div class="link-group-1" v-if="user.role=='patient'">
         <ul>
           <li v-if="isHome===false">
-            <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+            <router-link id="home-link" :to="{ name: 'home' }">Home</router-link>
           </li>
           <li v-if="isProfile===false">  
             <router-link id="profile-link" :to="{ name: 'profile' }">Patient Profile</router-link>
@@ -115,27 +115,40 @@ export default {
   font-size: 0.75rem;
 }
 .logo{
-  max-width: 80%;
+  max-width: 50%;
   height: auto;
 }
-.link-group-1 {
-    display: inline-block;
+ #home-link {
+    display: inline;
 }
-.link-group-2 {
-    display: inline-block;
+#profile-link {
+    display: inline;
 }
-.link-group-3 {
-    display: inline-block;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+.right-header-container{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
 }
 li {
-   list-style: none;
-   text-align: left;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+li:hover {
+  background-color: lightpink;
 }
 /* Potential Colors
-
  purple - #9999FF
  purple light - #E6E6FF 
  deep blue - #2C00CC 
-
 */
 </style>

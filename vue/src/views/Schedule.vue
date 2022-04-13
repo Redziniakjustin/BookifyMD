@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>Schedule</h1>
+   <h1>Schedule</h1>
 
    <h3>Set Schedule</h3> 
   
-  <schedule-appointment-form/>
+   <schedule-appointment-form/>
       
   </div>
 </template>
