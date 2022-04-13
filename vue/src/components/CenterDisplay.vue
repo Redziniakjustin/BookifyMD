@@ -22,16 +22,14 @@
         </table>
     </div>
 
-
-
-    <div v-if="active" class="middle-column"><!--Change V-if {This will be to show Landing Page}-->
-        <landing-center-column/>
-    </div>
-    <div v-if="authenticated" class="middle-column"><!--Change V-if {This will be to show notification for Auth Users only!!}-->
+  
+    <div v-if="authenticated==='True'" class="middle-column"><!--Change V-if {This will be to show notification for Auth Users only!!}-->
         <notification-column/>
-        
+     </div>    
+    <!-- OR -->
+    <div v-if="authenticated==='False'" class="middle-column"><!--Change V-if {This will be to show Landing Page}-->
+            <landing-center-column/>
     </div>
-
 
 
     <div class="right-column">
@@ -67,7 +65,8 @@
     export default {
         data(){
             return {
-                authenticated: "True",
+                // authenticated: "True",
+                authenticated: "False",
                 active: "True"
             }
              

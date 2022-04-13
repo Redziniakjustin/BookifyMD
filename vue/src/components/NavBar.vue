@@ -1,56 +1,54 @@
 <template>
   <div class="header-container">
 
-    <div class="left-header-container"><!--Left Column {Site Navigation} Dropdown?-->
-    
+    <div class="left-header-container">
+        <div class="link-group-1" v-if="user.role=='patient'">
+        <ul>
+          <li v-if="isHome===false">
+            <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+          </li>
+          <li v-if="isProfile===false">  
+            <router-link id="profile-link" :to="{ name: 'profile' }">Patient Profile</router-link>
+          </li>
+          <li v-if="isAppointment===false"> 
+            <router-link id="appointment-link" :to="{ name: 'appointment' }">Book Appointment</router-link>
+          </li>
+          <li v-if="isReview===false"> 
+            <router-link id="review-link" :to="{ name: 'review' }">Write A Review</router-link>
+          </li>
+        </ul>
+        </div>
 
-    <div class="link-group-1" v-if="user.role=='patient'">
-    <ul>
-      <li v-if="isHome===false">
-        <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
-      </li>
-      <li v-if="isProfile===false">  
-        <router-link id="profile-link" :to="{ name: 'profile' }">Patient Profile</router-link>
-      </li>
-      <li v-if="isAppointment===false"> 
-        <router-link id="appointment-link" :to="{ name: 'appointment' }">Book Appointment</router-link>
-      </li>
-      <li v-if="isReview===false"> 
-        <router-link id="review-link" :to="{ name: 'review' }">Write A Review</router-link>
-      </li>
-    </ul>
-    </div>
+        <div class="link-group-2" v-if="user.role=='doctor'">
+        <ul>
+          <li v-if="isHome===false">
+            <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+          </li>
+          <li v-if="isProfile===false">
+            <router-link class="profile-link" :to="{ name: 'profile' }">Doctor Profile</router-link>
+          </li>
+          <li v-if="isAppointment===false"> 
+            <router-link id="appointment-link" :to="{ name: 'appointment' }">Scheduled Appointments</router-link>
+          </li>
+          <li v-if="isReview===false">
+            <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link>
+          </li>
+        </ul>
+        </div>
 
-    <div class="link-group-2" v-if="user.role=='doctor'">
-    <ul>
-      <li v-if="isHome===false">
-        <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
-      </li>
-      <li v-if="isProfile===false">
-        <router-link class="profile-link" :to="{ name: 'profile' }">Doctor Profile</router-link>
-      </li>
-      <li v-if="isAppointment===false"> 
-        <router-link id="appointment-link" :to="{ name: 'appointment' }">Scheduled Appointments</router-link>
-      </li>
-      <li v-if="isReview===false">
-        <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link>
-      </li>
-    </ul>
-    </div>
-
-    <div class="link-group-3" v-if="user.role=='provider'">
-    <ul>
-       <li v-if="isHome===false">
-        <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
-      </li>
-      <li v-if="isProfile===false"> 
-        <router-link class="profile-link" :to="{ name: 'profile' }">Provider Profile</router-link>
-      </li>
-      <li v-if="isReview===false"> 
-        <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link>
-      </li>
-    </ul>
-    </div>
+        <div class="link-group-3" v-if="user.role=='provider'">
+        <ul>
+          <li v-if="isHome===false">
+            <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+          </li>
+          <li v-if="isProfile===false"> 
+            <router-link class="profile-link" :to="{ name: 'profile' }">Provider Profile</router-link>
+          </li>
+          <li v-if="isReview===false"> 
+            <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link>
+          </li>
+        </ul>
+        </div>
     
     </div> 
 
@@ -65,10 +63,11 @@
 
 
     <div class="right-header-container">  
-        <li v-if="user.status==='authenticated'"><router-link class="link-log-in" :to="{ name: 'login' }">Log In</router-link></li>
-        <li v-else><router-link class="link-log-out" :to="{ name: 'logout' }">Log Out</router-link></li>
-        <li v-if="user.status==='authenticated'"><router-link class="link-register" :to="{ name: 'register' }">Register</router-link></li>
-        <li v-else><router-link class="link-profile" :to="{ name: 'profile' }">Profile</router-link></li>
+        <li v-if="user.status==='authenticated'"><router-link class="link-log-out" :to="{ name: 'logout' }">Log Out</router-link></li>
+                                       <li v-else><router-link class="link-log-in" :to="{ name: 'login' }">Log In</router-link></li>
+        <li v-if="user.status==='authenticated'"><router-link class="link-profile" :to="{ name: 'profile' }">Profile</router-link></li>
+                                     <li v-else><router-link class="link-register" :to="{ name: 'register' }">Register</router-link></li>
+       
     </div>
 
   </div>
@@ -106,8 +105,8 @@ export default {
 }
 </script>
 
-<style>
 
+<style>
 .header-container {
   display: flex;
   align-items: center;
@@ -139,5 +138,4 @@ li {
  deep blue - #2C00CC 
 
 */
-
 </style>

@@ -1,16 +1,26 @@
 <template>
-  <div>
+  <div class="patient-info-container">
+  
+   <thead>
+    <tr>
+      <th>Patient Information</th>
+    </tr>
+    </thead>
       <tbody>
           <tr>
-              <td>{{patient.firstName}}</td><!--first name -->
-              <td>{{patient.lastName}}</td><!--last name -->
-              <td>{{patient.Address}}</td><!-- Address -->
-              <td>{{patient.phoneNumber}}</td><!--Phone # -->
+              <td class="patient-info">{{patient.firstName}} </td>
+              <td class="patient-info">{{patient.lastName}} </td>
+              <td class="patient-info">{{patient.Address}} </td>
+              <td class="patient-info">{{patient.phoneNumber}} </td>
           </tr>
       </tbody>
       
-      <button>Update Information</button>
-      <patient-profile-info-form/><!--Add  CSS to make hidden and visible during on-click event with button-->
+      <button @click="isActive = !isActive">Update Information</button>
+      <div class="patient-profile" v-if="isActive"> 
+        <br><br><br><br>
+        <patient-profile-info-form/><!--Add  CSS to make hidden and visible during on-click event with button-->
+        <br><br><br><br>
+      </div>
   </div>
 </template>
 
@@ -20,6 +30,7 @@ import PatientProfileInfoForm from './PatientProfileInfoForm'
 export default {
   data() {
     return {
+      isActive: false,
       patient: {
         lastName: "kyle",
         firstName: "martin",
@@ -35,5 +46,9 @@ export default {
 </script>
 
 <style>
+.patient-info{
+  display: block;
+  text-align: left;
+}
 
 </style>

@@ -1,19 +1,19 @@
 <template>
   <div>
+    <h1>Schedule</h1>
 
-    
-<!-- MOVE -->
-  <router-link :to="{ name:'home' }"> Home </router-link>
-  <router-link :to="{ name:'review' }"> Review </router-link>
-  <router-link :to="{ name:'profile' }"> Profile </router-link>
-  <router-link :to="{ name:'appointment' }"> Appointment </router-link>
-
+   <h3>Set Schedule</h3> 
+  <set-schedule/>
       
   </div>
 </template>
 
 <script>
+import SetSchedule from '../components/SetSchedule.vue'
+
 export default {
+  components: { 
+    SetSchedule },
 
 }
 </script>
