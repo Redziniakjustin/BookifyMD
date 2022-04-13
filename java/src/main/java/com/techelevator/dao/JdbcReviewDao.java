@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class JdbcReviewDao implements ReviewDao{
     @Override
     public List<Review> findAll() {

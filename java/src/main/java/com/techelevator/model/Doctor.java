@@ -1,8 +1,8 @@
 package com.techelevator.model;
 
 public class Doctor {
-    private int doctorId;
-    private int userId;
+    private Long doctorId;
+    private Long userId;
     private String firstName;
     private String lastName;
     private String phone;
@@ -10,10 +10,10 @@ public class Doctor {
     private int costHourly;
 
     //GETTERS
-    public int getDoctorId() {
+    public Long getDoctorId() {
         return doctorId;
     }
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
     public String getFirstName() {
@@ -33,10 +33,10 @@ public class Doctor {
     }
 
     //SETTERS
-    public void setDoctorId(int doctorId) {
+    public void setDoctorId(Long doctorId) {
         this.doctorId = doctorId;
     }
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
     public void setFirstName(String firstName) {

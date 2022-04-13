@@ -19,5 +19,4 @@ public interface DoctorDao {
 
     int findIdByLastName(String lastName);
 
-
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class JdbcOfficeDao implements OfficeDao{
     @Override
     public List<Office> findAll() {
