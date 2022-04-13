@@ -32,8 +32,8 @@ CREATE TABLE doctor (
 		phone varchar(20) NOT NULL, 
 		email varchar(50) NOT NULL,
 		cost_hourly int, 
-		CONSTRAINT PK_doctor_id PRIMARY KEY (doctor_id)
-		--CONSTRAINT FK_doctor_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+		CONSTRAINT PK_doctor_id PRIMARY KEY (doctor_id),
+		CONSTRAINT FK_doctor_user FOREIGN KEY (user_id) REFERENCES users(user_id)
 	);
 
 
@@ -71,8 +71,8 @@ CREATE TABLE patient (
 		state_name varchar(100),
 		zip varchar(15),
 		email varchar(50) NOT NULL,
-		CONSTRAINT PK_patient_id PRIMARY KEY (patient_id)
-	--	CONSTRAINT FK_patient_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+		CONSTRAINT PK_patient_id PRIMARY KEY (patient_id),
+		CONSTRAINT FK_patient_user FOREIGN KEY (user_id) REFERENCES users(user_id)
 	);
 
 
@@ -87,10 +87,10 @@ CREATE TABLE appointment (
 		--appointment_created_date date,
 		appointment_status varchar(20),
 		description varchar(150) NOT NULL,
-		CONSTRAINT PK_appointment PRIMARY KEY (appointment_id)
-	--	CONSTRAINT FK_appointments_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
-		--CONSTRAINT FK_appointments_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
-		--CONSTRAINT FK_appointments_office  FOREIGN KEY (office_id) REFERENCES office(office_id)
+		CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
+		CONSTRAINT FK_appointments_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
+		CONSTRAINT FK_appointments_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+		CONSTRAINT FK_appointments_office  FOREIGN KEY (office_id) REFERENCES office(office_id)
 		
 	);
 
@@ -111,16 +111,12 @@ DROP TABLE IF EXISTS review CASCADE;
 
 CREATE TABLE review (
 		review_id serial,
-		patient_id int NOT NULL,
-		office_id int NOT NULL,
-		doctor_id int NOT NULL,
+		appointment_id int, 
 		review_date date NOT NULL,
 		review_desc varchar (280),
 		review_rating int,
-		CONSTRAINT PK_review_id PRIMARY KEY (review_id)
-	--	CONSTRAINT FK_review_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
-	--	CONSTRAINT FK_review_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
-	--	CONSTRAINT FK_review_office  FOREIGN KEY (office_id) REFERENCES office(office_id)
+		CONSTRAINT PK_review_id PRIMARY KEY (review_id),
+		CONSTRAINT FK_appointment FOREIGN KEY (appointment_id) REFERENCES appointment(appointment_id)
 	);
 
 
@@ -130,9 +126,9 @@ CREATE TABLE patient_app(
 		patient_app_id serial,
 		patient_id int,	
 		appointment_id int, 
-		CONSTRAINT PK_pa_id PRIMARY KEY (patient_app_id)
-	--	CONSTRAINT FK_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
-	--	CONSTRAINT FK_appointment_id FOREIGN KEY (appointment_id) REFERENCES appointment(appointment_id)
+		CONSTRAINT PK_pa_id PRIMARY KEY (patient_app_id),
+		CONSTRAINT FK_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+		CONSTRAINT FK_appointment_id FOREIGN KEY (appointment_id) REFERENCES appointment(appointment_id)
 	
 	);
 
@@ -148,13 +144,14 @@ CREATE TABLE doctor_office_availability(
 	end_time time,
 	is_available boolean,
 	reason_of_unavailability varchar(100),
-	CONSTRAINT PK_avail_id PRIMARY KEY (avail_id)
+	CONSTRAINT PK_avail_id PRIMARY KEY (avail_id),
+	CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
 	);
---	CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
+
 	
 
---ALTER TABLE office ADD CONSTRAINT FK_doctor_avail FOREIGN KEY (avail_id) REFERENCES doctor_office_availability(avail_id);
---ALTER TABLE office ADD	CONSTRAINT FK_office_doctor_office FOREIGN KEY (doctor_id) REFERENCES doctor_office(doctor_office_id);
+-- ALTER TABLE office ADD 	CONSTRAINT FK_doctor_avail FOREIGN KEY (avail_id) REFERENCES doctor_office_availability(avail_id);
+-- ALTER TABLE office ADD	CONSTRAINT FK_office_doctor_office FOREIGN KEY (doctor_id) REFERENCES doctor_office(doctor_office_id);
 
 --ROLLBACK;
 
