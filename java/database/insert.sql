@@ -226,6 +226,12 @@ VALUES (3, 14, 2, '1/1/22', 'Scheduled', 'Check-up' );
 INSERT INTO review (patient_id, office_id, doctor_id, review_date, review_desc, review_rating)
 VALUES (13, 2, 3,'1/1/21','Dr. Justin did not do good', 1);
 
+-- patient_app
+
+
+INSERT INTO patient_app (appointment_id, patient_id)
+VALUES (1, 14);
+
 
 
 COMMIT;
