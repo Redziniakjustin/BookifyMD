@@ -6,24 +6,49 @@
 
     <div class="link-group-1" v-if="user.role=='patient'">
     <ul>
-        <li>  <router-link class="profile-link" :to="{ name: 'profile' }">Patient Profile</router-link></li>
-        <li> <router-link class="appointment-link" :to="{ name: 'appointment' }">Book Appointment</router-link></li>
-        <li> <router-link class="review-link" :to="{ name: 'review' }">Write A Review</router-link></li>
+      <li v-if="isHome===false">
+        <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+      </li>
+      <li v-if="isProfile===false">  
+        <router-link id="profile-link" :to="{ name: 'profile' }">Patient Profile</router-link>
+      </li>
+      <li v-if="isAppointment===false"> 
+        <router-link id="appointment-link" :to="{ name: 'appointment' }">Book Appointment</router-link>
+      </li>
+      <li v-if="isReview===false"> 
+        <router-link id="review-link" :to="{ name: 'review' }">Write A Review</router-link>
+      </li>
     </ul>
     </div>
 
     <div class="link-group-2" v-if="user.role=='doctor'">
     <ul>
-        <li><router-link class="profile-link" :to="{ name: 'profile' }">Doctor Profile</router-link></li>
-        <li><router-link class="schedule-link" :to="{ name: 'schedule' }">Set Schedule</router-link></li>
-        <li><router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link></li>
+      <li v-if="isHome===false">
+        <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+      </li>
+      <li v-if="isProfile===false">
+        <router-link class="profile-link" :to="{ name: 'profile' }">Doctor Profile</router-link>
+      </li>
+      <li v-if="isAppointment===false"> 
+        <router-link id="appointment-link" :to="{ name: 'appointment' }">Scheduled Appointments</router-link>
+      </li>
+      <li v-if="isReview===false">
+        <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link>
+      </li>
     </ul>
     </div>
 
     <div class="link-group-3" v-if="user.role=='provider'">
     <ul>
-        <li> <router-link class="profile-link" :to="{ name: 'profile' }">Provider Profile</router-link></li>
-        <li> <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link></li>
+       <li v-if="isHome===false">
+        <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+      </li>
+      <li v-if="isProfile===false"> 
+        <router-link class="profile-link" :to="{ name: 'profile' }">Provider Profile</router-link>
+      </li>
+      <li v-if="isReview===false"> 
+        <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link>
+      </li>
     </ul>
     </div>
     
@@ -60,6 +85,23 @@ export default {
       }
     }
   },
+  computed: {
+  isHome() {
+     return this.$route.name === 'home'
+  },
+  isProfile() {
+     return this.$route.name === 'profile'
+  },
+  isAppointment() {
+     return this.$route.name === 'appointment'
+  },
+  isReview() {
+     return this.$route.name === 'review'
+  },
+  isSchedule() {
+     return this.$route.name === 'schedule'
+  }
+}
 }
 </script>
 
