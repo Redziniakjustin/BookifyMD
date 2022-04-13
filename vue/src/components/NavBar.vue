@@ -2,7 +2,7 @@
   <div class="header-container">
 
     <div class="left-header-container"><!--Left Column {Site Navigation} Dropdown?-->
-        <h4>Dropdown Menu</h4>
+    
 
     <div class="link-group-1" v-if="user.role=='patient'">
     <ul>
@@ -57,13 +57,14 @@
 
     <div class="center-header-container">
         <a ><!--@click="retHome"    Middle Col click logo to return home-->
-            <img href="#" id="logo" alt="BookifyMD Logo Here"/>
-            <img href="#" id="logo-slogan" alt="BookifyMD Slogan Here"/>
+
+            <img class="logo" src="..\assets\logo.png" id="logo" alt="BookifyMD Logo Here"/>
+        
         </a>
     </div> 
 
 
-    <div class="right-header-container"> <!-- Right Column --> 
+    <div class="right-header-container">  
         <li v-if="user.status==='authenticated'"><router-link class="link-log-in" :to="{ name: 'login' }">Log In</router-link></li>
         <li v-else><router-link class="link-log-out" :to="{ name: 'logout' }">Log Out</router-link></li>
         <li v-if="user.status==='authenticated'"><router-link class="link-register" :to="{ name: 'register' }">Register</router-link></li>
@@ -114,6 +115,10 @@ export default {
   margin: 20px 0 10px 0;
   font-size: 0.75rem;
 }
+.logo{
+  max-width: 80%;
+  height: auto;
+}
 .link-group-1 {
     display: inline-block;
 }
@@ -122,6 +127,10 @@ export default {
 }
 .link-group-3 {
     display: inline-block;
+}
+li {
+   list-style: none;
+   text-align: left;
 }
 /* Potential Colors
 
