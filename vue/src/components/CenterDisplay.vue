@@ -9,15 +9,15 @@
         <table>
         <tbody>
             <tr>
-                <td v-on:click="clicked">
-                <router-link  id="schedule" :to="{ name: 'schedule' }">Schedule</router-link> <!-- capture id-->
-                  <!-- <input type="checkbox">  -->
-                </td>
                 <td>{{doctor.name}}</td>
                 <td>{{doctor.location}}</td>
                 <td>{{doctor.phone-number}}</td>
                 <td>{{doctor.rating}}</td>
                 <td>{{doctor.reviews}}</td>
+                <td v-on:click="clicked" v-if="user.role=='patient'">
+                <router-link  id="schedule" :to="{ name: 'schedule' }">Schedule</router-link> <!-- capture id-->
+                  <!-- <input type="checkbox">  -->
+                </td>
             </tr>
         </tbody>
         </table>
@@ -66,6 +66,9 @@
     export default {
         data(){
             return {
+            user:{
+                role: 'patient'
+            },
                 // authenticated: "True",
                 authenticated: "False",
                 active: "True",

@@ -4,9 +4,9 @@
           <label for="apdate">appointmentDate:</label><br>  <!-- Link to home.view doctor selected on @click this.$store.state -->
           <input type="date" id="apdate" name="apdate"><br> 
 
-         
-          <input type="time" id="time" name="time">
           <label for="aptime">time:</label><br>
+          <input type="time" id="time" name="time">
+          
 
           <label for="fname">first name:</label><br>
           <input type="text" id="lname" name="lname">
