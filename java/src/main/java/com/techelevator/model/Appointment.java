@@ -9,8 +9,8 @@ public class Appointment {
     private int appointmentId;
     @NotNull
     private int doctorId;
-    @NotNull
-    private int patientId;
+//    @NotNull
+//    private int patientId;
     @NotNull
     private int officeId;
     private LocalDate appointmentDate;
@@ -26,9 +26,9 @@ public class Appointment {
     public int getDoctorId() {
         return doctorId;
     }
-    public int getPatientId() {
-        return patientId;
-    }
+//    public int getPatientId() {
+//        return patientId;
+//    }
     public int getOfficeId() {
         return officeId;
     }
@@ -52,9 +52,9 @@ public class Appointment {
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
     }
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
+//    public void setPatientId(int patientId) {
+//        this.patientId = patientId;
+//    }
     public void setOfficeId(int officeId) {
         this.officeId = officeId;
     }
