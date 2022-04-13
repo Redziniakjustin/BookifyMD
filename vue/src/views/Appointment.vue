@@ -1,8 +1,10 @@
 <template>
   <div>
+  
     <h1>Appointment Schedule</h1> <!-- DELETABLE -->
     <doctor-schedule v-if="user.role==='doctor'"/>
     <patient-appointments v-if="user.role==='patient'"/>
+  
   </div>
 </template>
 

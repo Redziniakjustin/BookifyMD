@@ -3,20 +3,21 @@
     <div class="left-column">
         <div>
             <h1 class="">Available Doctors</h1>
-            <input type="text" placeholder="Search By Doctor"/>
+            <input type="text" placeholder="Search By Doctor"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
             <input type="submit">
         </div> 
         <table>
         <tbody>
             <tr>
                 <td v-on:click="clicked">
-                   <input type="checkbox"> 
+                <router-link  id="schedule" :to="{ name: 'schedule' }">Schedule</router-link> <!-- capture id-->
+                  <!-- <input type="checkbox">  -->
                 </td>
-                <td>{{name}}</td>
-                <td>{{location}}</td>
-                <td>{{phone-number}}</td>
-                <td>{{rating}}</td>
-                <td>{{reviews}}</td>
+                <td>{{doctor.name}}</td>
+                <td>{{doctor.location}}</td>
+                <td>{{doctor.phone-number}}</td>
+                <td>{{doctor.rating}}</td>
+                <td>{{doctor.reviews}}</td>
             </tr>
         </tbody>
         </table>
@@ -45,11 +46,11 @@
                 <td v-on:click="clicked">
                    <input type="checkbox"> 
                 </td>
-                <td>{{name}}</td>
-                <td>{{location}}</td>
-                <td>{{phone-number}}</td>
-                <td>{{rating}}</td>
-                <td>{{reviews}}</td>
+                <td>{{provider.name}}</td>
+                <td>{{provider.location}}</td>
+                <td>{{provider.phone-number}}</td>
+                <td>{{provider.rating}}</td>
+                <td>{{provider.reviews}}</td>
             </tr>
         </tbody>
         </table>
@@ -67,9 +68,22 @@
             return {
                 // authenticated: "True",
                 authenticated: "False",
-                active: "True"
-            }
-             
+                active: "True",
+            doctor: {
+                name:"Omari RI",
+                location: "3400 Springarden",
+                phoneNumber: "5552222525",
+                rating: "3",
+                reviews:"Ok"
+            },
+            provider: {
+                name:"Malcy Gee",
+                location: "1212 Cedar",
+                phoneNumber: "8880003434",
+                rating: "4",
+                reviews: "Eh"
+            },
+            } 
         },
         components:{
             LandingCenterColumn,

@@ -3,18 +3,19 @@
     <h1>Schedule</h1>
 
    <h3>Set Schedule</h3> 
-  <set-schedule/>
+  
+  <schedule-appointment-form/>
       
   </div>
 </template>
 
 <script>
-import SetSchedule from '../components/SetSchedule.vue'
+import ScheduleAppointmentForm from '../components/ScheduleAppointmentForm.vue'
 
 export default {
   components: { 
-    SetSchedule },
-
+    ScheduleAppointmentForm 
+    },
 }
 </script>
 

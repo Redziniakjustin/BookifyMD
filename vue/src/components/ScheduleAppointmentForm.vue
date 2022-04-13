@@ -1,11 +1,12 @@
 <template>
-  <div class="set-schedule">
+  <div class="schedule-app-form">
       <form class="form-schedule" action="">
-          <label for="apdate">appointmentDate:</label><br>
-          <input type="date" id="apdate" name="apdate"><br>
+          <label for="apdate">appointmentDate:</label><br>  <!-- Link to home.view doctor selected on @click this.$store.state -->
+          <input type="date" id="apdate" name="apdate"><br> 
 
-          <label for="aptime">time:</label><br>
+         
           <input type="time" id="time" name="time">
+          <label for="aptime">time:</label><br>
 
           <label for="fname">first name:</label><br>
           <input type="text" id="lname" name="lname">
