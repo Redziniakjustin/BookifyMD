@@ -3,12 +3,12 @@
     <div class="left-column">
         <div>
             <h1 class="">Available Doctors</h1>
-            <input type="text" placeholder="Search By Doctor"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
+            <input type="text" placeholder="Search By Doctor" v-model="search"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
             <input type="submit">
         </div> 
         <table>
         <tbody>
-            <tr>
+            <tr v-for="doctor in filteredDoctors" :key="doctor">
                 <td>{{doctor.name}}</td>
                 <td>{{doctor.location}}</td>
                 <td>{{doctor.phone-number}}</td>
@@ -36,7 +36,7 @@
     <div class="right-column">
          <div>
             <h1 class="">Available Healthcare Providers</h1>
-            <input type="text" placeholder="Search By Provider"/>
+            <input type="text" placeholder="Search By Provider" />
             <input type="submit">
             
         </div> 
@@ -66,19 +66,36 @@
     export default {
         data(){
             return {
+            search: '',
             user:{
                 role: 'patient'
             },
                 // authenticated: "True",
                 authenticated: "False",
                 active: "True",
-            doctor: {
+            doctors: [
+                {
                 name:"Omari RI",
                 location: "3400 Springarden",
                 phoneNumber: "5552222525",
                 rating: "3",
                 reviews:"Ok"
-            },
+                }, 
+                {
+                name:"Hugo B",
+                location: "3400 Market",
+                phoneNumber: "8888888888",
+                rating: "5",
+                reviews:"Ok"
+                },
+                {
+                name:"Mark S",
+                location: "225 s19th St ",
+                phoneNumber: "7777777777",
+                rating: "1",
+                reviews:"Ok"
+                }
+            ],
             provider: {
                 name:"Malcy Gee",
                 location: "1212 Cedar",
@@ -91,7 +108,15 @@
         components:{
             LandingCenterColumn,
             NotificationColumn
-        }
+        }, 
+          computed : {
+            filteredDoctors() {
+            if (!this.search) return this.doctors
+            return this.doctors.filter(doctor => {
+                return (doctor.name.toLowerCase().includes(this.search.toLowerCase()) || doctor.location.toLowerCase().includes(this.search.toLowerCase()));
+            })
+    }
+  }
 
 }
 </script>
