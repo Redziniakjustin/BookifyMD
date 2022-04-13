@@ -83,11 +83,10 @@ CREATE TABLE appointment (
 		doctor_id int NOT NULL UNIQUE,
 		patient_id int NOT NULL UNIQUE,
 		office_id int NOT NULL UNIQUE, 
-		appointment_date varchar(20),
-	--  appointment_created_date varchar(20),
+		appointment_date date NOT NULL,
+		--appointment_created_date date,
 		appointment_status varchar(20),
-		description varchar(50) NOT NULL, 
-		reason_selected varchar(50), 
+		description varchar(150) NOT NULL,
 		CONSTRAINT PK_appointment PRIMARY KEY (appointment_id)
 	--	CONSTRAINT FK_appointments_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
 		--CONSTRAINT FK_appointments_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
@@ -116,7 +115,7 @@ CREATE TABLE review (
 		office_id int NOT NULL,
 		doctor_id int NOT NULL,
 		review_date date NOT NULL,
-		review_desc varchar (100),
+		review_desc varchar (280),
 		review_rating int,
 		CONSTRAINT PK_review_id PRIMARY KEY (review_id)
 	--	CONSTRAINT FK_review_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
@@ -150,8 +149,9 @@ CREATE TABLE doctor_office_availability(
 	is_available boolean,
 	reason_of_unavailability varchar(100),
 	CONSTRAINT PK_avail_id PRIMARY KEY (avail_id)
---	CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
 	);
+--	CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
+	
 
 --ALTER TABLE office ADD CONSTRAINT FK_doctor_avail FOREIGN KEY (avail_id) REFERENCES doctor_office_availability(avail_id);
 --ALTER TABLE office ADD	CONSTRAINT FK_office_doctor_office FOREIGN KEY (doctor_id) REFERENCES doctor_office(doctor_office_id);
@@ -159,5 +159,6 @@ CREATE TABLE doctor_office_availability(
 --ROLLBACK;
 
 COMMIT TRANSACTION;
+
 
 
