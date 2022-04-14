@@ -27,9 +27,7 @@ public class DoctorController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value ="", method = RequestMethod.POST)
     public boolean addDoctor(@Valid @RequestBody Doctor doctor){
-        return doctorDao.create(doctor.getUserId(), doctor.getFirstName(),
-                doctor.getLastName(), doctor.getPhone(), doctor.getEmail(),
-                doctor.getCostHourly());
+        return doctorDao.create(doctor);
     }
 
 

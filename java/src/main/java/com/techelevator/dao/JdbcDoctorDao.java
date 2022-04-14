@@ -48,9 +48,20 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
-    public boolean create(Long userId, String firstName, String lastName,
-                          String phone, String email, int costHourly) {
-        return true;
+    public boolean create(Doctor newDoctor) {
+       boolean doctorCreated = false;
+
+       //create doctor SQL
+        String sql = "INSERT INTO doctor (user_id, first_name, last_name, phone, email, cost_hourly) VALUES (?,?,?,?,?,?) RETURNING doctor_id";
+        Long doctorId = null;
+        try {
+            doctorId = jdbcTemplate.queryForObject(sql,Long.class,newDoctor.getUserId(), newDoctor.getFirstName(), newDoctor.getLastName(), newDoctor.getPhone(), newDoctor.getEmail(), newDoctor.getCostHourly());
+            doctorCreated =true;
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+       return doctorCreated;
     }
 
     private Doctor mapRowToDoctor(SqlRowSet row){
