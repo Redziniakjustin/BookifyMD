@@ -15,7 +15,8 @@
                 <td>{{doctor.rating}}</td>
                 <td>{{doctor.reviews}}</td>
                 <td v-on:click="clicked" v-if="user.role=='patient'">
-                <router-link  id="schedule" :to="{ name: 'schedule' }">Schedule</router-link> <!-- capture id-->
+                <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
+                <router-link  id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id} }">Schedule</router-link> <!-- capture id-->
                   <!-- <input type="checkbox">  -->
                 </td>
             </tr>
@@ -78,6 +79,7 @@
             active: "True",
             doctors: [
                 {
+                id: 12345,
                 name:"Omari RI",
                 location: "3400 Springarden",
                 phoneNumber: "5552222525",
@@ -85,6 +87,7 @@
                 reviews:"Ok"
                 }, 
                 {
+                id: 8910,
                 name:"Hugo B",
                 location: "3400 Market",
                 phoneNumber: "8888888888",
@@ -92,6 +95,7 @@
                 reviews:"Ok"
                 },
                 {
+                id: 60606,
                 name:"Mark S",
                 location: "225 s19th St ",
                 phoneNumber: "7777777777",
