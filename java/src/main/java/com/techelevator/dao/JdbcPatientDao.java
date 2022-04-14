@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.Doctor;
 import com.techelevator.model.Patient;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,6 +12,14 @@ import java.util.List;
 
 @Component
 public class JdbcPatientDao implements PatientDao{
+
+    private JdbcTemplate jdbcTemplate;
+    public JdbcPatientDao(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+
+
     @Override
     public List<Patient> findAll() {
         return null;
@@ -32,7 +41,20 @@ public class JdbcPatientDao implements PatientDao{
     }
 
     @Override
-    public boolean create(Long userId, String firstName, String lastName, String phone, String streetAddress, String city, String stateName, String zip, String email) {
-        return false;
+    public boolean create(Patient newPatient) {
+        boolean patientCreated = false;
+
+        //create pt SQL
+        String sql = "INSERT INTO patient (user_id, first_name, last_name, phone, street_address, city, state_name, zip, email) VALUES (?,?,?,?,?,?,?,?,?) RETURNING patient_id";
+        Long patientId = null;
+        try {
+           patientId = jdbcTemplate.queryForObject(sql,Long.class,newPatient.getUserId(), newPatient.getFirstName(), newPatient.getLastName(),
+                   newPatient.getPhone(),newPatient.getStreetAddress(), newPatient.getCity(), newPatient.getStateName(), newPatient.getZip(), newPatient.getEmail());
+            patientCreated =true;
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return patientCreated;
     }
 }
