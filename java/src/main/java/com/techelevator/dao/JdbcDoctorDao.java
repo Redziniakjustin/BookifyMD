@@ -48,8 +48,9 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
-    public boolean create(Long userId, String firstName, String lastName, String phone, String email, int costHourly) {
-        return false;
+    public boolean create(Long userId, String firstName, String lastName,
+                          String phone, String email, int costHourly) {
+        return true;
     }
 
     private Doctor mapRowToDoctor(SqlRowSet row){

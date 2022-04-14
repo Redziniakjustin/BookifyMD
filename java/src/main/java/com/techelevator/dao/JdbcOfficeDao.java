@@ -38,7 +38,8 @@ public class JdbcOfficeDao implements OfficeDao{
     }
 
     @Override
-    public boolean create(Long doctorId, Long availId, String officeName, String streetAddress, String city, String stateName, String zip, String email, String officeHours, boolean delayStatus) {
+    public boolean create(Long doctorId, Long availId, String officeName,
+      String streetAddress, String city, String stateName, String zip, String email, String officeHours, boolean delayStatus) {
         return false;
     }
 

@@ -2,11 +2,10 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.DoctorDao;
 import com.techelevator.model.Doctor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.security.Principal;
 
@@ -24,6 +23,13 @@ public class DoctorController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Doctor> listAllDoctors(Principal principal){
         return doctorDao.findAll();
+    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value ="", method = RequestMethod.POST)
+    public boolean addDoctor(@Valid @RequestBody Doctor doctor){
+        return doctorDao.create(doctor.getUserId(), doctor.getFirstName(),
+                doctor.getLastName(), doctor.getPhone(), doctor.getEmail(),
+                doctor.getCostHourly());
     }
 
 
