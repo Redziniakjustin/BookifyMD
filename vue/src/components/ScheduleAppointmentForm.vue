@@ -1,27 +1,18 @@
 <template>
   <div class="schedule-app-form">
       <form class="form-schedule" action="">
+          <!--include an h2 or h3 element that has the name of the chosen doctor and their office-->
           <label for="apdate">appointmentDate:</label><br>  <!-- Link to home.view doctor selected on @click this.$store.state -->
-          <input type="date" id="apdate" name="apdate"><br> 
+          <input type="date" id="apdate" name="apdate" v-model="scheduleAppForm.appointmentDate"><br> 
 
           <label for="aptime">time:</label><br>
-          <input type="time" id="time" name="time">
-          
-
-          <label for="fname">first name:</label><br>
-          <input type="text" id="lname" name="lname">
-
-          <label for="lname">last name:</label><br>
-          <input type="text" id="lname" name="lname">
+          <input type="time" id="time" name="time" v-model="scheduleAppForm.appointmentTime">
 
           <label for="aploc">location:</label><br>
-          <input type="text" id="aploc" name="aploc">
+          <input type="text" id="aploc" name="aploc" v-model="scheduleAppForm.officeID">
 
           <label for="desc">desciption:</label><br>
-          <input type="text" id="desc" name="desc">
-
-          <label for="status">status:</label><br>
-          <input type="text" id="status" name="status">
+          <input type="text" id="desc" name="desc" v-model="scheduleAppForm.description">
 
           <input type="submit" id="submit" name="submit">
       </form>
@@ -31,6 +22,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data(){
         return{
@@ -43,8 +35,34 @@ export default {
           description: "General Check-Up",
           delayed: true
         },     
-        ]
+        ],
+        scheduleAppForm:{
+          appointmentDate: "",
+          appointmentTime: "",
+          patientID: "",
+          doctorID: "", 
+          officeID: "",
+          description: "",
+          status: "scheduled"
+        }
       }
+    },
+    created(){
+      this.patientID = this.$route.params.patientID; 
+      this.officeID =  this.$route.params.officeID;
+      this.doctorID = this.$route.params.doctorID;
+      console.log(this.patientID, this.officeID, this.doctorID);
+    },
+    methods:{
+        //Import as a function from service 
+        //Omari Will complete
+        submitScheduleAppForm(){
+          axios.post('/endpoint', this.scheduleAppForm).then(()=>{
+              this.$router.push('home')
+          }).catch((error)=>{
+              console.log(error.response.status);
+          })
+        }
     }
 }
 </script>

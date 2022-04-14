@@ -16,7 +16,7 @@
                 <td>{{doctor.reviews}}</td>
                 <td v-on:click="clicked" v-if="user.role=='patient'">
                 <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
-                <router-link  id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id} }">Schedule</router-link> <!-- capture id-->
+                <router-link  id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
                   <!-- <input type="checkbox">  -->
                 </td>
             </tr>
@@ -24,7 +24,7 @@
         </table>
     </div>
 
-  
+    <!--must change v-if to take global auth variable -->
     <div v-if="authenticated==='True'" class="middle-column"><!--Change V-if {This will be to show notification for Auth Users only!!}-->
         <notification-column/>
      </div>    
@@ -72,7 +72,8 @@
             return {
             search: '',
             user:{
-                role: 'patient'
+                role: 'patient',
+                id: 9876
             },
             // authenticated: "True",
             authenticated: "False",
@@ -82,30 +83,34 @@
                 id: 12345,
                 name:"Omari RI",
                 location: "3400 Springarden",
+                officeID: 21,
                 phoneNumber: "5552222525",
-                rating: "3",
+                rating: 3,
                 reviews:"Ok"
                 }, 
                 {
                 id: 8910,
                 name:"Hugo B",
                 location: "3400 Market",
+                officeID: 45,
                 phoneNumber: "8888888888",
-                rating: "5",
+                rating: 5,
                 reviews:"Ok"
                 },
                 {
                 id: 60606,
                 name:"Mark S",
                 location: "225 s19th St ",
+                officeID: 98,
                 phoneNumber: "7777777777",
-                rating: "1",
+                rating: 1,
                 reviews:"Ok"
                 }
             ],
             providers: {
                 name:"Malcy Gee",
                 location: "1212 Cedar",
+                officeID: 66,
                 phoneNumber: "8880003434",
                 rating: "4",
                 reviews: "Eh"
@@ -116,31 +121,33 @@
             LandingCenterColumn,
             NotificationColumn
         }, 
-          computed : {
+        computed : {
             filteredDoctors() {
             if (!this.search) return this.doctors
             return this.doctors.filter(doctor => {
                 return (doctor.name.toLowerCase().includes(this.search.toLowerCase()) || doctor.location.toLowerCase().includes(this.search.toLowerCase()));
-            })
-    }
-  }, //Will be used to populate the doctors list.
-  /*mounted(){
-      //Will be used to populate the doctors list.
-      listDoctor().then(response => {
-          this.doctors = response.data
-      }).catch(error => {
-        console.log(error)
-        this.error = true
-      }).finally(() => this.loading = false)
-      //Will be used to populate providers list.
-      listProvider().then(response => {
-          this.providers = response.data
-      }).catch(error => {
-        console.log(error)
-        this.error = true
-      }).finally(() => this.loading = false)
-  }*/
-
+                })
+            },
+            isAuthenticated(){
+                return this.$store.state.authenticated
+            }
+        }, //Will be used to populate the doctors list.
+        /*mounted(){
+        //Will be used to populate the doctors list.
+        listDoctor().then(response => {
+            this.doctors = response.data
+        }).catch(error => {
+            console.log(error)
+            this.error = true
+        }).finally(() => this.loading = false)
+        //Will be used to populate providers list.
+        listProvider().then(response => {
+            this.providers = response.data
+        }).catch(error => {
+            console.log(error)
+            this.error = true
+        }).finally(() => this.loading = false)
+    }*/
 }
 </script>
 
