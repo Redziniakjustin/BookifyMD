@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,6 +24,11 @@ public class JdbcOfficeDao implements OfficeDao{
 
     @Override
     public Office findByOfficeName(String officeName) {
+        return null;
+    }
+
+    @Override
+    public List<Doctor> findDoctorsByOfficeId(Long officeId) {
         return null;
     }
 

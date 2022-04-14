@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
 import com.techelevator.model.Patient;
 import org.springframework.dao.DataAccessException;
@@ -17,6 +18,8 @@ public interface OfficeDao {
    Office getOfficeById(Long officeId);
 
     Office findByOfficeName(String officeName);
+
+    List<Doctor> findDoctorsByOfficeId(Long officeId);
 
     int findIdByOfficeName(String officeName);
 

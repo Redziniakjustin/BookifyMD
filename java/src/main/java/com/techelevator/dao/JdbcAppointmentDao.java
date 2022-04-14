@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -28,6 +29,16 @@ public class JdbcAppointmentDao implements AppointmentDao{
     @Override
     public Appointment findByDoctorId(Long doctorId) {
         return null;
+    }
+
+    @Override
+    public List<Appointment> findAppointmentsByOfficeId(Long officeId) {
+        return null;
+    }
+
+    @Override
+    public boolean create(Long doctorId, Long patientId, Long officeId, LocalDate appointmentDate, String appointmentStatus, String description) {
+        return false;
     }
 
     @Override

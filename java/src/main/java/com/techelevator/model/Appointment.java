@@ -6,30 +6,30 @@ import java.time.LocalDate;
 public class Appointment {
 
     @NotNull
-    private int appointmentId;
+    private Long appointmentId;
     @NotNull
-    private int doctorId;
-//    @NotNull
-//    private int patientId;
+    private Long doctorId;
     @NotNull
-    private int officeId;
+    private Long patientId;
+    @NotNull
+    private Long officeId;
     private LocalDate appointmentDate;
     private String appointmentStatus;
     @NotNull
     private String description;
-    private String reasonSelected;
+
 
     //GETTERS
-    public int getAppointmentId() {
+    public Long getAppointmentId() {
         return appointmentId;
     }
-    public int getDoctorId() {
+    public Long getDoctorId() {
         return doctorId;
     }
-//    public int getPatientId() {
-//        return patientId;
-//    }
-    public int getOfficeId() {
+    public Long getPatientId() {
+       return patientId;
+    }
+    public Long getOfficeId() {
         return officeId;
     }
     public LocalDate getAppointmentDate() {
@@ -41,21 +41,19 @@ public class Appointment {
     public String getDescription() {
         return description;
     }
-    public String getReasonSelected() {
-        return reasonSelected;
-    }
+
 
     //SETTERS
-    public void setAppointmentId(int appointmentId) {
+    public void setAppointmentId(Long appointmentId) {
         this.appointmentId = appointmentId;
     }
-    public void setDoctorId(int doctorId) {
+    public void setDoctorId(Long doctorId) {
         this.doctorId = doctorId;
     }
-//    public void setPatientId(int patientId) {
-//        this.patientId = patientId;
-//    }
-    public void setOfficeId(int officeId) {
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
+    }
+    public void setOfficeId(Long officeId) {
         this.officeId = officeId;
     }
     public void setAppointmentDate(LocalDate appointmentDate) {
@@ -67,9 +65,7 @@ public class Appointment {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setReasonSelected(String reasonSelected) {
-        this.reasonSelected = reasonSelected;
-    }
+
 
     //CONSTRUCTOR
     public Appointment(){};
