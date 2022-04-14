@@ -61,6 +61,12 @@ public class AuthenticationController {
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
         }
+        try{
+            User user = userDao.findByUsername(newUser.getUsername());
+            userDao.addToUserType(user.getId(), false);
+        } catch (UsernameNotFoundException e){
+            e.getMessage();
+        }
     }
 
     /**
