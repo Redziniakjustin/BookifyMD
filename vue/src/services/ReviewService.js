@@ -7,7 +7,7 @@ const http = axios.create({
 export default {
 
   list() {
-    return http.get('/reviews',); 
+    return http.get('/reviews'); 
     // addreview
   },
 

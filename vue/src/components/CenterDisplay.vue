@@ -42,7 +42,7 @@
         </div> 
         <table>
         <tbody>
-            <tr>
+            <tr v-for="provider in providers" :key="provider">
                 <td v-on:click="clicked">
                    <input type="checkbox"> 
                 </td>
@@ -63,6 +63,9 @@
 <script>
     import LandingCenterColumn from '@/components/LandingCenterColumn.vue'
     import NotificationColumn from '@/components/NotificationColumn.vue'
+    /*//Will Use once API endpoints are available 
+    import listDoctor from '@/services/ProfileService'
+    import listProvider from '@/services/ProfileService' */
     export default {
         data(){
             return {
@@ -70,9 +73,9 @@
             user:{
                 role: 'patient'
             },
-                // authenticated: "True",
-                authenticated: "False",
-                active: "True",
+            // authenticated: "True",
+            authenticated: "False",
+            active: "True",
             doctors: [
                 {
                 name:"Omari RI",
@@ -96,7 +99,7 @@
                 reviews:"Ok"
                 }
             ],
-            provider: {
+            providers: {
                 name:"Malcy Gee",
                 location: "1212 Cedar",
                 phoneNumber: "8880003434",
@@ -116,7 +119,23 @@
                 return (doctor.name.toLowerCase().includes(this.search.toLowerCase()) || doctor.location.toLowerCase().includes(this.search.toLowerCase()));
             })
     }
-  }
+  }, //Will be used to populate the doctors list.
+  /*mounted(){
+      //Will be used to populate the doctors list.
+      listDoctor().then(response => {
+          this.doctors = response.data
+      }).catch(error => {
+        console.log(error)
+        this.error = true
+      }).finally(() => this.loading = false)
+      //Will be used to populate providers list.
+      listProvider().then(response => {
+          this.providers = response.data
+      }).catch(error => {
+        console.log(error)
+        this.error = true
+      }).finally(() => this.loading = false)
+  }*/
 
 }
 </script>

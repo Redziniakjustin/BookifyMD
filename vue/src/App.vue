@@ -20,8 +20,34 @@
 
 <script>
 import NavBar from './components/NavBar.vue'
-
+//import currentUser from '@/services/UserService'
+//import currentUserProfile from '@/services/UserService'
 export default {
+  // data(){
+  //   return{
+  //     user:{},
+  //     userProfile:{}
+  //   }
+  // },
+  // //Get API data from method
+  // mounted(){
+  //   //Make a global Variable that gets the current user 
+  //   currentUser().then(response => {
+  //         //Set user object to User model from DB
+  //         this.user = response.data
+  //     }).catch(error => {
+  //       console.log(error)
+  //       this.error = true
+  //     }).finally(() => this.loading = false);
+  //   //Make a global Variable that gets the current user Profile
+  //   currentUserProfile().then(response => {
+  //       //Set userProfile object to User model from DB
+  //         this.userProfile = response.data
+  //     }).catch(error => {
+  //       console.log(error)
+  //       this.error = true
+  //     }).finally(() => this.loading = false)
+  // },
   components: { 
     NavBar },
   name: 'app'

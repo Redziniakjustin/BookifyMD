@@ -6,11 +6,12 @@ const http = axios.create({
 
 export default {
 
-  list() {
-    return http.get('/users',); 
-    // addreview
+  currentUser() {
+    return http.get('/user'); 
   },
-
+  currentUserProfile(){
+    return http.get('/userprofile')
+  },
 //   get(id) {
 //     return http.get('/users/${id}', user);
 //   },
