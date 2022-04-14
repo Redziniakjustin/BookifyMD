@@ -47,6 +47,11 @@ public class JdbcDoctorDao implements DoctorDao{
         return 0;
     }
 
+    @Override
+    public boolean create(Long userId, String firstName, String lastName, String phone, String email, int costHourly) {
+        return false;
+    }
+
     private Doctor mapRowToDoctor(SqlRowSet row){
         Doctor doctor = new Doctor();
         doctor.setDoctorId(row.getLong("doctor_id"));

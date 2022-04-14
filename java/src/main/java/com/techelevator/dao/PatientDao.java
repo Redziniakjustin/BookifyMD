@@ -20,5 +20,7 @@ public interface PatientDao {
 
     int findIdByLastName(String lastName);
 
-
+    boolean create(Long userId, String firstName, String lastName,
+                   String phone, String streetAddress, String city,
+                   String stateName, String zip, String email);
 }

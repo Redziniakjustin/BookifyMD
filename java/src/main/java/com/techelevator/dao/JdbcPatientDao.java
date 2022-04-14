@@ -30,4 +30,9 @@ public class JdbcPatientDao implements PatientDao{
     public int findIdByLastName(String lastName) {
         return 0;
     }
+
+    @Override
+    public boolean create(Long userId, String firstName, String lastName, String phone, String streetAddress, String city, String stateName, String zip, String email) {
+        return false;
+    }
 }

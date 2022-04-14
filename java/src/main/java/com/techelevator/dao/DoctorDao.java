@@ -19,4 +19,7 @@ public interface DoctorDao {
 
     int findIdByLastName(String lastName);
 
+    boolean create(Long userId, String firstName, String lastName,
+    String phone, String email, int costHourly);
+
 }
