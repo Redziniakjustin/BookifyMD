@@ -67,7 +67,7 @@ public class JdbcDoctorDao implements DoctorDao{
     @Override
     public boolean updateIsDoctor(Long userTypeId) {
         boolean doctorUpdated = false;
-       String sql = "UPDATE user_type SET isdoctor = 'true' WHERE user_type_id = ?;";
+       String sql = "UPDATE user_type SET is_doctor = 'true' WHERE user_type_id = ?;";
        try{
            jdbcTemplate.update(sql, userTypeId);
         doctorUpdated = true;

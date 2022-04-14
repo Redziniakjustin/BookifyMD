@@ -29,7 +29,7 @@ CREATE TABLE user_type(
 		
 		user_type_id serial, 
 		user_id int UNIQUE,
-		isDoctor boolean NOT NULL,
+		is_doctor boolean NOT NULL,
 		CONSTRAINT PK_user_type_id PRIMARY KEY (user_type_id),
 		CONSTRAINT FK_user_type_user FOREIGN KEY (user_id) REFERENCES users(user_id)
 			
@@ -61,8 +61,7 @@ CREATE TABLE office (
 		zip varchar(15),
 		phone varchar(20) NOT NULL,
 		email varchar(50) NOT NULL,
-		office_hours_start time,
-		office_hours_end time,
+		office_hours varchar(100),
 		delay_status boolean,
 		CONSTRAINT PK_office PRIMARY KEY (office_id)
 	

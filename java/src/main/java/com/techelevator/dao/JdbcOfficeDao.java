@@ -12,6 +12,12 @@ import java.util.List;
 
 @Component
 public class JdbcOfficeDao implements OfficeDao{
+
+    private JdbcTemplate jdbcTemplate;
+    public JdbcOfficeDao(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     @Override
     public List<Office> findAll() {
         return null;
@@ -39,7 +45,17 @@ public class JdbcOfficeDao implements OfficeDao{
 
     @Override
     public boolean create(Office newOffice) {
-        return false;
+        boolean officeCreated = false;
+      String sql = "INSERT INTO office ( office_name, street_address, city, state_name, zip, phone, email, office_hours, delay_status) VALUES (?,?,?,?,?,?,?,?,?) RETURNING office_id;";
+      Long officeId = null;
+      try{
+        officeId = jdbcTemplate.queryForObject(sql, Long.class, newOffice.getOfficeName(), newOffice.getStreetAddress(), newOffice.getCity(),
+                  newOffice.getStateName(), newOffice.getZip(), newOffice.getPhone(), newOffice.getEmail(), newOffice.getOfficeHours(), newOffice.isDelayStatus());
+        officeCreated = true;
+      }catch(Exception e){
+          System.out.println(e.getMessage());
+      }
+      return officeCreated;
     }
 
     @Override

@@ -5,8 +5,10 @@ import com.techelevator.dao.DoctorDao;
 import com.techelevator.dao.OfficeDao;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.security.Principal;
 
@@ -18,12 +20,10 @@ public class OfficeController {
 
     private OfficeDao officeDao;
 
-
     public OfficeController(OfficeDao officeDao){
         this.officeDao = officeDao;
 
     }
-
 
     @RequestMapping(value="", method = RequestMethod.GET)
     public List<Office> listAllOffices(Principal principal){
@@ -41,8 +41,17 @@ public class OfficeController {
         return officeDao.findDoctorsByOfficeId(id);
     }
 
-
-    //update office info
-
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value="", method = RequestMethod.POST)
+    public boolean addOffice(@Valid @RequestBody Office office){
+        boolean success = false;
+        try{
+            officeDao.create(office);
+            success = true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
 
 }

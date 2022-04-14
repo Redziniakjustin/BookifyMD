@@ -3,13 +3,13 @@ package com.techelevator.model;
 public class Office {
 
     private Long officeId;
-    private Long doctorId;
     private Long availId;
     private String officeName;
     private String streetAddress;
     private String city;
     private String stateName;
     private String zip;
+    private String phone;
     private String email;
     private String officeHours;
     private boolean delayStatus;
@@ -18,9 +18,6 @@ public class Office {
     // GETTERS
     public Long getOfficeId() {
         return officeId;
-    }
-    public Long getDoctorId() {
-        return doctorId;
     }
     public Long getAvailId() {
         return availId;
@@ -40,6 +37,9 @@ public class Office {
     public String getZip() {
         return zip;
     }
+    public String getPhone() {
+        return phone;
+    }
     public String getEmail() {
         return email;
     }
@@ -53,9 +53,6 @@ public class Office {
     // SETTERS
     public void setOfficeId(Long officeId) {
         this.officeId = officeId;
-    }
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
     }
     public void setAvailId(Long availId) {
         this.availId = availId;
@@ -74,6 +71,9 @@ public class Office {
     }
     public void setZip(String zip) {
         this.zip = zip;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
     public void setEmail(String email) {
         this.email = email;
