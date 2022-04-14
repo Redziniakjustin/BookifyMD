@@ -36,4 +36,15 @@ public class JdbcOfficeDao implements OfficeDao{
     public int findIdByOfficeName(String officeName) {
         return 0;
     }
+
+    @Override
+    public boolean create(Long doctorId, Long availId, String officeName,
+      String streetAddress, String city, String stateName, String zip, String email, String officeHours, boolean delayStatus) {
+        return false;
+    }
+
+    @Override
+    public boolean updateStatus(Long officeId, boolean delayStatus) {
+        return false;
+    }
 }

@@ -19,4 +19,8 @@ public interface DoctorDao {
 
     int findIdByLastName(String lastName);
 
+    boolean create(Doctor newDoctor);
+
+
+
 }

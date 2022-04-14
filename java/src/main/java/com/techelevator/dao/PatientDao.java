@@ -20,5 +20,5 @@ public interface PatientDao {
 
     int findIdByLastName(String lastName);
 
-
+    boolean create(Patient newPatient);
 }

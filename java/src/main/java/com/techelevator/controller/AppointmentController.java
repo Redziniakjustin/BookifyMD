@@ -31,7 +31,7 @@ public class AppointmentController {
     }
 
     
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Appointment getAppointmentByUserId(@RequestParam Long userId, Principal principal){
         return appointmentDao.getAppointmentById(userId);
     }
@@ -43,7 +43,8 @@ public class AppointmentController {
     @RequestMapping(value = "" , method = RequestMethod.POST)
     public boolean createAppointment(@Valid @RequestBody Appointment appointment){
        Appointment newAppointment = new Appointment();
-       return appointmentDao.create(appointment.getDoctorId(), appointment.getPatientId(), appointment.getOfficeId(), appointment.getAppointmentDate(), appointment.getAppointmentStatus(), appointment.getDescription());
+       return appointmentDao.create(appointment.getDoctorId(), appointment.getPatientId(), appointment.getOfficeId(),
+               appointment.getAppointmentDate(), appointment.getAppointmentStatus(), appointment.getDescription());
     }
 
 }

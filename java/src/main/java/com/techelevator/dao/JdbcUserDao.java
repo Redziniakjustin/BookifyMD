@@ -54,6 +54,17 @@ public class JdbcUserDao implements UserDao {
 	}
 
     @Override
+    public Long getUserIdByUsername(String username) {
+        Long userId = null;
+        String sql = "SELECT user_id FROM users WHERE username = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+        if(results.next()){
+            userId = mapRowToUser(results).getId();
+        }
+        return userId;
+    }
+
+    @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         String sql = "select * from users";
@@ -101,6 +112,23 @@ public class JdbcUserDao implements UserDao {
         int newUserId = (int) keyHolder.getKeys().get(id_column);
 
         return userCreated;
+    }
+
+    @Override
+    public Long addToUserType(Long userId, boolean isDoctor) {
+
+        Long userTypeId = null;
+
+        String sql = "INSERT INTO user_type (user_id, isDoctor) VALUES (?, ?) RETURNING user_type_id;";
+
+        try {
+
+            userTypeId = jdbcTemplate.queryForObject(sql, Long.class, userId, isDoctor);
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return userTypeId;
     }
 
     private User mapRowToUser(SqlRowSet rs) {

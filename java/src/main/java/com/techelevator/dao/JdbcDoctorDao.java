@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public class JdbcDoctorDao implements DoctorDao{
 
-    private final String getFullDoctor = "SELECT doctor_id, user_id, first_name, last_name, phone, email, cost_hourly FROM doctor;";
+    private final String getFullDoctor = "SELECT doctor_id, user_type_id, first_name, last_name, phone, email, cost_hourly FROM doctor;";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -47,10 +47,27 @@ public class JdbcDoctorDao implements DoctorDao{
         return 0;
     }
 
+    @Override
+    public boolean create(Doctor newDoctor) {
+       boolean doctorCreated = false;
+
+       //create doctor SQL
+        String sql = "INSERT INTO doctor (user_type_id, first_name, last_name, phone, email, cost_hourly) VALUES (?,?,?,?,?,?) RETURNING doctor_id";
+        Long doctorId = null;
+        try {
+            doctorId = jdbcTemplate.queryForObject(sql,Long.class,newDoctor.getUserTypeId(), newDoctor.getFirstName(), newDoctor.getLastName(), newDoctor.getPhone(), newDoctor.getEmail(), newDoctor.getCostHourly());
+            doctorCreated =true;
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+       return doctorCreated;
+    }
+
     private Doctor mapRowToDoctor(SqlRowSet row){
         Doctor doctor = new Doctor();
         doctor.setDoctorId(row.getLong("doctor_id"));
-        doctor.setUserId(row.getLong("user_id"));
+        doctor.setUserTypeId(row.getLong("user_type_id"));
         doctor.setFirstName(row.getString("first_name"));
         doctor.setLastName(row.getString("last_name"));
         doctor.setPhone(row.getString("email"));
