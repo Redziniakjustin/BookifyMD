@@ -64,6 +64,19 @@ public class JdbcDoctorDao implements DoctorDao{
        return doctorCreated;
     }
 
+    @Override
+    public boolean updateIsDoctor(Long userTypeId) {
+        boolean doctorUpdated = false;
+       String sql = "UPDATE user_type SET isdoctor = 'true' WHERE user_type_id = ?;";
+       try{
+           jdbcTemplate.update(sql, userTypeId);
+        doctorUpdated = true;
+       } catch (Exception e){
+           System.out.println(e.getMessage());
+       }
+        return doctorUpdated;
+    }
+
     private Doctor mapRowToDoctor(SqlRowSet row){
         Doctor doctor = new Doctor();
         doctor.setDoctorId(row.getLong("doctor_id"));
@@ -71,7 +84,7 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setFirstName(row.getString("first_name"));
         doctor.setLastName(row.getString("last_name"));
         doctor.setPhone(row.getString("email"));
-        doctor.setCostHourly(row.getInt("cost_hourly"));
+        doctor.setCostHourly(row.getLong("cost_hourly"));
         return doctor;
     }
 

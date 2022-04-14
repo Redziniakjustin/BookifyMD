@@ -21,4 +21,5 @@ public interface UserDao {
     Long addToUserType(Long userId, boolean isDoctor);
 
 
+
 }

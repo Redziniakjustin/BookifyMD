@@ -24,11 +24,25 @@ public class DoctorController {
     public List<Doctor> listAllDoctors(Principal principal){
         return doctorDao.findAll();
     }
+
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value ="", method = RequestMethod.POST)
-    public boolean addDoctor(@Valid @RequestBody Doctor doctor){
-        return doctorDao.create(doctor);
+    public boolean addDoctor(@Valid @RequestBody Doctor doctor) {
+       boolean success = false;
+        try {
+            doctorDao.create(doctor);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            success = doctorDao.updateIsDoctor(doctor.getUserTypeId());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return success;
     }
+
 
 
 

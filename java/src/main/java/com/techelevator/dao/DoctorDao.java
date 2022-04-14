@@ -21,6 +21,7 @@ public interface DoctorDao {
 
     boolean create(Doctor newDoctor);
 
+    boolean updateIsDoctor(Long userTypeId);
 
 
 }

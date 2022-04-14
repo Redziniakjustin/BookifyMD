@@ -3,7 +3,7 @@ package com.techelevator.model;
 public class Patient {
 
     private Long patientId;
-    private Long userId;
+    private Long userTypeId;
     private String firstName;
     private String lastName;
     private String phone;
@@ -18,8 +18,8 @@ public class Patient {
     public Long getPatientId() {
         return patientId;
     }
-    public Long getUserId() {
-        return userId;
+    public Long getUserTypeId() {
+        return userTypeId;
     }
     public String getFirstName() {
         return firstName;
@@ -50,8 +50,8 @@ public class Patient {
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserTypeId(Long userTypeId) {
+        this.userTypeId = userTypeId;
     }
     public void setFirstName(String firstName) {
         this.firstName = firstName;

@@ -7,7 +7,7 @@ public class Doctor {
     private String lastName;
     private String phone;
     private String email;
-    private int costHourly;
+    private Long costHourly;
 
     //GETTERS
     public Long getDoctorId() {
@@ -28,7 +28,7 @@ public class Doctor {
     public String getEmail() {
         return email;
     }
-    public int getCostHourly() {
+    public Long getCostHourly() {
         return costHourly;
     }
 
@@ -51,7 +51,7 @@ public class Doctor {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setCostHourly(int costHourly) {
+    public void setCostHourly(Long costHourly) {
         this.costHourly = costHourly;
     }
 

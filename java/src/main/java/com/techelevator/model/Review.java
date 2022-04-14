@@ -4,26 +4,18 @@ import java.time.LocalDate;
 
 public class Review {
 
-    private int reviewId;
-    private int patientId;
-    private int officeId;
-    private int doctorId;
+    private Long reviewId;
+    private Long appointmentId;
     private LocalDate reviewDate;
     private String reviewDesc;
     private int reviewRating;
 
     // GETTERS
-    public int getReviewId() {
+    public Long getReviewId() {
         return reviewId;
     }
-    public int getPatientId() {
-        return patientId;
-    }
-    public int getOfficeId() {
-        return officeId;
-    }
-    public int getDoctorId() {
-        return doctorId;
+    public Long getAppointmentId() {
+        return appointmentId;
     }
     public LocalDate getReviewDate() {
         return reviewDate;
@@ -36,17 +28,11 @@ public class Review {
     }
 
     // SETTERS
-    public void setReviewId(int reviewId) {
+    public void setReviewId(Long reviewId) {
         this.reviewId = reviewId;
     }
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
-    public void setOfficeId(int officeId) {
-        this.officeId = officeId;
-    }
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
+    public void setAppointmentId(Long appointmentId) {
+        this.appointmentId = appointmentId;
     }
     public void setReviewDate(LocalDate reviewDate) {
         this.reviewDate = reviewDate;

@@ -45,10 +45,10 @@ public class JdbcPatientDao implements PatientDao{
         boolean patientCreated = false;
 
         //create pt SQL
-        String sql = "INSERT INTO patient (user_id, first_name, last_name, phone, street_address, city, state_name, zip, email) VALUES (?,?,?,?,?,?,?,?,?) RETURNING patient_id";
+        String sql = "INSERT INTO patient (user_type_id, first_name, last_name, phone, street_address, city, state_name, zip, email) VALUES (?,?,?,?,?,?,?,?,?) RETURNING patient_id";
         Long patientId = null;
         try {
-           patientId = jdbcTemplate.queryForObject(sql,Long.class,newPatient.getUserId(), newPatient.getFirstName(), newPatient.getLastName(),
+           patientId = jdbcTemplate.queryForObject(sql,Long.class,newPatient.getUserTypeId(), newPatient.getFirstName(), newPatient.getLastName(),
                    newPatient.getPhone(),newPatient.getStreetAddress(), newPatient.getCity(), newPatient.getStateName(), newPatient.getZip(), newPatient.getEmail());
             patientCreated =true;
         }

@@ -23,9 +23,7 @@ public interface OfficeDao {
 
     int findIdByOfficeName(String officeName);
 
-    boolean create(Long doctorId, Long availId, String officeName,
-                   String streetAddress, String city, String stateName,
-                   String zip, String email, String officeHours, boolean delayStatus);
+    boolean create(Office newOffice);
 
     boolean updateStatus(Long officeId, boolean delayStatus);
 
