@@ -1,7 +1,7 @@
 <template>
-  <div class="header-container">
+  <div class="header-container" >
 
-    <div class="left-header-container">
+    <div class="left-header-container container">
         <div class="link-group-1" v-if="user.role=='patient'">
         <ul>
           <li v-if="isHome===false">
@@ -53,16 +53,15 @@
     </div> 
 
 
-    <div class="center-header-container">
-        <a ><!--@click="retHome"    Middle Col click logo to return home-->
-
-            <img class="logo" src="..\assets\logo.png" id="logo" alt="BookifyMD Logo Here"/>
-        
-        </a>
+    <div class="center-header-container container">
+                              <!-- click logo to return home-->
+        <a class="logo" href="">
+            <img @click=returnHome class="logo" src="..\assets\logo-transparent.png" id="logo" alt="BookifyMD Logo Here" />          
+        </a>    
     </div> 
 
 
-    <div class="right-header-container">  
+    <div class="right-header-container container">  
         <li v-if="user.status==='authenticated'"><router-link class="link-log-out" :to="{ name: 'logout' }">Log Out</router-link></li>
                                        <li v-else><router-link class="link-log-in" :to="{ name: 'login' }">Log In</router-link></li>
         <li v-if="user.status==='authenticated'"><router-link class="link-profile" :to="{ name: 'profile' }">Profile</router-link></li>
@@ -101,54 +100,58 @@ export default {
   isSchedule() {
      return this.$route.name === 'schedule'
   }
+},
+methods:{
+  returnHome(){
+    return this.$router.push('/')
+  }
 }
 }
 </script>
 
 
 <style>
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 20px 0 10px 0;
-  font-size: 0.75rem;
-}
-.logo{
-  max-width: 50%;
-  height: auto;
-}
- #home-link {
-    display: inline;
-}
-#profile-link {
-    display: inline;
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: transparent;
-}
-.right-header-container{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: transparent;
-}
-li {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-}
-li:hover {
-  background-color: lightpink;
-}
 /* Potential Colors
  purple - #9999FF
  purple light - #E6E6FF 
  deep blue - #2C00CC 
 */
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  margin: 0;
+  padding: 0;
+  /* position: fixed; */
+}
+.container{
+  list-style-type: none; 
+  /* removes bullets from right container but not left */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+.logo{
+  text-align: center;
+  max-width: 20%;
+  height: auto;
+  top: 0;
+}
+ul {              
+  list-style-type: none;
+  /* removes bullets from left container but not right */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+
+li:hover {
+  background-color: lightpink;
+}
+
 </style>

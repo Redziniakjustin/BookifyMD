@@ -2,6 +2,8 @@
   <div class="schedule-app-form">
       <form class="form-schedule" action="">
           <!--include an h2 or h3 element that has the name of the chosen doctor and their office-->
+        <h3>Schedule Appointment with: {{scheduleAppForm.doctorID}} </h3> 
+
           <label for="apdate">appointmentDate:</label><br>  <!-- Link to home.view doctor selected on @click this.$store.state -->
           <input type="date" id="apdate" name="apdate" v-model="scheduleAppForm.appointmentDate"><br> 
 
@@ -23,6 +25,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
     data(){
         return{
@@ -48,17 +51,23 @@ export default {
       }
     },
     created(){
+      if(this.$route.params){
       this.patientID = this.$route.params.patientID; 
       this.officeID =  this.$route.params.officeID;
       this.doctorID = this.$route.params.doctorID;
       console.log(this.patientID, this.officeID, this.doctorID);
+      } else {
+            this.$router.push('appointments')
+        }
     },
     methods:{
         //Import as a function from service 
         //Omari Will complete
         submitScheduleAppForm(){
-          axios.post('/endpoint', this.scheduleAppForm).then(()=>{
+          axios.post('/endpoint', this.scheduleAppForm).then((response)=>{
+            if (response.status === 201){
               this.$router.push('home')
+              }
           }).catch((error)=>{
               console.log(error.response.status);
           })

@@ -17,9 +17,9 @@
       
       <button @click="isActive = !isActive">Update Information</button>
       <div class="patient-profile" v-if="isActive"> 
-        <br><br><br><br>
+      
         <patient-profile-info-form/><!--Add  CSS to make hidden and visible during on-click event with button-->
-        <br><br><br><br>
+        
       </div>
   </div>
 </template>

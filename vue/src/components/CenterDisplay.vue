@@ -1,6 +1,6 @@
 <template>
 <div class="display-container"> 
-    <div class="left-column">
+    <div class="left-column column">
         <div>
             <h1 class="">Available Doctors</h1>
             <input type="text" placeholder="Search By Doctor" v-model="search"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
@@ -25,16 +25,18 @@
     </div>
 
     <!--must change v-if to take global auth variable -->
-    <div v-if="authenticated==='True'" class="middle-column"><!--Change V-if {This will be to show notification for Auth Users only!!}-->
+    <div v-if="authenticated==='True'" class="middle-column column "><!--Change V-if {This will be to show notification for Auth Users only!!}-->
+        
         <notification-column/>
+     
      </div>    
     <!-- OR -->
-    <div v-if="authenticated==='False'" class="middle-column"><!--Change V-if {This will be to show Landing Page}-->
+    <div v-if="authenticated==='False'" class="middle-column column "><!--Change V-if {This will be to show Landing Page}-->
             <landing-center-column/>
     </div>
 
 
-    <div class="right-column">
+    <div class="right-column column ">
          <div>
             <h1 class="">Available Healthcare Providers</h1>
             <input type="text" placeholder="Search By Provider" />
@@ -112,7 +114,7 @@
                 location: "1212 Cedar",
                 officeID: 66,
                 phoneNumber: "8880003434",
-                rating: "4",
+                rating: 4,
                 reviews: "Eh"
             },
             } 
@@ -160,24 +162,18 @@
   margin: 20px 0 10px 0;
   font-size: 0.75rem;
 }
-
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .left-column{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  
 }
-
-
 .middle-column{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  
 }
-
-
 .right-column{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+ 
 }
 </style>

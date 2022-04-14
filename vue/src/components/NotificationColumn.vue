@@ -34,5 +34,7 @@ data() {
 </script>
 
 <style>
-
+.middle-column{
+  overflow: auto;
+}
 </style>

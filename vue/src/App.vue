@@ -35,12 +35,12 @@ export default {
   font-family: 'Lora', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
-  /* margin: 60px; */
   display: flex;
   flex-direction: column;
-  /* background:  #E6E6FF; */ 
+  justify-content: center;
+  
   background-image: linear-gradient(90deg, white,  #E6E6FF, white);
 
 }
