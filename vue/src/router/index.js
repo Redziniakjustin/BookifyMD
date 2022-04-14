@@ -83,7 +83,7 @@ const router = new Router({
       }
     },
     {
-      path: "/schedule",
+      path: "/schedule/:doctorID",
       name: "schedule",
       component: Schedule,
       meta: {
