@@ -55,18 +55,15 @@ public class DoctorController {
         return success;
     }
 
-
-    //localhost:8080/doctors/id?officeId=officeId
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public boolean addDoctorToOffice(@PathVariable Long id, @RequestParam Long officeId){
-        return doctorDao.addToDoctorOffice(id, officeId);
-    }
+    
 
     //ADD DOCTOR TO OFFICE AFTER INITIAL OFFICE ADDED
     //
 
 
     //UPDATE DOCTOR PROFILE
+
+
 
 
 

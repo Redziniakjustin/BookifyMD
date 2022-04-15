@@ -9,13 +9,9 @@ public class Doctor {
     private String email;
     private Long costHourly;
 
-    public Long getOfficeId() {
-        return officeId;
-    }
 
-    public void setOfficeId(Long officeId) {
-        this.officeId = officeId;
-    }
+
+
 
     private Long officeId;
 
@@ -41,6 +37,9 @@ public class Doctor {
     public Long getCostHourly() {
         return costHourly;
     }
+    public Long getOfficeId() {
+        return officeId;
+    }
 
     //SETTERS
     public void setDoctorId(Long doctorId) {
@@ -63,6 +62,9 @@ public class Doctor {
     }
     public void setCostHourly(Long costHourly) {
         this.costHourly = costHourly;
+    }
+    public void setOfficeId(Long officeId) {
+        this.officeId = officeId;
     }
 
     //CONSTRUCTOR
