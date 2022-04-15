@@ -26,7 +26,8 @@ public interface DoctorDao {
     //add doctor_id and office_id to doctor_office table
     boolean addToDoctorOffice(Long doctorId, Long officeId);
 
-    //
+    //UPDATE DOCTOR PROFILE
+
 
 
 }

@@ -25,7 +25,11 @@ public class DoctorController {
         return doctorDao.findAll();
     }
 
+
     //GET AVAILABILITY BY DOCTOR ID
+
+
+
 
     //POST NEW DOCTOR
     @ResponseStatus(HttpStatus.CREATED)
@@ -55,14 +59,19 @@ public class DoctorController {
         return success;
     }
 
-    
+
 
     //ADD DOCTOR TO OFFICE AFTER INITIAL OFFICE ADDED
     //
 
 
-    //UPDATE DOCTOR PROFILE
+    //ADD DOCTOR'S INITIAL AVAILABILITY TO DOCTOR_OFFICE_AVAILABILITY
 
+    //public boolean addToDoctorOfficeAvailability ()
+
+
+
+    //UPDATE DOCTOR PROFILE
 
 
 
