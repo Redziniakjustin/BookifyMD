@@ -1,27 +1,24 @@
 <template>
   <div>
-    <form action="">
+    <form action="" method="" class="patientProfileForm">
       <label for="firstName">First Name:</label>
-      <input id="firstName" type="text" v-model="patientProfileInfoForm.firstName" 
-      class="placeholder" :placeholder="[[patientProfileInfoForm.firstName]]">
+      <input id="firstName" type="text" v-model="patientProfileInfoForm.firstName" :placeholder="[[patientProfileInfoForm.firstName]]">
       
       <label for="lastName">Last Name:</label>
-      <input id="lastName" type="text" v-model="patientProfileInfoForm.lastName"  
-      class="placeholder" :placeholder="[[patientProfileInfoForm.lastName]]">
+      <input id="lastName" type="text" v-model="patientProfileInfoForm.lastName" :placeholder="[[patientProfileInfoForm.lastName]]">
       
       <label for="phoneNumber">Phone Number:</label>
-      <input id="phoneNumber" type="text" v-model="patientProfileInfoForm.phoneNumber"  
-      class="placeholder" :placeholder="[[patientProfileInfoForm.phoneNumber]]">
+      <input id="phoneNumber" type="text" v-model="patientProfileInfoForm.phoneNumber" :placeholder="[[patientProfileInfoForm.phoneNumber]]">
       
       <label for="address">Address:</label>
-      <input id="address" type="text" v-model="patientProfileInfoForm.address"  
-      class="placeholder" :placeholder="[[patientProfileInfoForm.address]]">
+      <input id="address" type="text" v-model="patientProfileInfoForm.address" :placeholder="[[patientProfileInfoForm.address]]">
 
       <button class="btn-submit" @click=submitPatientProfileInfoForm> Submit
-        <input type="submit">
+        <!--<input type="submit">-->
       </button>
       
-      <button class="btn-edit" @click=editForm> Edit
+      <button class="btn-edit" @click=editForm> 
+        Edit Information 
       </button>
     </form>
   </div>
@@ -59,14 +56,6 @@ export default {
       })
     },
     // METHOD THAT RESPONDS TO ONCLICK EVENT AND MAKES FORM DATA ENTERABLE
-    editForm(e){
-      if(!e){
-        document.getElementById('btn-edit').setAttribute("disabled");
-      } else {
-        document.getElementById('btn-edit').removeAttribute("disabled")
-      }
-      
-    }
   }
 
 }

@@ -9,9 +9,12 @@
               <td>{{doctor.phoneNumber}}</td><!--Phone # -->
           </tr>
       </tbody>
-    <button id="updateAvailability">Update Availability and Location</button>
-    <button id="createAvailability">Create Availability</button>
-    <button id="deleteAvailability">Delete Availability</button>
+    <div>
+      <button id="AddLocation"><button>
+      <button id="updateAvailability">Update Availability and Location</button>
+      <button id="createAvailability">Create Availability</button>
+      <button id="deleteAvailability">Delete Availability</button>
+    </div>
   </div>
 </template>
 

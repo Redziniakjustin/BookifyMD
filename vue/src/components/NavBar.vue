@@ -149,6 +149,9 @@ ul {
   background-color: transparent;
 }
 
+li{
+  display: inline;
+}
 
 li:hover {
   background-color: lightpink;

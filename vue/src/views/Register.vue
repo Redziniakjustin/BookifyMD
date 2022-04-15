@@ -32,6 +32,58 @@
         v-model="user.confirmPassword"
         required
       />
+      <!--Patient Div -->
+      <div v-if="isPatient">
+        <h2>Patient Personal Information </h2>
+
+        <label for="patientFirstName">First Name: </label>
+        <input type="text" id="patientFirstName" v-model="patient.firstName">
+        
+        <label for="patientlastName"> Last Name: </label>
+        <input type="text" id="patientlastName" v-model="patient.lastName">
+        
+        <label for="patientPhoneNumber">Phone Number: </label>
+        <input type="text" id="patientPhoneNumber" v-model="patient.phoneNumber">
+        
+        <label for="patientStreetAddress"> Street: </label>
+        <input type="text" id="patientStreetAddress" v-model="patient.street">
+        
+        <label for="patientCity"> City: </label>
+        <input type="text" id="patientCity" v-model="patient.city">
+        
+        <label for="patientState"> State: </label>
+        <input type="text" id="patientState" v-model="patient.state">
+        
+        <label for="patientZipCode"> Zip Code: </label>
+        <input type="text" id="patientZipCode" v-model="patient.zipCode">
+        
+        <label for="patientEmail"> Email: </label>
+        <input type="email" id="patientEmail" v-model="patient.email">
+      </div>
+      <!-- Doctor Div-->
+      <div v-else>
+        <h2>Doctor Personal Information</h2>
+
+        <label for="doctorFirstName">First Name: </label>
+        <input type="text" id="doctorFirstName">
+        
+        <label for="doctorlastName">Last Name: </label>
+        <input type="text" id="doctorlastName">
+        
+        <label for="doctorPhoneNumber">Phone Number: </label>
+        <input type="text" id="doctorPhoneNumber">
+        
+        <label for="doctorEmail">Email: </label>
+        <input type="email" id="doctorEmail">
+        
+        <label for="doctorCost">Hourly Rate ($): </label>
+        <input type="number" id="doctorCost">
+      </div>
+
+      <button v-if="isPatient"  @click="registerAsDoctor()">Are you a Doctor or Practioner?</button>
+      
+      <button v-else @click="registerAsPatient()">Are You A Patient?</button>
+      
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
@@ -47,11 +99,30 @@ export default {
   name: 'register',
   data() {
     return {
+      isPatient: true,
       user: {
         username: '',
         password: '',
         confirmPassword: '',
         role: 'user',
+      },
+      userType: "patient",
+      patient:{
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+        street: "",
+        city: "",
+        state: "", 
+        zipCode: "", 
+        email: "",
+      },
+      doctor: {
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+        email: "",
+        hourlyCost: ""
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -86,6 +157,14 @@ export default {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
     },
+    registerAsDoctor(){
+      this.isPatient = !this.isPatient;
+      this.userType = "doctor"
+    }, 
+    registerAsPatient(){
+      this.isPatient = !this.isPatient;
+      this.userType = "patient"
+    }
   },
 };
 </script>
