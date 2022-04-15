@@ -9,7 +9,7 @@ public interface AvailabilityDao {
     //TODO availabilityByDay
 
     //availabilityByDoctor
-    List<Availability> getAvailabilityByDoctorId (Long doctorId);
+    List<Availability> findAvailabilityByDoctorId (Long doctorId);
 
     //TODO availabilityByOffice
 

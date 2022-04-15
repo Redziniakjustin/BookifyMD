@@ -14,6 +14,8 @@ public class Availability {
     private boolean isAvailable;
     private String reasonOfUnavailability;
 
+
+
     //GETTERS
     public Long getAvailId() {
         return availId;
@@ -39,7 +41,7 @@ public class Availability {
         return endTime;
     }
 
-    public boolean isAvailable() {
+    public boolean getIsAvailable() {
         return isAvailable;
     }
 
@@ -73,7 +75,7 @@ public class Availability {
         this.endTime = endTime;
     }
 
-    public void setAvailable(boolean available) {
+    public void setIsAvailable(boolean available) {
         isAvailable = available;
     }
 
