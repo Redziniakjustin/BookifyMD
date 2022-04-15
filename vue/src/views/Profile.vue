@@ -1,12 +1,18 @@
 <template>
-  <div>
+  <div class="profile-container">
+
     <h1>Profile</h1> <!--TEMP-->
-    <div v-if="user.role=='patient'">
-      <patient-profile/>  
+    
+    <div class="profile-body">
+          <div v-if="user.role=='patient'">
+            <patient-profile/>  
+          </div>
+          <div v-if="user.role=='doctor'">
+            <doctor-profile/>
+          </div>
     </div>
-    <div v-if="user.role=='doctor'">
-      <doctor-profile/>
-    </div>
+
+
   </div>
 </template>
 
@@ -31,5 +37,16 @@ export default {
 </script>
 
 <style>
-
+.profile-container{
+    margin-top: 150px;
+    align-content: center;
+   }
+.profile-body{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-between;
+     margin: 80px 0 10px 0;
+     font-size: 0.75rem;
+   }
 </style>
