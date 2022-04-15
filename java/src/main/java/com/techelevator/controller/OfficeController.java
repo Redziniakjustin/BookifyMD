@@ -26,7 +26,7 @@ public class OfficeController {
     }
 
     @RequestMapping(value="", method = RequestMethod.GET)
-    public List<Office> listAllOffices(Principal principal){
+    public List<Office> listAllOffices(){
         return officeDao.findAll();
     }
 
@@ -34,6 +34,9 @@ public class OfficeController {
     public Office getOfficeByOfficeId(@PathVariable Long id){
         return officeDao.getOfficeById(id);
     }
+    //TODO get office by status (which offices are on delay)
+    //TODO get office hours by office ID
+
 
     // http://localhost:8080/offices/3/doctors
     @RequestMapping(value = "/{id}/doctors")
@@ -53,5 +56,33 @@ public class OfficeController {
         }
         return success;
     }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
+    public boolean updateOffice(@Valid @RequestBody Office office, @PathVariable Long id){
+        boolean success = false;
+        try{
+            officeDao.update(office, id);
+            success = true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
+
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
+//    public boolean updateDelayStatus(@Valid @PathVariable Long id, @RequestParam boolean delayStatus){
+//        boolean success = false;
+//        try{
+//            officeDao.updateStatus(id, delayStatus);
+//            success = true;
+//        }catch(Exception e){
+//            System.out.println(e.getMessage());
+//        }
+//        return success;
+//    }
+
+
 
 }
