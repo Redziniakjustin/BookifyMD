@@ -48,7 +48,7 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
-    public boolean create(Doctor newDoctor) {
+    public Long create(Doctor newDoctor) {
        boolean doctorCreated = false;
 
        //create doctor SQL
@@ -61,7 +61,7 @@ public class JdbcDoctorDao implements DoctorDao{
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
-       return doctorCreated;
+       return doctorId;
     }
 
     @Override
@@ -76,6 +76,25 @@ public class JdbcDoctorDao implements DoctorDao{
        }
         return doctorUpdated;
     }
+
+    @Override
+    public boolean addToDoctorOffice(Long doctorId, Long officeId) {
+        boolean isSuccessful = false;
+        String sql = "INSERT INTO doctor_office(doctor_id, office_id) VALUES (?,?) RETURNING doctor_office_id;";
+        Long doctorOfficeId = null;
+        try {
+            doctorOfficeId = jdbcTemplate.queryForObject(sql, Long.class, doctorId, officeId );
+            if(doctorOfficeId != null){
+                isSuccessful = true;
+            }
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return isSuccessful;
+    }
+
+
 
     private Doctor mapRowToDoctor(SqlRowSet row){
         Doctor doctor = new Doctor();

@@ -19,9 +19,17 @@ public interface DoctorDao {
 
     int findIdByLastName(String lastName);
 
-    boolean create(Doctor newDoctor);
+    Long create(Doctor newDoctor);
 
     boolean updateIsDoctor(Long userTypeId);
 
+    //add doctor_id and office_id to doctor_office table
+    boolean addToDoctorOffice(Long doctorId, Long officeId);
+
+    //
+
 
 }
+
+
+

@@ -119,7 +119,7 @@ public class JdbcUserDao implements UserDao {
 
         Long userTypeId = null;
 
-        String sql = "INSERT INTO user_type (user_id, isDoctor) VALUES (?, ?) RETURNING user_type_id;";
+        String sql = "INSERT INTO user_type (user_id, is_doctor) VALUES (?, ?) RETURNING user_type_id;";
 
         try {
 
@@ -129,6 +129,11 @@ public class JdbcUserDao implements UserDao {
             System.out.println(e.getMessage());
         }
         return userTypeId;
+    }
+
+    @Override
+    public Long getUserTypeIdByUsername(String username) {
+        return null;
     }
 
     private User mapRowToUser(SqlRowSet rs) {
