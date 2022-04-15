@@ -45,11 +45,8 @@ export default {
         }
         }
     },
-    //  methods:{
-    // registerPatientProfile(){
-    // if(this.doctor. != )
-    // }
-  
+      methods:{
+    } 
 }
 </script>
 

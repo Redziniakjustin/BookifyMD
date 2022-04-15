@@ -11,12 +11,12 @@
       </tbody>
       
     <div id="buttonContainer">
-      <button id="AddLocation" v-onclick="addOffice = !addOffice">Add Hospital or Clinic</button>
+      <!-- <button id="AddLocation" v-onclick="addOffice = !addOffice">Add Hospital or Clinic</button> -->
       <button id="updateAvailability">Update Availability and Location</button>
       <button id="createAvailability">Create Availability</button>
       <button id="deleteAvailability">Delete Availability</button>
-    </div>
-    <div v-if="addOffice">
+      <!-- </div>
+  <div v-if="addOffice">
       <form action="" @submit="Addlater">
 
         <label for="officeName"></label>
@@ -49,7 +49,7 @@
         
         </form>
        
-        <button></button>
+        <button></button> -->
     </div>
   </div>
 </template>
@@ -75,7 +75,7 @@ office:{
   officeStartHour: "", 
   officeCloseHour: ""
 },
-addOffice: false,
+// addOffice: false,
 
     }
   },
