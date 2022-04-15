@@ -35,6 +35,7 @@
 
 <script>
 //import axios from 'axios';
+import profileService from '@/services/ProfileService';
 
 export default {
   data(){
@@ -50,15 +51,33 @@ export default {
             zipCode: "", 
             email: "",
         },
-        profile:{
-          firstName: "bob",
-          lastName: "bobbyson",
-          phoneNumber: 5555555555,
-          address: "1500 Market",            
-        },
+        // profile:{
+        //   firstName: "bob",
+        //   lastName: "bobbyson",
+        //   phoneNumber: 5555555555,
+        //   address: "1500 Market",            
+        // },
       }
   }, 
-  // methods:{
+   methods:{
+    registerPatientProfile(){
+    if(this.patient.firstName != null){
+        profileService.addProfile(this.patient)
+        .then((response) => {
+          if(response.status == 201){
+            this.$router.push({
+              path: '/',
+            });    
+          }
+        }).catch((error)=>{
+          if(error.response.status === 400){
+            return 'Bad Request: Validation Errors';
+          }
+        });
+     } 
+    }
+   }
+   }
   //   submitPatientProfileInfoForm(){
   //     axios.post('/endpoint', )
   //     .then((response)=>{
@@ -70,9 +89,7 @@ export default {
   //     })
   //   },
   //   // METHOD THAT RESPONDS TO ONCLICK EVENT AND MAKES FORM DATA ENTERABLE
-  // }
-
-}
+ 
 </script>
 
 <style >

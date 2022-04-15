@@ -44,12 +44,15 @@ export default {
             hourlyCost: ""
         }
         }
-    }
+    },
+    //  methods:{
+    // registerPatientProfile(){
+    // if(this.doctor. != )
+    // }
+  
 }
 </script>
 
 <style>
-div{
-    margin-top: 300px;
-}
+
 </style>

@@ -181,12 +181,21 @@ methods:{
     overflow: hidden;
     background-color: transparent;
   }
-  
-  li:hover {
-    background-color: rgba(29, 105, 98, 0.2);
-  }
   .inline{
-    display:inline;
+    display:inline-block;
+    text-decoration: none;
+  }
+  .inline a {
+    display: block;
+    padding: 2px;
+    background-color:  rgb(200, 224, 222);
+    border-right: 1px solid #bbb;
+  }
+  .inline a:last-child {
+    border-right: none;
+  }
+   .inline a:hover {
+    background-color: rgb(176, 226, 222);
   }
 
 /* 
