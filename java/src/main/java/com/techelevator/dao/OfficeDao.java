@@ -25,6 +25,8 @@ public interface OfficeDao {
 
     boolean create(Office newOffice);
 
+    boolean update(Office office, Long officeId);
+
     boolean updateStatus(Long officeId, boolean delayStatus);
 
 }

@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -18,14 +19,33 @@ public class JdbcOfficeDao implements OfficeDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    private final String getFullOffice = "SELECT office_id, office_name, street_address, city, " +
+            "state_name, zip, phone, email, office_hours, delay_status FROM office";
+
     @Override
     public List<Office> findAll() {
-        return null;
+        List<Office> offices = new ArrayList<>();
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(getFullOffice + ";");
+
+        while(results.next()){
+            offices.add(mapRowToOffice(results));
+        }
+        return offices;
+
     }
 
     @Override
     public Office getOfficeById(Long officeId) {
-        return null;
+        Office office = new Office();
+        SqlRowSet results = jdbcTemplate.queryForRowSet(getFullOffice + " WHERE office_id = ?;", officeId);
+        if(results.next()){
+            office = mapRowToOffice(results);
+        } else {
+            //TODO fix me exception
+            System.out.println("Office NOT FOUND");
+        }
+        return office;
     }
 
     @Override
@@ -49,8 +69,9 @@ public class JdbcOfficeDao implements OfficeDao{
       String sql = "INSERT INTO office ( office_name, street_address, city, state_name, zip, phone, email, office_hours, delay_status) VALUES (?,?,?,?,?,?,?,?,?) RETURNING office_id;";
       Long officeId = null;
       try{
-        officeId = jdbcTemplate.queryForObject(sql, Long.class, newOffice.getOfficeName(), newOffice.getStreetAddress(), newOffice.getCity(),
-                  newOffice.getStateName(), newOffice.getZip(), newOffice.getPhone(), newOffice.getEmail(), newOffice.getOfficeHours(), newOffice.isDelayStatus());
+        officeId = jdbcTemplate.queryForObject(sql, Long.class, newOffice.getOfficeName(), newOffice.getStreetAddress(),
+                newOffice.getCity(), newOffice.getStateName(), newOffice.getZip(),
+                newOffice.getPhone(), newOffice.getEmail(), newOffice.getOfficeHours(), newOffice.isDelayStatus());
         officeCreated = true;
       }catch(Exception e){
           System.out.println(e.getMessage());
@@ -59,7 +80,49 @@ public class JdbcOfficeDao implements OfficeDao{
     }
 
     @Override
+    public boolean update(Office office, Long officeId) {
+        boolean isUpdated = false;
+
+        String sql = "UPDATE office SET  office_name=?, street_address=?, city=?, " +
+                "state_name=?, zip=?, phone=?, email=?, office_hours=?, delay_status=? WHERE office_id =?;";
+        try{
+            jdbcTemplate.update(sql, office.getOfficeName(), office.getStreetAddress(), office.getCity(),
+                    office.getStateName(), office.getZip(), office.getPhone(), office.getEmail(),
+                    office.getOfficeHours(), office.isDelayStatus(), officeId);
+            isUpdated = true;
+        }catch (Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return isUpdated;
+    }
+
+
+    @Override
     public boolean updateStatus(Long officeId, boolean delayStatus) {
-        return false;
+        boolean isStatusUpdated = false;
+        String sql = "UPDATE office SET delay_status = ? WHERE office_id = ?;";
+        try{
+            jdbcTemplate.update(sql, delayStatus, officeId);
+            isStatusUpdated = true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return isStatusUpdated;
+    }
+
+    private Office mapRowToOffice(SqlRowSet row){
+        Office office = new Office();
+        office.setOfficeId(row.getLong("office_id"));
+        office.setOfficeName(row.getString("office_name"));
+        office.setStreetAddress(row.getString("street_address"));
+        office.setCity(row.getString("city"));
+        office.setStateName(row.getString("state_name"));
+        office.setZip(row.getString("zip"));
+        office.setPhone(row.getString("phone"));
+        office.setEmail(row.getString("email"));
+        office.setOfficeHours(row.getString("office_hours"));
+        office.setDelayStatus(row.getBoolean("delay_status"));
+        return office;
     }
 }

@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "8a90e001-2ef0-4fb4-b4c4-a8631f757739",
+		"name": "DOCTOR SCHEDULING",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create New Doctor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY1MDA0NDMwMX0.TTuNRKz3AdVGKIaMQOIOP0j2-jKLgpt1G-wLyw6MYRB1PmOkFa1hbgaVKdssmL9Q3-Axras6mAeyQwNMYi_v-Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userTypeId\" : 3,\r\n    \"firstName\" : \"Doctor\",\r\n    \"lastName\" : \"Smith\",\r\n    \"phone\" : \"215-222-2222\",\r\n    \"email\" : \"doctor@gmail.com\",\r\n    \"costHourly\" : 300\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/doctors",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"testDoctor1\",\r\n    \"password\" : \"password1\",\r\n    \"confirmPassword\" : \"password1\",\r\n    \"role\" : \"ROLE_USER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"username\" : \"testDoctor1\",\r\n    \"password\" : \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Office",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"officeName\":\"Ford Field2\",\r\n    \"streetAddress\":\"20 Brush St\",\r\n    \"city\":\"Detroit\",\r\n    \"stateName\":\"MI\",\r\n    \"zip\":\"48226\",\r\n    \"phone\": \"6094563498\",\r\n    \"email\":\"destroitcity@gmail.com\",\r\n    \"officeHours\":\"9:00 AM - 5:00 PM\",\r\n    \"delayStatus\":\"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/offices",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"offices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Offices",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAxMTg4OTd9.Ow_JbdoDZO826WKCAmce889LMw3_B2EaWXuvNMZX34TqsUXDJfLWTFTeszUFFcflBOT5hWnztBGvYSM_4x66ow",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/offices/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"offices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Office",
+			"request": {
+				"method": "PUT",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

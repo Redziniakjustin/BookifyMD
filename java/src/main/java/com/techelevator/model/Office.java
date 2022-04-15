@@ -3,7 +3,6 @@ package com.techelevator.model;
 public class Office {
 
     private Long officeId;
-    private Long availId;
     private String officeName;
     private String streetAddress;
     private String city;
@@ -18,9 +17,6 @@ public class Office {
     // GETTERS
     public Long getOfficeId() {
         return officeId;
-    }
-    public Long getAvailId() {
-        return availId;
     }
     public String getOfficeName() {
         return officeName;
@@ -53,9 +49,6 @@ public class Office {
     // SETTERS
     public void setOfficeId(Long officeId) {
         this.officeId = officeId;
-    }
-    public void setAvailId(Long availId) {
-        this.availId = availId;
     }
     public void setOfficeName(String officeName) {
         this.officeName = officeName;
