@@ -67,6 +67,16 @@
         <li class="inline" v-if="user.status==='authenticated'"><router-link class="link-profile" :to="{ name: 'profile' }">Profile</router-link></li>
                                      <li v-else><router-link class="link-register" :to="{ name: 'register' }">Register</router-link></li>
        
+    <div class="login-register">  
+        <!-- <li class="inline">
+            <router-link class="login-register-child" :to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+        </li> -->
+        
+        <li class="inline">    
+          <router-link class="login-register-child" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        </li>
+    </div>
+
     </div>
 
   </div>
@@ -119,7 +129,7 @@ methods:{
 
 .header-container {           /* the nav bar */
     position: fixed;
-    background: rgba(64, 224, 208, 0.2) ;
+    background: rgb(212, 240, 237) ;
     top: 0;
     width: 100%;
     text-transform: uppercase;
@@ -132,6 +142,7 @@ methods:{
     margin: 0;
     padding: 0;
     max-height: 140px;
+    z-index: 1;
   
   }
   .container{
@@ -142,20 +153,25 @@ methods:{
     background-color: transparent;
   }
   .logo{
+    margin: 2% 0 0 0;
+    padding: 10% 0 10% 0;
     max-height: 130px;
     width: 100%;
   }
   
   .left-header-container{
   flex-basis: 25%;
+  margin-left: 2%;
   }
   
   .center-header-container{
   flex-basis: 25%;
+  margin-left: 20vw;
   }
   
   .right-header-container{
   flex-basis: 20%;
+  margin-left: 20vw;
   }
   ul {              
     list-style-type: none;
@@ -173,8 +189,8 @@ methods:{
     display:inline;
   }
 
-
-@media screen and (max-width: 1024px) {
+/* 
+@media screen and (max-width: 1700px) {
       #head-container{
           grid-template-areas: "lhc chc rhc";
           grid-template-columns: 33% 33% 33%;
@@ -183,5 +199,27 @@ methods:{
           column-gap: 35px;
       }
 }
+@media screen and (max-width: 800px) {
+      #head-container{
+          grid-template-areas: "chc chc" 
+                               "lhc rhc";
+          grid-template-columns: 50% 50%;
+          align-items: center;
+          row-gap: 20px;
+          column-gap: 35px;
+      }
+}
+@media screen and (max-width: 480px) {
+      #head-container{
+          grid-template-areas: "lhc"
+                               "chc"
+                               "rhc";
+          grid-template-columns: 100%;
+          align-items: center;
+          row-gap: 20px;
+          column-gap: 35px;
+      }
+} */
+
 </style>
 

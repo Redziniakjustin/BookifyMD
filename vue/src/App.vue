@@ -4,11 +4,6 @@
       
     <nav-bar>
 
-      <div class="login-register">  
-        <router-link class="login-register-child" :to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-        <router-link class="login-register-child" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-      </div>
-
     </nav-bar>
     </div>
     
