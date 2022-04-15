@@ -154,26 +154,30 @@
 </script>
 
 <style>
+   
 .display-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 20px 0 10px 0;
-  font-size: 0.75rem;
-}
-.column{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.left-column{
-  
-}
-.middle-column{
-  
-}
-.right-column{
- 
-}
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 150px 0 10px 0;
+    font-size: 0.75rem;
+  }
+  .column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .left-column{
+    flex-basis: 20%;
+    margin-left: 20px;
+  }
+  .middle-column{
+    flex-basis: 50%;
+  }
+  .right-column{
+   flex-basis: 20%;
+   margin-right: 20px;
+  }
+
 </style>
