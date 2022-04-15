@@ -66,9 +66,9 @@
 <script>
     import LandingCenterColumn from '@/components/LandingCenterColumn.vue'
     import NotificationColumn from '@/components/NotificationColumn.vue'
-    /*//Will Use once API endpoints are available 
-    import listDoctor from '@/services/ProfileService'
-    import listProvider from '@/services/ProfileService' */
+    //Will Use once API endpoints are available 
+    //import listDoctor from '@/services/ProfileService'
+    import listOffices from '@/services/ProfileService'
     export default {
         data(){
             return {
@@ -109,14 +109,15 @@
                 reviews:"Ok"
                 }
             ],
-            providers: {
+            offices: []
+            /*{
                 name:"Malcy Gee",
                 location: "1212 Cedar",
                 officeID: 66,
                 phoneNumber: "8880003434",
                 rating: 4,
                 reviews: "Eh"
-            },
+            }, */
             } 
         },
         components:{
@@ -134,22 +135,22 @@
                 return this.$store.state.authenticated
             }
         }, //Will be used to populate the doctors list.
-        /*mounted(){
+        mounted(){
         //Will be used to populate the doctors list.
-        listDoctor().then(response => {
+        /*listDoctor().then(response => {
             this.doctors = response.data
         }).catch(error => {
             console.log(error)
             this.error = true
         }).finally(() => this.loading = false)
-        //Will be used to populate providers list.
-        listProvider().then(response => {
-            this.providers = response.data
+        //Will be used to populate providers list. */
+        listOffices().then(response => {
+            this.offices = response.data
         }).catch(error => {
             console.log(error)
             this.error = true
         }).finally(() => this.loading = false)
-    }*/
+    }
 }
 </script>
 

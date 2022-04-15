@@ -1,62 +1,76 @@
 <template>
   <div>
-    <form action="" method="" class="patientProfileForm">
+    <form action="" method="">
+      <h2>Patient Personal Information</h2>
       <label for="firstName">First Name:</label>
-      <input id="firstName" type="text" v-model="patientProfileInfoForm.firstName" :placeholder="[[patientProfileInfoForm.firstName]]">
+      <input id="firstName" type="text" v-model="patient.firstName">
       
       <label for="lastName">Last Name:</label>
-      <input id="lastName" type="text" v-model="patientProfileInfoForm.lastName" :placeholder="[[patientProfileInfoForm.lastName]]">
+      <input id="lastName" type="text" v-model="patient.lastName" >
       
       <label for="phoneNumber">Phone Number:</label>
-      <input id="phoneNumber" type="text" v-model="patientProfileInfoForm.phoneNumber" :placeholder="[[patientProfileInfoForm.phoneNumber]]">
+      <input id="phoneNumber" type="text" v-model="patient.phoneNumber">
       
-      <label for="address">Address:</label>
-      <input id="address" type="text" v-model="patientProfileInfoForm.address" :placeholder="[[patientProfileInfoForm.address]]">
-
-      <button class="btn-submit" @click=submitPatientProfileInfoForm> Submit
+      <label for="patientStreetAddress"> Street: </label>
+      <input type="text" id="patientStreetAddress" v-model="patient.street">
+      
+      <label for="patientCity"> City: </label>
+      <input type="text" id="patientCity" v-model="patient.city">
+      
+      <label for="patientState"> State: </label>
+      <input type="text" id="patientState" v-model="patient.state">
+      
+      <label for="patientZipCode"> Zip Code: </label>
+      <input type="text" id="patientZipCode" v-model="patient.zipCode">
+      
+      <label for="patientEmail"> Email: </label>
+      <input type="email" id="patientEmail" v-model="patient.email">
+      
+      <button class="btn-submit"> Submit
         <!--<input type="submit">-->
-      </button>
-      
-      <button class="btn-edit" @click=editForm> 
-        Edit Information 
       </button>
     </form>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 
 export default {
   data(){
       return{
-          patientProfileInfoForm:{
+        userType: "patient",
+        patient:{
             firstName: "",
             lastName: "",
             phoneNumber: "",
-            address: "",            
-          },
-          profile:{
-            firstName: "bob",
-            lastName: "bobbyson",
-            phoneNumber: 5555555555,
-            address: "1500 Market",            
-          },
+            street: "",
+            city: "",
+            state: "", 
+            zipCode: "", 
+            email: "",
+        },
+        profile:{
+          firstName: "bob",
+          lastName: "bobbyson",
+          phoneNumber: 5555555555,
+          address: "1500 Market",            
+        },
       }
   }, 
-  methods:{
-    submitPatientProfileInfoForm(){
-      axios.post('/endpoint', this.patientProfileInfoForm)
-      .then((response)=>{
-      if(response.status === 201){
-        this.$router.push('profile')
-      }
-      }).catch((error)=>{
-        console.log(error.response.status);
-      })
-    },
-    // METHOD THAT RESPONDS TO ONCLICK EVENT AND MAKES FORM DATA ENTERABLE
-  }
+  // methods:{
+  //   submitPatientProfileInfoForm(){
+  //     axios.post('/endpoint', )
+  //     .then((response)=>{
+  //     if(response.status === 201){
+  //       this.$router.push('profile')
+  //     }
+  //     }).catch((error)=>{
+  //       console.log(error.response.status);
+  //     })
+  //   },
+  //   // METHOD THAT RESPONDS TO ONCLICK EVENT AND MAKES FORM DATA ENTERABLE
+  // }
 
 }
 </script>

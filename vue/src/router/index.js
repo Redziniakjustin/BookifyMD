@@ -8,7 +8,7 @@ import Profile from "../views/Profile.vue"
 import Review from "../views/Review.vue"
 import Schedule from "../views/Schedule.vue"
 import Appointment from "../views/Appointment.vue"
-
+import ProfileRegister from "@/views/ProfileRegister.vue"
 import store from '../store/index'
 
 Vue.use(Router)
@@ -54,6 +54,14 @@ const router = new Router({
       path: "/register",
       name: "register",
       component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/profileRegister",
+      name: "profileRegister",
+      component: ProfileRegister,
       meta: {
         requiresAuth: false
       }

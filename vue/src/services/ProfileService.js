@@ -12,11 +12,14 @@ export default {
   getDoctor(id) {
       return http.get('/doctors/${id}', id)
   },
-  listProvider(){
-      return http.get('/providers')
+  listOffices(){
+      return http.get('/offices')
   }, 
-  getProvider(id){
+  getOffice(id){
       return http.get('/providers/${id}', id)
+  }, 
+  addProfile(profile){
+    return http.post('/profile', profile)
   }
 
 }
