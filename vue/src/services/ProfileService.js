@@ -18,8 +18,14 @@ export default {
   getOffice(id){
       return http.get('/providers/${id}', id)
   }, 
-  addProfile(profile){
-    return http.post('/profile', profile)
+  addPatient(profile){
+    return http.post('/patients', profile)
+  },
+  addDoctor(profile){
+    return http.post('/doctors', profile)
+  },
+  getUserTypeIdByUsername(username){
+    return http.get('/userType/${username}', username)
   }
 
 }

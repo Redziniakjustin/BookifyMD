@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form action="" method="">
+    <form @submit.prevent="registerPatientProfile">
       <h2>Patient Personal Information</h2>
       <label for="firstName">First Name:</label>
       <input id="firstName" type="text" v-model="patient.firstName">
@@ -26,9 +26,7 @@
       <label for="patientEmail"> Email: </label>
       <input type="email" id="patientEmail" v-model="patient.email">
       
-      <button class="btn-submit"> Submit
-        <!--<input type="submit">-->
-      </button>
+      <button type="submit"> Submit </button>
     </form>
   </div>
 </template>
@@ -36,12 +34,12 @@
 <script>
 //import axios from 'axios';
 import profileService from '@/services/ProfileService';
-
 export default {
   data(){
       return{
         userType: "patient",
         patient:{
+            userTypeId: "",
             firstName: "",
             lastName: "",
             phoneNumber: "",
@@ -62,12 +60,13 @@ export default {
    methods:{
     registerPatientProfile(){
     if(this.patient.firstName != null){
-        profileService.addProfile(this.patient)
+        profileService.addPatient(this.patient)
         .then((response) => {
           if(response.status == 201){
             this.$router.push({
-              path: '/',
-            });    
+                path: '/login',
+                query: { registration: 'success' },
+              });
           }
         }).catch((error)=>{
           if(error.response.status === 400){
@@ -76,6 +75,16 @@ export default {
         });
      } 
     }
+   },
+   mounted(){
+     profileService
+      .getUserTypeIdByUsername(this.$route.query.username)
+      .then(response => {
+        this.patient.userTypeId = response.data;
+      }).catch(error => {
+              console.log(error)
+              this.error = true
+          })
    }
    }
   //   submitPatientProfileInfoForm(){
