@@ -20,7 +20,7 @@ public class JdbcOfficeDao implements OfficeDao{
     }
 
     private final String getFullOffice = "SELECT office_id, office_name, street_address, city, " +
-            "state_name, zip, phone, email, office_hours, delay_status FROM office";
+            "state_name, zip, phone, email, office_hours_start, office_hours_end, delay_status FROM office";
 
     @Override
     public List<Office> findAll() {
@@ -66,12 +66,12 @@ public class JdbcOfficeDao implements OfficeDao{
     @Override
     public boolean create(Office newOffice) {
         boolean officeCreated = false;
-      String sql = "INSERT INTO office ( office_name, street_address, city, state_name, zip, phone, email, office_hours, delay_status) VALUES (?,?,?,?,?,?,?,?,?) RETURNING office_id;";
+      String sql = "INSERT INTO office ( office_name, street_address, city, state_name, zip, phone, email, office_hours_start, office_hours_end, delay_status) VALUES (?,?,?,?,?,?,?,?,?,?) RETURNING office_id;";
       Long officeId = null;
       try{
         officeId = jdbcTemplate.queryForObject(sql, Long.class, newOffice.getOfficeName(), newOffice.getStreetAddress(),
                 newOffice.getCity(), newOffice.getStateName(), newOffice.getZip(),
-                newOffice.getPhone(), newOffice.getEmail(), newOffice.getOfficeHours(), newOffice.isDelayStatus());
+                newOffice.getPhone(), newOffice.getEmail(), newOffice.getOfficeHoursStart(), newOffice.getOfficeHoursEnd(), newOffice.isDelayStatus());
         officeCreated = true;
       }catch(Exception e){
           System.out.println(e.getMessage());
@@ -84,11 +84,11 @@ public class JdbcOfficeDao implements OfficeDao{
         boolean isUpdated = false;
 
         String sql = "UPDATE office SET  office_name=?, street_address=?, city=?, " +
-                "state_name=?, zip=?, phone=?, email=?, office_hours=?, delay_status=? WHERE office_id =?;";
+                "state_name=?, zip=?, phone=?, email=?, office_hours_start =?, office_hours_end =?, delay_status=? WHERE office_id =?;";
         try{
             jdbcTemplate.update(sql, office.getOfficeName(), office.getStreetAddress(), office.getCity(),
                     office.getStateName(), office.getZip(), office.getPhone(), office.getEmail(),
-                    office.getOfficeHours(), office.isDelayStatus(), officeId);
+                    office.getOfficeHoursStart(), office.getOfficeHoursEnd(), office.isDelayStatus(), officeId);
             isUpdated = true;
         }catch (Exception e){
                 System.out.println(e.getMessage());
@@ -121,7 +121,8 @@ public class JdbcOfficeDao implements OfficeDao{
         office.setZip(row.getString("zip"));
         office.setPhone(row.getString("phone"));
         office.setEmail(row.getString("email"));
-        office.setOfficeHours(row.getString("office_hours"));
+        office.setOfficeHoursStart(row.getTime("office_hours_start"));
+        office.setOfficeHoursEnd(row.getTime("office_hours_end"));
         office.setDelayStatus(row.getBoolean("delay_status"));
         return office;
     }

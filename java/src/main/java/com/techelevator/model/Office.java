@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.sql.Time;
+
 public class Office {
 
     private Long officeId;
@@ -10,7 +12,8 @@ public class Office {
     private String zip;
     private String phone;
     private String email;
-    private String officeHours;
+    private Time officeHoursStart;
+    private Time officeHoursEnd;
     private boolean delayStatus;
 
 
@@ -39,8 +42,11 @@ public class Office {
     public String getEmail() {
         return email;
     }
-    public String getOfficeHours() {
-        return officeHours;
+    public Time getOfficeHoursStart() {
+        return officeHoursStart;
+    }
+    public Time getOfficeHoursEnd() {
+        return officeHoursEnd;
     }
     public boolean isDelayStatus() {
         return delayStatus;
@@ -71,8 +77,11 @@ public class Office {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setOfficeHours(String officeHours) {
-        this.officeHours = officeHours;
+    public void setOfficeHoursStart(Time officeHoursStart) {
+        this.officeHoursStart = officeHoursStart;
+    }
+    public void setOfficeHoursEnd(Time officeHoursEnd) {
+        this.officeHoursEnd = officeHoursEnd;
     }
     public void setDelayStatus(boolean delayStatus) {
         this.delayStatus = delayStatus;

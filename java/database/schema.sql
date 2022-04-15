@@ -61,7 +61,8 @@ CREATE TABLE office (
 		zip varchar(15),
 		phone varchar(20) NOT NULL,
 		email varchar(50) NOT NULL,
-		office_hours varchar(100),
+		office_hours_start time NOT NULL,
+		office_hours_end time NOT NULL,
 		delay_status boolean,
 		CONSTRAINT PK_office PRIMARY KEY (office_id)
 	
