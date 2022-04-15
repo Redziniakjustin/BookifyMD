@@ -29,6 +29,15 @@
             v-model="doctor.hourlyCost"
             required
             min="0">
+            
+            <div>
+              <!-- @click="displayOffice() -->
+               <label for="office">Choose Primary Office:</label>
+                <select id="offices" name="offices">
+                  <option v-for="office in offices" :key="office">{{office.officeName}}</option>
+                </select>
+            </div>
+
             <button type="submit">Submit</button>
           </form>
       </div>
@@ -46,7 +55,8 @@ export default {
             phoneNumber: "",
             email: "",
             hourlyCost: ""
-        }
+        },
+         office: []
         }
     },
       methods:{
@@ -73,6 +83,13 @@ export default {
       .getUserTypeIdByUsername(this.$route.query.username)
       .then(response => {
         this.doctor.userTypeId = response.data;
+      }).catch(error => {
+              console.log(error)
+              this.error = true
+          }),
+    profileService.listOffices()
+      .then(response => {
+        this.office = response.data;
       }).catch(error => {
               console.log(error)
               this.error = true

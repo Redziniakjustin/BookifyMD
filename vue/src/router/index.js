@@ -91,6 +91,14 @@ const router = new Router({
       }
     },
     {
+      path: "/schedule",
+      name: "schedule",
+      component: Schedule,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: "/schedule/:doctorID",
       name: "schedule",
       component: Schedule,

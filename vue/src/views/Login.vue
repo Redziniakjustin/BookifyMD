@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="text-center log-in-container">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -74,3 +74,18 @@ export default {
   }
 };
 </script>
+
+<style>
+  .log-in-container{
+    margin-top: 150px;
+    align-content: center;
+   }
+   .log-in-body{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-between;
+     margin: 80px 0 10px 0;
+     font-size: 0.75rem;
+   }
+</style>

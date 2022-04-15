@@ -2,20 +2,26 @@
   <div>
     <form @submit.prevent="registerPatientProfile">
       <h2>Patient Personal Information</h2>
+
       <label for="firstName">First Name:</label>
-      <input id="firstName" type="text" v-model="patient.firstName">
+      <input id="firstName" type="text" v-model="patient.firstName"
+      required>
       
       <label for="lastName">Last Name:</label>
-      <input id="lastName" type="text" v-model="patient.lastName" >
+      <input id="lastName" type="text" v-model="patient.lastName"
+      required>
       
       <label for="phoneNumber">Phone Number:</label>
-      <input id="phoneNumber" type="text" v-model="patient.phoneNumber">
+      <input id="phoneNumber" type="text" v-model="patient.phoneNumber" 
+      required> <!-- change to number ?  -->
       
       <label for="patientStreetAddress"> Street: </label>
-      <input type="text" id="patientStreetAddress" v-model="patient.street">
+      <input type="text" id="patientStreetAddress" v-model="patient.street"
+      required>
       
       <label for="patientCity"> City: </label>
-      <input type="text" id="patientCity" v-model="patient.city">
+      <input type="text" id="patientCity" v-model="patient.city"
+      required>
       
       <label for="patientState"> State: </label>
       <input type="text" id="patientState" v-model="patient.state">
@@ -97,7 +103,6 @@ export default {
   //       console.log(error.response.status);
   //     })
   //   },
-  //   // METHOD THAT RESPONDS TO ONCLICK EVENT AND MAKES FORM DATA ENTERABLE
  
 </script>
 
