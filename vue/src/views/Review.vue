@@ -11,9 +11,8 @@
 
 
     <div class="review-body">
-          <review-submission-form/>
-
-          <review-display/>
+         
+        
 
         <div class="review-btns"> 
           <label for="sort-review-doctor"></label>
@@ -24,8 +23,12 @@
           <input type="text" placeholder="Search By Provider"/>
           <input type="submit">
         </div>
-          
-    </div>``
+
+        <review-display/>  
+        
+         <review-submission-form/>
+        
+    </div>
 
   </div>
 </template>
