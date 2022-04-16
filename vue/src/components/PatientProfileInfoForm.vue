@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pat-prof-form-container">
     <form @submit.prevent="registerPatientProfile">
       <h2>Patient Personal Information</h2>
 
@@ -107,5 +107,16 @@ export default {
 </script>
 
 <style >
+input{
+  width: 100%;
+  display: block;
+  margin: 8px 0;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border:1px solid;
+  }
+input:hover{
+border:2px solid blue;
+}
 
 </style>

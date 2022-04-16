@@ -1,14 +1,18 @@
 <template>
   <div class="profile-container">
 
-    <h1>Profile</h1> <!--TEMP-->
+    <h1>Profile</h1>
     
     <div class="profile-body">
           <div v-if="user.role=='patient'">
-            <patient-profile/>  
+
+            <patient-profile/> 
+
           </div>
           <div v-if="user.role=='doctor'">
+
             <doctor-profile/>
+
           </div>
     </div>
 
@@ -16,9 +20,11 @@
   </div>
 </template>
 
+
 <script>
 import DoctorProfile from '@/components/DoctorProfile.vue'
 import PatientProfile from '@/components/PatientProfile.vue'
+
 export default {
   data() {
     return {
@@ -35,6 +41,7 @@ export default {
 
 }
 </script>
+
 
 <style>
 .profile-container{
