@@ -14,6 +14,7 @@
   </div>
 </template>
 
+
 <script>
 import ScheduleAppointmentForm from '../components/ScheduleAppointmentForm.vue'
 
@@ -23,6 +24,7 @@ export default {
     },
 }
 </script>
+
 
 <style>
   .schedule-container{

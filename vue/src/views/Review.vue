@@ -33,9 +33,11 @@
   </div>
 </template>
 
+
 <script>
 import ReviewDisplay from '../components/ReviewDisplay.vue'
 import ReviewSubmissionForm from '../components/ReviewSubmissionForm.vue'
+
 export default {
    data(){
         return{
@@ -47,9 +49,9 @@ export default {
   components: { 
     ReviewSubmissionForm,
     ReviewDisplay },
-
 }
 </script>
+
 
 <style>
   .review-container{

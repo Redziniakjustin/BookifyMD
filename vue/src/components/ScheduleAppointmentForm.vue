@@ -19,14 +19,21 @@
           <input type="submit" id="submit" name="submit">
       </form>
 
+      <div>
+         <availability-day-display/>
+      </div>
+
 
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue';
 
 export default {
+  components: { 
+    AvailabilityDayDisplay },
     data(){
         return{
             schedule:[

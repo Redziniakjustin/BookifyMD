@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="doc-sched-container">
       <table>
         <tbody v-for="appointment in appointments" :key=appointment>
           <tr>

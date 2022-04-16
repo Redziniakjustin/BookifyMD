@@ -19,7 +19,7 @@
       <div class="patient-profile" v-if="isActive"> 
       
         <patient-profile-info-form/><!--Add  CSS to make hidden and visible during on-click event with button-->
-        
+
       </div>
   </div>
 </template>
