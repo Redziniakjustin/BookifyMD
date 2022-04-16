@@ -23,21 +23,19 @@
             <input type="email" id="doctorEmail"
             v-model="doctor.email"
             required>
-            
+
+            <div>
+              <!-- @click="displayOffice() -->
+              <label for="office">Choose Primary Office:</label>
+              <!--Change the the options to offices change :reduce-->
+              <v-select id="office" single v-model="doctor.officeId" :options="options" :reduce="name => name.id" label="name"/>
+            </div>
+          
             <label for="doctorCost">Hourly Rate ($): </label>
             <input type="number" id="doctorCost"
             v-model="doctor.hourlyCost"
             required
             min="0">
-            
-            <div>
-              <!-- @click="displayOffice() -->
-               <label for="office">Choose Primary Office:</label>
-                <select id="offices" name="offices">
-                  <option v-for="office in offices" :key="office">{{office.officeName}}</option>
-                </select>
-            </div>
-
             <button type="submit">Submit</button>
           </form>
       </div>
@@ -45,18 +43,40 @@
 
 <script>
 import profileService from '@/services/ProfileService';
+import vSelect from 'vue-select'
+import Vue from 'vue'
+import 'vue-select/dist/vue-select.css';
+
+Vue.component('v-select', vSelect)
 export default {
     data(){
         return{
-             doctor: {
+          doctor: {
             userTypeId: "",
             firstName: "",
             lastName: "",
             phoneNumber: "",
             email: "",
-            hourlyCost: ""
-        },
-         office: []
+            costHourly: "",
+            officeId: ""
+          },
+          offices: [],
+          //Will remove later 
+          options:[
+            {id: 1,
+            name: "spruce"
+            },
+            {id: 2,
+            name: "locust"
+            },
+            {id: 3,
+            name: "diamond"
+            },
+            {id: 4,
+            name: "girard"
+            },
+
+          ]
         }
     },
       methods:{
@@ -79,21 +99,22 @@ export default {
           }
     },
      mounted(){
-      profileService
-      .getUserTypeIdByUsername(this.$route.query.username)
-      .then(response => {
-        this.doctor.userTypeId = response.data;
-      }).catch(error => {
-              console.log(error)
-              this.error = true
-          }),
-    profileService.listOffices()
-      .then(response => {
-        this.office = response.data;
-      }).catch(error => {
-              console.log(error)
-              this.error = true
-          })
+     profileService
+     .getUserTypeIdByUsername(this.$route.query.username)
+     .then(response => {
+       this.doctor.userTypeId = response.data;
+     }).catch(error => {
+            console.log(error)
+            this.error = true
+        })
+      /*profileService.listOffices()
+        .then(response => {
+          this.office = response.data;
+        }).catch(error => {
+                console.log(error)
+                this.error = true
+            })*/
+
    }
 }
 </script>

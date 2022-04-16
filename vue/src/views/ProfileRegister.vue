@@ -1,10 +1,10 @@
 <template>
   <div>
-      <button v-if="isPatient"  @click="registerAsDoctor()">Are you a Doctor or Practioner?</button>
-      <button v-else @click="registerAsPatient()">Are You A Patient?</button>
+      
       <patient-profile-info-form v-if="isPatient"/>
       <doctor-profile-info-form v-if=" !isPatient" />
-
+      <button v-if="isPatient"  @click="registerAsDoctor()">Are you a Doctor or Practioner?</button>
+      <button v-else @click="registerAsPatient()">Are You A Patient?</button>
       
   </div>
 </template>
