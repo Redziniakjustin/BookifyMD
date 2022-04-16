@@ -17,11 +17,19 @@
       <button id="deleteAvailability">Delete Availability</button>
      
     </div>
+
+    <div class="avail-body">
+        <availability-day-display/>
+    </div>
+
   </div>
 </template>
 
+
 <script>
+import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue'
 export default {
+  components: { AvailabilityDayDisplay },
   data() {
     return {
       doctor: {
@@ -47,5 +55,4 @@ office:{
 </script>
 
 <style>
-
 </style>
