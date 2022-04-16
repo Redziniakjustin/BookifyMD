@@ -107,12 +107,12 @@ const router = new Router({
       }
     },
     {
-      path: "/availability/:doctorID", // TODO will we need office ID as well
-      name: "availability",
-      component: Schedule,
-      meta: {
-        requiresAuth: false
-      }
+      // path: "/availability/:doctorID",
+      // name: "availability",
+      // component: Schedule,
+      // meta: {
+      //   requiresAuth: false
+      // }
     }    
   ]
 })
