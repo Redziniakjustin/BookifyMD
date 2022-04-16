@@ -105,15 +105,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    },
-    {
-      // path: "/availability/:doctorID",
-      // name: "availability",
-      // component: Schedule,
-      // meta: {
-      //   requiresAuth: false
-      // }
-    }    
+    }
   ]
 })
 
