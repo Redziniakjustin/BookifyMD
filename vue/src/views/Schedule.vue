@@ -9,19 +9,17 @@
 
     <div class="schedule-body">
         <schedule-appointment-form/>
-        <display-calender/>
-    </div>      
+    </div>     
+    <v-calendar/> 
   </div>
 </template>
 
 <script>
-import DisplayCalender from '../components/DisplayCalender.vue'
 import ScheduleAppointmentForm from '../components/ScheduleAppointmentForm.vue'
 
 export default {
   components: { 
-    ScheduleAppointmentForm,
-    DisplayCalender 
+    ScheduleAppointmentForm
     },
 }
 </script>

@@ -16,6 +16,7 @@
     "vue-router": "^3.5.1",
     "vue-select": "^3.18.3",
     "vue-star-rating": "^1.7.0",
+    "vuetify": "^2.6.4",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
@@ -31,7 +32,6 @@
     "eslint-plugin-vue": "^7.7.0",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
-    "vue-cli-plugin-vuetify": "~2.4.8",
     "vue-loader-v16": "npm:vue-loader@16.1.2",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.7.0"

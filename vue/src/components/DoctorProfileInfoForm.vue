@@ -107,13 +107,13 @@ export default {
             console.log(error)
             this.error = true
         })
-      /*profileService.listOffices()
+      profileService.listOffices()
         .then(response => {
           this.office = response.data;
         }).catch(error => {
                 console.log(error)
                 this.error = true
-            })*/
+            })
 
    }
 }
