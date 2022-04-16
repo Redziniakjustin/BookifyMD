@@ -20,17 +20,14 @@ MVP's 12 (Login and Register excluded)
     - (GET)        Read Reviews - All Offices           -    Read Reviews
     - (POST)       CreateReview - for my Doctor's Office-    Submit Review
 
-**As A USER.PROVIDER
-    -
-    -
 
-Additional Functionality:
+*************Additional**Functionality:*************
 Doctor - Office info - delay indicator
 Doctor - reschedule or cancel appointments 
 Patient - select reason for visit when setAppointment
 Patient - appointment notification for cancellation or reschedule
 
-****************************DEFINE TERMS*****************************
+****************************DEFINE**TERMS*****************************
 
 Schedule - Set Schedule - For when patients will schedule the doctor
 
@@ -40,12 +37,50 @@ Agenda - displayed in Appointment.view; comprised of DoctorSchedule.component an
                                                         //now Doctor Appointments
     
 
-****************************LIST OF VIEWS *****************************
+****************************LIST**OF**VIEWS *****************************
+Appointment
+    - doctor-schedule
+    - patient-appointments
+Home
+    -center-display
+        -nav-bar
+Login
+Logout
+Profile
+    - doctor-profile
+    - patient-profile
+
+ProfileRegister
+    - doctor-profile-info-form
+    - patient-profile-info-form
+Register
+Review
+    -review-display
+    -review-submission-form
+Schedule
+    -schedule-appointment-form
 
 
+****************************LIST**OF**COMPONENTS*****************************
+AvailabilityDayDisplay
+CenterDisplay
 
-****************************LIST OF COMPONENTS*****************************
+DoctorProfile
+DoctorProfileInfoForm
+DoctorSchedule
 
+LandingCenterColumn
+NavBar
+NotificationCenter
+
+PatientAppointments
+PatientProfile
+PatientProfileInfoForm
+
+ReviewDisplay
+ReviewSubmissionForm
+
+ScheduleAppointmentForm
 
 
 

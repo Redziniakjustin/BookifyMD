@@ -5,7 +5,6 @@ const http = axios.create({
   });
 
 export default {
-
     currentDoctorAvailability(){
         return http.get('/availability')
       },
