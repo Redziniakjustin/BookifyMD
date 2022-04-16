@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -17,17 +18,31 @@ public class JdbcPatientDao implements PatientDao{
     public JdbcPatientDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
-
+    private final String getFullPatient = "SELECT patient_id, user_type_id, first_name, last_name, phone, street_address, city, state_name, zip, email FROM patient";
 
 
     @Override
     public List<Patient> findAll() {
-        return null;
+        List<Patient> patients = new ArrayList<>();
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(getFullPatient);
+        while(results.next()){
+            patients.add(mapRowToDoctor(results));
+        }
+        return patients;
     }
 
     @Override
     public Patient getPatientById(Long patientId) {
-        return null;
+        Patient patient = new Patient();
+        SqlRowSet results = jdbcTemplate.queryForRowSet(getFullPatient +" WHERE patient_id = ?;", patientId);
+        if(results.next()){
+            patient = mapRowToDoctor(results);
+        } else {
+            //TODO fix me exception
+            System.out.println("Office NOT FOUND");
+        }
+        return patient;
     }
 
     @Override
@@ -57,4 +72,20 @@ public class JdbcPatientDao implements PatientDao{
         }
         return patientCreated;
     }
+
+    private Patient mapRowToDoctor(SqlRowSet row){
+        Patient patient = new Patient();
+        patient.setPatientId(row.getLong("patient_id"));
+        patient.setUserTypeId(row.getLong("user_type_id"));
+        patient.setFirstName(row.getString("first_name"));
+        patient.setLastName(row.getString("last_name"));
+        patient.setPhone(row.getString("phone"));
+        patient.setStreetAddress(row.getString("street_address"));
+        patient.setStateName(row.getString("state_name"));
+        patient.setZip(row.getString("zip"));
+        patient.setEmail(row.getString("email"));
+        return patient;
+    }
+
+
 }

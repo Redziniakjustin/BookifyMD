@@ -88,16 +88,16 @@ CREATE TABLE patient (
 
 
 
-
 DROP TABLE IF EXISTS appointment cascade; 
 
 CREATE TABLE appointment (
 		appointment_id serial ,
-		doctor_id int NOT NULL UNIQUE,
-		patient_id int NOT NULL UNIQUE,
-		office_id int NOT NULL UNIQUE, 
+		doctor_id int NOT NULL,
+		patient_id int NOT NULL,
+		office_id int NOT NULL, 
 		appointment_date date NOT NULL,
-		--appointment_created_date date,
+		start_time time NOT NULL,
+		end_end time NOT NULL,
 		appointment_status varchar(20),
 		description varchar(150) NOT NULL,
 		CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),

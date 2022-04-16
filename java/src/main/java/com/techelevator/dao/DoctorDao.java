@@ -29,7 +29,6 @@ public interface DoctorDao {
     //UPDATE DOCTOR PROFILE
 
 
-
 }
 
 

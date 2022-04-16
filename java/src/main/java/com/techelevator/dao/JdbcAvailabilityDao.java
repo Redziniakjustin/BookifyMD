@@ -55,7 +55,7 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
         boolean isSuccessful = false;
 
         String sql = "UPDATE doctor_office_availability SET office_id=?, doctor_id=?, day_of_week=?, start_time=?, end_time=?, is_available=?, reason_of_unavailability=? " +
-                "WHERE avail_id = ?;";
+                "WHERE avail_id = ? RETURNING avail_id;";
         try{
             jdbcTemplate.queryForObject(sql, Long.class, availability.getOfficeId(), availability.getDoctorId(),
                     availability.getDayOfWeek(), availability.getStartTime(), availability.getEndTime(),
@@ -81,7 +81,6 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
         availability.setReasonOfUnavailability(row.getString("reason_of_unavailability"));
 
         return availability;
-
     }
 
 

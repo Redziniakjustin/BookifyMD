@@ -39,7 +39,6 @@ public class DoctorController {
         return availabilityDao.findAvailabilityByDoctorId(id);
     }
 
-
     //POST NEW DOCTOR
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value ="", method = RequestMethod.POST)
@@ -87,22 +86,22 @@ public class DoctorController {
         return isSuccessful;
     }
 
-
     //TODO UPDATE DOCTOR PROFILE
 
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/availability/{availId}", method = RequestMethod.PUT)
+    public boolean updateAvailability(@Valid @RequestBody Availability updateAvailability,@PathVariable Long availId) {
+        boolean isSuccessful = false;
+        try {
+            availabilityDao.update(updateAvailability, availId);
+            isSuccessful = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return isSuccessful;
+    }
 
-    //TODO UPDATE AVAILABILITY
 
-
-
-
-
-
-
-
-
-
-
-
+    // ADD DEFAULT TIME WHEN ADDING
 
 }

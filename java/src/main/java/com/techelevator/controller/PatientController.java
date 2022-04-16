@@ -24,11 +24,27 @@ public class PatientController {
         this.patientDao = patientDao;
     }
 
-
+    // GET PATIENT BY ID
+    //localhost:8080/patients/id
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public Patient getPatientByPatientId(@PathVariable Long id, Principal principal){
+    public Patient getPatientByPatientId(@PathVariable Long id){
         return patientDao.getPatientById(id);
     }
+
+    // GET LIST OF ALL PATIENTS
+    //localhost:8080/patients
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public List <Patient> listAllPatients(Principal principal){
+        return patientDao.findAll();
+    }
+
+    // GET LIST OF PATIENTS BY DOCTOR ID
+    //TODO LIST ALL PATIENTS BY DOCTOR ID
+
+    // GET LIST OF PATIENT BY OFFICE ID
+
+    //UPDATE Patient INFO
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "", method = RequestMethod.POST)
