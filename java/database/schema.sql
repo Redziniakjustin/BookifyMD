@@ -21,10 +21,11 @@ CREATE TABLE users (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-	
-	DROP TABLE IF EXISTS user_type CASCADE;
-	
-	CREATE TABLE user_type(
+
+
+DROP TABLE IF EXISTS user_type CASCADE;
+
+CREATE TABLE user_type(
 		
 		user_type_id serial, 
 		user_id int UNIQUE,
@@ -33,7 +34,6 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 		CONSTRAINT FK_user_type_user FOREIGN KEY (user_id) REFERENCES users(user_id)
 			
 	);
-	
 
 DROP TABLE IF EXISTS doctor CASCADE;
 
@@ -87,6 +87,7 @@ CREATE TABLE patient (
 	);
 
 
+
 DROP TABLE IF EXISTS appointment cascade; 
 
 CREATE TABLE appointment (
@@ -94,18 +95,18 @@ CREATE TABLE appointment (
 		doctor_id int NOT NULL,
 		patient_id int NOT NULL,
 		office_id int NOT NULL, 
-		avail_id int NOT NULL,
 		appointment_date date NOT NULL,
+		start_time time NOT NULL,
+		end_end time NOT NULL,
 		appointment_status varchar(20),
 		description varchar(150) NOT NULL,
-		PRIMARY KEY (doctor_id, office_id, avail_id, appointment_date),
-		--CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
- 		CONSTRAINT FK_appointments_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
- 		CONSTRAINT FK_appointments_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
- 		CONSTRAINT FK_appointments_office  FOREIGN KEY (office_id) REFERENCES office(office_id)
+		CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
+		CONSTRAINT FK_appointments_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
+		CONSTRAINT FK_appointments_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+		CONSTRAINT FK_appointments_office  FOREIGN KEY (office_id) REFERENCES office(office_id)
 		
 	);
-	
+
 
 DROP TABLE IF EXISTS doctor_office CASCADE;
 
