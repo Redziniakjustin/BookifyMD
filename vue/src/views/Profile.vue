@@ -1,11 +1,8 @@
 <template>
   <div class="profile-container">
 
-
-    <div class="head-container">
-      <h1>Profile</h1>
-    </div>
-
+    <h1>Profile</h1> <!--TEMP-->
+    
     <div class="profile-body">
           <div v-if="user.role=='patient'">
             <patient-profile/>  
@@ -48,7 +45,7 @@ export default {
      display: flex;
      flex-direction: row;
      align-items: center;
-     justify-content: center space-between;
+     justify-content: space-between;
      margin: 80px 0 10px 0;
      font-size: 0.75rem;
    }
