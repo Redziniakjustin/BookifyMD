@@ -8,6 +8,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface AppointmentDao {
@@ -22,8 +23,7 @@ public interface AppointmentDao {
 
     List<Appointment> findAppointmentsByOfficeId(Long officeId);
 
-    boolean create(Long doctorId, Long patientId, Long officeId, LocalDate appointmentDate, String appointmentStatus, String description);
-
+    boolean create(Appointment newAppointment);
 
     int findIdByPatientId(Long patientId);
     int findIdByDoctorId(Long doctorId);
