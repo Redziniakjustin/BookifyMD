@@ -3,33 +3,33 @@
     <form @submit.prevent="registerPatientProfile">
       <h2>Patient Personal Information</h2>
 
-      <label for="firstName">First Name:</label>
+      <label class="form-label" for="firstName">First Name:</label>
       <input id="firstName" type="text" v-model="patient.firstName"
       required>
       
-      <label for="lastName">Last Name:</label>
+      <label class="form-label" for="lastName">Last Name:</label>
       <input id="lastName" type="text" v-model="patient.lastName"
       required>
       
-      <label for="phoneNumber">Phone Number:</label>
+      <label class="form-label" for="phoneNumber">Phone Number:</label>
       <input id="phoneNumber" type="text" v-model="patient.phoneNumber" 
       required> <!-- change to number ?  -->
       
-      <label for="patientStreetAddress"> Street: </label>
+      <label class="form-label" for="patientStreetAddress"> Street: </label>
       <input type="text" id="patientStreetAddress" v-model="patient.street"
       required>
       
-      <label for="patientCity"> City: </label>
+      <label class="form-label" for="patientCity"> City: </label>
       <input type="text" id="patientCity" v-model="patient.city"
       required>
       
-      <label for="patientState"> State: </label>
+      <label class="form-label" for="patientState"> State: </label>
       <input type="text" id="patientState" v-model="patient.state">
       
-      <label for="patientZipCode"> Zip Code: </label>
+      <label class="form-label" for="patientZipCode"> Zip Code: </label>
       <input type="text" id="patientZipCode" v-model="patient.zipCode">
       
-      <label for="patientEmail"> Email: </label>
+      <label class="form-label" for="patientEmail"> Email: </label>
       <input type="email" id="patientEmail" v-model="patient.email">
       
       <button type="submit"> Submit </button>
@@ -107,5 +107,7 @@ export default {
 </script>
 
 <style >
-
+.form-label{
+  display: block;
+}
 </style>
