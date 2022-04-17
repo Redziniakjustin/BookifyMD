@@ -16,7 +16,11 @@
                 <td>{{doctor.reviews}}</td>
                 <td v-on:click="clicked" v-if="user.role=='patient'">
                 <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
-                <router-link  id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
+               
+                <v-btn color="accent" elevation="7" outlined raised text tile>
+                   <router-link  id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
+                </v-btn>  
+               
                   <!-- <input type="checkbox">  -->
                 </td>
             </tr>
