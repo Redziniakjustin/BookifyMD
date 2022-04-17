@@ -3,8 +3,8 @@
     <div class="left-column column">
         <div>
             <h1 class="">Available Doctors</h1>
-            <input type="text" placeholder="Search By Doctor" v-model="search"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
-            <input type="submit">
+            <input class="btn-search" type="text" placeholder="Search By Doctor" v-model="search"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
+            <input class="btn-search" type="submit">
         </div> 
         <table>
         <tbody>
@@ -39,9 +39,11 @@
     <div class="right-column column ">
          <div>
             <h1 class="">Available Healthcare Providers</h1>
-            <input type="text" placeholder="Search By Provider" />
-            <input type="submit">
-            
+    
+            <input class="btn-search" type="text" placeholder="Search By Provider" />
+           
+            <input class="btn-search" type="submit">       
+
         </div> 
         <table>
         <tbody>
@@ -172,6 +174,7 @@
   .left-column{
     flex-basis: 20%;
     margin-left: 20px;
+    padding: 2%;
   }
   .middle-column{
     flex-basis: 50%;
@@ -179,6 +182,10 @@
   .right-column{
    flex-basis: 20%;
    margin-right: 20px;
+   padding: 2%;
   }
-
+/* Add elevation to buttons */
+ .btn-search{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+} 
 </style>

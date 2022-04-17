@@ -2,54 +2,85 @@
   <div class="header-container" id="header-container" >
 
     <div class="left-header-container container" id="lhc">
+
         <div class="link-group-1" v-if="user.role=='patient'">
         <ul>
           <li class="inline" v-if="isHome===false">
-            <router-link id="home-link" :to="{ name: 'home' }">Home</router-link>
+              <v-btn color="accent" elevation="7" outlined raised text tile> 
+                  <router-link id="home-link no-hyper" :to="{ name: 'home' }">Home</router-link>
+              </v-btn>         
           </li>
-          <li class="inline" v-if="isProfile===false">  
-            <router-link id="profile-link" :to="{ name: 'profile' }">Patient Profile</router-link>
+
+          <li class="inline" v-if="isProfile===false">
+            <v-btn color="accent" elevation="7" outlined raised text tile>
+              <router-link id="profile-link no-hyper" :to="{ name: 'profile' }">Patient Profile</router-link>
+            </v-btn>
           </li>
+
           <li class="inline" v-if="isAppointment===false"> 
-            <router-link id="appointment-link" :to="{ name: 'appointment' }">Book Appointment</router-link>
+            <v-btn color="accent" elevation="7" outlined raised text tile>
+              <router-link id="appointment-link no-hyper" :to="{ name: 'appointment' }">Book Appointment</router-link>
+            </v-btn>
           </li>
-          <li class="inline" v-if="isReview===false"> 
-            <router-link id="review-link" :to="{ name: 'review' }">Write A Review</router-link>
+
+          <li class="inline" v-if="isReview===false">
+            <v-btn color="accent" elevation="7" outlined raised text tile>
+                <router-link id="review-link no-hyper" :to="{ name: 'review' }">Write A Review</router-link>
+            </v-btn>
           </li>
         </ul>
         </div>
 
         <div class="link-group-2" v-if="user.role=='doctor'">
         <ul>
-          <li class="inline" v-if="isHome===false"   >
-            <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+          <li class="inline" v-if="isHome===false">
+            <v-btn color="accent" elevation="7" outlined raised text tile>
+                <router-link  id="home-link no-hyper" style="text-decoration:none" :to="{ name: 'home' }">Home</router-link>
+            </v-btn>
           </li>
-          <li class="inline" v-if="isProfile===false"   >
-            <router-link class="profile-link" :to="{ name: 'profile' }">Doctor Profile</router-link>
+
+          <li class="inline" v-if="isProfile===false">
+           <v-btn  color="accent"  elevation="7"   outlined  raised  text  tile> 
+             <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Doctor Profile</router-link>
+           </v-btn>
           </li>
-          <li class="inline" v-if="isAppointment===false"  > 
-            <router-link id="appointment-link" :to="{ name: 'appointment' }">Scheduled Appointments</router-link>
+
+          <li class="inline" v-if="isAppointment===false"  >  <!-- troubleshoot why class no text dec failed -->
+          <v-btn color="accent" elevation="7" outlined raised text tile>
+              <router-link id="appointment-link no-hyper" style="text-decoration:none" :to="{ name: 'appointment' }">Scheduled Appointments</router-link>
+          </v-btn>
           </li>
+
           <li class="inline" v-if="isReview===false" >
-            <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link>
+            <v-btn color="accent" elevation="7" outlined raised text tile>
+               <router-link class="review-link no-hyper" :to="{ name: 'review' }">View Reviews</router-link>
+            </v-btn>
           </li>
+
         </ul>
         </div>
 
         <div class="link-group-3" v-if="user.role=='provider'">
         <ul>
           <li class="inline" v-if="isHome===false">
-            <router-link  id="home-link" :to="{ name: 'home' }">Home</router-link>
+            <v-btn color="accent" elevation="7" outlined raised text tile>
+                <router-link  id="home-link no-hyper" :to="{ name: 'home' }">Home</router-link>
+            </v-btn>
           </li>
+
           <li class="inline" v-if="isProfile===false"> 
-            <router-link class="profile-link" :to="{ name: 'profile' }">Provider Profile</router-link>
+            <v-btn color="accent" elevation="7" outlined raised text tile>
+                <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Provider Profile</router-link>
+            </v-btn>
           </li>
+          
           <li class="inline" v-if="isReview===false"> 
-            <router-link class="review-link" :to="{ name: 'review' }">View Reviews</router-link>
+            <v-btn color="accent" elevation="7" outlined raised text tile>
+                <router-link class="review-link no-hyper" :to="{ name: 'review' }">View Reviews</router-link>
+            </v-btn>
           </li>
         </ul>
         </div>
-    
     </div> 
 
 
@@ -62,20 +93,36 @@
 
 
     <div class="right-header-container container" id="rhc">  
-        <li class="inline" v-if="user.status==='authenticated'"><router-link class="link-log-out" :to="{ name: 'logout' }">Log Out</router-link></li>
-                                       <li v-else><router-link class="link-log-in" :to="{ name: 'login' }">Log In</router-link></li>
-        <li class="inline" v-if="user.status==='authenticated'"><router-link class="link-profile" :to="{ name: 'profile' }">Profile</router-link></li>
-                                     <li v-else><router-link class="link-register" :to="{ name: 'register' }">Register</router-link></li>
-       
-    <div class="login-register">  
-        <!-- <li class="inline">
-            <router-link class="login-register-child" :to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-        </li> -->
-        
-        <li class="inline">    
-          <router-link class="login-register-child" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <li class="inline" v-if="user.status==='authenticated'">
+          <v-btn color="accent" elevation="7" outlined raised text tile>
+            <router-link class="link-log-out no-hyper" :to="{ name: 'logout' }">Log Out</router-link>
+          </v-btn>
         </li>
-    </div>
+        
+        <li v-else>
+          <v-btn color="accent" elevation="7" outlined raised text tile>
+            <router-link class="link-log-in no-hyper" :to="{ name: 'login' }">Log In</router-link>
+          </v-btn>
+        </li>
+        
+        <li class="inline" v-if="user.status==='authenticated'">
+          <v-btn color="accent" elevation="7" outlined raised text tile>
+             <router-link class="link-profile no-hyper" :to="{ name: 'profile' }">Profile</router-link>
+          </v-btn>
+        </li>
+                                    
+        <li v-else>
+          <v-btn color="accent" elevation="7" outlined raised text tile>                   
+                <router-link class="link-register no-hyper" :to="{ name: 'register' }">Register</router-link>                  
+          </v-btn>                 
+        </li>
+
+   <!-- DELETABLE??  -->
+    <!-- <div class="login-register">   
+        <li class="inline">    
+          <router-link class="login-register-child no-hyper" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        </li>
+    </div> -->
 
     </div>
 
@@ -137,98 +184,55 @@ methods:{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center stretch space-between;
-    font-size: 0.75rem;
+    justify-content: center space-between;
+    /* font-size: .5rem; */
     margin: 0;
     padding: 0;
     max-height: 140px;
-    z-index: 1;
-  
+    /* z-index: 1; */
   }
   .container{
     list-style-type: none; 
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: transparent;
   }
   .logo{
-    margin: 2% 0 0 0;
-    padding: 10% 0 10% 0;
-    max-height: 130px;
+    margin: 30% 0 0 0;
+    padding: 10% 10% 10% 10%;
+    max-height: auto;
     width: 100%;
   }
-  
   .left-header-container{
-  flex-basis: 25%;
-  margin-left: 2%;
+  flex-basis: 20%;
+  /* margin-left: 1%; */
   }
-  
   .center-header-container{
-  flex-basis: 25%;
-  margin-left: 20vw;
+  flex-basis: 20%;
+  /* margin-left: 10vw; */
   }
-  
   .right-header-container{
   flex-basis: 20%;
-  margin-left: 20vw;
+  /* margin-left: 10vw; */
   }
   ul {              
-    list-style-type: none;
-    /* removes bullets from left container but not right */
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: transparent;
   }
   .inline{
     display:inline-block;
-    text-decoration: none;
   }
   .inline a {
-    display: block;
     padding: 2px;
-    background-color:  rgb(200, 224, 222);
-    border-right: 1px solid #bbb;
+    /* border-right: 1px solid #bbb; */
   }
   .inline a:last-child {
     border-right: none;
   }
-   .inline a:hover {
-    background-color: rgb(176, 226, 222);
+  .no-hyper{
+    text-decoration: none;
   }
-
-/* 
-@media screen and (max-width: 1700px) {
-      #head-container{
-          grid-template-areas: "lhc chc rhc";
-          grid-template-columns: 33% 33% 33%;
-          align-items: center;
-          row-gap: 20px;
-          column-gap: 35px;
-      }
-}
-@media screen and (max-width: 800px) {
-      #head-container{
-          grid-template-areas: "chc chc" 
-                               "lhc rhc";
-          grid-template-columns: 50% 50%;
-          align-items: center;
-          row-gap: 20px;
-          column-gap: 35px;
-      }
-}
-@media screen and (max-width: 480px) {
-      #head-container{
-          grid-template-areas: "lhc"
-                               "chc"
-                               "rhc";
-          grid-template-columns: 100%;
-          align-items: center;
-          row-gap: 20px;
-          column-gap: 35px;
-      }
-} */
-
+   
 </style>
 
