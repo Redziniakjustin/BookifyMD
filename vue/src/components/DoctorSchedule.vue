@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import appointmentService from '@/services/AppointmentServices'
+import appointmentService from '@/services/AppointmentService'
 export default {
     data(){
         return{
