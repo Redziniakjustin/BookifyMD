@@ -9,8 +9,7 @@
 
     <div class="schedule-body">
         <schedule-appointment-form/>
-    </div>     
-    <v-calendar/> 
+    </div>      
   </div>
 </template>
 

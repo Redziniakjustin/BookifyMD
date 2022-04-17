@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import appointmentService from '@/services/AppointmentService'
 export default {
     data(){
         return{
@@ -115,9 +116,18 @@ export default {
       ]
     }
   },
+  mounted(){
+    appointmentService.getAppointmentByPatientId(this.$store.profile.id)
+    .then(response =>{
+      this.appointments = response.data
+    }).catch(error => {
+             console.log(error)
+             this.error = true
+         }).finally(() => this.loading = false)
+  },
   methods:{
     reviewDisable(){
-      
+
     }
   }
 

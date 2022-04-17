@@ -26,9 +26,11 @@
 </template>
 
 <script>
+import appointmentService from '@/services/AppointmentServices'
 export default {
     data(){
         return{
+          //appointments:[],
             appointments:[
         {
           appointmentDate: "04/14/2022",
@@ -69,8 +71,18 @@ export default {
   sortByDate() {
       return this.appointments.slice()
              .sort((a, b) => new Date(a.appointmentDate)- new Date(b.appointmentDate));
+  },
+  mounted(){
+    //Load Appointments 
+    appointmentService.getAppointmentByDoctorId(this.$store.profile.id)
+    .then(response =>{
+      this.appointments = response.data
+    }).catch(error => {
+             console.log(error)
+             this.error = true
+         }).finally(() => this.loading = false)
+    }
 }
-        }
 
 </script>
 

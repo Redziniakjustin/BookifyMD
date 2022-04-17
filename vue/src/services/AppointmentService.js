@@ -20,6 +20,12 @@ export default {
   }, 
   deleteAppointment(id){
       return http.delete('/appointments/${id}', id)
+  }, 
+  getAppointmentByDoctorId(id){
+    return http.get('/appointments/doctors/${id}', id)
+  },
+  getAppointmentByPatientId(id){
+    return http.get('/appointments/patients/${id}', id)
   }
 
 }
