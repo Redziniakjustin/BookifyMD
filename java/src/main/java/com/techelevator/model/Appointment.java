@@ -1,5 +1,6 @@
 package com.techelevator.model;
 import javax.validation.constraints.NotNull;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -15,10 +16,14 @@ public class Appointment {
 
     private Long officeId;
     private Long availId;
+    private Time startTime;
+    private Time endTime;
     private Date appointmentDate;
     private String appointmentStatus;
-
     private String description;
+
+
+
 
 
 
@@ -47,6 +52,12 @@ public class Appointment {
     public Long getAvailId() {
         return availId;
     }
+    public Time getStartTime() {
+        return startTime;
+    }
+    public Time getEndTime() {
+        return endTime;
+    }
 
 
     //SETTERS
@@ -73,6 +84,13 @@ public class Appointment {
     }
     public void setAvailId(Long availId) {
         this.availId = availId;
+    }
+
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
+    }
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
     }
 
     //CONSTRUCTOR

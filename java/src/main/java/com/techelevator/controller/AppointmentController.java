@@ -25,16 +25,33 @@ public class AppointmentController {
         this.appointmentDao = appointmentDao;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Appointment> getAppointmentsByOfficeId(@RequestParam Long officeId){
+    //localhost:8080/appointments?officeId=<officeId>
+/*    @RequestMapping(method = RequestMethod.GET)
+    public List<Appointment> getAppointmentsByOfficeId(@RequestParam(name = "officeId") Long officeId){
         return appointmentDao.findAppointmentsByOfficeId(officeId);
+    }*/
+
+    //GET APPOINTMENT BY APPOINTMENT ID
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Appointment getAppointmentByUserId(@PathVariable Long id){               //id here is appointmentId
+        return appointmentDao.getAppointmentById(id);
     }
 
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Appointment getAppointmentByUserId(@RequestParam Long userId, Principal principal){
-        return appointmentDao.getAppointmentById(userId);
+    //GET APPOINTMENTS BY DOCTOR ID
+    //localhost:8080/appointments?doctorId=<doctorId>
+    //localhost:8080/appointments/doctors/{id}
+    @RequestMapping(value = "/doctors/{id}" , method = RequestMethod.GET)
+    public List<Appointment> getAppointmentsByDoctorId(@PathVariable Long id){      //id here is doctorID
+        return appointmentDao.findAllByDoctorId(id);
     }
+
+    //GET APPOINTMENTS BY PATIENT ID
+    @RequestMapping(value = "/patients/{id}" , method = RequestMethod.GET)
+    public List<Appointment> getAppointmentsByPatientId(@PathVariable Long id){      //id here is patientID
+        return appointmentDao.findAllByPatientId(id);
+    }
+
+
 
 
     //front end --> json with {doctorId, officeId...}

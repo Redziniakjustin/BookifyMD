@@ -12,21 +12,21 @@ import java.util.List;
 
 public interface AppointmentDao {
 
-    List<Appointment> findAll();
+    //List<Appointment> findAll();
+
+    List<Appointment> findAllByPatientId(Long patientId);
+
+    List<Appointment> findAllByDoctorId(Long doctorId);
 
     Appointment getAppointmentById(Long appointmentId);
 
-    Appointment findByPatientId(Long patientId);
-
-    Appointment findByDoctorId(Long doctorId);
 
     List<Appointment> findAppointmentsByOfficeId(Long officeId);
 
     boolean create(Appointment newAppointment);
 
+    boolean updateAppointment(Appointment appointment, Long appointmentId);
 
-    int findIdByPatientId(Long patientId);
-    int findIdByDoctorId(Long doctorId);
 
 
 
