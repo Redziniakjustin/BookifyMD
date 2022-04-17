@@ -15,8 +15,8 @@ public class Appointment {
     private Long officeId;
     private LocalDate appointmentDate;
     private String appointmentStatus;
-    @NotNull
-    private String description;
+
+     private String description;
 
 
     //GETTERS
