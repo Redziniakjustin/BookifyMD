@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.AppointmentDao;
+import com.techelevator.dao.AvailabilityDao;
 import com.techelevator.dao.DoctorDao;
 import com.techelevator.dao.OfficeDao;
 import com.techelevator.model.Appointment;
@@ -20,9 +21,11 @@ import java.security.Principal;
 public class AppointmentController {
 
     private AppointmentDao appointmentDao;
+    private AvailabilityDao availabilityDao;
 
-    public AppointmentController(AppointmentDao appointmentDao){
+    public AppointmentController(AppointmentDao appointmentDao, AvailabilityDao availabilityDao){
         this.appointmentDao = appointmentDao;
+        this.availabilityDao = availabilityDao;
     }
 
     //localhost:8080/appointments?officeId=<officeId>
@@ -59,8 +62,22 @@ public class AppointmentController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "" , method = RequestMethod.POST)
     public boolean createAppointment(@Valid @RequestBody Appointment appointment){
-       Appointment newAppointment = new Appointment();
-       return appointmentDao.create(appointment);
+       Long availId = null;
+       boolean isSuccessful = false;
+
+       try{
+           isSuccessful = appointmentDao.create(appointment);
+           availId = appointment.getAvailId();
+       } catch (Exception e){
+           System.out.println(e.getMessage());
+       }
+       try{
+           availabilityDao.isAvailableFalse(availId);
+       } catch (Exception e){
+           System.out.println(e.getMessage());
+       }
+
+       return isSuccessful;
     }
 
 }

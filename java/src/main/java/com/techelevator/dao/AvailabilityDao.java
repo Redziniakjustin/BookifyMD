@@ -13,6 +13,9 @@ public interface AvailabilityDao {
 
     //TODO availabilityByOffice
 
+    List<Availability> findAllAvailabilityByOfficeId(Long officeId);
+
+    List<Availability> findAvailabilityByIsAvailable(Long officeId);
 
 
     //create availability
@@ -20,4 +23,6 @@ public interface AvailabilityDao {
 
     //update availability
     boolean update (Availability availability, Long availId);
+
+    boolean isAvailableFalse(Long availId);
 }

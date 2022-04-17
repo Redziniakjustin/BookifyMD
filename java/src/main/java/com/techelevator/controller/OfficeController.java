@@ -1,8 +1,10 @@
 package com.techelevator.controller;
 
 
+import com.techelevator.dao.AvailabilityDao;
 import com.techelevator.dao.DoctorDao;
 import com.techelevator.dao.OfficeDao;
+import com.techelevator.model.Availability;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
 import org.springframework.http.HttpStatus;
@@ -19,9 +21,11 @@ import java.security.Principal;
 public class OfficeController {
 
     private OfficeDao officeDao;
+    private AvailabilityDao availabilityDao;
 
-    public OfficeController(OfficeDao officeDao){
+    public OfficeController(OfficeDao officeDao, AvailabilityDao availabilityDao){
         this.officeDao = officeDao;
+        this.availabilityDao = availabilityDao;
 
     }
 
@@ -35,14 +39,27 @@ public class OfficeController {
         return officeDao.getOfficeById(id);
     }
     //TODO get office by status (which offices are on delay)
-    //TODO get office hours by office ID
+
 
 
     // http://localhost:8080/offices/3/doctors
-    @RequestMapping(value = "/{id}/doctors")
+    @RequestMapping(value = "/{id}/doctors", method = RequestMethod.GET)
     public List<Doctor> getAllDoctorsByOfficeId(@PathVariable Long id){
         return officeDao.findDoctorsByOfficeId(id);
     }
+
+    //GET ALL AVAILABILITY BY OFFICE ID
+    @RequestMapping(value = "/{id}/availability", method = RequestMethod.GET)
+    public List<Availability> getAllAvailabilityByOfficeId(@PathVariable Long id){
+        return availabilityDao.findAllAvailabilityByOfficeId(id);
+    }
+
+    //GET AVAILABILITY BY IS_AVAILABLE BY OFFICE ID
+    @RequestMapping(value = "/{id}/availability/isAvailable", method = RequestMethod.GET)
+    public List<Availability> getAllAvailabilityByIsAvailable(@PathVariable Long id){
+        return availabilityDao.findAvailabilityByIsAvailable(id);
+    }
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value="", method = RequestMethod.POST)

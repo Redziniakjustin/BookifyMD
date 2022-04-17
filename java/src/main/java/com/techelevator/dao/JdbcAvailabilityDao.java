@@ -29,7 +29,31 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
         return availabilities;
     }
 
+    @Override
+    public List<Availability> findAllAvailabilityByOfficeId(Long officeId) {
+        List<Availability> availabilities = new ArrayList<>();
+        String sql = "SELECT avail_id, office_id, doctor_id, day_of_week, start_time, end_time, is_available, reason_of_unavailability FROM doctor_office_availability" +
+                " WHERE office_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while(results.next()){
+            availabilities.add(JdbcAvailabilityDao.mapRowToAvailability(results));
+        }
 
+        return availabilities;
+    }
+
+    @Override
+    public List<Availability> findAvailabilityByIsAvailable(Long officeId) {
+        List<Availability> availabilities = new ArrayList<>();
+        String sql = "SELECT avail_id, office_id, doctor_id, day_of_week, start_time, end_time, is_available, reason_of_unavailability FROM doctor_office_availability" +
+                " WHERE office_id = ? AND is_available = true;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while(results.next()){
+            availabilities.add(JdbcAvailabilityDao.mapRowToAvailability(results));
+        }
+
+        return availabilities;
+    }
 
     @Override
     public boolean create(Availability newAvailability) {
@@ -69,7 +93,25 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
         return isSuccessful;
     }
 
-    private Availability mapRowToAvailability(SqlRowSet row) {
+    @Override
+    public boolean isAvailableFalse(Long availId) {
+        boolean isSuccessful = false;
+        String sql = "UPDATE doctor_office_availability SET is_available=false WHERE avail_id = ? RETURNING avail_id;";
+        Long returnId = null;
+        try{
+            returnId = jdbcTemplate.queryForObject(sql, Long.class, availId);
+            if(returnId != null){
+                isSuccessful = true;
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return isSuccessful;
+    }
+
+
+    public static Availability mapRowToAvailability(SqlRowSet row) {
         Availability availability = new Availability();
         availability.setAvailId(row.getLong("avail_id"));
         availability.setOfficeId(row.getLong("office_id"));
