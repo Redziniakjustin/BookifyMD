@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Appointment {
 
-    @NotNull
+
     private Long appointmentId;
     @NotNull
     private Long doctorId;
