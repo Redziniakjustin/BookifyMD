@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lcc-container">
         <h1 class="welcome"></h1>
         <img src="..\assets\family.png" alt="welcome">
         <p>Welcome to BookifyMd your one stop for medical appointment management</p> 
@@ -27,4 +27,8 @@ img{
   max-width: 200px;
   height: auto;
   }
+.lcc-container{
+  padding: 5%;
+}
+
 </style>
