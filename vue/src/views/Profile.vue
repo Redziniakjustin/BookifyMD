@@ -47,13 +47,13 @@ export default {
 .profile-container{
     margin-top: 150px;
     align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
    }
 .profile-body{
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     justify-content: space-between;
      margin: 80px 0 10px 0;
-     font-size: 0.75rem;
+     font-size: 1.2rem;
    }
 </style>

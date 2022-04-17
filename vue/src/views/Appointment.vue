@@ -1,7 +1,6 @@
 <template>
   <div class="appointment-container">
-  
-    <h1>Appointment Schedule</h1> <!-- DELETABLE -->
+    <h1>Appointments</h1>
   
   <section class="appointment-body">  
     
@@ -36,14 +35,15 @@ export default {
 .appointment-container{
     margin-top: 150px;
     align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
    }
-   .appointment-body{
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     justify-content: space-between;
-     margin: 80px 0 10px 0;
-     font-size: 0.75rem;
+    .appointment-body{
+     
+     margin: 20px 0 0px 20px;
+     font-size: 1.1rem;
    }
 
 </style>

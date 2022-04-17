@@ -12,10 +12,12 @@
           </tr>
         </tbody>
       </table>
+
     </div>
-    <button v-if="!isPastAppointment" @click="isPastAppointment = !isPastAppointment">Show Past appointments</button>
-    <button v-else @click="isPastAppointment = !isPastAppointment">Hide Past appointments</button>
+        <v-btn v-if="!isPastAppointment" @click="isPastAppointment = !isPastAppointment">Show Past appointments</v-btn>
+        <v-btn v-else @click="isPastAppointment = !isPastAppointment">Hide Past appointments</v-btn>
     <div v-if="isPastAppointment = isPastAppointment">
+     
       <table>
         <tbody v-for="appointment in pastAppointments" :key=appointment>
           <tr>
@@ -25,9 +27,9 @@
             <td>{{appointment.doctor}}</td>
             <td>{{appointment.description}}</td>
             <td>
-              <router-link id="reviewLink" :to="{name:'review', params:{appointmentID: appointment.appointmentID, date: appointment.appointmentDate, doctorName: appointment.doctor}}">
-                Leave A Review 
-              </router-link>
+          <v-btn color="accent" elevation="7" outlined raised text tile>
+                <router-link id="reviewLink" :to="{name:'review', params:{appointmentID: appointment.appointmentID, date: appointment.appointmentDate, doctorName: appointment.doctor}}">Leave A Review</router-link>
+          </v-btn>
             </td>
           </tr>
         </tbody>
@@ -135,5 +137,8 @@ export default {
 </script>
     
 <style>
+  #reviewLink{
+  text-decoration: none;
+}
 
 </style>
