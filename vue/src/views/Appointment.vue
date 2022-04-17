@@ -23,8 +23,8 @@ export default {
   data() {
       return {
         user: {
-          role: "doctor"
-          //role: "patient"
+          //role: "doctor"
+          role: "patient"
         }
       }
     }

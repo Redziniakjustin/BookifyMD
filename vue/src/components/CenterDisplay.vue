@@ -68,7 +68,7 @@
     import NotificationColumn from '@/components/NotificationColumn.vue'
     //Will Use once API endpoints are available 
     //import listDoctor from '@/services/ProfileService'
-    import listOffices from '@/services/ProfileService'
+    //import listOffices from '@/services/ProfileService'
     export default {
         data(){
             return {
@@ -135,22 +135,22 @@
                 return this.$store.state.authenticated
             }
         }, //Will be used to populate the doctors list.
-        mounted(){
-        //Will be used to populate the doctors list.
-        /*listDoctor().then(response => {
-            this.doctors = response.data
-        }).catch(error => {
-            console.log(error)
-            this.error = true
-        }).finally(() => this.loading = false)
-        //Will be used to populate providers list. */
-        listOffices().then(response => {
-            this.offices = response.data
-        }).catch(error => {
-            console.log(error)
-            this.error = true
-        }).finally(() => this.loading = false)
-    }
+    //     mounted(){
+    //     //Will be used to populate the doctors list.
+    //     /*listDoctor().then(response => {
+    //         this.doctors = response.data
+    //     }).catch(error => {
+    //         console.log(error)
+    //         this.error = true
+    //     }).finally(() => this.loading = false)
+    //     //Will be used to populate providers list. */
+    //     listOffices().then(response => {
+    //         this.offices = response.data
+    //     }).catch(error => {
+    //         console.log(error)
+    //         this.error = true
+    //     }).finally(() => this.loading = false)
+    // }
 }
 </script>
 

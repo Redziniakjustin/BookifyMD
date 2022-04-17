@@ -1,27 +1,38 @@
 <template>
   <div>
+    <div>
       <table>
         <tbody v-for="appointment in appointments" :key=appointment>
           <tr>
             <td>{{appointment.appointmentDate}}</td>
-          </tr>
-          <tr>
             <td>{{appointment.time}}</td>
-          </tr>
-          <tr>
             <td>{{appointment.location}}</td>
-          </tr>
-          <tr>
             <td>{{appointment.doctor}}</td>
-          </tr>
-          <tr>
             <td>{{appointment.description}}</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <button v-if="!isPastAppointment" @click="isPastAppointment = !isPastAppointment">Show Past appointments</button>
+    <button v-else @click="isPastAppointment = !isPastAppointment">Hide Past appointments</button>
+    <div v-if="isPastAppointment = isPastAppointment">
+      <table>
+        <tbody v-for="appointment in pastAppointments" :key=appointment>
+          <tr>
+            <td>{{appointment.appointmentDate}}</td>
+            <td>{{appointment.time}}</td>
+            <td>{{appointment.location}}</td>
+            <td>{{appointment.doctor}}</td>
+            <td>{{appointment.description}}</td>
+            <td>
+              <router-link id="reviewLink" :to="{name:'review', params:{appointmentID: appointment.appointmentID, date: appointment.appointmentDate, doctorName: appointment.doctor}}">
+                Leave A Review 
+              </router-link>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -29,6 +40,7 @@
 export default {
     data(){
         return{
+            isPastAppointment: false,
             appointments:[
         {
           appointmentDate: "04/14/2022",
@@ -61,9 +73,51 @@ export default {
           location: "Montgomery Hospital",
           description: "General Check-Up",
           delayed: true
-        },
-
+        }
+      ],
+      pastAppointments:[
+        { 
+          appointmentID: 1,
+          doctorID: 2,
+          appointmentDate: "03/10/2022",
+          time: "10:00am-10:30am",
+          doctor: "Dr.Justin",
+          location: "Montgomery Hospital",
+          description: "Eye Exam",
+          delayed: false},
+        {
+          appointmentID: 2,
+          doctorID: 3,
+          appointmentDate: "02/25/2022",
+          time: "10:00am-11:00am",
+          doctor: "Dr.Kyle",
+          location: "Chester County Hospital",
+          description: "Foot Exam",
+          delayed: false},
+        {
+          appointmentID: 3,
+          doctorID: 4,
+          appointmentDate: "02/14/2022",
+          time: "8:00am-8:30am",
+          doctor: "Dr.Eric",
+          location: "Montefiore Hospital",
+          description: "General Checkup",
+          delayed: false},
+        {
+          appointmentID: 4,
+          doctorID: 5,
+          appointmentDate: "01/10/2022",
+          time: "10:00am-1 0:30am",
+          doctor: "Dr.Atul",
+          location: "Montgomery Hospital",
+          description: "Eye Exam",
+          delayed: false}
       ]
+    }
+  },
+  methods:{
+    reviewDisable(){
+      
     }
   }
 

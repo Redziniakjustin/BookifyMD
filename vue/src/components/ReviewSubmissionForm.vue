@@ -1,11 +1,10 @@
 <template>
   <div>
-      <form method="POST"> <!--Will need to pass through DOctor id, appointment id, clinic name, current user to DB -->
+      <form > <!--Will need to pass through DOctor id, appointment id, clinic name, current user to DB -->
           <h2></h2>
           <textarea name="review" type="text" class="placeholder"
-            :placeholder="[[doctor.name]]"/> <!-- 'What Did you Think of Your Visit with?' -->
-          <star-rating />
-          
+            :placeholder="'Please leave a review for: '+ [[doctor.name]]"/> <!-- 'What Did you Think of Your Visit with?' -->
+          <star-rating v-model="reviewSubmissionForm.rating"/>
           <input type="submit" @click="router.push({ path: 'appointment' })">
         </form>
   </div>
@@ -35,10 +34,9 @@ export default {
     },
     created(){
         if(this.$route.params != null) {
-        this.appointmentID = this.$route.params.appointmentID;
-        this.date = this.$route.params.date;
-        this.description = this.$route.params.description;
-        this.rating = this.$route.params.rating;
+        this.reviewSubmissionForm.appointmentID = this.$route.params.appointmentID;
+        this.reviewSubmissionForm.date = this.$route.params.date;
+        this.doctor.name = this.$route.params.doctorName;
         console.log(this.name);
         } else {
             this.$router.push('appointments')

@@ -5,8 +5,8 @@ const http = axios.create({
   });
 
 export default {
-    currentDoctorAvailability(){
-        return http.get('/availability')
+    currentDoctorAvailability(doctorId){
+        return http.get('/doctors/${doctorId}/availability', doctorId)
       },
     currentDoctorAvailabilityByDay(dayOfWeek){
         return http.get('/availability/${dayOfWeek}', dayOfWeek)

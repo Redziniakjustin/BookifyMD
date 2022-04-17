@@ -21,8 +21,7 @@
 
 
 <script>
-import axios from 'axios';
-
+import currentDoctorAvailability from '@/services/AvailabilityService'
 export default {
     data(){
         return{
@@ -58,17 +57,13 @@ export default {
             this.$router.push('profile')
         }
     },
+    mounted(){
+        currentDoctorAvailability(this.$store.profile.id)
+        .then(response=> {
+            this.availabilities = response.data;
+        });
+    },
     methods:{ 
-        displayAvailabilityByDay(){
-            axios.get('/endpoint', this.availabilityByDay)
-            .then((response)=> {
-                if(response.status == 201){
-                    this.$router.push('profile')
-                }
-            }).catch((error)=>{
-                console.log(error.response.status);
-            })
-        }
     }
 }
 </script>
