@@ -91,7 +91,7 @@ CREATE TABLE patient (
 DROP TABLE IF EXISTS appointment cascade; 
 
 CREATE TABLE appointment (
-		appointment_id serial ,
+		appointment_id serial,
 		doctor_id int NOT NULL,
 		patient_id int NOT NULL,
 		office_id int NOT NULL,
@@ -103,6 +103,7 @@ CREATE TABLE appointment (
 		description varchar(150) NOT NULL,
 		--CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
 		PRIMARY KEY (doctor_id, office_id, avail_id, appointment_date),
+		
 		CONSTRAINT FK_appointments_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
 		CONSTRAINT FK_appointments_patient  FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
 		CONSTRAINT FK_appointments_office  FOREIGN KEY (office_id) REFERENCES office(office_id)
@@ -126,12 +127,17 @@ DROP TABLE IF EXISTS review CASCADE;
 
 CREATE TABLE review (
 		review_id serial,
-		appointment_id int, 
+		--appointment_id int,
+		doctor_id int NOT NULL,
+		patient_id int NOT NULL,
+		office_id int NOT NULL,
+		avail_id int NOT NULL,
+		appointment_date date NOT NULL,
 		review_date date NOT NULL,
 		review_desc varchar (280),
 		review_rating int,
 		CONSTRAINT PK_review_id PRIMARY KEY (review_id),
-		CONSTRAINT FK_appointment FOREIGN KEY (appointment_id) REFERENCES appointment(appointment_id)
+		CONSTRAINT FK_appointment_id FOREIGN KEY (doctor_id, office_id, avail_id, appointment_date) REFERENCES appointment(doctor_id, office_id, avail_id, appointment_date)
 	);
 
 
@@ -152,7 +158,7 @@ CREATE TABLE doctor_office_availability(
 	CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
 	);
 
-DROP TABLE IF EXISTS patient_app CASCADE;
+
 
 -- ALTER TABLE office ADD 	CONSTRAINT FK_doctor_avail FOREIGN KEY (avail_id) REFERENCES doctor_office_availability(avail_id);
 -- ALTER TABLE office ADD	CONSTRAINT FK_office_doctor_office FOREIGN KEY (doctor_id) REFERENCES doctor_office(doctor_office_id);
