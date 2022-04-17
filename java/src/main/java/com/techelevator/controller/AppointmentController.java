@@ -43,8 +43,7 @@ public class AppointmentController {
     @RequestMapping(value = "" , method = RequestMethod.POST)
     public boolean createAppointment(@Valid @RequestBody Appointment appointment){
        Appointment newAppointment = new Appointment();
-       return appointmentDao.create(appointment.getDoctorId(), appointment.getPatientId(), appointment.getOfficeId(),
-               appointment.getAppointmentDate(), appointment.getAppointmentStatus(), appointment.getDescription());
+       return appointmentDao.create(appointment);
     }
 
 }

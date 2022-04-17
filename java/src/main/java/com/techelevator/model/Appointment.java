@@ -1,22 +1,25 @@
 package com.techelevator.model;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Date;
 
 
 public class Appointment {
 
 
     private Long appointmentId;
-    @NotNull
+
     private Long doctorId;
-    @NotNull
+
     private Long patientId;
-    @NotNull
+
     private Long officeId;
-    private LocalDate appointmentDate;
+    private Long availId;
+    private Date appointmentDate;
     private String appointmentStatus;
 
-     private String description;
+    private String description;
+
 
 
     //GETTERS
@@ -32,7 +35,7 @@ public class Appointment {
     public Long getOfficeId() {
         return officeId;
     }
-    public LocalDate getAppointmentDate() {
+    public Date getAppointmentDate() {
         return appointmentDate;
     }
     public String getAppointmentStatus() {
@@ -40,6 +43,9 @@ public class Appointment {
     }
     public String getDescription() {
         return description;
+    }
+    public Long getAvailId() {
+        return availId;
     }
 
 
@@ -56,7 +62,7 @@ public class Appointment {
     public void setOfficeId(Long officeId) {
         this.officeId = officeId;
     }
-    public void setAppointmentDate(LocalDate appointmentDate) {
+    public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
     public void setAppointmentStatus(String appointmentStatus) {
@@ -65,7 +71,9 @@ public class Appointment {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    public void setAvailId(Long availId) {
+        this.availId = availId;
+    }
 
     //CONSTRUCTOR
     public Appointment(){};

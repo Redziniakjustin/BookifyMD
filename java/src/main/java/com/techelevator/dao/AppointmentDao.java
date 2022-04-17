@@ -22,7 +22,7 @@ public interface AppointmentDao {
 
     List<Appointment> findAppointmentsByOfficeId(Long officeId);
 
-    boolean create(Long doctorId, Long patientId, Long officeId, LocalDate appointmentDate, String appointmentStatus, String description);
+    boolean create(Appointment newAppointment);
 
 
     int findIdByPatientId(Long patientId);
