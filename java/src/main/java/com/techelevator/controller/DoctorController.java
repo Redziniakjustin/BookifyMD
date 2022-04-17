@@ -106,18 +106,17 @@ public class DoctorController {
     }
 
     //UPDATE A DOCTOR'S AVAILABILITY
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    /*@ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(value = "/{id}/availability/{availId}", method = RequestMethod.PUT)
-    public boolean updateAvailabilityByDoctorId(@Valid @RequestBody Availability updateAvailability, @PathVariable Long availId) {
+    public boolean updateIsAvailableByDoctorId(@PathVariable Long id, @PathVariable Long availId, @Valid @RequestBody Boolean isAvailable) {
         boolean isSuccessful = false;
         try {
-            availabilityDao.update(updateAvailability, availId);
-            isSuccessful = true;
+            availabilityDao.updateAvailabilityByDoctorId(isAvailable, id, availId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return isSuccessful;
-    }
+    }*/
 
 
 

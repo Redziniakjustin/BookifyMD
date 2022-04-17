@@ -110,6 +110,23 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
         return isSuccessful;
     }
 
+    @Override
+    public boolean updateAvailabilityByDoctorId(boolean isAvailable, Long doctorId, Long availId) {
+        boolean isSuccessful = false;
+        String sql = "UPDATE doctor_office_availability SET is_available=false WHERE avail_id = ? AND doctor_id = ? RETURNING avail_id;";
+        Long returnId = null;
+        try{
+            returnId = jdbcTemplate.queryForObject(sql, Long.class, isAvailable, availId, doctorId);
+            if(returnId != null){
+                isSuccessful = true;
+            }
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return isAvailable;
+    }
+
 
     public static Availability mapRowToAvailability(SqlRowSet row) {
         Availability availability = new Availability();

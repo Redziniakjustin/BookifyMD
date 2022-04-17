@@ -25,4 +25,6 @@ public interface AvailabilityDao {
     boolean update (Availability availability, Long availId);
 
     boolean isAvailableFalse(Long availId);
+
+    boolean updateAvailabilityByDoctorId(boolean isAvailable, Long doctorId, Long availId);
 }
