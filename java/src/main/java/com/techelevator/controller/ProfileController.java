@@ -38,12 +38,11 @@ public class ProfileController {
     //GET PATIENT PROFILE
 
     //localhost:8080/profiles/patients/{id}
-    @RequestMapping(value = "/patients/{id}")
-    public Patient getPatientProfile(@PathVariable Long id){    //id here is userId
+    @RequestMapping(value = "/patients/{username}")
+    public Patient getPatientProfile(@PathVariable Long id){
         User user = userDao.getUserById(id);
-        Patient patient = new Patient();
-        patient = patientDao.findPatientByUsername(user.getUsername());
-        return patient;
+        return patientDao.findPatientByUsername(user.getUsername());
+
     }
 
     //localhost:8080/profiles/patients/{id}
@@ -51,9 +50,8 @@ public class ProfileController {
     @RequestMapping (value = "/doctors/{id}")
     public Doctor getDoctorProfile(@PathVariable Long id){      //id here is userId
         User user = userDao.getUserById(id);
-        Doctor doctor = new Doctor();
-        doctor = doctorDao.findDoctorByUsername(user.getUsername());
-        return doctor;
+        return doctorDao.findDoctorByUsername(user.getUsername());
+
 
     }
 

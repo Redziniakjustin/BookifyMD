@@ -80,6 +80,7 @@ public class JdbcPatientDao implements PatientDao{
     public Patient findPatientByUsername(String username) {
         Patient patient = new Patient();
         UserType userType = userDao.findUserTypeByUsername(username);
+
         if(!userType.getIsDoctor()){
             String sql = "select * from patient as p join user_type as ut on ut.user_type_id = p.user_type_id where p.user_type_id = ?;";
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userType.getUserTypeId());
