@@ -34,8 +34,6 @@ public class DoctorController {
     //GET DOCTOR PROFILE BY DOCTOR ID (with doctor's name)
 
 
-
-
     //GET AVAILABILITY BY DOCTOR ID
     //localhost:8080/doctors/id/availabilities
     @RequestMapping(value = "/{id}/availability", method = RequestMethod.GET)
@@ -71,10 +69,7 @@ public class DoctorController {
         return success;
     }
 
-
-
     //TODO ADD DOCTOR TO OFFICE AFTER INITIAL OFFICE ADDED
-    //
 
 
     //ADD DOCTOR'S INITIAL AVAILABILITY TO DOCTOR_OFFICE_AVAILABILITY
@@ -90,7 +85,6 @@ public class DoctorController {
         return isSuccessful;
     }
 
-    //TODO UPDATE DOCTOR PROFILE
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(value = "/availability/{availId}", method = RequestMethod.PUT)

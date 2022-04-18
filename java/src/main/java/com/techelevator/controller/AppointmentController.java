@@ -54,9 +54,6 @@ public class AppointmentController {
         return appointmentDao.findAllByPatientId(id);
     }
 
-
-
-
     //front end --> json with {doctorId, officeId...}
     //which endpoint to use for the newly created appointment
     @ResponseStatus(HttpStatus.CREATED)
@@ -79,5 +76,20 @@ public class AppointmentController {
 
        return isSuccessful;
     }
+
+    // UPDATE APPOINTMENT STATUS
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/{id}/status", method = RequestMethod.PUT)
+    public boolean updateAppointmentStatus(@Valid @RequestBody Appointment updateAppStatus, @PathVariable Long id){
+        boolean success = false;
+        try{
+            appointmentDao.updateAppointmentStatus(updateAppStatus, id);
+            success = true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
+
 
 }

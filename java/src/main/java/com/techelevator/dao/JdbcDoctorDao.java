@@ -24,7 +24,6 @@ public class JdbcDoctorDao implements DoctorDao{
         this.userDao = userDao;
     }
 
-
     @Override
     public List<Doctor> findAll() {
         List<Doctor> doctors = new ArrayList<>();
@@ -112,7 +111,6 @@ public class JdbcDoctorDao implements DoctorDao{
         }
         return doctor;
     }
-
 
     private Doctor mapRowToDoctor(SqlRowSet row){
         Doctor doctor = new Doctor();

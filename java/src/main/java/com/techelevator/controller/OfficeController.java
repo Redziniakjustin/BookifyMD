@@ -41,7 +41,6 @@ public class OfficeController {
     //TODO get office by status (which offices are on delay)
 
 
-
     // http://localhost:8080/offices/3/doctors
     @RequestMapping(value = "/{id}/doctors", method = RequestMethod.GET)
     public List<Doctor> getAllDoctorsByOfficeId(@PathVariable Long id){
@@ -59,7 +58,6 @@ public class OfficeController {
     public List<Availability> getAllAvailabilityByIsAvailable(@PathVariable Long id){
         return availabilityDao.findAvailabilityByIsAvailable(id);
     }
-
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value="", method = RequestMethod.POST)
@@ -87,18 +85,18 @@ public class OfficeController {
         return success;
     }
 
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
-//    public boolean updateDelayStatus(@Valid @PathVariable Long id, @RequestParam boolean delayStatus){
-//        boolean success = false;
-//        try{
-//            officeDao.updateStatus(id, delayStatus);
-//            success = true;
-//        }catch(Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//        return success;
-//    }
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value="/{id}/status", method = RequestMethod.PUT)
+    public boolean updateDelayStatus(@Valid @RequestBody Office updateOfficeStatus, @PathVariable Long id ){
+        boolean success = false;
+       try{
+           officeDao.updateStatus(updateOfficeStatus, id);
+            success = true;
+       }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
 
 
 

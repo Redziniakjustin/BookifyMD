@@ -42,7 +42,6 @@ public class PatientController {
     //TODO LIST ALL PATIENTS BY DOCTOR ID
 
     // GET LIST OF PATIENT BY OFFICE ID
-
     //UPDATE Patient INFO
 
 

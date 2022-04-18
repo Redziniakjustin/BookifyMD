@@ -24,7 +24,7 @@ public interface ReviewDao {
 
     boolean create(Review newReview);
 
-    boolean update(String doctorReply, Long reviewId);
+    boolean update(Review updatedReview, Long reviewId);
 
 
     //other methods

@@ -48,7 +48,7 @@ public class Office {
     public Time getOfficeHoursEnd() {
         return officeHoursEnd;
     }
-    public boolean isDelayStatus() {
+    public boolean getDelayStatus() {
         return delayStatus;
     }
 

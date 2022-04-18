@@ -127,7 +127,7 @@ public class JdbcUserDao implements UserDao {
             userTypeId = jdbcTemplate.queryForObject(sql, Long.class, userId, isDoctor);
 
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("There was an error. Please try again.");
         }
         return userTypeId;
     }
@@ -158,8 +158,6 @@ public class JdbcUserDao implements UserDao {
         return userType;
     }
 
-
-
     private UserType mapRowToUserType (SqlRowSet row){
         UserType userType = new UserType();
         userType.setUserTypeId(row.getLong("user_type_id"));
@@ -168,7 +166,6 @@ public class JdbcUserDao implements UserDao {
 
         return userType;
     }
-
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();

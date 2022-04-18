@@ -23,7 +23,6 @@ public class JdbcPatientDao implements PatientDao{
     }
     private final String getFullPatient = "SELECT patient_id, user_type_id, first_name, last_name, phone, street_address, city, state_name, zip, email FROM patient";
 
-
     @Override
     public List<Patient> findAll() {
         List<Patient> patients = new ArrayList<>();
@@ -42,8 +41,7 @@ public class JdbcPatientDao implements PatientDao{
         if(results.next()){
             patient = mapRowToPatient(results);
         } else {
-            //TODO fix me exception
-            System.out.println("Office NOT FOUND");
+            System.out.println("Patient not found. Please try again.");
         }
         return patient;
     }
@@ -71,7 +69,7 @@ public class JdbcPatientDao implements PatientDao{
             patientCreated =true;
         }
         catch(Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error. Please try again.");
         }
         return patientCreated;
     }

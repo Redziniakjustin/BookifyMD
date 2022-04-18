@@ -32,8 +32,6 @@ public class ProfileController {
     }
 
 
-
-
     //GET PATIENT PROFILE
 
     //localhost:8080/profiles/patients/{id}
@@ -62,13 +60,5 @@ public class ProfileController {
         return userDao.findUserTypeByUserid(id);
 
     }
-
-
-
-
-
-
-
-
 
 }

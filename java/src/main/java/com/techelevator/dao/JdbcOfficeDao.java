@@ -43,8 +43,7 @@ public class JdbcOfficeDao implements OfficeDao{
         if(results.next()){
             office = mapRowToOffice(results);
         } else {
-            //TODO fix me exception
-            System.out.println("Office NOT FOUND");
+            System.out.println("Office not found. Please try again.");
         }
         return office;
     }
@@ -59,8 +58,6 @@ public class JdbcOfficeDao implements OfficeDao{
         return null;
     }
 
-
-
     @Override
     public int findIdByOfficeName(String officeName) {
         return 0;
@@ -74,7 +71,7 @@ public class JdbcOfficeDao implements OfficeDao{
       try{
         officeId = jdbcTemplate.queryForObject(sql, Long.class, newOffice.getOfficeName(), newOffice.getStreetAddress(),
                 newOffice.getCity(), newOffice.getStateName(), newOffice.getZip(),
-                newOffice.getPhone(), newOffice.getEmail(), newOffice.getOfficeHoursStart(), newOffice.getOfficeHoursEnd(), newOffice.isDelayStatus());
+                newOffice.getPhone(), newOffice.getEmail(), newOffice.getOfficeHoursStart(), newOffice.getOfficeHoursEnd(), newOffice.getDelayStatus());
         officeCreated = true;
       }catch(Exception e){
           System.out.println(e.getMessage());
@@ -91,25 +88,24 @@ public class JdbcOfficeDao implements OfficeDao{
         try{
             jdbcTemplate.update(sql, office.getOfficeName(), office.getStreetAddress(), office.getCity(),
                     office.getStateName(), office.getZip(), office.getPhone(), office.getEmail(),
-                    office.getOfficeHoursStart(), office.getOfficeHoursEnd(), office.isDelayStatus(), officeId);
+                    office.getOfficeHoursStart(), office.getOfficeHoursEnd(), office.getDelayStatus(), officeId);
             isUpdated = true;
         }catch (Exception e){
-                System.out.println(e.getMessage());
+                System.out.println("Unable to update office info. Please try again.");
         }
 
         return isUpdated;
     }
 
-
     @Override
-    public boolean updateStatus(Long officeId, boolean delayStatus) {
+    public boolean updateStatus(Office updateOfficeStatus, Long officeId) {
         boolean isStatusUpdated = false;
         String sql = "UPDATE office SET delay_status = ? WHERE office_id = ?;";
         try{
-            jdbcTemplate.update(sql, delayStatus, officeId);
+            jdbcTemplate.update(sql, updateOfficeStatus.getDelayStatus(), officeId);
             isStatusUpdated = true;
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Error. Please try again.");
         }
         return isStatusUpdated;
     }

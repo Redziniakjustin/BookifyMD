@@ -25,7 +25,7 @@ public interface AppointmentDao {
 
     boolean create(Appointment newAppointment);
 
-    boolean updateAppointment(Appointment appointment, Long appointmentId);
+    boolean updateAppointmentStatus(Appointment appointment, Long appointmentId);
 
 
 

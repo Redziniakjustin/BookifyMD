@@ -32,7 +32,6 @@ public class JdbcReviewDao implements ReviewDao{
         return null;
     }
 
-
     @Override
     public List<Review> findReviewsByOfficeId(Long officeId) {
         return null;
@@ -54,7 +53,6 @@ public class JdbcReviewDao implements ReviewDao{
         return null;
     }
 
-
     @Override
     public boolean create(Review newReview) {
         boolean isSuccessful = false;
@@ -71,22 +69,22 @@ public class JdbcReviewDao implements ReviewDao{
                 isSuccessful = true;
             }
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Sorry there was an error. Please try again.");
         }
         return isSuccessful;
     }
 
     @Override
-    public boolean update(String doctorReply, Long reviewId) {
+    public boolean update(Review updatedReview, Long reviewId) {
         boolean isUpdated = false;
 
         String sql = "UPDATE review SET doctor_reply=? WHERE review_id=?;";
 
         try{
-            jdbcTemplate.update(sql, doctorReply, reviewId);
+            jdbcTemplate.update(sql,updatedReview.getDoctorReply(), reviewId);
             isUpdated = true;
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Sorry there was an error. Please try again.");
         }
         return isUpdated ;
     }

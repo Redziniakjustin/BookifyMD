@@ -16,7 +16,6 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     @Override
     public List<Availability> findAvailabilityByDoctorId(Long doctorId) {
         String sql = "SELECT avail_id, office_id, doctor_id, day_of_week, start_time, end_time, is_available, reason_of_unavailability " +
@@ -69,7 +68,7 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
                 isSuccessful = true;
             }
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Unable to create availability. Please try again.");
         }
         return isSuccessful;
     }
@@ -88,7 +87,7 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
             isSuccessful = true;
 
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Unable to update. Please try again.");
         }
         return isSuccessful;
     }
@@ -105,7 +104,7 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
             }
         }
         catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Sorry there was an error. Please try again.");
         }
         return isSuccessful;
     }
@@ -122,11 +121,10 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
             }
 
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Sorry there was an error. Please try again.");
         }
         return isAvailable;
     }
-
 
     public static Availability mapRowToAvailability(SqlRowSet row) {
         Availability availability = new Availability();
@@ -141,7 +139,5 @@ public class JdbcAvailabilityDao implements AvailabilityDao {
 
         return availability;
     }
-
-
 
 }

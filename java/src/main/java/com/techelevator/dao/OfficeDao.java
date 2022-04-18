@@ -21,15 +21,13 @@ public interface OfficeDao {
     Office findByOfficeName(String officeName);
 
     List<Doctor> findDoctorsByOfficeId(Long officeId);
-
-
-
+    
     int findIdByOfficeName(String officeName);
 
     boolean create(Office newOffice);
 
     boolean update(Office office, Long officeId);
 
-    boolean updateStatus(Long officeId, boolean delayStatus);
+    boolean updateStatus(Office updateOfficeStatus, Long officeId);
 
 }

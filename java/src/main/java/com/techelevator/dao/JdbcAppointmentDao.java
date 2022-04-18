@@ -54,8 +54,6 @@ public class JdbcAppointmentDao implements AppointmentDao{
         return null;
     }
 
-
-
     @Override
     public List<Appointment> findAppointmentsByOfficeId(Long officeId) {
         return null;
@@ -79,11 +77,17 @@ public class JdbcAppointmentDao implements AppointmentDao{
         }
 
     @Override
-    public boolean updateAppointment(Appointment appointment, Long appointmentId) {
-        return false;
+    public boolean updateAppointmentStatus(Appointment appointment, Long appointmentId) {
+        boolean isUpdated = false;
+        String sql = "UPDATE appointment SET appointment_status =? WHERE appointment_id=?;";
+        try{
+            jdbcTemplate.update(sql,appointment.getAppointmentStatus(), appointmentId);
+            isUpdated = true;
+        }catch(Exception e){
+            System.out.println("Sorry there was an error. Please try again.");
+        }
+        return isUpdated ;
     }
-
-
 
     private Appointment mapRowToAppointment(SqlRowSet row) {
         Appointment appointment= new Appointment();
