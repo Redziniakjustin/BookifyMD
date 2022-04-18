@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"username\" : \"testPatient3\",\r\n    \"password\" : \"password8\"\r\n}",
+					"raw": "{ \r\n    \"username\" : \"testDoctor1\",\r\n    \"password\" : \"password1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,7 +49,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userTypeId\" : 5,\r\n    \"firstName\" : \"Doctor\",\r\n    \"lastName\" : \"Haladay\",\r\n    \"phone\" : \"215-222-2222\",\r\n    \"email\" : \"doctor@gmail.com\",\r\n    \"costHourly\" : 200,\r\n    \"officeId\": 1\r\n\r\n}",
+					"raw": "{\r\n    \"userTypeId\" : 1,\r\n    \"firstName\" : \"Doctor\",\r\n    \"lastName\" : \"Evil\",\r\n    \"phone\" : \"215-222-2222\",\r\n    \"email\" : \"doctor@gmail.com\",\r\n    \"costHourly\" : 200,\r\n    \"officeId\": 1\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -76,7 +76,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\" : \"testDoctor5\",\r\n    \"password\" : \"password5\",\r\n    \"confirmPassword\" : \"password5\",\r\n    \"role\" : \"ROLE_USER\"\r\n}",
+					"raw": "{\r\n    \"username\" : \"testDoctor1\",\r\n    \"password\" : \"password1\",\r\n    \"confirmPassword\" : \"password1\",\r\n    \"role\" : \"ROLE_USER\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,11 +99,21 @@
 		{
 			"name": "CREATE NEW USER - PATIENT",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\" : \"testPatient3\",\r\n    \"password\" : \"password8\",\r\n    \"confirmPassword\" : \"password8\",\r\n    \"role\" : \"ROLE_USER\"\r\n}",
+					"raw": "{\r\n    \"username\" : \"testPatient2\",\r\n    \"password\" : \"password3\",\r\n    \"confirmPassword\" : \"password3\",\r\n    \"role\" : \"ROLE_USER\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -131,7 +141,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0UGF0aWVudDMiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMzAwNTMwfQ.fwV3Da69XsJ6ck0cBcsamj5qQ9gzMsdkDYR-6_yXl-Towy1dpfOL0c7V6iAjhkunFMcTp1mOVHCiZkTjCzvr8A",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
 							"type": "string"
 						}
 					]
@@ -140,7 +150,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userTypeId\" : 8,\r\n    \"firstName\" : \"Atul\",\r\n    \"lastName\" : \"M\",\r\n    \"phone\" : \"215-222-2222\",\r\n    \"streetAddress\": \"111 North St\",\r\n    \"city\": \"Philly\",\r\n    \"stateName\": \"PA\",\r\n    \"zip\": \"19001\",\r\n    \"email\" : \"patient@gmail.com\"\r\n\r\n}",
+					"raw": "{\r\n    \"userTypeId\" : 3,\r\n    \"firstName\" : \"Kyle\",\r\n    \"lastName\" : \"Martin\",\r\n    \"phone\" : \"215-222-2222\",\r\n    \"streetAddress\": \"111 North St\",\r\n    \"city\": \"Philly\",\r\n    \"stateName\": \"PA\",\r\n    \"zip\": \"19001\",\r\n    \"email\" : \"patient@gmail.com\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -168,7 +178,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMiIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAxMzMyODd9.FIDY3Wkl0JA6XM5LkZKHuwCdd2TBRY_5tcUcwKViT03IfNjD7dDjdU8maIQEQgr1L5wqgVrhLDYRLoOeOf-Tng",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
 							"type": "string"
 						}
 					]
@@ -253,7 +263,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAyOTkwOTV9.Z6HM2ypvJ8E0_pjXCtdljA48C94_BkP5i1a4u3XwLNcieNiC_faUZJtn2anSIu71h8UpIxJfXrsNcdId1kWIzA",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
 							"type": "string"
 						}
 					]
@@ -262,7 +272,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Monday\",\r\n    \"startTime\": \"16:00:00\",\r\n    \"endTime\" : \"17:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n}",
+					"raw": "{\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Monday\",\r\n    \"startTime\": \"13:00:00\",\r\n    \"endTime\" : \"14:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -314,14 +324,14 @@
 			"response": []
 		},
 		{
-			"name": "UPDATE Doctor Availability by ID",
+			"name": "UPDATE AVAILABILITY IS_AVAILABLE BY DOCTOR ID",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0UGF0aWVudDIiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMjA1NDAwfQ.g4Ntwuo_R-1nhUsrBYBlyr4LZpmNLJunsXrHj2wg3gked83GhWRr_Vp9zBOyMUod9V04ljvX2QH04FJ5hYNPww",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMTU5MDZ9.5hdlyCcPDNk2F4QGRszedBNQK5P0qsUdOYIUcFlzE0TvwAqYGjoM6hjLRK1t96Z067VrqfGZ-Pnavz97DudXLQ",
 							"type": "string"
 						}
 					]
@@ -330,7 +340,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Wednesday\",\r\n    \"startTime\": \"09:00:00\",\r\n    \"endTime\" : \"17:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \" none \"\r\n}",
+					"raw": "{\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Wednesday\",\r\n    \"startTime\": \"09:00:00\",\r\n    \"endTime\" : \"17:00:00\",\r\n    \"isAvailable\": \"true\",\r\n    \"reasonOfUnavailability\" : \"\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -338,7 +348,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/doctors/availability/1",
+					"raw": "http://localhost:8080/doctors/availability/7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -347,7 +357,48 @@
 					"path": [
 						"doctors",
 						"availability",
-						"1"
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE IS_AVAILABLE BY AVAILABILITY ID FOR A DOCTOR",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMTg5MDZ9.DMmn8teZsnsrPt8yXYPHezvi7iLWMeJIoxaG3xFmrBeYofQdtU9YAmLt-gY63nqmKUREx41nSITSGFAp4HGR8A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isAvailable\" : false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/doctors/1/availability/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctors",
+						"1",
+						"availability",
+						"5"
 					]
 				}
 			},
@@ -391,7 +442,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMTAiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMjIyMDMwfQ.23fxcOFPumLU390xd5u98vBZHyr-xp6NFUmxvliCYtAjxe685d7xNJXVhkZoBMYDQZf7LMLvDnD5xtIR2ucylA",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
 							"type": "string"
 						}
 					]
@@ -400,7 +451,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"doctorId\":1,\r\n    \"patientId\":3,\r\n    \"officeId\":1,\r\n    \"availId\":1,\r\n    \"appointmentDate\":\"2022-10-18\",\r\n    \"appointmentStatus\":\"Confirmed\",\r\n    \"description\":\"Check-up\"\r\n}",
+					"raw": "{\r\n    \"doctorId\":1,\r\n    \"patientId\":2,\r\n    \"officeId\":1,\r\n    \"availId\":1,\r\n    \"appointmentDate\":\"2022-10-19\",\r\n    \"appointmentStatus\":\"Confirmed\",\r\n    \"description\":\"Check-up\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -474,6 +525,106 @@
 					"path": [
 						"appointments",
 						"patients",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET AVAILABILITY BY OFFICE ID where is_availabile = true",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMTU5MDZ9.5hdlyCcPDNk2F4QGRszedBNQK5P0qsUdOYIUcFlzE0TvwAqYGjoM6hjLRK1t96Z067VrqfGZ-Pnavz97DudXLQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/offices/1/availability/isAvailable",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"offices",
+						"1",
+						"availability",
+						"isAvailable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE REVIEW",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientFirstName\": \"Kyle\",\r\n    \"patientLastName\": \"Martin\",\r\n    \"doctorFirstName\": \"Doctor\",\r\n    \"doctorLastName\": \"Evil\",\r\n    \"officeName\": \"FishTown\",\r\n    \"reviewDate\": \"2022-10-23\",\r\n    \"reviewDesc\": \"This is a review\",\r\n    \"reviewRating\": 5\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/reviews/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET REVIEWS BY DOCTOR ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMzE5NjN9.8awcAUNve9IDjyZif8qCBttHmfviX6owRt8CnqAkuCijxQiAy1PWVAOEe-_m7q1ow5Sl3m5tanjCcc7HbKA6BA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reviews/doctors/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reviews",
+						"doctors",
 						"1"
 					]
 				}
