@@ -26,6 +26,8 @@ public interface UserDao {
     //FIND USER_TYPE BY USERNAME
     UserType findUserTypeByUsername(String username);
 
+    UserType findUserTypeByUserid(Long id);
+
 
 
 

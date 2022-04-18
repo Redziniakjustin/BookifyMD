@@ -145,6 +145,19 @@ public class JdbcUserDao implements UserDao {
         return userType;
     }
 
+    @Override
+    public UserType findUserTypeByUserid(Long id) {
+        UserType userType = new UserType();
+        String sql = "select ut.user_type_id, ut.user_id, ut.is_doctor from user_type as ut join users on ut.user_id = users.user_id\n" +
+                "where ut.user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if(results.next()){
+            userType = mapRowToUserType(results);
+        }
+
+        return userType;
+    }
+
 
 
     private UserType mapRowToUserType (SqlRowSet row){
