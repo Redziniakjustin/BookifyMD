@@ -132,13 +132,13 @@ CREATE TABLE review (
 		doctor_id int NOT NULL,
 		patient_id int NOT NULL,
 		office_id int NOT NULL,
-		appointment_date date,
 		review_date date,
 		review_desc varchar (300),
 		review_rating int NOT NULL CHECK (review_rating >= 0 and review_rating <=5),
 		CONSTRAINT PK_review_id PRIMARY KEY (review_id),
 		CONSTRAINT FK_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
-		CONSTRAINT FK_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id)
+		CONSTRAINT FK_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+		CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
 		
 );
 

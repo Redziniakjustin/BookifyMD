@@ -41,12 +41,11 @@ public class ReviewController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public boolean postNewReview (Review review){
+    public boolean postNewReview (@Valid @RequestBody Review review){
         boolean isSuccessful = false;
-        //call our service method that parses
 
         //run the create method
-
+        isSuccessful = reviewDao.create(review);
         return isSuccessful;
     }
 
