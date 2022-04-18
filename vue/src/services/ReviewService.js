@@ -6,8 +6,8 @@ const http = axios.create({
 
 export default {
 
-  list() {
-    return http.get('/reviews'); 
+  listReviewByDoctorId(id) {
+    return http.get('/reviews/doctors/${id}', id); 
     // addreview
   },
 
@@ -15,9 +15,9 @@ export default {
 //     return http.get('/reviews/${id}', review);
 //   },
 
-//   create(id) {
-//     return http.post('/reviews/${id}', review);
-//   },
+  addReview(review) {
+    return http.post('/reviews/', review);
+  },
 
 //   update(){
 //     return http.update('/reviews', review);

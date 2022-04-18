@@ -1,19 +1,19 @@
 <template>
   <div>
-      <form > <!--Will need to pass through DOctor id, appointment id, clinic name, current user to DB -->
-          <h2></h2>
-          <textarea name="review" type="text" class="placeholder"
-            :placeholder="'Please leave a review for: '+ [[doctor.name]]"/> <!-- 'What Did you Think of Your Visit with?' -->
-          <star-rating v-model="reviewSubmissionForm.rating"/>
-          <input type="submit" @click="router.push({ path: 'appointment' })">
-        </form>
+    <form @submit.prevent="submitReviewSubmissionForm"> <!--Will need to pass through DOctor id, appointment id, clinic name, current user to DB -->
+        <h2>Leave a Review For {{doctor.name}}</h2>
+        <textarea name="review" type="text" class="placeholder"
+        placeholder="Review Description" :value="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
+        <star-rating v-model="reviewSubmissionForm.rating"/>
+        <button type="submit">Submit Review</button>
+    </form>
   </div>
 </template>
 
 
 <script>
 import StarRating from 'vue-star-rating';
-import axios from 'axios';
+import addReview from '@/services/ReviewService';
 
 export default {
     data(){
@@ -22,9 +22,13 @@ export default {
                 name: "Kyle M"
             }, 
             reviewSubmissionForm:{
-                appointmentID: "",
-                date: "",
-                description: "",
+                patientFirstName: "",
+                patientLastName: "", 
+                doctorFirstName: "",
+                doctorLastName: "",
+                officeName: "",
+                reviewDate: "", 
+                reviewDesc: "",
                 rating: "",
              }
         }
@@ -34,20 +38,22 @@ export default {
     },
     created(){
         if(this.$route.params != null) {
-        this.reviewSubmissionForm.appointmentID = this.$route.params.appointmentID;
-        this.reviewSubmissionForm.date = this.$route.params.date;
-        this.doctor.name = this.$route.params.doctorName;
-        console.log(this.name);
+        this.doctor.name = ("Dr. "+ this.$route.params.firstName + " " +this.$route.params.lastName);
+        this.reviewSubmissionForm.patientFirstName = this.$state.profile.firstName;
+        this.reviewSubmissionForm.patientLastName = this.$state.profile.lastName;
+        this.reviewSubmissionForm.reviewDate = (new Date()).toISOString().split('T')[0];
+        this.reviewSubmissionForm.doctorFirstName = this.$route.params.firstName;
+        this.reviewSubmissionForm.doctorLastName = this.$route.params.lastName;
+        console.log(this.doctor.name);
         } else {
-            this.$router.push('appointments')
+            this.$router.push('home')
         }
 
     },
     methods:{
          //TODO Import as a function from service 
         submitReviewSubmissionForm(){
-            axios.post('/endpoint', this.reviewSubmissionForm)
-            .then((response)=> {
+            addReview(this.reviewSubmissionForm).then((response)=> {
                 if(response.status == 201){
                     this.$router.push('home')
                 }

@@ -1,5 +1,6 @@
 <template>
    <div>
+      <h2 v-if="avgRating != ''">{{avgRating}} </h2>
       <table>
         <tbody v-for="review in reviews" :key=review>
           <tr>
@@ -26,10 +27,13 @@
 </template>
 
 <script>
+import listReviewByDoctorId from '@/services/ReviewService'
 export default {
 
  data(){
         return{
+            avgRating: "",
+            //reviews:[],
             reviews:[
             {
               patient: "Percy Neville", 
@@ -74,6 +78,24 @@ export default {
         ]
       }
     },
+    mounted(){
+      listReviewByDoctorId(this.$route.params.doctorID).then(response => {
+            this.reviews = response.data
+        }).catch(error => {
+            console.log(error)
+            this.error = true
+        }).finally(() => this.loading = false)
+    },
+    methods:{
+      //must change array object name
+      averageRating(){
+        let count = 0;
+        for (let i = 0; i < this.reviews.rating.length; i++){
+          count += this.reviews[i].rating;
+        this.avgRating = (count/this.reviews.rating.length)
+        }
+      }
+    }
 
 }
 </script>
