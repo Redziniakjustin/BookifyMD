@@ -1,0 +1,771 @@
+{
+	"info": {
+		"_postman_id": "4ccd8341-fbfd-4370-b471-2ce96003b4ee",
+		"name": "DOCTOR SCHEDULING",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Doctor",
+			"item": [
+				{
+					"name": "UPDATE AVAILABILITY IS_AVAILABLE BY DOCTOR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMTU5MDZ9.5hdlyCcPDNk2F4QGRszedBNQK5P0qsUdOYIUcFlzE0TvwAqYGjoM6hjLRK1t96Z067VrqfGZ-Pnavz97DudXLQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Wednesday\",\r\n    \"startTime\": \"09:00:00\",\r\n    \"endTime\" : \"17:00:00\",\r\n    \"isAvailable\": \"true\",\r\n    \"reasonOfUnavailability\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/doctors/availability/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctors",
+								"availability",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE IS_AVAILABLE BY AVAILABILITY ID FOR A DOCTOR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMTg5MDZ9.DMmn8teZsnsrPt8yXYPHezvi7iLWMeJIoxaG3xFmrBeYofQdtU9YAmLt-gY63nqmKUREx41nSITSGFAp4HGR8A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isAvailable\" : false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/doctors/1/availability/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctors",
+								"1",
+								"availability",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Doctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMyIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzODk0NzR9.vtcHxb7t71BCxRPHBw_XrQbWFTZ9DFzkEC9eUjoj3_MXKWTt2zUJLA9SCZroV_rLHQGES6Q_CFV48AEO1I9vXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userTypeId\" : 1,\r\n    \"firstName\" : \"Doctor\",\r\n    \"lastName\" : \"Evil\",\r\n    \"phone\" : \"215-222-2222\",\r\n    \"email\" : \"doctor@gmail.com\",\r\n    \"costHourly\" : 200,\r\n    \"officeId\": 1\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/doctors",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register NEW USER - DOCTOR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"testDoctor1\",\r\n    \"password\" : \"password1\",\r\n    \"confirmPassword\" : \"password1\",\r\n    \"role\" : \"ROLE_USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET AVAILABILITY BY DOCTOR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMTAiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMTQwODcwfQ.8YgomqrBeLlNoaelzMjCyo1ivX3YIntQwPultQID4Udyzm_M5sS5eS0e2VHJENwaSLI92g5BFWOyiidzzVO0Wg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/doctors/1/availability",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctors",
+								"1",
+								"availability"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD AVAILABILITY DAY PUSH",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Tuesday\",\r\n    \"startTime\": \"09:00:00\",\r\n    \"endTime\" : \"10:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n    },\r\n     {\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Tuesday\",\r\n    \"startTime\": \"10:00:00\",\r\n    \"endTime\" : \"11:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n    },\r\n     {\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Tuesday\",\r\n    \"startTime\": \"11:00:00\",\r\n    \"endTime\" : \"12:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n    },\r\n     {\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Tuesday\",\r\n    \"startTime\": \"13:00:00\",\r\n    \"endTime\" : \"14:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n    },\r\n     {\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Tuesday\",\r\n    \"startTime\": \"14:00:00\",\r\n    \"endTime\" : \"15:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n    },\r\n     {\r\n    \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Tuesday\",\r\n    \"startTime\": \"15:00:00\",\r\n    \"endTime\" : \"16:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n    }\r\n    \r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/doctors/availability",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctors",
+								"availability"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD AVAILABILITY",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"officeId\": 1,\r\n    \"doctorId\": 1,\r\n    \"dayOfWeek\": \"Tuesday\",\r\n    \"startTime\": \"11:00:00\",\r\n    \"endTime\" : \"12:00:00\",\r\n    \"isAvailable\": true,\r\n    \"reasonOfUnavailability\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/doctors/availability",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctors",
+								"availability"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "CREATE NEW USER - PATIENT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"testPatient2\",\r\n    \"password\" : \"password2\",\r\n    \"confirmPassword\" : \"password2\",\r\n    \"role\" : \"ROLE_USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE NEW PATIENT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0UGF0aWVudDIiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMzk0MDk4fQ.5i-gC3sF7CTvACx91-50yeSigjk_MYCNAYqfQINAQdGE2bAO30vQZdvANhGzcBtqYJkEbTJfr3C9VMi1lHQqKQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userTypeId\" : 3,\r\n    \"firstName\" : \"Kyle\",\r\n    \"lastName\" : \"Martin\",\r\n    \"phone\" : \"215-222-2222\",\r\n    \"streetAddress\": \"111 North St\",\r\n    \"city\": \"Philly\",\r\n    \"stateName\": \"PA\",\r\n    \"zip\": \"19001\",\r\n    \"email\" : \"patient@gmail.com\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/patients",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET PATIENT BY ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0UGF0aWVudDMiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMzAyNTc2fQ.K1jxG6plJ2djvWNd39qXQ05265NRhvsiXXTcV6dJiGYMuFhgdlcV_ZzVw3EwWTCpf3Yc2J37qqHxfRJFRqWdTg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Office",
+			"item": [
+				{
+					"name": "Create New Office",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"officeName\":\"FishTown\",\r\n    \"streetAddress\":\"20 Fish St\",\r\n    \"city\":\"Philly\",\r\n    \"stateName\":\"PA\",\r\n    \"zip\":\"48226\",\r\n    \"phone\": \"6094563498\",\r\n    \"email\":\"destroitcity@gmail.com\",\r\n    \"officeHoursStart\":\"9:00:00\",\r\n    \"officeHoursEnd\": \"15:00:00\" ,\r\n    \"delayStatus\":\"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/offices",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"offices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Offices",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAxMjQ2NTZ9.voE6yvQ-0YL_koZndcIkii8xrE0qlry0XAgvwcREBwA3IHXCthSEStUFGraLVPaEDNeTrdpAKJH5P7hPswI-Lw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/offices",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"offices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Office",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET AVAILABILITY BY OFFICE ID where is_availabile = true",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMTU5MDZ9.5hdlyCcPDNk2F4QGRszedBNQK5P0qsUdOYIUcFlzE0TvwAqYGjoM6hjLRK1t96Z067VrqfGZ-Pnavz97DudXLQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/offices/1/availability/isAvailable",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"offices",
+								"1",
+								"availability",
+								"isAvailable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "CREATE APPOINTMENT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"doctorId\":1,\r\n    \"patientId\":2,\r\n    \"officeId\":1,\r\n    \"availId\":1,\r\n    \"appointmentDate\":\"2022-10-19\",\r\n    \"appointmentStatus\":\"Confirmed\",\r\n    \"description\":\"Check-up\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/appointments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET APPOINTMENT BY PATIENT ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0UGF0aWVudDMiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMzAyNTc2fQ.K1jxG6plJ2djvWNd39qXQ05265NRhvsiXXTcV6dJiGYMuFhgdlcV_ZzVw3EwWTCpf3Yc2J37qqHxfRJFRqWdTg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/appointments/patients/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments",
+								"patients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET APPOINTMENT BY DOCTOR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0UGF0aWVudDMiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMzAyNTc2fQ.K1jxG6plJ2djvWNd39qXQ05265NRhvsiXXTcV6dJiGYMuFhgdlcV_ZzVw3EwWTCpf3Yc2J37qqHxfRJFRqWdTg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/appointments/doctors/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments",
+								"doctors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "GET REVIEWS BY DOCTOR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMzE5NjN9.8awcAUNve9IDjyZif8qCBttHmfviX6owRt8CnqAkuCijxQiAy1PWVAOEe-_m7q1ow5Sl3m5tanjCcc7HbKA6BA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reviews/doctors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reviews",
+								"doctors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE REVIEW",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0RG9jdG9yMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTAzMjg0MDF9.KGO3VFHzB3s8nfb9CnbOtKrq_APNl2A3rmvtr7dnod-hXI2LbrGTvlD8MtlQatsVv6EQx4uSEnODZi3zfTugpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patientFirstName\": \"Kyle\",\r\n    \"patientLastName\": \"Martin\",\r\n    \"doctorFirstName\": \"Doctor\",\r\n    \"doctorLastName\": \"Evil\",\r\n    \"officeName\": \"Temple Hospital\",\r\n    \"reviewDate\": \"2022-10-23\",\r\n    \"reviewDesc\": \"This is a review\",\r\n    \"reviewRating\": 5\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/reviews/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient Updating a Review",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Doctor Reply to Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0UGF0aWVudDIiLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjUwMzk0MDk4fQ.5i-gC3sF7CTvACx91-50yeSigjk_MYCNAYqfQINAQdGE2bAO30vQZdvANhGzcBtqYJkEbTJfr3C9VMi1lHQqKQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"doctorReply\": \"You really suck\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/reviews/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reviews",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"username\" : \"testDoctor1\",\r\n    \"password\" : \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET isDoctor by User Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/profiles/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
