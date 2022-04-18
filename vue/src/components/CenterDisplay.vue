@@ -15,13 +15,13 @@
                 <td>{{doctor.rating}}</td>
                 <td>{{doctor.reviews}}</td>
                 <td v-on:click="clicked" v-if="user.role=='patient'">
-                <router-link id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">View Reviews</router-link>
+                 <v-btn color="accent" elevation="7" outlined raised text tile>
+                    <router-link id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">View Reviews</router-link>
+                 </v-btn>
                 <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
-               
                 <v-btn color="accent" elevation="7" outlined raised text tile>
-                   <router-link  id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
+                   <router-link id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
                 </v-btn>  
-               
                   <!-- <input type="checkbox">  -->
                 </td>
             </tr>
@@ -31,9 +31,7 @@
 
     <!--must change v-if to take global auth variable -->
     <div v-if="authenticated==='True'" class="middle-column column "><!--Change V-if {This will be to show notification for Auth Users only!!}-->
-        
         <notification-column/>
-     
      </div>    
     <!-- OR -->
     <div v-if="authenticated==='False'" class="middle-column column "><!--Change V-if {This will be to show Landing Page}-->
@@ -164,8 +162,8 @@
 }
 </script>
 
+
 <style>
-   
 .display-container {
     display: flex;
     flex-direction: row;
@@ -192,8 +190,7 @@
    margin-right: 20px;
    padding: 2%;
   }
-/* Add elevation to buttons */
- .btn-search{
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
-} 
+.no-hyper{
+    text-decoration: none;
+}
 </style>

@@ -12,6 +12,8 @@
 
     <div class="review-body">
         <div class="review-btns review-col-l"> 
+          <img src="../assets/review-l.png" alt="">
+
           <label for="sort-review-doctor"></label>
           <input type="text" placeholder="Search By Doctor"/>
           <input type="submit">
@@ -24,7 +26,9 @@
      <div class="review-col-m">
         <review-display/>  
      </div>    
-     <div class="review-col-r">   
+     <div class="review-col-r"> 
+       <img src="../assets/review_1.png" alt="">
+
          <review-submission-form/>
      </div>   
     </div>
@@ -77,5 +81,18 @@ export default {
    }
    .review-col-r{
      margin: 0 20px 0 0;
+     
+     /* box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12);
+
+      min-height: 200px;
+      width: 50vw;
+      background: white;
+      border-radius: 5px; */
    }
 </style>

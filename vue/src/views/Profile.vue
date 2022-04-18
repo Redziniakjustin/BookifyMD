@@ -1,8 +1,14 @@
 <template>
   <div class="profile-container">
 
-    <h1>Profile</h1>
-    
+    <!-- <h1>Profile</h1> -->
+
+    <div>
+      <img src="../assets/profile-1.png" alt="">
+       <img src="../assets/profile-2.png" alt="">
+        <img src="../assets/profile-3.png" alt="">
+    </div>
+
     <div class="profile-body">
           <div v-if="user.role=='patient'">
 

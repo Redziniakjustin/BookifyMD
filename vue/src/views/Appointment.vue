@@ -1,5 +1,7 @@
 <template>
   <div class="appointment-container">
+
+  <img src="../assets/appointments-1.png" alt="">  
     <h1>Appointments</h1>
   
   <section class="appointment-body">  
