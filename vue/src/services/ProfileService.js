@@ -24,8 +24,8 @@ export default {
   addDoctor(profile){
     return http.post('/doctors', profile)
   },
-  getUserTypeIdByUsername(username){
-    return http.get('/userType/${username}', username)
+  getUserTypeIdById(id){
+    return http.get('/profiles/${id}', id)
   }
 
 }

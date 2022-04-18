@@ -10,21 +10,22 @@
         <table>
         <tbody>
             <tr v-for="doctor in filteredDoctors" :key="doctor">
-                <td>{{doctor.name}}</td>
+                <td>Dr. {{doctor.firstName}} {{doctor.lastName}}</td>
                 <td>{{doctor.location}}</td>
-                <td>{{doctor.phone-number}}</td>
+                <td>{{doctor.phoneNumber}}</td>
                 <td>{{doctor.rating}}</td>
-                <td>{{doctor.reviews}}</td>
                 <td v-on:click="clicked" v-if="user.role=='patient'">
-                 <v-btn color="accent" elevation="7" outlined raised text tile>
-                    <router-link id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">View Reviews</router-link>
-                 </v-btn>
-                <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
-                <v-btn color="accent" elevation="7" outlined raised text tile>
-                   <router-link id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
-                </v-btn>  
-                  <!-- <input type="checkbox">  -->
+                <td>
+                    <button class="table-btn">
+                        <router-link class="no-hyper" id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">View Reviews</router-link>
+                    </button>
                 </td>
+                <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
+                <td>
+                    <button class="table-btn">
+                        <router-link class="no-hyper" id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
+                    </button> 
+                </td> 
             </tr>
         </tbody>
         </table>
@@ -167,6 +168,7 @@
 
 
 <style>
+@import '../assets/styles/styles.css';
 .display-container {
     display: flex;
     flex-direction: row;
@@ -181,16 +183,16 @@
     justify-content: center;
   }
   .left-column{
-    flex-basis: 20%;
-    margin-left: 20px;
+    flex-basis: 30%;
+    margin-left: 10px;
     padding: 2%;
   }
   .middle-column{
-    flex-basis: 50%;
+    flex-basis: 40%;
   }
   .right-column{
-   flex-basis: 20%;
-   margin-right: 20px;
+   flex-basis: 30%;
+   margin-right: 10px;
    padding: 2%;
   }
 .no-hyper{

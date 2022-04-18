@@ -1,0 +1,18 @@
+.no-hyper{
+    text-decoration: none;
+    color: black;
+  }
+/* Table Styling */
+.table-btn{
+    border: 2px solid rgb(0, 157, 255);
+    background-color: lightskyblue;
+    padding: 5px 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.table-btn:hover{
+    border: lightskyblue;
+    background-color: rgb(0, 157, 255);
+    color: white;
+}

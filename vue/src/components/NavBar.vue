@@ -197,10 +197,11 @@ methods:{
     padding: 0;
     background-color: transparent;
   }
+  /*Must add Media Query for this */
   .logo{
-    margin: 30% 0 0 0;
+    margin: 0% 0 0 0;
     padding: 10% 10% 10% 10%;
-    max-height: auto;
+    max-height: auto; /* Needs to change on resize */
     width: 100%;
   }
   .left-header-container{

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import getUserTypeIdById from '@/services/ProfileService'
 
 Vue.use(Vuex)
 
@@ -12,17 +13,21 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token');
 const currentUser = JSON.parse(localStorage.getItem('user'));
 const currentUserProfile = JSON.parse(localStorage.getItem('profile'))
+const currentProfileType = JSON.parse(localStorage.getItem('profileType'))
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
+
+
 
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
     profile: currentUserProfile || {},
-    authenticated: false 
+    authenticated: false, 
+    profileType: currentProfileType || {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -35,12 +40,27 @@ export default new Vuex.Store({
       localStorage.setItem('user',JSON.stringify(user));
     },
     SET_PROFILE(state, profile) {
-      state.profile = profile;
-      localStorage.setItem('profile',JSON.stringify(profile));
+      if(state.user.id != null){
+        if(state.profileType.isDoctor === false){
+          //Code to to populate patient profile
+        }else{
+          //code to populate doctor profile
+        }
+        state.profile = profile;
+        localStorage.setItem('profile',JSON.stringify(profile));
+      }
+    },
+    SET_PROFILE_TYPE(state, profileType){
+      if(getUserTypeIdById(state.user.id) != null){
+        state.profileType = profileType;
+        localStorage.setItem('profileType', getUserTypeIdById(state.user.id))
+      }
     },
     SET_AUTHENTICATION(state, authenticated){
-      state.authenticated = authenticated;
-      localStorage.setItem('authenticated', true)
+      if(state.token != null){
+        state.authenticated = authenticated;
+        localStorage.setItem('authenticated', true)
+      }
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
