@@ -21,4 +21,6 @@ public interface PatientDao {
     int findIdByLastName(String lastName);
 
     boolean create(Patient newPatient);
+
+    Patient findPatientByUsername(String username);
 }

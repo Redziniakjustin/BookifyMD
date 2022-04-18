@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.techelevator.model.UserNotFoundException;
+import com.techelevator.model.UserType;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -132,9 +133,29 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public Long getUserTypeIdByUsername(String username) {
-        return null;
+    public UserType findUserTypeByUsername(String username) {
+        UserType userType = new UserType();
+        String sql = "select ut.user_type_id, ut.user_id, ut.is_doctor from user_type as ut join users on ut.user_id = users.user_id\n" +
+                "where username = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+        if(results.next()){
+            userType = mapRowToUserType(results);
+        }
+
+        return userType;
     }
+
+
+
+    private UserType mapRowToUserType (SqlRowSet row){
+        UserType userType = new UserType();
+        userType.setUserTypeId(row.getLong("user_type_id"));
+        userType.setUserId(row.getLong("user_id"));
+        userType.setIsDoctor(row.getBoolean("is_doctor"));
+
+        return userType;
+    }
+
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
