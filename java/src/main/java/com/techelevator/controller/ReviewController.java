@@ -9,6 +9,7 @@ import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
 import com.techelevator.model.Review;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -53,8 +54,19 @@ public class ReviewController {
         isSuccessful = reviewDao.create(review);
         return isSuccessful;
     }
-
-    //UPDATE REVIEWS BY
-
+    ///reviews/{id} to reply to review
+    //UPDATE REVIEWS BY reviewId
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value ="/{id}", method = RequestMethod.PUT)
+    public boolean replyToReviewByDoctor(@Valid @RequestBody String doctorReply, @PathVariable Long id){
+        boolean success = false;
+        try{
+            reviewDao.update(doctorReply, id);
+            success = true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
 
 }

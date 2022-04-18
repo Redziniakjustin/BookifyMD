@@ -41,7 +41,7 @@ public class JdbcReviewDao implements ReviewDao{
     @Override
     public List<Review> findReviewsByDoctorId(Long doctorId) {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT review_id, doctor_id, patient_id, office_id, review_date, review_desc, review_rating FROM review WHERE doctor_id=?;";
+        String sql = "SELECT review_id, doctor_id, patient_id, office_id, review_date, review_desc, review_rating, doctor_reply FROM review WHERE doctor_id=?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
         while(results.next()){
             reviews.add(mapRowToReview(results));
@@ -77,8 +77,18 @@ public class JdbcReviewDao implements ReviewDao{
     }
 
     @Override
-    public boolean update(Review review) {
-        return false;
+    public boolean update(String doctorReply, Long reviewId) {
+        boolean isUpdated = false;
+
+        String sql = "UPDATE review SET doctor_reply=? WHERE review_id=?;";
+
+        try{
+            jdbcTemplate.update(sql, doctorReply, reviewId);
+            isUpdated = true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return isUpdated ;
     }
 
     @Override
@@ -145,6 +155,8 @@ public class JdbcReviewDao implements ReviewDao{
         review.setReviewDate(row.getDate("review_date"));
         review.setReviewDesc(row.getString("review_desc"));
         review.setReviewRating(row.getLong("review_rating"));
+        review.setDoctorReply(row.getString("doctor_reply"));
+
 
         return review;
     }

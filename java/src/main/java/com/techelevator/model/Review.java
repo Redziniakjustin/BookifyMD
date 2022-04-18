@@ -19,6 +19,7 @@ public class Review {
     private Date reviewDate;
     private String reviewDesc;
     private Long reviewRating;
+    private String doctorReply;
 
     // GETTERS
 
@@ -70,6 +71,10 @@ public class Review {
 
     public Long getReviewRating() {
         return reviewRating;
+    }
+
+    public String getDoctorReply() {
+        return doctorReply;
     }
 
 
@@ -129,6 +134,9 @@ public class Review {
         this.reviewRating = reviewRating;
     }
 
+    public void setDoctorReply(String doctorReply) {
+        this.doctorReply = doctorReply;
+    }
 
     //CONSTRUCTOR
     public Review(){};
