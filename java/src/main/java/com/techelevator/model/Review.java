@@ -12,17 +12,17 @@ public class Review {
     private String doctorFirstName;
     private String doctorLastName;
 
-    /*private Long doctorId;
+    private Long doctorId;
     private Long patientId;
     private Long officeId;
-    private Date appointmentDate;*/
+    private Date appointmentDate;
     private Date reviewDate;
     private String reviewDesc;
     private Long reviewRating;
 
     // GETTERS
 
-    /*public Long getDoctorId() {
+    public Long getDoctorId() {
         return doctorId;
     }
 
@@ -36,7 +36,7 @@ public class Review {
 
     public Date getAppointmentDate() {
         return appointmentDate;
-    }*/
+    }
     public Long getReviewId() {
         return reviewId;
     }
@@ -79,7 +79,7 @@ public class Review {
 
 
 
-    /*public void setDoctorId(Long doctorId) {
+    public void setDoctorId(Long doctorId) {
         this.doctorId = doctorId;
     }
 
@@ -93,7 +93,7 @@ public class Review {
 
     public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
-    }*/
+    }
     public void setReviewId(Long reviewId) {
         this.reviewId = reviewId;
     }

@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -33,18 +34,23 @@ public class JdbcReviewDao implements ReviewDao{
 
 
     @Override
-    public Review findReviewByOfficeId(Long officeId) {
+    public List<Review> findReviewsByOfficeId(Long officeId) {
         return null;
     }
 
     @Override
-    public Review findReviewByDoctorId(Long doctorId) {
-        Review review = new Review();
-        String sql =
+    public List<Review> findReviewsByDoctorId(Long doctorId) {
+        List<Review> reviews = new ArrayList<>();
+        String sql = "SELECT review_id, doctor_id, patient_id, office_id, review_date, review_desc, review_rating FROM review WHERE doctor_id=?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+        while(results.next()){
+            reviews.add(mapRowToReview(results));
+        }
+        return reviews;
     }
 
     @Override
-    public Review findReviewByPatientId(Long patientId) {
+    public List<Review> findReviewsByPatientId(Long patientId) {
         return null;
     }
 
@@ -134,9 +140,13 @@ public class JdbcReviewDao implements ReviewDao{
     private Review mapRowToReview(SqlRowSet row){
         Review review = new Review();
         review.setReviewId(row.getLong("review_id"));
-        
+        review.setDoctorId(row.getLong("doctor_id"));
+        review.setPatientId(row.getLong("patient_id"));
+        review.setReviewDate(row.getDate("review_date"));
+        review.setReviewDesc(row.getString("review_desc"));
+        review.setReviewRating(row.getLong("review_rating"));
 
-
+        return review;
     }
 
 

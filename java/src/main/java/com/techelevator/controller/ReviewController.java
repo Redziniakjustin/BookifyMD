@@ -34,6 +34,11 @@ public class ReviewController {
     //GET ALL REVIEWS BY DOCTOR
     //localhost:8080/reviews/doctorId
 
+    @RequestMapping(value = "/doctors/{doctorId}", method = RequestMethod.GET)
+    public List<Review> getReviewsByDoctorId(@PathVariable Long doctorId){
+        return reviewDao.findReviewsByDoctorId(doctorId);
+    }
+
     //GET ALL REVIEWS BY PATIENT
 
 

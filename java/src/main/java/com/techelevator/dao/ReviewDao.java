@@ -16,11 +16,11 @@ public interface ReviewDao {
 
     Review findReviewById(Long reviewId);
 
-    Review findReviewByOfficeId (Long officeId);
+    List<Review> findReviewsByOfficeId (Long officeId);
 
-    Review findReviewByDoctorId (Long doctorId);
+    List<Review> findReviewsByDoctorId (Long doctorId);
 
-    Review findReviewByPatientId(Long patientId);
+    List<Review> findReviewsByPatientId(Long patientId);
 
     boolean create(Review newReview);
 
