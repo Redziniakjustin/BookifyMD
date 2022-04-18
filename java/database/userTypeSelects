@@ -1,0 +1,25 @@
+select * from users
+
+select * from user_type
+
+--get user_type_id by username
+select ut.user_type_id, ut.is_doctor
+from user_type as ut
+join users on ut.user_id = users.user_id
+where username = 'testPatient2'
+
+
+--get patient by user_type_id
+select *
+from patient as p
+join user_type as ut
+on ut.user_type_id = p.user_type_id
+where p.user_type_id = 3
+
+
+--get doctor by user_type_id
+select *
+from doctor as d
+join user_type as ut
+on ut.user_type_id = d.user_type_id
+where d.user_type_id = 1

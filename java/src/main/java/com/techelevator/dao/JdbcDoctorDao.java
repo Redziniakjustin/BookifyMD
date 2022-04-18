@@ -1,11 +1,13 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Doctor;
+import com.techelevator.model.UserType;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +17,11 @@ public class JdbcDoctorDao implements DoctorDao{
     private final String getFullDoctor = "SELECT doctor_id, user_type_id, first_name, last_name, phone, email, cost_hourly FROM doctor;";
 
     private JdbcTemplate jdbcTemplate;
+    private UserDao userDao;
 
-    public JdbcDoctorDao(JdbcTemplate jdbcTemplate){
+    public JdbcDoctorDao(JdbcTemplate jdbcTemplate, UserDao userDao){
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
     }
 
 
@@ -94,6 +98,20 @@ public class JdbcDoctorDao implements DoctorDao{
         return isSuccessful;
     }
 
+    @Override
+    public Doctor findDoctorByUsername(String username) {
+        UserType userType = userDao.findUserTypeByUsername(username);
+        Doctor doctor = new Doctor();
+        if(userType.getIsDoctor()){
+            //get doctor profile
+            String sql = "select * from doctor as d join user_type as ut on ut.user_type_id = d.user_type_id where d.user_type_id = ?;";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userType.getUserTypeId());
+            if(results.next()){
+                doctor = mapRowToDoctor(results);
+            }
+        }
+        return doctor;
+    }
 
 
     private Doctor mapRowToDoctor(SqlRowSet row){

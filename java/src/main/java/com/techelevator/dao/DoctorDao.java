@@ -28,6 +28,8 @@ public interface DoctorDao {
 
     //UPDATE DOCTOR PROFILE
 
+    Doctor findDoctorByUsername(String username);
+
 
 }
 

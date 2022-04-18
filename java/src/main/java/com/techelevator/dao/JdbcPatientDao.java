@@ -3,6 +3,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Patient;
+import com.techelevator.model.UserType;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -15,8 +16,10 @@ import java.util.List;
 public class JdbcPatientDao implements PatientDao{
 
     private JdbcTemplate jdbcTemplate;
-    public JdbcPatientDao(JdbcTemplate jdbcTemplate){
+    private UserDao userDao;
+    public JdbcPatientDao(JdbcTemplate jdbcTemplate, UserDao userDao){
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
     }
     private final String getFullPatient = "SELECT patient_id, user_type_id, first_name, last_name, phone, street_address, city, state_name, zip, email FROM patient";
 
@@ -27,7 +30,7 @@ public class JdbcPatientDao implements PatientDao{
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(getFullPatient);
         while(results.next()){
-            patients.add(mapRowToDoctor(results));
+            patients.add(mapRowToPatient(results));
         }
         return patients;
     }
@@ -37,7 +40,7 @@ public class JdbcPatientDao implements PatientDao{
         Patient patient = new Patient();
         SqlRowSet results = jdbcTemplate.queryForRowSet(getFullPatient +" WHERE patient_id = ?;", patientId);
         if(results.next()){
-            patient = mapRowToDoctor(results);
+            patient = mapRowToPatient(results);
         } else {
             //TODO fix me exception
             System.out.println("Office NOT FOUND");
@@ -73,7 +76,22 @@ public class JdbcPatientDao implements PatientDao{
         return patientCreated;
     }
 
-    private Patient mapRowToDoctor(SqlRowSet row){
+    @Override
+    public Patient findPatientByUsername(String username) {
+        Patient patient = new Patient();
+        UserType userType = userDao.findUserTypeByUsername(username);
+
+        if(!userType.getIsDoctor()){
+            String sql = "select * from patient as p join user_type as ut on ut.user_type_id = p.user_type_id where p.user_type_id = ?;";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userType.getUserTypeId());
+            if(results.next()){
+                patient = mapRowToPatient(results);
+            }
+        }
+        return patient;
+    }
+
+    private Patient mapRowToPatient(SqlRowSet row){
         Patient patient = new Patient();
         patient.setPatientId(row.getLong("patient_id"));
         patient.setUserTypeId(row.getLong("user_type_id"));
