@@ -27,9 +27,10 @@ public class JdbcReviewDao implements ReviewDao{
     }
 
     @Override
-    public Review getReviewById(Long reviewId) {
+    public Review findReviewById(Long reviewId) {
         return null;
     }
+
 
     @Override
     public Review findReviewByOfficeId(Long officeId) {
@@ -37,14 +38,16 @@ public class JdbcReviewDao implements ReviewDao{
     }
 
     @Override
-    public int findReviewIdByOfficeId(Long officeId) {
-        return 0;
+    public Review findReviewByDoctorId(Long doctorId) {
+        Review review = new Review();
+        String sql =
     }
 
     @Override
-    public int findReviewIdByPatientId(Long patientId) {
-        return 0;
+    public Review findReviewByPatientId(Long patientId) {
+        return null;
     }
+
 
     @Override
     public boolean create(Review newReview) {
@@ -91,14 +94,20 @@ public class JdbcReviewDao implements ReviewDao{
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, firstName, lastName);
         Long patientId = null;
         if(results.next()){
-            patientId = mapRowToDoctorId(results);
+            patientId = mapRowToPatientId(results);
         }
         return patientId;
     }
 
     @Override
     public Long findOfficeIdByName(String officeName) {
-        return null;
+        String sql = "SELECT office_id FROM office WHERE office_name = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeName);
+        Long officeId = null;
+        if(results.next()){
+            officeId = mapRowToOfficeId(results);
+        }
+        return officeId;
     }
 
     public Long mapRowToDoctorId(SqlRowSet row) {
@@ -119,6 +128,14 @@ public class JdbcReviewDao implements ReviewDao{
         Office office = new Office();
         office.setOfficeId(row.getLong("office_id"));
         return office.getOfficeId();
+
+    }
+
+    private Review mapRowToReview(SqlRowSet row){
+        Review review = new Review();
+        review.setReviewId(row.getLong("review_id"));
+        
+
 
     }
 

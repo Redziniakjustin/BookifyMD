@@ -18,7 +18,7 @@ public class Review {
     private Date appointmentDate;*/
     private Date reviewDate;
     private String reviewDesc;
-    private int reviewRating;
+    private Long reviewRating;
 
     // GETTERS
 
@@ -68,7 +68,7 @@ public class Review {
         return reviewDesc;
     }
 
-    public int getReviewRating() {
+    public Long getReviewRating() {
         return reviewRating;
     }
 
@@ -125,7 +125,7 @@ public class Review {
         this.reviewDesc = reviewDesc;
     }
 
-    public void setReviewRating(int reviewRating) {
+    public void setReviewRating(Long reviewRating) {
         this.reviewRating = reviewRating;
     }
 
