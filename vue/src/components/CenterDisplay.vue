@@ -2,6 +2,7 @@
 <div class="display-container"> 
     <div class="left-column column">
         <div>
+             <img src="../assets/landing-1.png" alt="">
             <h1 class="">Available Doctors</h1>
             <input class="btn-search" type="text" placeholder="Search By Doctor" v-model="search"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
             <input class="btn-search" type="submit">
@@ -62,6 +63,8 @@
             </tr>
         </tbody>
         </table>
+
+         <img src="../assets/landing-2.png" alt="">
     </div>
 
 </div>
