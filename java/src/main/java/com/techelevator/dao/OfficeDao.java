@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.Availability;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
 import com.techelevator.model.Patient;
@@ -20,6 +21,8 @@ public interface OfficeDao {
     Office findByOfficeName(String officeName);
 
     List<Doctor> findDoctorsByOfficeId(Long officeId);
+
+
 
     int findIdByOfficeName(String officeName);
 

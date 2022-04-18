@@ -10,6 +10,8 @@ select * from user_type;
 SELECT * FROM doctor_office;
 SELECT * FROM doctor_office_availability;
 
+SELECT office_id FROM office WHERE office_name = ?;
+
 
 
 

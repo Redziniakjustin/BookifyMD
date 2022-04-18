@@ -11,10 +11,7 @@
 
 
     <div class="review-body">
-         
-        
-
-        <div class="review-btns"> 
+        <div class="review-btns review-col-l"> 
           <label for="sort-review-doctor"></label>
           <input type="text" placeholder="Search By Doctor"/>
           <input type="submit">
@@ -24,10 +21,12 @@
           <input type="submit">
         </div>
 
+     <div class="review-col-m">
         <review-display/>  
-        
+     </div>    
+     <div class="review-col-r">   
          <review-submission-form/>
-        
+     </div>   
     </div>
 
   </div>
@@ -56,7 +55,10 @@ export default {
 <style>
   .review-container{
     margin-top: 150px;
-    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
    }
   .review-head{
   /* text-align: center; */
@@ -69,5 +71,11 @@ export default {
      justify-content: space-between;
      margin: 80px 0 10px 0;
      font-size: 0.75rem;
+   }
+   .review-col-l{
+     margin: 0 0 0 20px;
+   }
+   .review-col-r{
+     margin: 0 20px 0 0;
    }
 </style>

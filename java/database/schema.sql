@@ -123,6 +123,7 @@ CREATE TABLE doctor_office(
 	
 	);
 
+
 DROP TABLE IF EXISTS review CASCADE;
 
 CREATE TABLE review (
@@ -131,14 +132,15 @@ CREATE TABLE review (
 		doctor_id int NOT NULL,
 		patient_id int NOT NULL,
 		office_id int NOT NULL,
-		avail_id int NOT NULL,
-		appointment_date date NOT NULL,
-		review_date date NOT NULL,
-		review_desc varchar (280),
+		review_date date,
+		review_desc varchar (300),
 		review_rating int,
 		CONSTRAINT PK_review_id PRIMARY KEY (review_id),
-		CONSTRAINT FK_appointment_id FOREIGN KEY (doctor_id, office_id, avail_id, appointment_date) REFERENCES appointment(doctor_id, office_id, avail_id, appointment_date)
-	);
+		CONSTRAINT FK_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
+		CONSTRAINT FK_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+		CONSTRAINT FK_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
+		
+);
 
 
 
@@ -166,6 +168,8 @@ CREATE TABLE doctor_office_availability(
 --ROLLBACK;
 
 COMMIT TRANSACTION;
+
+
 
 
 

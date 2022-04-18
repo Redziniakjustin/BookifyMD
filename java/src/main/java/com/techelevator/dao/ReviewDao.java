@@ -14,12 +14,21 @@ public interface ReviewDao {
 
     List<Review> findAll();
 
-    Review getReviewById(Long reviewId);
+    Review findReviewById(Long reviewId);
 
-    Review findReviewByOfficeId (Long officeId);
+    List<Review> findReviewsByOfficeId (Long officeId);
 
-    int findReviewIdByOfficeId (Long officeId);
+    List<Review> findReviewsByDoctorId (Long doctorId);
 
-    int findReviewIdByPatientId (Long patientId);
+    List<Review> findReviewsByPatientId(Long patientId);
 
+    boolean create(Review newReview);
+
+    boolean update(Review review);
+
+
+    //other methods
+    Long findDoctorIdByName(String firstName, String lastName);
+    Long findPatientIdByName(String firstName, String lastName);
+    Long findOfficeIdByName(String officeName);
 }

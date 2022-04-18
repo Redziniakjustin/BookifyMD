@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.Availability;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
 import org.springframework.dao.DataAccessException;
@@ -57,6 +58,8 @@ public class JdbcOfficeDao implements OfficeDao{
     public List<Doctor> findDoctorsByOfficeId(Long officeId) {
         return null;
     }
+
+
 
     @Override
     public int findIdByOfficeName(String officeName) {

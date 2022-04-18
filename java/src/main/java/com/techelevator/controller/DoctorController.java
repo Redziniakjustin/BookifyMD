@@ -27,9 +27,13 @@ public class DoctorController {
 
     //GET ALL DOCTORS IN THE API
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Doctor> listAllDoctors(Principal principal){
+    public List<Doctor> listAllDoctors(){
         return doctorDao.findAll();
     }
+
+    //GET DOCTOR PROFILE BY DOCTOR ID (with doctor's name)
+
+
 
 
     //GET AVAILABILITY BY DOCTOR ID
@@ -100,6 +104,23 @@ public class DoctorController {
         }
         return isSuccessful;
     }
+
+    //UPDATE A DOCTOR'S AVAILABILITY
+    /*@ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/{id}/availability/{availId}", method = RequestMethod.PUT)
+    public boolean updateIsAvailableByDoctorId(@PathVariable Long id, @PathVariable Long availId, @Valid @RequestBody Boolean isAvailable) {
+        boolean isSuccessful = false;
+        try {
+            availabilityDao.updateAvailabilityByDoctorId(isAvailable, id, availId);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return isSuccessful;
+    }*/
+
+
+
+    //UPDATE AVAILABILITY BY DOCTOR ID
 
 
     // ADD DEFAULT TIME WHEN ADDING
