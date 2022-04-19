@@ -21,28 +21,40 @@
 </template>
 
 <script>
+//import getDoctorProfileById from '@/services/ProfileService'
 export default {
   data() {
     return {
-      doctor: {
-        lastName: "kyle",
-        firstName: "martin",
-        Address: "1001 Spruce St",
-        phoneNumber: "555-555-5555"
-},
-office:{
-  officeName: "",
-  officeAddress: "",
-  officeCity: "",
-  officeState: "",
-  officeZipCode: "",
-  officePhoneNumber: "", 
-  officeEmail: "", 
-  officeStartHour: "", 
-  officeCloseHour: ""
-},
+      doctor:{},
+      // doctor: {
+      //   lastName: "kyle",
+      //   firstName: "martin",
+      //   Address: "1001 Spruce St",
+      //   phoneNumber: "555-555-5555"
+      // },
+      office:{
+        officeName: "",
+        officeAddress: "",
+        officeCity: "",
+        officeState: "",
+        officeZipCode: "",
+        officePhoneNumber: "", 
+        officeEmail: "", 
+        officeStartHour: "", 
+        officeCloseHour: ""
+      },
     }
   },
+  mounted(){
+    this.doctor = this.$store.profile
+    console.log(this.doctor)
+    // getDoctorProfileById(this.$store.user.id).then((response)=>{
+    //   this.doctor = response.data;
+    // }).catch(error => {
+    //       console.log(error)
+    //       this.error = true
+    //   })
+  }
 }
 </script>
 

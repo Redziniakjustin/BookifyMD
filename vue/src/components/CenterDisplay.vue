@@ -32,11 +32,14 @@
     </div>
 
     <!--must change v-if to take global auth variable -->
-    <div v-if="authenticated==='True'" class="middle-column column "><!--Change V-if {This will be to show notification for Auth Users only!!}-->
+    <div v-if="this.$store.authenticated" class="middle-column column "><!--Change V-if {This will be to show notification for Auth Users only!!}-->
+        <h2 v-if="this.$store.profile.firstName === null"> 
+            Please Update Profile Here: <router-link :to="{name: 'profile'}">Profile</router-link>
+        </h2>
         <notification-column/>
      </div>    
     <!-- OR -->
-    <div v-if="authenticated==='False'" class="middle-column column "><!--Change V-if {This will be to show Landing Page}-->
+    <div v-else class="middle-column column "><!--Change V-if {This will be to show Landing Page}-->
             <landing-center-column/>
     </div>
 

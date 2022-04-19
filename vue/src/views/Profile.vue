@@ -9,7 +9,7 @@
 
     <div class="profile-body elevated-box">
           <div v-if="user.role=='patient'">
-            <patient-profile/> 
+            <patient-profile/>
           </div>
           <div v-if="user.role=='doctor'">
             <doctor-profile/>
@@ -23,10 +23,10 @@
 <script>
 import DoctorProfile from '@/components/DoctorProfile.vue'
 import PatientProfile from '@/components/PatientProfile.vue'
-
 export default {
   data() {
     return {
+      showProfileForm: false,
       user: {
         // role: "doctor"
         role: "patient"

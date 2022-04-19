@@ -42,7 +42,7 @@ import profileService from '@/services/ProfileService';
 export default {
   data(){
       return{
-        userType: "patient",
+        //userType: "patient",
         patient:{
             userTypeId: "",
             firstName: "",
@@ -76,14 +76,17 @@ export default {
     }
    },
    mounted(){
+     console.log(this.$route.query.username)
+     console.log(this.patient.userTypeId)
      profileService
-      .getProfileTypeIdByUsername(this.$route.query.username)
+      .getProfileTypeIdByUsername(this.$store.user.username)
       .then(response => {
         this.patient.userTypeId = response.data;
       }).catch(error => {
               console.log(error)
               this.error = true
           })
+      
    }
 }
 </script>

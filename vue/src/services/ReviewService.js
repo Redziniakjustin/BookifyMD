@@ -1,13 +1,9 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: "http://localhost:3000"
-  });
-
 export default {
 
   listReviewByDoctorId(id) {
-    return http.get('/reviews/doctors/${id}', id); 
+    return axios.get('/reviews/doctors/${id}', id); 
     // addreview
   },
 
@@ -16,11 +12,11 @@ export default {
 //   },
 
   addReview(review) {
-    return http.post('/reviews/', review);
+    return axios.post('/reviews/', review);
   },
 
   addReviewResponse(id, reviewResponse){
-    return http.put('/reviews/${id}', {id, reviewResponse});
+    return axios.put('/reviews/${id}', {id, reviewResponse});
 }
 
 }

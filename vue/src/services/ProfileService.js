@@ -1,40 +1,36 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: "http://localhost:3000"
-  });
-
 export default {
 //Doctor call
   listDoctor() {
-    return http.get('/doctors'); 
+    return axios.get('/doctors'); 
   },
   getDoctor(id) {
-      return http.get('/doctors/${id}', id)
+      return axios.get('/doctors/${id}', id)
   },
   listOffices(){
-      return http.get('/offices')
+      return axios.get('/offices')
   }, 
   getOffice(id){
-      return http.get('/providers/${id}', id)
+      return axios.get('/providers/${id}', id)
   }, 
   addPatient(profile){
-    return http.post('/patients', profile)
+    return axios.post('/patients', profile)
   },
   addDoctor(profile){
-    return http.post('/doctors', profile)
+    return axios.post('/doctors', profile)
   },
   getUserTypeIdById(id){
-    return http.get('/profiles/${id}', id)
+    return axios.get('/profiles/${id}', id)
   },
   getDoctorProfileById(id){
-    return http.get('/profiles/doctors/${id}', id)
+    return axios.get('/profiles/doctors/${id}', id)
   },
   getPatientProfileById(id){
-    return http.get('/profiles/patients/${id}', id)
+    return axios.get('/profiles/patients/${id}', id)
   },
   getProfileTypeIdByUsername(username){
-    return http.get('/login/${username}', username)
+    return axios.get('/login/${username}', username)
   },
 
 }

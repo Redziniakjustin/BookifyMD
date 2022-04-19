@@ -1,16 +1,12 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: "http://localhost:3000"
-  });
-
 export default {
 
   currentUser() {
-    return http.get('/user'); 
+    return axios.get('/user'); 
   },
   currentUserProfile(){
-    return http.get('/userprofile')
+    return axios.get('/userprofile')
   },
 //   get(id) {
 //     return http.get('/users/${id}', user);

@@ -23,12 +23,11 @@
             <input type="email" id="doctorEmail"
             v-model="doctor.email"
             required>
-
             <div>
               <!-- @click="displayOffice() -->
               <label for="office">Choose Primary Office:</label>
               <!--Change the the options to offices change :reduce-->
-              <v-select id="office" single v-model="doctor.officeId" :options="options" :reduce="name => name.id" label="name"/>
+              <v-select id="office" single v-model="doctor.officeId" :options="offices" :reduce="name => name.id" label="name"/>
             </div>
           
             <label for="doctorCost">Hourly Rate ($): </label>
@@ -110,6 +109,7 @@ export default {
       profileService.listOffices()
         .then(response => {
           this.office = response.data;
+          console.log(this.office);
         }).catch(error => {
                 console.log(error)
                 this.error = true

@@ -1,31 +1,27 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: "http://localhost:3000"
-  });
-
 export default {
 //Doctor call
   listAppointments() {
-    return http.get('/appointments'); 
+    return axios.get('/appointments'); 
   },
   getAppointment(id) {
-      return http.get('/appointments/${id}', id)
+      return axios.get('/appointments/${id}', id)
   },
   addAppointment(){
-      return http.post('/appointments')
+      return axios.post('/appointments')
   }, 
   updateAppointment(id){
-      return http.put('/appointments/${id}', id)
+      return axios.put('/appointments/${id}', id)
   }, 
   deleteAppointment(id){
-      return http.delete('/appointments/${id}', id)
+      return axios.delete('/appointments/${id}', id)
   }, 
   getAppointmentByDoctorId(id){
-    return http.get('/appointments/doctors/${id}', id)
+    return axios.get('/appointments/doctors/${id}', id)
   },
   getAppointmentByPatientId(id){
-    return http.get('/appointments/patients/${id}', id)
+    return axios.get('/appointments/patients/${id}', id)
   }
 
 }
