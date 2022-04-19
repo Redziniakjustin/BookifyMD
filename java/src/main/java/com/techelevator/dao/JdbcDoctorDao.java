@@ -112,15 +112,47 @@ public class JdbcDoctorDao implements DoctorDao{
         return doctor;
     }
 
+    @Override
+    public Doctor findDoctorByUserId(Long userId) {
+
+        Doctor doctor = new Doctor();
+
+        String sql = "select * from doctor as d join user_type as ut on ut.user_type_id = d.user_type_id where ut.user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        if(results.next()){
+            doctor = mapRowToDoctor(results);
+        }
+
+        return doctor;
+    }
+
     private Doctor mapRowToDoctor(SqlRowSet row){
         Doctor doctor = new Doctor();
         doctor.setDoctorId(row.getLong("doctor_id"));
         doctor.setUserTypeId(row.getLong("user_type_id"));
         doctor.setFirstName(row.getString("first_name"));
         doctor.setLastName(row.getString("last_name"));
-        doctor.setPhone(row.getString("email"));
+        doctor.setPhone(row.getString("phone"));
+        doctor.setEmail(row.getString("email"));
         doctor.setCostHourly(row.getLong("cost_hourly"));
+        doctor.setOfficeId(getOfficeIdByDoctorId(doctor.getDoctorId()));
         return doctor;
+    }
+
+    private Long getOfficeIdByDoctorId(Long doctorId){
+        String sql = "SELECT office_id FROM doctor_office WHERE doctor_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+        Long officeId = null;
+        if(results.next()){
+            officeId = mapRowToOfficeId(results);
+        }
+        return officeId;
+    }
+
+    private Long mapRowToOfficeId(SqlRowSet row){
+        Doctor doctor = new Doctor();
+        doctor.setOfficeId(row.getLong("office_id"));
+        return doctor.getOfficeId();
     }
 
 }

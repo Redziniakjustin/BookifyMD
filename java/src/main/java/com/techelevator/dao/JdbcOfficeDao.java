@@ -55,7 +55,14 @@ public class JdbcOfficeDao implements OfficeDao{
 
     @Override
     public List<Doctor> findDoctorsByOfficeId(Long officeId) {
-        return null;
+        String sql = "Select * from doctor as d join doctor_office as docO on d.doctor_id = docO.doctor_id where docO.office_id = ?;";
+        List<Doctor> doctors = new ArrayList<>();
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while(results.next()){
+            doctors.add(mapRowToDoctor(results));
+        }
+        return doctors;
+
     }
 
     @Override
@@ -125,4 +132,35 @@ public class JdbcOfficeDao implements OfficeDao{
         office.setDelayStatus(row.getBoolean("delay_status"));
         return office;
     }
+
+    private Doctor mapRowToDoctor(SqlRowSet row){
+        Doctor doctor = new Doctor();
+        doctor.setDoctorId(row.getLong("doctor_id"));
+        doctor.setUserTypeId(row.getLong("user_type_id"));
+        doctor.setFirstName(row.getString("first_name"));
+        doctor.setLastName(row.getString("last_name"));
+        doctor.setPhone(row.getString("phone"));
+        doctor.setEmail(row.getString("email"));
+        doctor.setCostHourly(row.getLong("cost_hourly"));
+        doctor.setOfficeId(getOfficeIdByDoctorId(doctor.getDoctorId()));
+        return doctor;
+    }
+
+    private Long getOfficeIdByDoctorId(Long doctorId){
+        String sql = "SELECT office_id FROM doctor_office WHERE doctor_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+        Long officeId = null;
+        if(results.next()){
+            officeId = mapRowToOfficeId(results);
+        }
+        return officeId;
+    }
+
+    private Long mapRowToOfficeId(SqlRowSet row){
+        Doctor doctor = new Doctor();
+        doctor.setOfficeId(row.getLong("office_id"));
+        return doctor.getOfficeId();
+    }
+
+
 }

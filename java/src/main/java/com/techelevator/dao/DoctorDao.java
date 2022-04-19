@@ -30,6 +30,8 @@ public interface DoctorDao {
 
     Doctor findDoctorByUsername(String username);
 
+    Doctor findDoctorByUserId(Long userId);
+
 
 }
 
