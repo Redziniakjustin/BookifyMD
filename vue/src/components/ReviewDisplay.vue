@@ -1,7 +1,12 @@
 <template>
    <div>
      <div>
-      <star-rating v-model="avgRating" value="avgRating"/><span>{{avgRating}}</span>
+      <star-rating 
+      v-model="avgRating" 
+      v-bind:show-rating="false" 
+      v-bind:read-only="true"
+      v-bind:increment="0.01"/>
+      <span>{{avgRating}}</span>
       <table>
         <tbody v-for="review in reviews" :key=review>
           <tr>

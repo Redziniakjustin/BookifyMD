@@ -26,6 +26,12 @@ export default {
   },
   getUserTypeIdById(id){
     return http.get('/profiles/${id}', id)
+  },
+  getDoctorProfileById(id){
+    return http.get('/profiles/doctors/${id}', id)
+  },
+  getPatientProfileById(id){
+    return http.get('/profiles/patients/${id}', id)
   }
 
 }

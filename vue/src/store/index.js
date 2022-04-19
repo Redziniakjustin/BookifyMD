@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import getUserTypeIdById from '@/services/ProfileService'
-
+import getDoctorProfileById from '@/services/ProfileService'
+import getPatientProfileById from '@/services/ProfileService'
 Vue.use(Vuex)
 
 /*
@@ -41,10 +42,19 @@ export default new Vuex.Store({
     },
     SET_PROFILE(state, profile) {
       if(state.user.id != null){
-        if(state.profileType.isDoctor === false){
-          //Code to to populate patient profile
+        if(state.profileType.isDoctor){
+          //Code to to populate doctor profile
+          getDoctorProfileById(state.user.id)
+          .then(response =>{
+            state.profile = profile;
+            localStorage.setItem('profile', response)
+          })
         }else{
-          //code to populate doctor profile
+          //code to populate patient profile
+          getPatientProfileById(state.user.id).then((response)=>{
+            state.profile = profile;
+            localStorage.setItem('profile', response)
+          })
         }
         state.profile = profile;
         localStorage.setItem('profile',JSON.stringify(profile));
@@ -52,8 +62,11 @@ export default new Vuex.Store({
     },
     SET_PROFILE_TYPE(state, profileType){
       if(getUserTypeIdById(state.user.id) != null){
-        state.profileType = profileType;
-        localStorage.setItem('profileType', getUserTypeIdById(state.user.id))
+        getUserTypeIdById(state.user.id).then((response)=>{
+          state.profileType = profileType;
+        localStorage.setItem('profileType', response)
+        })
+        
       }
     },
     SET_AUTHENTICATION(state, authenticated){
@@ -68,6 +81,7 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       state.profile = {};
+      state.profileType = {};
       state.authenticated = false;
       axios.defaults.headers.common = {};
     }
