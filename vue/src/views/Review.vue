@@ -10,7 +10,7 @@
       </div>
 
 
-    <div class="review-body">
+    <div class="review-body elevated-box">
         <div class="review-btns review-col-l"> 
           <img src="../assets/review-l.png" alt="">
 

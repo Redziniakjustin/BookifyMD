@@ -33,7 +33,7 @@ data() {
 }
 </script>
 
-<style>
+<style scoped>
 .middle-column{
   overflow: auto;
 }

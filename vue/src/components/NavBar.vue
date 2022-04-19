@@ -35,25 +35,25 @@
         <ul>
           <li class="inline" v-if="isHome===false">
             <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link  id="home-link no-hyper" style="text-decoration:none" :to="{ name: 'home' }">Home</router-link>
+                <router-link class="no-hyper" id="home-link" :to="{ name: 'home' }">Home</router-link>
             </v-btn>
           </li>
 
           <li class="inline" v-if="isProfile===false">
-           <v-btn  color="accent"  elevation="7"   outlined  raised  text  tile> 
-             <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Doctor Profile</router-link>
+           <v-btn  color="accent"  elevation="7"   outlined  raised  text  tile> <!-- Doctor  -->
+             <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Profile</router-link>
            </v-btn>
           </li>
 
-          <li class="inline" v-if="isAppointment===false"  >  <!-- troubleshoot why class no text dec failed -->
+          <li class="inline" v-if="isAppointment===false">
           <v-btn color="accent" elevation="7" outlined raised text tile>
-              <router-link id="appointment-link no-hyper" style="text-decoration:none" :to="{ name: 'appointment' }">Scheduled Appointments</router-link>
+              <router-link class="no-hyper" id="appointment-link" :to="{ name: 'appointment' }">Appointments</router-link>
           </v-btn>
           </li>
 
           <li class="inline" v-if="isReview===false" >
             <v-btn color="accent" elevation="7" outlined raised text tile>
-               <router-link class="review-link no-hyper" :to="{ name: 'review' }">View Reviews</router-link>
+               <router-link class="review-link no-hyper" :to="{ name: 'review' }">Reviews</router-link>
             </v-btn>
           </li>
 
@@ -76,7 +76,7 @@
           
           <li class="inline" v-if="isReview===false"> 
             <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link class="review-link no-hyper" :to="{ name: 'review' }">View Reviews</router-link>
+                <router-link class="review-link no-hyper" :to="{ name: 'review' }">Reviews</router-link>
             </v-btn>
           </li>
         </ul>
@@ -168,6 +168,7 @@ methods:{
 
 
 <style>
+
 /* Potential Colors
  purple - #9999FF
  purple light - #E6E6FF 
@@ -185,11 +186,9 @@ methods:{
     flex-direction: row;
     align-items: center;
     justify-content: center space-between;
-    /* font-size: .5rem; */
     margin: 0;
     padding: 0;
     max-height: 140px;
-    /* z-index: 1; */
   }
   .container{
     list-style-type: none; 
@@ -199,41 +198,30 @@ methods:{
   }
   /*Must add Media Query for this */
   .logo{
-    margin: 0% 0 0 0;
+    margin: 0 0 0 0;
     padding: 10% 10% 10% 10%;
     max-height: auto; /* Needs to change on resize */
     width: 100%;
   }
   .left-header-container{
   flex-basis: 20%;
-  /* margin-left: 1%; */
   }
   .center-header-container{
   flex-basis: 20%;
-  /* margin-left: 10vw; */
   }
   .right-header-container{
   flex-basis: 20%;
-  /* margin-left: 10vw; */
   }
-  ul {              
+  /* ul {              
     margin: 0;
     padding: 0;
     background-color: transparent;
-  }
+  } */
   .inline{
     display:inline-block;
   }
   .inline a {
     padding: 2px;
-    /* border-right: 1px solid #bbb; */
   }
-  .inline a:last-child {
-    border-right: none;
-  }
-  .no-hyper{
-    text-decoration: none;
-  }
-   
 </style>
 

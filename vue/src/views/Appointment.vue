@@ -1,10 +1,14 @@
 <template>
   <div class="appointment-container">
-
-  <img src="../assets/appointments-1.png" alt="">  
+    <div class="appointment-photo-array">
+      <img class="ap-p" src="../assets/appointments-1.png" alt="Appointment Photo 1">
+      <img class="ap-p" src="../assets/appointments-2.png" alt="Appointment Photo 2">
+      <img src="../assets/appointments-3.png" alt="Appointment Photo 3">
+    </div>
+      
     <h1>Appointments</h1>
   
-  <section class="appointment-body">  
+  <section class="appointment-body elevated-box">  
     
     <doctor-schedule v-if="user.role==='doctor'"/>
 
@@ -42,10 +46,11 @@ export default {
     align-items: center;
     justify-content: space-between;
    }
-    .appointment-body{
-     
-     margin: 20px 0 0px 20px;
-     font-size: 1.1rem;
+.appointment-body{
+    margin: 20px 0 0px 20px;
+    font-size: 1.1rem;
    }
-
+.ap-p{
+margin-right: 20px;
+}
 </style>

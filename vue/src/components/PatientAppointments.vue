@@ -28,7 +28,7 @@
             <td>{{appointment.description}}</td>
             <td>
           <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link id="reviewLink" :to="{name:'review', params:{appointmentID: appointment.appointmentID, date: appointment.appointmentDate, doctorName: appointment.doctor}}">Leave A Review</router-link>
+                <router-link class="" id="reviewLink" :to="{name:'review', params:{appointmentID: appointment.appointmentID, date: appointment.appointmentDate, doctorName: appointment.doctor}}">Leave A Review</router-link>
           </v-btn>
             </td>
           </tr>

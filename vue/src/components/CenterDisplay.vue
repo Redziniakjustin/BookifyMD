@@ -4,7 +4,7 @@
         <div>
              <img src="../assets/landing-1.png" alt="">
             <h1 class="">Available Doctors</h1>
-            <input class="btn-search" type="text" placeholder="Search By Doctor" v-model="search"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
+            <input class="" type="text" placeholder="Search By Doctor" v-model="search"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
             <input class="btn-search" type="submit">
         </div> 
         <table>
@@ -17,7 +17,7 @@
                 <td v-on:click="clicked" v-if="user.role=='patient'">
                 <td>
                     <button class="table-btn">
-                        <router-link class="no-hyper" id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">View Reviews</router-link>
+                        <router-link class="no-hyper" id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">Reviews</router-link>
                     </button>
                 </td>
                 <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
@@ -188,7 +188,7 @@
     padding: 2%;
   }
   .middle-column{
-    flex-basis: 40%;
+    flex-basis: 30%;
   }
   .right-column{
    flex-basis: 30%;
