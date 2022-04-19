@@ -33,8 +33,25 @@ img{
         background: white;
         border-radius: 5px;
       }
-      .add-box{
-       /* min-height: 200px;
-        width: 50vw; */   
+      input{
+        width: 100%;
+        display: block;
+        margin: 8px 0;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border:1px solid;
+        }
+      input:hover{
+      border:1.4px solid  rgb(81, 56, 104);
+      }
+      h1 {
+        font-size: 1.5em; /* 40px/16=2.5em */
       }
       
+      h2 {
+        font-size: 1.175em; /* 30px/16=1.875em */
+      }
+      
+      p {
+        font-size: 0.9em; /* 14px/16=0.875em */
+      }
