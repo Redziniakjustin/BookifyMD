@@ -19,8 +19,8 @@ export default {
     return http.post('/reviews/', review);
   },
 
-//   update(){
-//     return http.update('/reviews', review);
-// }
+  addReviewResponse(id, reviewResponse){
+    return http.put('/reviews/${id}', {id, reviewResponse});
+}
 
 }
