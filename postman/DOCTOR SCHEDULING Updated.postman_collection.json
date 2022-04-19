@@ -766,6 +766,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Return UserTypeId by Username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/login/ehilkowitz",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login",
+						"ehilkowitz"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
