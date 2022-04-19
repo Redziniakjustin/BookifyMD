@@ -23,4 +23,6 @@ public interface PatientDao {
     boolean create(Patient newPatient);
 
     Patient findPatientByUsername(String username);
+
+    Patient findPatientByUserId(Long userId);
 }

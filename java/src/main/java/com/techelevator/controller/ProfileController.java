@@ -36,19 +36,17 @@ public class ProfileController {
 
     //localhost:8080/profiles/patients/{id}
     @RequestMapping(value = "/patients/{id}")
-    public Patient getPatientProfile(@PathVariable Long id){
-        User user = userDao.getUserById(id);
-        return patientDao.findPatientByUsername(user.getUsername());
+    public Patient getPatientProfileByUserId(@PathVariable Long id){
+        return patientDao.findPatientByUserId(id);
 
     }
 
     //localhost:8080/profiles/patients/{id}
     //GET DOCTOR PROFILE
     @RequestMapping (value = "/doctors/{id}")
-    public Doctor getDoctorProfile(@PathVariable Long id){      //id here is userId
-        User user = userDao.getUserById(id);
-        return doctorDao.findDoctorByUsername(user.getUsername());
+    public Doctor getDoctorProfileByUserId(@PathVariable Long id){      //id here is userId
 
+        return doctorDao.findDoctorByUserId(id);
 
     }
 

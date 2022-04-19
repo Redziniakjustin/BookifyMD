@@ -89,6 +89,19 @@ public class JdbcPatientDao implements PatientDao{
         return patient;
     }
 
+    @Override
+    public Patient findPatientByUserId(Long userId) {
+        Patient patient = new Patient();
+
+        String sql = "select * from patient as p join user_type as ut on ut.user_type_id = p.user_type_id where ut.user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        if(results.next()){
+            patient = mapRowToPatient(results);
+        }
+
+        return patient;
+    }
+
     private Patient mapRowToPatient(SqlRowSet row){
         Patient patient = new Patient();
         patient.setPatientId(row.getLong("patient_id"));
