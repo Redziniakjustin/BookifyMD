@@ -38,7 +38,6 @@
 </template>
 
 <script>
-//import axios from 'axios';
 import profileService from '@/services/ProfileService';
 export default {
   data(){

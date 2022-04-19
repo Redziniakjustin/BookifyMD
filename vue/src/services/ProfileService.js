@@ -33,8 +33,8 @@ export default {
   getPatientProfileById(id){
     return http.get('/profiles/patients/${id}', id)
   },
-  getProfileTypeIdByUsername(id){
-    return http.get('/ChangeEndpoint', id)
-  }
+  getProfileTypeIdByUsername(username){
+    return http.get('/login/${username}', username)
+  },
 
 }
