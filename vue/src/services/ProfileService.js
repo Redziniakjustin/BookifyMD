@@ -32,6 +32,9 @@ export default {
   },
   getPatientProfileById(id){
     return http.get('/profiles/patients/${id}', id)
+  },
+  getProfileTypeIdByUsername(id){
+    return http.get('/ChangeEndpoint', id)
   }
 
 }

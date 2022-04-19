@@ -54,13 +54,7 @@ export default {
             state: "", 
             zipCode: "", 
             email: "",
-        },
-        // profile:{
-        //   firstName: "bob",
-        //   lastName: "bobbyson",
-        //   phoneNumber: 5555555555,
-        //   address: "1500 Market",            
-        // },
+        }
       }
   }, 
    methods:{
@@ -84,7 +78,7 @@ export default {
    },
    mounted(){
      profileService
-      .getUserTypeIdByUsername(this.$route.query.username)
+      .getProfileTypeIdByUsername(this.$route.query.username)
       .then(response => {
         this.patient.userTypeId = response.data;
       }).catch(error => {
@@ -92,18 +86,7 @@ export default {
               this.error = true
           })
    }
-   }
-  //   submitPatientProfileInfoForm(){
-  //     axios.post('/endpoint', )
-  //     .then((response)=>{
-  //     if(response.status === 201){
-  //       this.$router.push('profile')
-  //     }
-  //     }).catch((error)=>{
-  //       console.log(error.response.status);
-  //     })
-  //   },
- 
+}
 </script>
 
 <style >
