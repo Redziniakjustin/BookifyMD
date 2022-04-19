@@ -2,7 +2,7 @@
 <div class="display-container"> 
     <div class="left-column column">
         <div>
-             <img src="../assets/landing-1.png" alt="">
+             <img src="../assets/landing-1.png" alt="Doctor's Reviewing Patient Chart">
             <h1 class="">Available Doctors</h1>
             <input class="" type="text" placeholder="Search By Doctor" v-model="search"/> <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
             <input class="btn-search" type="submit">
@@ -17,13 +17,13 @@
                 <td v-on:click="clicked" v-if="user.role=='patient'">
                 <td>
                     <button class="table-btn">
-                        <router-link class="no-hyper" id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">Reviews</router-link>
+                        <router-link id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">Reviews</router-link>
                     </button>
                 </td>
                 <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
                 <td>
                     <button class="table-btn">
-                        <router-link class="no-hyper" id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
+                        <router-link id="schedule" :to="{ name: 'schedule', params: {doctorID: doctor.id, patientID: user.id, officeID: doctor.officeID} }">Schedule</router-link> <!-- capture id-->
                     </button> 
                 </td> 
             </tr>
@@ -169,33 +169,38 @@
 
 <style>
 @import '../assets/styles/styles.css';
+
 .display-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: center space-between;
     margin: 150px 0 10px 0;
-    font-size: 0.75rem;
-  }
-  .column{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: nowrap;
   }
   .left-column{
-    flex-basis: 30%;
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+    flex-shrink: 2;  
+    flex-basis: 22%;
     padding: 2%;
   }
   .middle-column{
-    flex-basis: 30%;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   flex-grow: 2;
+   flex-basis: 40%;
   }
   .right-column{
-   flex-basis: 30%;
-   margin-right: 10px;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   flex-grow: 1;
+   flex-shrink: 2;
+   flex-basis: 22%;
    padding: 2%;
   }
-.no-hyper{
-    text-decoration: none;
-}
 </style>

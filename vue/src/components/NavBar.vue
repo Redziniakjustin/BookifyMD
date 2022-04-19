@@ -212,11 +212,6 @@ methods:{
   .right-header-container{
   flex-basis: 20%;
   }
-  /* ul {              
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-  } */
   .inline{
     display:inline-block;
   }
