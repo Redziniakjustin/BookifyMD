@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.LoginDTO;
-import com.techelevator.model.RegisterUserDTO;
-import com.techelevator.model.User;
-import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
@@ -68,6 +65,15 @@ public class AuthenticationController {
             e.getMessage();
         }
     }
+
+
+    @RequestMapping(value = "/login/{username}")
+    public Long findUserTypeIdfromUsername(@PathVariable String username){
+
+          return   userDao.findUserTypeByUsername(username).getUserTypeId();
+
+    }
+
 
     /**
      * Object to return as body in JWT Authentication.
