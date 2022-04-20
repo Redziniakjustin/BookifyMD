@@ -106,7 +106,7 @@
         <input
           class="btn-search"
           type="text"
-          placeholder="Search By Provider"
+          placeholder="Search By Office"
         />
 
         <input class="btn-search" type="submit" />
