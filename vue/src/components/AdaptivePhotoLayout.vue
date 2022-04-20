@@ -18,7 +18,7 @@
     <img src = "..\assets\DoctorByWindow.png">
   </li>
   <li>
-    <img src = "..\assets\doctorholdingbehindback.png">
+    <img src = "..\assets\doctor-Holding-Behindback.png">
   </li>
   </ul>
 </div>
