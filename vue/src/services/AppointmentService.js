@@ -18,10 +18,10 @@ export default {
       return axios.delete('/appointments/${id}', id)
   }, 
   getAppointmentByDoctorId(id){
-    return axios.get('/appointments/doctors/${id}', id)
+    return axios.get(`/appointments/doctors/${id}`)
   },
   getAppointmentByPatientId(id){
-    return axios.get('/appointments/patients/${id}', id)
+    return axios.get(`/appointments/patients/${id}`)
   }
 
 }

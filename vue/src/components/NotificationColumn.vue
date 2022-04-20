@@ -22,9 +22,11 @@
 </template>
 
 <script>
+import appointmentService from '@/services/AppointmentService'
 export default {
 data() {
     return {
+      //notifications:[],
       notifications:[
         {
         alert: "Delay",
@@ -59,6 +61,38 @@ data() {
       ] 
     }
   },
+  computed:{
+    currentUser() {
+      return this.$store.state.user;
+    },
+    currentUserType(){
+        return this.$store.state.profileType.isDoctor;
+    },
+    currentUserProfile(){
+        return this.$store.state.profile;
+    }
+  }, 
+  mounted(){
+    if(this.currentUser.isDoctor){
+      appointmentService.getAppointmentByDoctorId(this.currentUser.id)
+      .then((response)=>{
+        if(response.status==200){
+          this.notifications = response.data
+        }else{
+          console.log("Unable to get Notifications")
+        }
+      })
+    }else{
+      appointmentService.getAppointmentByPatientId(this.currentUser.id)
+      .then((response)=>{
+        if(response.status==200){
+          this.notifications = response.data
+        }else{
+          console.log("Unable to get Notifications")
+        }
+      })
+    }
+  }
 }
 </script>
 
