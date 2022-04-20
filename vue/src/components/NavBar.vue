@@ -1,16 +1,15 @@
 <template>
   <div class="header-container" id="header-container" >
 
-    <div class="left-header-container container" id="lhc">
-
-        <div class="link-group-1" v-if="user.role=='patient'">
+    <div class="left-header-container container" id="lhc" v-if="this.$store.state.authenticated">
+        <!--Patient-->
+        <div class="link-group-1" v-if="!currentUserType">
         <ul>
           <li class="inline" v-if="isHome===false">
               <v-btn color="accent" elevation="7" outlined raised text tile> 
                   <router-link id="home-link no-hyper" :to="{ name: 'home' }">Home</router-link>
               </v-btn>         
           </li>
-
           <li class="inline" v-if="isProfile===false">
             <v-btn color="accent" elevation="7" outlined raised text tile>
               <router-link id="profile-link no-hyper" :to="{ name: 'profile' }">Patient Profile</router-link>
@@ -30,8 +29,8 @@
           </li>
         </ul>
         </div>
-
-        <div class="link-grouping link-group-2" v-if="user.role=='doctor'">
+        <!--Doctor -->
+        <div class="link-grouping link-group-2" v-if="currentUserType">
         <ul>
           <li class="inline" v-if="isHome===false">
             <v-btn color="accent" elevation="7" outlined raised text tile>
@@ -41,7 +40,7 @@
 
           <li class="inline" v-if="isProfile===false">
            <v-btn  color="accent"  elevation="7"   outlined  raised  text  tile> <!-- Doctor  -->
-             <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Profile</router-link>
+             <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Doctor Profile</router-link>
            </v-btn>
           </li>
 
@@ -59,28 +58,6 @@
 
         </ul>
         </div>
-
-        <div class="link-group-3" v-if="user.role=='provider'">
-        <ul>
-          <li class="inline" v-if="isHome===false">
-            <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link  id="home-link no-hyper" :to="{ name: 'home' }">Home</router-link>
-            </v-btn>
-          </li>
-
-          <li class="inline" v-if="isProfile===false"> 
-            <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Provider Profile</router-link>
-            </v-btn>
-          </li>
-          
-          <li class="inline" v-if="isReview===false"> 
-            <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link class="review-link no-hyper" :to="{ name: 'review' }">Reviews</router-link>
-            </v-btn>
-          </li>
-        </ul>
-        </div>
     </div> 
 
 
@@ -93,37 +70,29 @@
 
 
     <div class="right-header-container container" id="rhc">  
-        <li class="inline" v-if="user.status==='authenticated'">
+        <li class="inline" v-if="this.$store.state.authenticated">
           <v-btn color="accent" elevation="7" outlined raised text tile>
             <router-link class="link-log-out no-hyper" :to="{ name: 'logout' }">Log Out</router-link>
           </v-btn>
         </li>
         
-        <li v-else>
+        <li class="inline" v-else>
           <v-btn color="accent" elevation="7" outlined raised text tile>
             <router-link class="link-log-in no-hyper" :to="{ name: 'login' }">Log In</router-link>
           </v-btn>
         </li>
         
-        <li class="inline" v-if="user.status==='authenticated'">
+        <!-- <li class="inline" >
           <v-btn color="accent" elevation="7" outlined raised text tile>
              <router-link class="link-profile no-hyper" :to="{ name: 'profile' }">Profile</router-link>
           </v-btn>
-        </li>
+        </li> -->
                                     
-        <li v-else>
+        <li class="inline" v-if="!this.$store.state.authenticated">
           <v-btn color="accent" elevation="7" outlined raised text tile>                   
                 <router-link class="link-register no-hyper" :to="{ name: 'register' }">Register</router-link>                  
           </v-btn>                 
         </li>
-
-   <!-- DELETABLE??  -->
-    <!-- <div class="login-register">   
-        <li class="inline">    
-          <router-link class="login-register-child no-hyper" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-        </li>
-    </div> -->
-
     </div>
 
   </div>
@@ -133,12 +102,6 @@
 export default {
  data() {
     return {
-      user: {
-        role: "doctor",
-        // role: "patient"
-        // role: "provider",
-        status: "authenticated"
-      }
     }
   },
   computed: {
@@ -161,7 +124,7 @@ export default {
      return this.$store.state.user
             },
   currentUserType(){
-     return this.$store.profileType.isDoctor;
+     return this.$store.state.profileType.isDoctor;
         },
   currentUserProfile(){
       return this.$store.state.profile;
