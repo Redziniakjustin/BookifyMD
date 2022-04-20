@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>
-      <table>
+      <table class="app-table">
         <tbody v-for="appointment in appointments" :key=appointment>
-          <tr>
+          <tr class="tr">
             <td>{{appointment.appointmentDate}}</td>
             <td>{{appointment.time}}</td>
             <td>{{appointment.location}}</td>
@@ -20,7 +20,7 @@
       </div>
     <div v-if="isPastAppointment = isPastAppointment">
      
-      <table>
+      <table class="app-table">
         <tbody v-for="appointment in pastAppointments" :key=appointment>
           <tr>
             <td>{{appointment.appointmentDate}}</td>
@@ -36,12 +36,17 @@
           </tr>
         </tbody>
       </table>
+
+  <!-- <adaptive-photo-layout/> -->
+
     </div>
   </div>
 </template>
 
 <script>
 import appointmentService from '@/services/AppointmentService'
+// import AdaptivePhotoLayout from '@/components/AdaptivePhotoLayout.vue'
+
 export default {
     data(){
         return{
@@ -151,5 +156,13 @@ export default {
 <style scoped>
 .app-btns{
   margin: 30px 0 30px;
+}
+.app-table{
+  padding: 10px 20px 10px 20px;
+  border: 1px solid;
+  width: 100%;
+}
+.tr{
+  height: 1.8em;
 }
 </style>
