@@ -137,7 +137,7 @@ export default {
         },
     },
   mounted(){
-    appointmentService.getAppointmentByPatientId(this.$store.profile.id)
+    appointmentService.getAppointmentByPatientId(this.currentUserProfile.patientId)
     .then(response =>{
       this.appointments = response.data
     }).catch(error => {
