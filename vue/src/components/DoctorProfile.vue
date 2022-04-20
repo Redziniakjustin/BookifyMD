@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted(){
-    this.doctor = this.$store.profile
+    this.doctor = this.$store.state.profile
     console.log(this.doctor)
     // getDoctorProfileById(this.$store.user.id).then((response)=>{
     //   this.doctor = response.data;

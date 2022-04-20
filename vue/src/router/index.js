@@ -100,7 +100,7 @@ const router = new Router({
     },
     {
       path: "/schedule/:doctorID",
-      name: "schedule",      //TODO should this name be repeated
+      name: "scheduleDoctor",      //TODO should this name be repeated
       component: Schedule,
       meta: {
         requiresAuth: false

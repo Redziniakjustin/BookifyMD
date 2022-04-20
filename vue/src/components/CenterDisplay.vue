@@ -8,13 +8,26 @@
             <input class="btn-search" type="submit">
         </div> 
         <table>
-        <tbody>
-            <tr v-for="doctor in filteredDoctors" :key="doctor">
+        <tbody v-for="doctor in doctors" :key="doctor">
+            <tr>
                 <td>Dr. {{doctor.firstName}} {{doctor.lastName}}</td>
+            </tr>
+            <tr>
                 <td>{{doctor.location}}</td>
-                <td>{{doctor.phoneNumber}}</td>
-                <td>{{doctor.rating}}</td>
+            </tr>
+            <tr>
+                <td>{{doctor.phone}}</td>
+            </tr>
+            <tr>    
+                <td>{{doctor.email}}</td>
+            </tr>
+            <tr>    
+                <td>Hourly Cost: <strong>${{doctor.costHourly}}</strong></td>
+            </tr>
+            <!-- <tr>
                 <td v-on:click="clicked" v-if="user.role=='patient'">
+            </tr> -->
+            <tr>
                 <td>
                     <button class="table-btn">
                         <router-link id="reviews" :to="{name: 'review', params: {doctorID: doctor.doctorID, firstName: doctor.firstName, lastName: doctor.lastName}}">Reviews</router-link>
@@ -32,9 +45,9 @@
     </div>
 
     <!--must change v-if to take global auth variable -->
-    <div v-if="this.$store.authenticated" class="middle-column column "><!--Change V-if {This will be to show notification for Auth Users only!!}-->
-        <h2 v-if="this.$store.profile.firstName === null"> 
-            Please Update Profile Here: <router-link :to="{name: 'profile'}">Profile</router-link>
+    <div v-if="this.$store.state.authenticated" class="middle-column column "><!--Change V-if {This will be to show notification for Auth Users only!!}-->
+        <h2 v-if="this.$store.state.profile.firstName === null"> 
+            Please Update Profile Here: <router-link :to="{name: 'profileRegister'}">Register Profile</router-link>
         </h2>
         <notification-column/>
      </div>    
@@ -53,19 +66,24 @@
             <input class="btn-search" type="submit">       
 
         </div> 
-        <table>
-        <tbody>
-            <tr v-for="provider in providers" :key="provider">
-                <td v-on:click="clicked">
-                   <input type="checkbox"> 
-                </td>
-                <td>{{provider.name}}</td>
-                <td>{{provider.location}}</td>
-                <td>{{provider.phone-number}}</td>
-                <td>{{provider.rating}}</td>
-                <td>{{provider.reviews}}</td>
-            </tr>
-        </tbody>
+        <table >
+            <tbody v-for="office in offices" :key="office.id">
+                <tr >
+                    <td>{{office.officeName}}</td>
+                </tr>
+                <tr>
+                    <td>{{office.streetAddress}}</td>
+                </tr>
+                <tr>
+                    <td>{{office.city}}</td>
+                </tr>
+                <tr>
+                    <td>{{office.phone}}</td>
+                </tr>
+                <tr>
+                    <td>{{office.email}}</td>
+                </tr>
+            </tbody>
         </table>
 
          <img src="../assets/landing-2.png" alt="">
@@ -79,8 +97,7 @@
     import LandingCenterColumn from '@/components/LandingCenterColumn.vue'
     import NotificationColumn from '@/components/NotificationColumn.vue'
     //Will Use once API endpoints are available 
-    //import listDoctor from '@/services/ProfileService'
-    //import listOffices from '@/services/ProfileService'
+    import profileService from '@/services/ProfileService'
     export default {
         data(){
             return {
@@ -89,50 +106,15 @@
                 role: 'patient',
                 id: 9876
             },
-            // authenticated: "True",
+            //authenticated: "True",
             authenticated: "False",
             active: "True",
             doctors: [
-                {
-                id: 12345,
-                firstName:"Omari",
-                lastName: "RI",
-                location: "3400 Springarden",
-                officeID: 21,
-                phoneNumber: "5552222525",
-                rating: 3,
-                reviews:"Ok"
-                }, 
-                {
-                id: 8910,
-                firstName:"Hugo",
-                lastName: "B",
-                location: "3400 Market",
-                officeID: 45,
-                phoneNumber: "8888888888",
-                rating: 5,
-                reviews:"Ok"
-                },
-                {
-                id: 60606,
-                firstName:"Mark",
-                lastName: "S",
-                location: "225 s19th St ",
-                officeID: 98,
-                phoneNumber: "7777777777",
-                rating: 1,
-                reviews:"Ok"
-                }
+                {}
             ],
-            offices: []
-            /*{
-                name:"Malcy Gee",
-                location: "1212 Cedar",
-                officeID: 66,
-                phoneNumber: "8880003434",
-                rating: 4,
-                reviews: "Eh"
-            }, */
+            offices: [
+                {}
+            ]
             } 
         },
         components:{
@@ -141,31 +123,75 @@
         }, 
         computed : {
             filteredDoctors() {
-            if (!this.search) return this.doctors
-            return this.doctors.filter(doctor => {
-                return (doctor.name.toLowerCase().includes(this.search.toLowerCase()) || doctor.location.toLowerCase().includes(this.search.toLowerCase()));
-                })
+            if (!this.search){
+                return this.doctors
+            }else{ 
+                return this.doctors.filter(doctor => {
+                    return (doctor.name.toLowerCase().includes(this.search.toLowerCase()) || doctor.location.toLowerCase().includes(this.search.toLowerCase()));
+                    })
+            }
             },
             isAuthenticated(){
                 return this.$store.state.authenticated
             }
         }, //Will be used to populate the doctors list.
-    //     mounted(){
-    //     //Will be used to populate the doctors list.
-    //     /*listDoctor().then(response => {
-    //         this.doctors = response.data
-    //     }).catch(error => {
-    //         console.log(error)
-    //         this.error = true
-    //     }).finally(() => this.loading = false)
-    //     //Will be used to populate providers list. */
-    //     listOffices().then(response => {
-    //         this.offices = response.data
-    //     }).catch(error => {
-    //         console.log(error)
-    //         this.error = true
-    //     }).finally(() => this.loading = false)
-    // }
+        mounted(){
+        console.log(this.$store.state.user.id)
+
+        //Will be used to populate the doctors list.
+        profileService.listDoctor().then(response => {
+            this.doctors = response.data
+        }).catch(error => {
+            console.log(error)
+            this.error = true
+        }).finally(() => this.loading = false)
+        console.log(this.doctors)
+
+        //Will be used to populate providers list.
+        profileService.listOffices().then(response => {
+            this.offices = response.data
+        }).catch(error => {
+            console.log(error)
+            this.error = true
+        }).finally(() => this.loading = false)
+        console.log(this.offices)
+
+
+        profileService.getUserTypeIdById(this.$store.state.user.id)
+        .then((response)=>{ if (response.status == 200) {
+            this.$store.commit("SET_PROFILE_TYPE", response.data)
+        } else{
+            console.log("UserTypeFailed")
+        }
+        })
+        
+        //Set Store state authenticated 
+        if(this.$store.state.user.id != null){
+            let authenticated = true;
+            this.$store.commit("SET_AUTHENTICATION", authenticated);
+        } else{
+            console.log('Failed')
+        }
+
+        //Method to set user Profile
+        if(this.$store.profileType.isDoctor){
+            profileService.getDoctorProfileById(this.$store.state.user.id)
+          .then((response) => {
+              if(response.status == 200){
+                  this.$store.commit("SET_PROFILE", response.data)
+              } else{
+                  console.log('Failed')
+              }
+          })
+        } else{
+            profileService.getPatientProfileById(this.$store.state.user.id)
+          .then((response) => {
+              if(response.status == 200){
+                  this.$store.commit("SET_PROFILE", response.data)
+              }
+          })
+        }
+    } 
 }
 </script>
 

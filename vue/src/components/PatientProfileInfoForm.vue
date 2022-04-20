@@ -76,10 +76,9 @@ export default {
     }
    },
    mounted(){
-     console.log(this.$route.query.username)
-     console.log(this.patient.userTypeId)
+     console.log("Mounted")
      profileService
-      .getProfileTypeIdByUsername(this.$store.user.username)
+      .getProfileTypeIdByUsername(this.$store.state.user.username)
       .then(response => {
         this.patient.userTypeId = response.data;
       }).catch(error => {
