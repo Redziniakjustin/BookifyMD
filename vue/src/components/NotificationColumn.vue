@@ -2,14 +2,14 @@
   <div class="middle-column">
         <h1 class="agenda">Notifications</h1>
         <tbody>
-            <tr>
-                <td> {{notifications.notification}} </td>
-                <td> {{notifications.date}} </td>
-                <td> {{notifications.time}} </td>
-                <td> {{notifications.doctor}} </td>
-                <td> {{notifications.facility}} </td>
-                <td> {{notifications.location}} </td>
-                <td> {{notifications.description}} </td>
+            <tr v-for="notification in notifications" :key="notification.id">
+                <td> {{notification.alert}} </td>
+                <td> {{notification.date}} </td>
+                <td> {{notification.time}} </td>
+                <td> {{notification.doctor}} </td>
+                <td> {{notification.facility}} </td>
+                <td> {{notification.location}} </td>
+                <td> {{notification.description}} </td>
             </tr>
         </tbody>
     </div>
@@ -19,15 +19,20 @@
 export default {
 data() {
     return {
-      notifications: {
-        notification: "Delay",
+      notifications:[
+        {
+        alert: "Delay",
         date: "05/01/22",
         time: "1600",
         doctor: "Naval Poindexter",
         facility: "Presbyterian",
         Location: "1001 Spruce St",
         Description: "Spinal Tap"
-        } 
+        }, 
+        {},
+        {},
+        {}
+      ] 
     }
   },
 }

@@ -245,17 +245,17 @@ export default {
     //TODO: BAD NAMING MAY CAUSE FUNCTIONAL CONFUSION -> getUserTypeByID !-> Profile
     console.log("Calling UserType");
 
-    profileService.getUserTypeIdById(this.currentUser.id).then((response) => {
-        console.log(4);
-      if (response.status == 200) {
-        //this.$store.commit("SET_PROFILE_TYPE", response.data)
-        this.$store.commit("SET_PROFILE", response.data);
+    // profileService.getUserTypeIdById(6).then((response) => {
+    //     console.log(4);
+    //   if (response.status == 200) {
+    //     console.log(response.data)
+    //     this.$store.commit("SET_PROFILE_TYPE", response.data);
 
         
-      } else {
-        console.log("UserTypeFailed");
-      }
-    });
+    //   } else {
+    //     console.log("UserTypeFailed");
+    //   }
+    // });
 
 
   },
