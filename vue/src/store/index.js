@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+
 Vue.use(Vuex)
 
 /*
@@ -43,7 +44,7 @@ export default new Vuex.Store({
     },
     SET_PROFILE(state, profile) {
       if(state.user.id != null){
-        this.profile = profile;
+        state.profile = profile;
       }
     }, 
     SET_PROFILE_TYPE(state, userType){
