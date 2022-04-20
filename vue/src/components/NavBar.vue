@@ -156,8 +156,17 @@ export default {
   },
   isSchedule() {
      return this.$route.name === 'schedule'
-  }
-},
+  },
+  currentUser(){
+     return this.$store.state.user
+            },
+  currentUserType(){
+     return this.$store.profileType.isDoctor;
+        },
+  currentUserProfile(){
+      return this.$store.state.profile;
+        },
+    },
 methods:{
   returnHome(){
     return this.$router.push('/')
@@ -168,9 +177,9 @@ methods:{
 
 
 <style>
-.header-container {           /* the nav bar */
+.header-container {      
     position: fixed;
-    background: rgb(212, 240, 237) ;
+    background: rgb(212, 240, 237);
     top: 0;
     width: 100%;
     text-transform: uppercase;

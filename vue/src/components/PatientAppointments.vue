@@ -120,6 +120,17 @@ export default {
       ]
     }
   },
+  computed:{
+        currentUser(){
+            return this.$store.state.user
+            },
+        currentUserType(){
+            return this.$store.profileType.isDoctor;
+        },
+        currentUserProfile(){
+            return this.$store.state.profile;
+        },
+    },
   mounted(){
     appointmentService.getAppointmentByPatientId(this.$store.profile.id)
     .then(response =>{
@@ -131,17 +142,13 @@ export default {
   },
   methods:{
     reviewDisable(){
-
     }
   }
-
 }
 </script>
-    
-<style>
-  /* .reviewLink{
-  text-decoration: none;  
-} */
+
+
+<style scoped>
 .app-btns{
   margin: 30px 0 30px;
 }

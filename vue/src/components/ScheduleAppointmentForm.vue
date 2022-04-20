@@ -57,6 +57,17 @@ export default {
         }
       }
     },
+    computed:{
+        currentUser(){
+            return this.$store.state.user
+            },
+        currentUserType(){
+            return this.$store.profileType.isDoctor;
+        },
+        currentUserProfile(){
+            return this.$store.state.profile;
+        },
+    },
     created(){
       if(this.$route.params){
       this.patientID = this.$route.params.patientID; 
@@ -83,6 +94,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

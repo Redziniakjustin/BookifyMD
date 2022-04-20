@@ -78,6 +78,17 @@ export default {
           ]
         }
     },
+     computed:{
+        currentUser(){
+            return this.$store.state.user
+            },
+        currentUserType(){
+            return this.$store.profileType.isDoctor;
+        },
+        currentUserProfile(){
+            return this.$store.state.profile;
+        },
+    },
       methods:{
         registerDoctorProfile(){
           if(this.doctor.firstName != null){

@@ -116,6 +116,17 @@ export default {
         ]
       }
     },
+    computed:{
+        currentUser(){
+            return this.$store.state.user
+            },
+        currentUserType(){
+            return this.$store.profileType.isDoctor;
+        },
+        currentUserProfile(){
+            return this.$store.state.profile;
+        },
+    },
     components:{
         StarRating
     },
@@ -171,6 +182,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

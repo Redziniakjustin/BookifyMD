@@ -72,6 +72,17 @@ export default {
       return this.appointments.slice()
              .sort((a, b) => new Date(a.appointmentDate)- new Date(b.appointmentDate));
   },
+  computed:{
+        currentUser(){
+            return this.$store.state.user
+            },
+        currentUserType(){
+            return this.$store.profileType.isDoctor;
+        },
+        currentUserProfile(){
+            return this.$store.state.profile;
+        },
+    },
   mounted(){
     //Load Appointments 
     appointmentService.getAppointmentByDoctorId(this.$store.profile.id)

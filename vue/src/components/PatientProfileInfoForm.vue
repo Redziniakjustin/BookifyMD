@@ -55,7 +55,18 @@ export default {
             email: "",
         }
       }
-  }, 
+  },
+  computed:{
+        currentUser(){
+            return this.$store.state.user
+            },
+        currentUserType(){
+            return this.$store.profileType.isDoctor;
+        },
+        currentUserProfile(){
+            return this.$store.state.profile;
+        },
+    }, 
    methods:{
     registerPatientProfile(){
     if(this.patient.firstName != null){
@@ -89,5 +100,5 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 </style>

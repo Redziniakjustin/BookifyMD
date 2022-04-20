@@ -39,6 +39,17 @@ export default {
 // }
     }
   },
+  computed:{
+        currentUser(){
+            return this.$store.state.user
+            },
+        currentUserType(){
+            return this.$store.profileType.isDoctor;
+        },
+        currentUserProfile(){
+            return this.$store.state.profile;
+        },
+    },
   components: { 
     PatientProfileInfoForm },
   mounted(){
@@ -54,10 +65,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .patient-info{
   display: block;
   text-align: left;
 }
-
 </style>
