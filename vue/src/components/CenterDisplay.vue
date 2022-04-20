@@ -16,8 +16,9 @@
         <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
         <input class="btn-search" type="submit" />
       </div>
-      <table class="elevated-box">
+      <table class="">
         <tbody v-for="doctor in doctors" :key="doctor.doctorId">
+          <div class= "elevated-box">
           <tr>
             <td>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</td>
           </tr>
@@ -35,10 +36,12 @@
               Copay Amount: <strong>${{ doctor.costHourly }}</strong>
             </td>
           </tr>
+          
           <!-- <tr>
                 <td v-on:click="clicked" v-if="user.role=='patient'">
             </tr> -->
           <tr>
+            
             <td>
               <button class="table-btn">
                 <router-link
@@ -74,6 +77,7 @@
               </button>
             </td>
           </tr>
+          </div>
         </tbody>
       </table>
     </div>
@@ -124,6 +128,7 @@
           <tr>
             <td>{{ office.email }}</td>
           </tr>
+          <hr>
         </tbody>
       </table>
 
@@ -266,10 +271,15 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 @import "../assets/styles/styles.css";
 
 .dc-plus {
   margin: 150px 0 10px 0;
 }
+
+.tb{
+  padding: 10px 0 10px 0;
+}
+
 </style>
