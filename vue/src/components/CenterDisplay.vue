@@ -1,7 +1,7 @@
 <template>
   <div class="display-container dc-plus">
     <div class="left-column column">
-      <div>
+      <div >
         <img
           src="../assets/landing-1.png"
           alt="Doctor's Reviewing Patient Chart"
@@ -16,7 +16,7 @@
         <!--When schedule appointment link is clicked next to doctor's name in home view. The doctors ID is passed to the schedule appointment view -->
         <input class="btn-search" type="submit" />
       </div>
-      <table>
+      <table class="elevated-box">
         <tbody v-for="doctor in doctors" :key="doctor.doctorId">
           <tr>
             <td>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</td>
@@ -32,7 +32,7 @@
           </tr>
           <tr>
             <td>
-              Hourly Cost: <strong>${{ doctor.costHourly }}</strong>
+              Copay Amount: <strong>${{ doctor.costHourly }}</strong>
             </td>
           </tr>
           <!-- <tr>
@@ -97,7 +97,7 @@
 
     <div class="right-column column">
       <div>
-        <h1 class="">Available Healthcare Providers</h1>
+        <h1 class="">Available Offices</h1>
 
         <input
           class="btn-search"
@@ -107,7 +107,7 @@
 
         <input class="btn-search" type="submit" />
       </div>
-      <table>
+      <table class="elevated-box">
         <tbody v-for="office in offices" :key="office.id">
           <tr>
             <td>{{ office.officeName }}</td>
