@@ -1,12 +1,6 @@
 <template>
   <div class="home">
-  
-
-  <center-display/>
-
-  
-  
-  
+    <center-display/>
   </div>
 </template>
 
@@ -17,8 +11,10 @@ export default {
   components: { 
     CenterDisplay},
   
-  name: "home"
+  name: "home",
+   beforeCreate: function() {
+    console.log(this.$test)
+  }
 };
-
 </script>
 

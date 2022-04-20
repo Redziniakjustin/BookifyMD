@@ -55,3 +55,36 @@ img{
       p {
         font-size: 0.9em; /* 14px/16=0.875em */
       }
+      /* 3 Column Layout Main */
+      .display-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center space-between;
+        flex-wrap: nowrap;
+      }      
+      .left-column{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-grow: 1;
+        flex-shrink: 2;  
+        flex-basis: 22%;
+        padding: 2%;
+      }
+      .middle-column{
+       display: flex;
+       flex-direction: column;
+       align-items: flex-start;
+       flex-grow: 2;
+       flex-basis: 40%;
+      }
+      .right-column{
+       display: flex;
+       flex-direction: column;
+       align-items: flex-start;
+       flex-grow: 1;
+       flex-shrink: 2;
+       flex-basis: 22%;
+       padding: 2%;
+      }

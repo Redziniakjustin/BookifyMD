@@ -11,14 +11,18 @@ Vue.use(Vuex)
  * the page is refreshed. When that happens you need to check for the token in local storage and if it
  * exists you should set the header so that it will be attached to each request
  */
-const currentToken = localStorage.getItem('token');
-const currentUser = JSON.parse(localStorage.getItem('user'));
-const currentUserProfile = JSON.parse(localStorage.getItem('profile'))
-const currentProfileType = JSON.parse(localStorage.getItem('profileType'))
+const currentToken = localStorage.getItem('token'); //this returns null
+const currentUser = JSON.parse(localStorage.getItem('user')); //this returns null before PARSE
+const currentUserProfile = JSON.parse(localStorage.getItem('profile')); //this returns null before PARSE
+const currentProfileType = JSON.parse(localStorage.getItem('profileType'));//this returns null before PARSE
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
+
+// Vue.prototype.$currentProfile = currentUser.profile;
+// Vue.prototype.$currentProfileType =  currentProfileType;
+Vue.prototype.$test = 'BlahBlahBlah';
 
 
 

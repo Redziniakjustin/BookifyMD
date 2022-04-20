@@ -14,8 +14,10 @@
       </table>
 
     </div>
+      <div class="app-btns">
         <v-btn v-if="!isPastAppointment" @click="isPastAppointment = !isPastAppointment">Show Past appointments</v-btn>
         <v-btn v-else @click="isPastAppointment = !isPastAppointment">Hide Past appointments</v-btn>
+      </div>
     <div v-if="isPastAppointment = isPastAppointment">
      
       <table>
@@ -28,7 +30,7 @@
             <td>{{appointment.description}}</td>
             <td>
           <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link class="" id="reviewLink" :to="{name:'review', params:{appointmentID: appointment.appointmentID, date: appointment.appointmentDate, doctorName: appointment.doctor}}">Leave A Review</router-link>
+                <router-link class="no-hyper reviewLink" :to="{name:'review', params:{appointmentID: appointment.appointmentID, date: appointment.appointmentDate, doctorName: appointment.doctor}}">Leave A Review</router-link>
           </v-btn>
             </td>
           </tr>
@@ -137,8 +139,10 @@ export default {
 </script>
     
 <style>
-  #reviewLink{
-  text-decoration: none;
+  /* .reviewLink{
+  text-decoration: none;  
+} */
+.app-btns{
+  margin: 30px 0 30px;
 }
-
 </style>

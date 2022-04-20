@@ -31,7 +31,7 @@
         </ul>
         </div>
 
-        <div class="link-group-2" v-if="user.role=='doctor'">
+        <div class="link-grouping link-group-2" v-if="user.role=='doctor'">
         <ul>
           <li class="inline" v-if="isHome===false">
             <v-btn color="accent" elevation="7" outlined raised text tile>
@@ -168,13 +168,6 @@ methods:{
 
 
 <style>
-
-/* Potential Colors
- purple - #9999FF
- purple light - #E6E6FF 
- deep blue - #2C00CC 
-*/
-
 .header-container {           /* the nav bar */
     position: fixed;
     background: rgb(212, 240, 237) ;
@@ -190,13 +183,8 @@ methods:{
     padding: 0;
     max-height: 140px;
   }
-  .container{
-    list-style-type: none; 
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-  }
-  /*Must add Media Query for this */
+
+  
   .logo{
     margin: 0 0 0 0;
     padding: 10% 10% 10% 10%;
@@ -204,12 +192,24 @@ methods:{
     width: 100%;
   }
   .left-header-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center space-between;
   flex-basis: 20%;
   }
   .center-header-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center space-between;
   flex-basis: 20%;
   }
   .right-header-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center space-between;
   flex-basis: 20%;
   }
   .inline{
@@ -217,6 +217,12 @@ methods:{
   }
   .inline a {
     padding: 2px;
+  }
+  .link-grouping{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center space-between;
   }
 </style>
 

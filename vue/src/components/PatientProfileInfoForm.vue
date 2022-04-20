@@ -86,22 +86,9 @@ export default {
               console.log(error)
               this.error = true
           })
-      
    }
 }
 </script>
 
-<style >
-input{
-  width: 100%;
-  display: block;
-  margin: 8px 0;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border:1px solid;
-  }
-input:hover{
-border:2px solid blue;
-}
-
+<style>
 </style>

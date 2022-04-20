@@ -87,5 +87,7 @@ export default {
 </script>
 
 <style>
-
+.doc-sched-container{
+  
+}
 </style>

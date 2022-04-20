@@ -31,8 +31,8 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <router-link style="margin-right:20px" :to="{ name: 'register' }">Need an account?</router-link>
+      <v-btn type="submit">Sign in </v-btn>
     </form>
   </div>
 </template>
@@ -76,14 +76,13 @@ export default {
 </script>
 
 <style>
-  .log-in-container{
+   .log-in-container{
     margin-top: 150px;
     align-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* margin: 80px 0 10px 0; */
-    /* font-size: 0.75rem; */
-   }
+     }
+    
 </style>

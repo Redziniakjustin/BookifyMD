@@ -1,5 +1,5 @@
 <template>
-  <div id="register" class="text-center register-container">
+  <div id="register" class="text-center register-container elevated-box">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -32,10 +32,10 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+     <div class="account-buttons"><router-link style="margin-right:20px" :to="{ name: 'login' }">Have an account?</router-link>
+      <v-btn class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
-      </button>
+      </v-btn></div>
     </form>
   </div>
 </template>
@@ -94,14 +94,16 @@ export default {
    .register-container{
     margin-top: 150px;
     align-content: center;
-   }
-   .register-body{
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     justify-content: space-between;
-     margin: 80px 0 10px 0;
-     font-size: 0.75rem;
-   }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end space-between;
+    }
+    .account-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center space-between;
+    }
 
 </style>

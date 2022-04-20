@@ -1,5 +1,5 @@
 <template>
-<div class="display-container"> 
+<div class="display-container dc-plus"> 
     <div class="left-column column">
         <div>
              <img src="../assets/landing-1.png" alt="Doctor's Reviewing Patient Chart">
@@ -173,37 +173,7 @@
 <style>
 @import '../assets/styles/styles.css';
 
-.display-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center space-between;
+.dc-plus {
     margin: 150px 0 10px 0;
-    flex-wrap: nowrap;
-  }
-  .left-column{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-grow: 1;
-    flex-shrink: 2;  
-    flex-basis: 22%;
-    padding: 2%;
-  }
-  .middle-column{
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   flex-grow: 2;
-   flex-basis: 40%;
-  }
-  .right-column{
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   flex-grow: 1;
-   flex-shrink: 2;
-   flex-basis: 22%;
-   padding: 2%;
   }
 </style>
