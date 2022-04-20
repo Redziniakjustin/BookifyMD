@@ -14,7 +14,7 @@
           <img src="..\assets\hands.png" alt="read more about us">
           <div class="about-us-content"> <!--About Us-->
               <h3>What can BookifyMD do for you?</h3>
-              <h3>improves patient engagement and provider responsiveness.</h3>
+              <h3>Improves patient engagement and provider responsiveness.</h3>
               <h3>Convenient access to provider reviews and appointments.</h3>
               <h3>Empower your patients to access their health and care information whenever they need it.</h3>
 
