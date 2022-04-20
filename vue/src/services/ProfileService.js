@@ -12,7 +12,7 @@ export default {
       return axios.get('/offices')
   }, 
   getOffice(id){
-      return axios.get('/providers/${id}', id)
+      return axios.get(`/providers/${id}`)
   }, 
   addPatient(profile){
     return axios.post('/patients', profile)
@@ -21,13 +21,13 @@ export default {
     return axios.post('/doctors', profile)
   },
   getUserTypeIdById(id){
-    return axios.get('/profiles/${id}', id)
+    return axios.get(`/profiles/${id}`)
   },
   getDoctorProfileById(id){
-    return axios.get('/profiles/doctors/${id}', id)
+    return axios.get(`/profiles/doctors/${id}`)
   },
   getPatientProfileById(id){
-    return axios.get('/profiles/patients/${id}', id)
+    return axios.get(`/profiles/patients/${id}`)
   },
   getProfileTypeIdByUsername(username){
     return axios.get('/login/${username}', username)

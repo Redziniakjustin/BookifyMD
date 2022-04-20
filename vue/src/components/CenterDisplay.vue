@@ -220,42 +220,42 @@ export default {
 
         console.log("Calling Profile");
     //Method to set user Profile
-    if (this.$store.profileType.isDoctor) {
-      profileService
-        .getDoctorProfileById(this.$store.state.user.id)
-        .then((response) => {
-            console.log(5);
-          if (response.status == 200) {
-            this.$store.commit("SET_PROFILE", response.data);
-          } else {
-            console.log("Failed");
-          }
-        });
-    } else {
-      profileService
-        .getPatientProfileById(this.$store.state.user.id)
-        .then((response) => {
-            console.log(6);
-          if (response.status == 200) {
-            this.$store.commit("SET_PROFILE", response.data);
-          }
-        });
-    }
+    // if (this.$store.state.profileType.isDoctor) {
+    //   profileService
+    //     .getDoctorProfileById(this.$store.state.user.id)
+    //     .then((response) => {
+    //         console.log(5);
+    //       if (response.status == 200) {
+    //         this.$store.commit("SET_PROFILE", response.data);
+    //       } else {
+    //         console.log("Failed");
+    //       }
+    //     });
+    // } else {
+    //   profileService
+    //     .getPatientProfileById(this.$store.state.user.id)
+    //     .then((response) => {
+    //         console.log(6);
+    //       if (response.status == 200) {
+    //         this.$store.commit("SET_PROFILE", response.data);
+    //       }
+    //     });
+    // }
 
     //TODO: BAD NAMING MAY CAUSE FUNCTIONAL CONFUSION -> getUserTypeByID !-> Profile
     console.log("Calling UserType");
 
-    // profileService.getUserTypeIdById(6).then((response) => {
-    //     console.log(4);
-    //   if (response.status == 200) {
-    //     console.log(response.data)
-    //     this.$store.commit("SET_PROFILE_TYPE", response.data);
+    profileService.getUserTypeIdById(6).then((response) => {
+        console.log(4);
+      if (response.status == 200) {
+        console.log(response.data)
+        this.$store.commit("SET_PROFILE_TYPE", response.data);
 
         
-    //   } else {
-    //     console.log("UserTypeFailed");
-    //   }
-    // });
+      } else {
+        console.log("UserTypeFailed");
+      }
+    });
 
 
   },
