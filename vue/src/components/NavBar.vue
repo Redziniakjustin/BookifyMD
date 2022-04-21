@@ -154,6 +154,7 @@ export default {
     margin: 0;
     padding: 0;
     max-height: 184px;
+    z-index: 6;
   }
 .logo-container{
   display: flex;

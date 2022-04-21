@@ -34,7 +34,7 @@ img{
         background: white;
         border-radius: 5px;
       }
-      input{
+  input{
         width: 100%;
         display: block;
         margin: 8px 0;
@@ -42,7 +42,7 @@ img{
         box-sizing: border-box;
         border:1px solid;
         }
-      input:hover{
+   input:hover{
       border:1.4px solid  rgb(81, 56, 104);
       }
       h1 {

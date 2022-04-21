@@ -93,7 +93,6 @@ export default {
         0 100px 80px rgba(0, 0, 0, 0.12);
        
         padding: 22px;
-        /* margin: 100px auto;  */
         background: white;
         border-radius: 5px;
       }

@@ -61,6 +61,8 @@ color:whitesmoke;
 position: fixed;
 width: 100%;
 max-height: 300px;
+z-index: -1;
+bottom: 0;
 }
 .footer-body{
 display: flex;
