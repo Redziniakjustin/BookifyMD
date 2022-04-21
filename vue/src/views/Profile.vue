@@ -8,12 +8,13 @@
     </div>
 
     <div class="profile-body elevated-box">
-          <div v-if="user.role=='patient'">
-            <patient-profile/>
-          </div>
-          <div v-if="user.role=='doctor'">
+          <div v-if="this.currentUserType">
             <doctor-profile/>
           </div>
+          <div v-else>
+            <patient-profile/>
+          </div>
+
     </div>
 
   </div>
@@ -37,6 +38,17 @@ export default {
     PatientProfile,
     DoctorProfile
    },
+  computed:{
+      currentUser(){
+          return this.$store.state.user
+          },
+      currentUserType(){
+          return this.$store.profileType.isDoctor;
+      },
+      currentUserProfile(){
+          return this.$store.state.profile;
+      }
+    }
 
 }
 </script>

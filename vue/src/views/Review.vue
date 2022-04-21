@@ -24,7 +24,7 @@
      </div>    
      <div class="right-column"> 
        <img src="../assets/review_1.png" alt="Doctor Photo 2">
-         <review-submission-form v-if="isReview"/>
+         <review-submission-form v-if="this.$store.state.authenticated"/>
      </div>   
     </div>
 

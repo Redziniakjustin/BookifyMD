@@ -8,10 +8,11 @@
     </thead>
       <tbody>
           <tr>
-              <td class="patient-info">{{patient.firstName}} </td>
-              <td class="patient-info">{{patient.lastName}} </td>
-              <td class="patient-info">{{patient.Address}} </td>
-              <td class="patient-info">{{patient.phoneNumber}} </td>
+              <td class="patient-info">{{this.currentUserProfile.firstName}} </td>
+              <td class="patient-info">{{this.currentUserProfile.lastName}} </td>
+              <td class="patient-info">{{this.currentUserAddress}} </td>
+              <td class="patient-info">{{this.currentUserProfile.phone}} </td>
+              <td class="patient-info">{{this.currentUserProfile.email}}</td>
           </tr>
       </tbody>
       
@@ -49,6 +50,16 @@ export default {
         currentUserProfile(){
             return this.$store.state.profile;
         },
+        currentUserAddress(){
+          let address = this.currentUserProfile.streetAddress 
+          + ", \n"+
+          this.currentUserProfile.city 
+          +", \n"+ 
+          this.currentUserProfile.stateName 
+          +", \n"+
+          this.currentUserProfile.zip
+          return address;
+        }
     },
   components: { 
     PatientProfileInfoForm },

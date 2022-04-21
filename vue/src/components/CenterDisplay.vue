@@ -75,7 +75,7 @@
                       patientID: currentUserProfile.patientId,
                       officeID: doctor.officeId,
                     },
-                  }"
+                  }" 
                   >Schedule</router-link>
               </v-btn>
             </td>
@@ -278,8 +278,5 @@ btn-sub-rev{
   align-content: center;
   justify-content: center;
   margin: 10px 0 10px 0;
-}
-{
-  
 }
 </style>

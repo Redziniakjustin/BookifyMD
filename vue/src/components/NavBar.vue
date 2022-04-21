@@ -33,13 +33,13 @@
                       </v-btn>
                     </li>
 
-                    <li class="inline" v-if="isReview===false">
+                    <!-- <li class="inline" v-if="isReview===false">
                       <v-btn color="accent" elevation="7" outlined raised text tile>
                           <router-link class="review-link no-hyper" 
                           :to="{ name: 'review' }">Review
                           </router-link>
                       </v-btn>
-                    </li>
+                    </li> -->
                   </ul>
                   </div>
                   <!--Doctor -->
