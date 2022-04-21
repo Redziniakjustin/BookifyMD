@@ -2,22 +2,20 @@
   <div class="availability-day-container">
 
 <!-- ONCE INSIDE A DAYS AVAILABILITY - DROPDOWN TO CHANGE DAY SELECTED -->
-        <h1>TEST</h1>
-       <button id="display-availability">Availability {{doctor.dayOfWeek}}</button>
+    <button id="display-availability">Availability</button>
       <table>
         <thead>
             <th>
                 <td>Day of The Week</td>
-                <td>Start Time</td>
-                <td>End Time</td>
+                <td>Appointment Time</td>
                 <td>Select to Reserve</td>
             </th>
         </thead>
         <tbody>
             <tr v-for="availability in availabilities" :key="availability.id">
-                <td>availability.dayOfWeek</td>
-                <td>availability.startTime</td>
-                <td>availability.endTime</td>
+                <td>{{availability.dayOfWeek}}</td>
+                <td>{{availability.startTime}}-{{availability.endTime}}</td>
+                <!-- <td></td> -->
                 <td>
                     <v-btn>Schedule</v-btn>
                 </td>
@@ -53,10 +51,12 @@ export default {
         // }
     },
     mounted(){
+        console.log(this.$route.params.doctorID)
         availabilityService.currentDoctorAvailability(this.$route.params.doctorID)
         .then(response=> {
             this.availabilities = response.data;
         });
+        console.log(this.availabilities)
     },
     methods:{ 
     }

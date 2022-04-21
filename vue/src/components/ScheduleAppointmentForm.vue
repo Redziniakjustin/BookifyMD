@@ -11,6 +11,7 @@
           <input type="date" id="apdate" name="apdate" 
           v-model="scheduleAppForm.appointmentDate">
           <br> 
+          <availability-day-display/>
           <!-- <label for="aptime">time:</label><br>
           <vue-timepicker 
           id="time" 
@@ -39,8 +40,8 @@
 </template>
 
 <script>
-//import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue';
 import appointmentService from '@/services/AppointmentService'
+import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue';
 // import VueTimepicker from 'vue2-timepicker'
 // import 'vue2-timepicker/dist/VueTimepicker.css'
 export default {
@@ -61,7 +62,7 @@ export default {
       }
     },
     components:{
-      // VueTimepicker 
+      AvailabilityDayDisplay
     },
     computed:{
         currentUser(){
