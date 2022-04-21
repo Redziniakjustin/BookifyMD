@@ -1,8 +1,9 @@
 <template>
   <div class="middle-column">
         <h1 class="agenda">Notifications</h1>
-        <tbody>
-            <tr v-for="notification in notifications" :key="notification.id">
+        <patient-appointments/>
+        <!-- <tbody>
+            <tr v-for="appointment in Appointments" :key="appointmentID.id">
                 
                 <td> {{notification.appointmentDate}} </td>
                 <td> {{notification.startTime}} </td>
@@ -15,19 +16,21 @@
               
                 <td> {{notification.appointmentStatus}} </td>
                 
-                <!-- <td> {{notification.description}} </td> -->
+                 <td> {{notification.description}} </td>
             </tr>
-        </tbody>
+        </tbody>  -->
     </div>
 </template>
 
 <script>
 import appointmentService from '@/services/AppointmentService'
+import PatientAppointments from '@/components/PatientAppointments'
+
 export default {
 data() {
     return {
       //notifications:[],
-      notifications:[]
+      appointments:[]
         // {
         // alert: "Delay",
         // date: "05/01/22",
@@ -61,8 +64,11 @@ data() {
        
     }
   },
+  components:{
+    PatientAppointments
+  },
   computed:{
-    currentUser() { 
+    currentUser(){
       return this.$store.state.user;
     },
     currentUserType(){
@@ -77,7 +83,7 @@ data() {
       appointmentService.getAppointmentByDoctorId(this.currentUser.id)
       .then((response)=>{
         if(response.status==200){
-          this.notifications = response.data
+          this.appointments = response.data
         }else{
           console.log("Unable to get Notifications")
         }
@@ -86,14 +92,15 @@ data() {
       appointmentService.getAppointmentByPatientId(this.currentUser.id)
       .then((response)=>{
         if(response.status==200){
-          this.notifications = response.data
+          this.appointments = response.data
         
         }else{
           console.log("Unable to get Notifications")
         }
       })
     }
-  }
+  },
+  
 }
 </script>
 
