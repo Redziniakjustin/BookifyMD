@@ -215,9 +215,6 @@ export default {
 .respond-fix{
   z-index: auto;
 }
-.reviews{
-  font-size: 100px;
-}
 
 
 
