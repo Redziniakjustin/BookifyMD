@@ -69,7 +69,7 @@ export default {
         submitReviewSubmissionForm(){
             addReview(this.reviewSubmissionForm).then((response)=> {
                 if(response.status == 201){
-                    this.$router.push('home')
+                    this.$router.push('/')
                 }
             }).catch((error)=>{
                 console.log(error.response.status);

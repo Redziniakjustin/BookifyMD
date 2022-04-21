@@ -59,16 +59,18 @@
               </button>
             </td>
             <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
-            <td>
+            <td v-if="!currentUserType">
               <button class="table-btn">
                 <router-link
                   id="schedule"
                   :to="{
                     name: 'schedule',
                     params: {
-                      doctorID: doctor.id,
-                      patientID: currentUser.id,
-                      officeID: doctor.officeID,
+                      doctorFirstName: doctor.firstName,
+                      doctorLastName: doctor.lastName, 
+                      doctorID: doctor.doctorId,
+                      patientID: currentUserProfile.patientId,
+                      officeID: doctor.officeId,
                     },
                   }"
                   >Schedule</router-link>
@@ -145,11 +147,6 @@ export default {
   data() {
     return {
       search: "",
-      /* user:{
-                role: 'patient',
-                id: 9876
-            }, */
-      //authenticated: "True",
       authenticated: "False",
       active: "True",
       doctors: [{}],
