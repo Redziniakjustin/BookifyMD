@@ -113,9 +113,9 @@ export default {
 
 .pat-prof-form-container{
   padding-top: 5%;
-margin: 0 auto; 
-width:350px;
-   box-shadow:
+  margin: 0 auto; 
+  width:350px;
+  box-shadow:
         0 2.8px 2.2px rgba(0, 0, 0, 0.034),
         0 6.7px 5.3px rgba(0, 0, 0, 0.048),
         0 12.5px 10px rgba(0, 0, 0, 0.06),
