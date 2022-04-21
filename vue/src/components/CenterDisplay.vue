@@ -71,9 +71,7 @@
                       officeID: doctor.officeID,
                     },
                   }"
-                  >Schedule</router-link
-                >
-                <!-- capture id-->
+                  >Schedule</router-link>
               </button>
             </td>
           </tr>
@@ -88,14 +86,12 @@
       <h2 v-if="this.$store.state.profile.firstName === null">
         Please Update Profile Here:
         <router-link :to="{ name: 'profileRegister' }"
-          >Register Profile</router-link
-        >
+          >Register Profile</router-link>
       </h2>
       <notification-column />
     </div>
-    <!-- OR -->
+
     <div v-else class="middle-column column">
-      <!--Change V-if {This will be to show Landing Page}-->
       <landing-center-column />
     </div>
 
@@ -112,7 +108,9 @@
         <input class="btn-search" type="submit" />
       </div>
       <table class="elevated-box">
-        <tbody v-for="office in offices" :key="office.id">
+        <tbody v-for="office in offices" 
+        :key="office.id"
+        >
           <tr>
             <td>{{ office.officeName }}</td>
           </tr>
@@ -137,11 +135,12 @@
   </div>
 </template>
 
+
 <script>
 import LandingCenterColumn from "@/components/LandingCenterColumn.vue";
 import NotificationColumn from "@/components/NotificationColumn.vue";
-//Will Use once API endpoints are available
 import profileService from "@/services/ProfileService";
+
 export default {
   data() {
     return {
@@ -262,10 +261,6 @@ export default {
           }
         });
     }
-
-    //TODO: BAD NAMING MAY CAUSE FUNCTIONAL CONFUSION -> getUserTypeByID !-> Profile
-    console.log("Calling UserType");
-
   },
 };
 </script>
@@ -275,11 +270,10 @@ export default {
 @import "../assets/styles/styles.css";
 
 .dc-plus {
-  margin: 150px 0 10px 0;
+  margin: 184px 0 10px 0;
 }
-
-.tb{
+/* .tb{
   padding: 10px 0 10px 0;
-}
+} */
 
 </style>
