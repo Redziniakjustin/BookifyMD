@@ -150,13 +150,7 @@ export default {
 .btn-container{
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
-}
-.btn-container-left{
-align-self: start;
-}
-.btn-container{
-align-self: end;
+  align-self: end;
 }
 .logo{
   margin: 0 0 0 0;
