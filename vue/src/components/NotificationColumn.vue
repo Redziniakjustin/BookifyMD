@@ -4,16 +4,16 @@
         <tbody>
             <tr v-for="notification in notifications" :key="notification.id">
                 <br><br>
-                <td> {{notification.alert}} </td>
+                <td> {{notification.appointmentDate}} </td>
+                <td> {{notification.startTime}} </td>
                 <br><br>
+                <td> {{notification.officeName}} </td>
                 <br><br>
-                <td> {{notification.time}} </td>
+                <td> {{notification.doctorLastName}} </td>
                 <br><br>
-                <td> {{notification.doctor}} </td>
+                <td> {{notification.description}} </td>
                 <br><br>
-                <td> {{notification.facility}} </td>
-                <br><br>
-                <td> {{notification.location}} </td>
+                <td> {{notification.appointmentStatus}} </td>
                 <br><br>
                 <!-- <td> {{notification.description}} </td> -->
             </tr>
@@ -27,38 +27,38 @@ export default {
 data() {
     return {
       //notifications:[],
-      notifications:[
-        {
-        alert: "Delay",
-        date: "05/01/22",
-        time: "1600",
-        doctor: "Naval Poindexter",
-        facility: "Presbyterian",
-        Location: "1001 Spruce St",
-        Description: "Spinal Tap"
-        }, 
-        { alert: "On Time",
-        date: "05/01/22",
-        time: "1600",
-        doctor: "Naval Poindexter",
-        facility: "Presbyterian",
-        Location: "1001 Spruce St",
-        Description: "Spinal Tap"},
-        { alert: "On Time",
-        date: "05/01/22",
-        time: "1600",
-        doctor: "Naval Poindexter",
-        facility: "Presbyterian",
-        Location: "1001 Spruce St",
-        Description: "Spinal Tap"},
-        { alert: "Delay",
-        date: "04/20/22",
-        time: "30 Min Delay ",
-        doctor: "Dr Jolly",
-        facility: "Presbyterian",
-        Location: "1001 Spruce St",
-        Description: "Spinal Tap"}
-      ] 
+      notifications:[]
+        // {
+        // alert: "Delay",
+        // date: "05/01/22",
+        // time: "1600",
+        // doctor: "Naval Poindexter",
+        // facility: "Presbyterian",
+        // Location: "1001 Spruce St",
+        // Description: "Spinal Tap"
+        // }, 
+        // { alert: "On Time",
+        // date: "05/01/22",
+        // time: "1600",
+        // doctor: "Naval Poindexter",
+        // facility: "Presbyterian",
+        // Location: "1001 Spruce St",
+        // Description: "Spinal Tap"},
+        // { alert: "On Time",
+        // date: "05/01/22",
+        // time: "1600",
+        // doctor: "Naval Poindexter",
+        // facility: "Presbyterian",
+        // Location: "1001 Spruce St",
+        // Description: "Spinal Tap"},
+        // { alert: "Delay",
+        // date: "04/20/22",
+        // time: "30 Min Delay ",
+        // doctor: "Dr Jolly",
+        // facility: "Presbyterian",
+        // Location: "1001 Spruce St",
+        // Description: "Spinal Tap"}
+       
     }
   },
   computed:{
@@ -73,7 +73,7 @@ data() {
     }
   }, 
   mounted(){
-    if(this.currentUser.isDoctor){
+    if(this.currentUserType){
       appointmentService.getAppointmentByDoctorId(this.currentUser.id)
       .then((response)=>{
         if(response.status==200){
@@ -87,6 +87,7 @@ data() {
       .then((response)=>{
         if(response.status==200){
           this.notifications = response.data
+          console.log("response.data")
         }else{
           console.log("Unable to get Notifications")
         }
