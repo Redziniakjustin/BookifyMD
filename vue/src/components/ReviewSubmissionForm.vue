@@ -33,7 +33,7 @@ export default {
                 officeName: "",
                 reviewDate: "", 
                 reviewDesc: "",
-                reviewRating: 3,
+                reviewRating: 0,
              }
         }
     },
@@ -68,9 +68,8 @@ export default {
     },
     methods:{
         setRating: function(rating){
-            let num
-            num = parseInt(rating);
-            return num
+            
+            this.reviewSubmissionForm.reviewRating = parseInt(rating);
         },
         dummySubmit(){
             console.log(this.reviewSubmissionForm)

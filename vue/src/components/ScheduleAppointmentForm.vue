@@ -5,15 +5,13 @@
            the chosen doctor and their office-->
         <h3>Schedule Appointment with: {{doctorName}} </h3> 
 
-          <label for="apdate">appointmentDate ( please
-             Select Minutes and Seconds!):</label>
+          <label for="apdate">appointmentDate</label>
              <br> 
               <!-- Link to home.view doctor selected on @click this.$store.state -->
           <input type="date" id="apdate" name="apdate" 
           v-model="scheduleAppForm.appointmentDate">
           <br> 
-
-          <label for="aptime">time:</label><br>
+          <!-- <label for="aptime">time:</label><br>
           <vue-timepicker 
           id="time" 
           name="time" 
@@ -23,9 +21,7 @@
           :second-interval="60"
           hide-disabled-seconds
           :hour-range="[[8,17]]"
-          />
-          <!-- </vue-timepicker> -->
-          <!-- <input type="time"> -->
+          /> -->
 
           <label for="desc">desciption:</label><br>
           <input type="text" id="desc" name="desc" 
@@ -94,6 +90,7 @@ export default {
       } else {
             this.$router.push('appointments')
         }
+      //
       
     },
     methods:{
