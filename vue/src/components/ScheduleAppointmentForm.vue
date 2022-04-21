@@ -1,11 +1,17 @@
 <template>
   <div class="schedule-app-form">
       <form class="form-schedule" @submit.prevent="submitAppointmentForm">
-          <!--include an h2 or h3 element that has the name of the chosen doctor and their office-->
+          <!--include an h2 or h3 element that has the name of
+           the chosen doctor and their office-->
         <h3>Schedule Appointment with: {{doctorName}} </h3> 
 
-          <label for="apdate">appointmentDate ( please Select Minutes and Seconds!):</label><br>  <!-- Link to home.view doctor selected on @click this.$store.state -->
-          <input type="date" id="apdate" name="apdate" v-model="scheduleAppForm.appointmentDate"><br> 
+          <label for="apdate">appointmentDate ( please
+             Select Minutes and Seconds!):</label>
+             <br> 
+              <!-- Link to home.view doctor selected on @click this.$store.state -->
+          <input type="date" id="apdate" name="apdate" 
+          v-model="scheduleAppForm.appointmentDate">
+          <br> 
 
           <label for="aptime">time:</label><br>
           <vue-timepicker 
@@ -22,7 +28,8 @@
           <!-- <input type="time"> -->
 
           <label for="desc">desciption:</label><br>
-          <input type="text" id="desc" name="desc" v-model="scheduleAppForm.description">
+          <input type="text" id="desc" name="desc" 
+          v-model="scheduleAppForm.description">
 
           <input type="submit" id="submit" name="submit">
       </form>
@@ -38,8 +45,8 @@
 <script>
 //import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue';
 import appointmentService from '@/services/AppointmentService'
-import VueTimepicker from 'vue2-timepicker'
-import 'vue2-timepicker/dist/VueTimepicker.css'
+// import VueTimepicker from 'vue2-timepicker'
+// import 'vue2-timepicker/dist/VueTimepicker.css'
 export default {
   // components: { 
   //   AvailabilityDayDisplay },
@@ -58,7 +65,7 @@ export default {
       }
     },
     components:{
-      VueTimepicker 
+      // VueTimepicker 
     },
     computed:{
         currentUser(){
