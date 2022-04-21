@@ -1,105 +1,96 @@
 <template>
   <div class="header-container" id="header-container" >
+      <div class="logo-container">
+          <nav-bar-logo/>
+      </div>   
 
-    <div class="left-header-container container" id="lhc" v-if="this.$store.state.authenticated">
-        <!--Patient-->
-        <div class="link-group-1" v-if="!currentUserType">
-        <ul>
-          <li class="inline" v-if="isHome===false">
-              <v-btn color="accent" elevation="7" outlined raised text tile> 
-                  <router-link id="home-link no-hyper" :to="{ name: 'home' }">Home</router-link>
-              </v-btn>         
-          </li>
-          <li class="inline" v-if="isProfile===false">
-            <v-btn color="accent" elevation="7" outlined raised text tile>
-              <router-link id="profile-link no-hyper" :to="{ name: 'profile' }">Patient Profile</router-link>
-            </v-btn>
-          </li>
+      <div class="btn-container" id="btn-container">      
+          <div class="btn-container-right"
+              id="lhc" 
+              v-if="this.$store.state.authenticated"
+              >
+                  <!--Patient-->
+                  <div class="link-grouping link-group-1" v-if="!currentUserType">
+                  <ul>
+                    <li class="inline" v-if="isHome===false">
+                        <v-btn color="accent" elevation="7" outlined raised text tile> 
+                            <router-link id="home-link no-hyper" :to="{ name: 'home' }">Home</router-link>
+                        </v-btn>         
+                    </li>
+                    <li class="inline" v-if="isProfile===false">
+                      <v-btn color="accent" elevation="7" outlined raised text tile>
+                        <router-link id="profile-link no-hyper" :to="{ name: 'profile' }">Patient Profile</router-link>
+                      </v-btn>
+                    </li>
 
-          <li class="inline" v-if="isAppointment===false"> 
-            <v-btn color="accent" elevation="7" outlined raised text tile>
-              <router-link id="appointment-link no-hyper" :to="{ name: 'appointment' }">Book Appointment</router-link>
-            </v-btn>
-          </li>
+                    <li class="inline" v-if="isAppointment===false"> 
+                      <v-btn color="accent" elevation="7" outlined raised text tile>
+                        <router-link id="appointment-link no-hyper" :to="{ name: 'appointment' }">Book Appointment</router-link>
+                      </v-btn>
+                    </li>
 
-          <li class="inline" v-if="isReview===false">
-            <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link id="review-link no-hyper" :to="{ name: 'review' }">Write A Review</router-link>
-            </v-btn>
-          </li>
-        </ul>
-        </div>
-        <!--Doctor -->
-        <div class="link-grouping link-group-2" v-if="currentUserType">
-        <ul>
-          <li class="inline" v-if="isHome===false">
-            <v-btn color="accent" elevation="7" outlined raised text tile>
-                <router-link class="no-hyper" id="home-link" :to="{ name: 'home' }">Home</router-link>
-            </v-btn>
-          </li>
+                    <li class="inline" v-if="isReview===false">
+                      <v-btn color="accent" elevation="7" outlined raised text tile>
+                          <router-link id="review-link no-hyper" :to="{ name: 'review' }">Write A Review</router-link>
+                      </v-btn>
+                    </li>
+                  </ul>
+                  </div>
+                  <!--Doctor -->
+              <div class="link-grouping link-group-2" v-if="currentUserType">
+                  <ul>
+                    <li class="inline" v-if="isHome===false">
+                      <v-btn color="accent" elevation="7" outlined raised text tile>
+                          <router-link class="no-hyper" id="home-link" :to="{ name: 'home' }">Home</router-link>
+                      </v-btn>
+                    </li>
 
-          <li class="inline" v-if="isProfile===false">
-           <v-btn  color="accent"  elevation="7"   outlined  raised  text  tile> <!-- Doctor  -->
-             <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Doctor Profile</router-link>
-           </v-btn>
-          </li>
+                    <li class="inline" v-if="isProfile===false">
+                    <v-btn  color="accent"  elevation="7"   outlined  raised  text  tile> 
+                      <router-link class="profile-link no-hyper" :to="{ name: 'profile' }">Doctor Profile</router-link>
+                    </v-btn>
+                    </li>
 
-          <li class="inline" v-if="isAppointment===false">
-          <v-btn color="accent" elevation="7" outlined raised text tile>
-              <router-link class="no-hyper" id="appointment-link" :to="{ name: 'appointment' }">Appointments</router-link>
-          </v-btn>
-          </li>
+                    <li class="inline" v-if="isAppointment===false">
+                    <v-btn color="accent" elevation="7" outlined raised text tile>
+                        <router-link class="no-hyper" id="appointment-link" :to="{ name: 'appointment' }">Appointments</router-link>
+                    </v-btn>
+                    </li>
 
-          <li class="inline" v-if="isReview===false" >
-            <v-btn color="accent" elevation="7" outlined raised text tile>
-               <router-link class="review-link no-hyper" :to="{ name: 'review' }">Reviews</router-link>
-            </v-btn>
-          </li>
+                    <li class="inline" v-if="isReview===false" >
+                      <v-btn color="accent" elevation="7" outlined raised text tile>
+                        <router-link class="review-link no-hyper" :to="{ name: 'review' }">Reviews</router-link>
+                      </v-btn>
+                    </li>
+                  </ul>
+              </div>      
+          </div> <!--endleft-->
 
-        </ul>
-        </div>
-    </div> 
-
-
-    <div class="center-header-container container" id="chc">
-                              <!-- click logo to return home-->
-        <a class="logo" href="">
-            <img @click=returnHome class="logo" src="..\assets\logo-transparent.png" id="logo" alt="BookifyMD Logo Here" />          
-        </a>    
-    </div> 
-
-
-    <div class="right-header-container container" id="rhc">  
-        <li class="inline" v-if="this.$store.state.authenticated">
-          <v-btn color="accent" elevation="7" outlined raised text tile>
-            <router-link class="link-log-out no-hyper" :to="{ name: 'logout' }">Log Out</router-link>
-          </v-btn>
-        </li>
-        
-        <li class="inline" v-else>
-          <v-btn color="accent" elevation="7" outlined raised text tile>
-            <router-link class="link-log-in no-hyper" :to="{ name: 'login' }">Log In</router-link>
-          </v-btn>
-        </li>
-        
-        <!-- <li class="inline" >
-          <v-btn color="accent" elevation="7" outlined raised text tile>
-             <router-link class="link-profile no-hyper" :to="{ name: 'profile' }">Profile</router-link>
-          </v-btn>
-        </li> -->
-                                    
-        <li class="inline" v-if="!this.$store.state.authenticated">
-          <v-btn color="accent" elevation="7" outlined raised text tile>                   
-                <router-link class="link-register no-hyper" :to="{ name: 'register' }">Register</router-link>                  
-          </v-btn>                 
-        </li>
-    </div>
-
-  </div>
+          <div class="btn-container-left" id="rhc">  
+              <li class="inline" v-if="this.$store.state.authenticated">
+                <v-btn color="accent" elevation="7" outlined raised text tile>
+                  <router-link class="link-log-out no-hyper" :to="{ name: 'logout' }">Log Out</router-link>
+                </v-btn>
+              </li>         
+              <li class="inline" v-else>
+                <v-btn color="accent" elevation="7" outlined raised text tile>
+                  <router-link class="link-log-in no-hyper" :to="{ name: 'login' }">Log In</router-link>
+                </v-btn>
+              </li>                            
+              <li class="inline" v-if="!this.$store.state.authenticated">
+                <v-btn color="accent" elevation="7" outlined raised text tile>                   
+                  <router-link class="link-register no-hyper" :to="{ name: 'register' }">Register</router-link>                  
+                </v-btn>                 
+              </li>
+            </div> <!--endright-->
+      </div>  <!--endbtn-->
+  </div>   <!--endhead-->
 </template>
 
 <script>
+import NavBarLogo from './NavBarLogo.vue'
 export default {
+  components: { NavBarLogo },
  data() {
     return {
     }
@@ -130,11 +121,6 @@ export default {
       return this.$store.state.profile;
         },
     },
-methods:{
-  returnHome(){
-    return this.$router.push('/')
-  }
-}
 }
 </script>
 
@@ -148,53 +134,32 @@ methods:{
     text-transform: uppercase;
     
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center space-between;
     margin: 0;
     padding: 0;
-    max-height: 140px;
+    max-height: 184px;
   }
-
-  
-  .logo{
-    margin: 0 0 0 0;
-    padding: 10% 10% 10% 10%;
-    max-height: auto; /* Needs to change on resize */
-    width: 100%;
-  }
-  .left-header-container{
+.logo-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center space-between;
-  flex-basis: 20%;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center
   }
-  .center-header-container{
+.btn-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center space-between;
-  flex-basis: 20%;
+  flex-direction: row;
+  align-self: end;
+}
+.logo{
+  margin: 0 0 0 0;
+  /* padding: 10% 10% 10% 10%; */
+  max-height: 110px;
+  width: 100%;
   }
-  .right-header-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center space-between;
-  flex-basis: 20%;
-  }
-  .inline{
-    display:inline-block;
-  }
-  .inline a {
-    padding: 2px;
-  }
-  .link-grouping{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center space-between;
+ .inline{
+  display:inline-block;
   }
 </style>
 

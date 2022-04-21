@@ -5,10 +5,16 @@
         <tbody v-for="appointment in appointments" :key=appointment>
           <tr class="tr">
             <td>{{appointment.appointmentDate}}</td>
-            <td>{{appointment.time}}</td>
-            <td>{{appointment.location}}</td>
-            <td>{{appointment.doctor}}</td>
-            <td>{{appointment.description}}</td>
+            <br>
+            <td>{{appointment.startTime}}</td>
+            <br>
+            <br>
+            <td> || {{appointment.officeName}} || </td>
+            <br>
+            <td>Dr. {{appointment.doctorLastName}}</td>
+            <br>
+            <br>
+            <td> || {{appointment.description}} || </td>
           </tr>
         </tbody>
       </table>
@@ -24,9 +30,9 @@
         <tbody v-for="appointment in pastAppointments" :key=appointment>
           <tr>
             <td>{{appointment.appointmentDate}}</td>
-            <td>{{appointment.time}}</td>
-            <td>{{appointment.location}}</td>
-            <td>{{appointment.doctor}}</td>
+            <td>{{appointment.startTime}}</td>
+            <td>{{appointment.officeName}}</td>
+            <td>{{appointment.doctorLastName}}</td>
             <td>{{appointment.description}}</td>
             <td>
           <v-btn color="accent" elevation="7" outlined raised text tile>
