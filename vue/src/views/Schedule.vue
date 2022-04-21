@@ -9,14 +9,17 @@
 
         <schedule-appointment-form class="sched-app-form"/>
 
-        <div><img src="../assets/ScreenDoctorWoman.png" alt="Doctor with Schedule"></div>
+        <div><img src="../assets/ScreenDoctorWoman.png" 
+        alt="Doctor with Schedule">
+        </div>
     </div>      
   </div>
 </template>
 
 
 <script>
-import ScheduleAppointmentForm from '../components/ScheduleAppointmentForm.vue'
+import ScheduleAppointmentForm 
+from '../components/ScheduleAppointmentForm.vue'
 
 export default {
   components: { 

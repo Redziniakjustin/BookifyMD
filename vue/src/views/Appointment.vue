@@ -39,7 +39,7 @@ export default {
 
 <style>
 .appointment-container{
-    margin-top: 150px;
+    margin-top: 184px;
     align-content: center;
     display: flex;
     flex-direction: column;

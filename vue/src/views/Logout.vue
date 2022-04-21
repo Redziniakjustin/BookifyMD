@@ -17,7 +17,7 @@ export default {
 
 <style>
   .log-out-container{
-    margin-top: 150px;
+    margin-top: 184px;
     align-content: center;
    }
    .log-out-body{

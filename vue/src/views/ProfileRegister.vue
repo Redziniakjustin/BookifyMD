@@ -43,7 +43,7 @@ export default {
 
 <style>
  .prof-reg-container{
-    margin-top: 150px;
+    margin-top: 184px;
     align-content: center;
    }
    .prof-reg-body{
