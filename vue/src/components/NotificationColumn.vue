@@ -1,7 +1,60 @@
 <template>
   <div class="middle-column">
         <h1 class="agenda">Notifications</h1>
-        <patient-appointments/>
+          <patient-appointments/>
+       <div class="notif-gen">   
+
+         <div class="notif-gen-office">
+          <h3>Sign in as a Office and use BookifyMD to see when:</h3>
+          <img src="../assets/Icon-1.png" alt="Office Icon">
+
+          <v-alert
+                  border="right"
+                  color="green"
+                  dense
+                  dismissible
+                  icon="$mdiAccount"
+                  outlined
+                  text
+                  type="success"
+                >Your appointment has been accepted</v-alert>
+           <v-alert
+                  border="right"
+                  color="yellow"
+                  dense
+                  dismissible
+                  icon="$mdiAccount"
+                  outlined
+                  text
+                  type="success"
+                >Your appointment has been delayed</v-alert>
+
+          <v-alert
+                  border="right"
+                  color="red"
+                  dense
+                  dismissible
+                  icon="$mdiAccount"
+                  outlined
+                  text
+                  type="success"
+                >Your appointment has been canceled</v-alert>
+
+
+         </div
+         > 
+        <div class="notif-gen-office">  
+          <h3>Sign in as a Doctor and use BookifyMD to see when:</h3>
+          <img src="../assets/Icon-2.png" alt="Patient Icon">
+        </div
+        >
+        <div class="notif-gen-office">
+          <h3>Sign in as a Doctor and use BookifyMD to see when:</h3>
+          <img src="../assets/Icon-3.png" alt="Doctor Icon">
+        </div
+        >
+      </div><!--end-generic-->
+
         <!-- <tbody>
             <tr v-for="appointment in Appointments" :key="appointmentID.id">
                 
@@ -61,7 +114,6 @@ data() {
         // facility: "Presbyterian",
         // Location: "1001 Spruce St",
         // Description: "Spinal Tap"}
-       
     }
   },
   components:{
@@ -93,16 +145,15 @@ data() {
       .then((response)=>{
         if(response.status==200){
           this.appointments = response.data
-        
         }else{
           console.log("Unable to get Notifications")
         }
       })
     }
   },
-  
 }
 </script>
+
 
 <style>
 .middle-column{
