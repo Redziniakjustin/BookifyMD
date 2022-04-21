@@ -1,44 +1,51 @@
 <template>
    <div>
      <div>
-      <star-rating 
+      <!-- <star-rating 
       v-model="avgRating" 
       v-bind:show-rating="false" 
       v-bind:read-only="true"
-      v-bind:increment="0.01"/>
-      <span>{{avgRating}}</span>
+      v-bind:increment="0.01"/> -->
+      <!-- <span>{{avgRating}}</span> -->
       <table>
         <tbody v-for="review in reviews" :key=review>
+          <div class="ReviewBox">
           <tr>
             <td>
-              <h3>
-                {{review.reviewDate}}
-              </h3>
+              <tr>
+            <h2><b></b> {{review.patientFirstName}}   {{review.reviewDate}}</h2>
+          </tr>
             </td>
           </tr>
           <tr>
-            <td>{{review.doctor}}</td>
+            <td><b>Doctor: </b> {{review.doctor}}</td>
           </tr>
           <tr>
-            <td>{{review.office}}</td>
+            <td><b>Office: </b>{{review.office}}</td>
           </tr>
           <tr>
-            <td>Reviewer: {{review.patientFirstName}}</td>
+            <td><b>Review: </b>{{review.reviewDesc}}</td>
           </tr>
           <tr>
-            <td>{{review.reviewDesc}}</td>
+            <td class = "ratings">  <star-rating 
+          v-model="review.rating" 
+          v-bind:show-rating="false" 
+         v-bind:read-only="true"
+         v-bind:increment="0.01"/>
+        <!-- <span>{{avgRating}}</span> -->
+        </td>
           </tr>
           <tr>
-            <td>{{review.rating}}</td>
-          </tr>
-          <tr>
-            <td>
+            <td class = "button">
               <!--Will need to make this a v-if for state.isDoctor-->
-              <button @click="addReviewParamsAndShowForm(review.id)">
+              <v-btn color="accent" elevation="7" outlined raised text tile>
+              <!-- <button @click="addReviewParamsAndShowForm(review.id)"> -->
                 Respond
-              </button>
+                </v-btn>
+              <!-- </button> -->
                 </td>
           </tr>
+          </div>
         </tbody>
       </table>
      </div>
@@ -183,5 +190,23 @@ export default {
 </script>
 
 <style scoped>
+.ReviewBox{
+  display:inline-flexbox;
+   border: 1.5px solid black;
+   border-radius: 5px;
+   margin: 1%;
+
+   background-color: #F0F8FF;
+	padding: 25px;
+	border-radius: 3px;
+}
+.button{
+  text-align: center;
+}
+.ratings{
+  align-content: center;
+}
+
+
 
 </style>

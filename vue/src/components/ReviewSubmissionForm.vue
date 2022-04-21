@@ -5,7 +5,8 @@
         <textarea name="review" type="text" class="placeholder"
         placeholder="Review Description" :value="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
         <star-rating v-model="reviewSubmissionForm.rating"/>
-        <button type="submit">Submit Review</button>
+         <!-- <button type="submit">Submit Review</button>   -->
+       <v-btn type="submit" color="accent" elevation="7" outlined raised text tile>Submit Review</v-btn>
     </form>
   </div>
 </template>
@@ -78,4 +79,8 @@ export default {
 </script>
 
 <style scoped>
+{
+    padding-top: 10%;
+  text-align: center;
+}
 </style>
