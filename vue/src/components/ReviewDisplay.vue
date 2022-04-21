@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class = "ratings">  <star-rating 
-          v-model="review.rating" 
+          v-model="review.reviewRating" 
           v-bind:show-rating="false" 
          v-bind:read-only="true"
          v-bind:increment="0.01"/>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-//import reviewService from '@/services/ReviewService'
+import reviewService from '@/services/ReviewService'
 import addReviewResponse from '@/services/ReviewService'
 import StarRating from 'vue-star-rating';
 
@@ -69,7 +69,7 @@ export default {
 
  data(){
         return{
-            avgRating: this.avgDocRating,
+            avgRating: {},
             reviewResponse: "",
             reviewResponseId: "",
             //reviews:[],
@@ -132,41 +132,40 @@ export default {
         currentUserProfile(){
             return this.$store.state.profile;
         },
-        avgDocRating(){
-          let avgRating = this.reviews.map(review => review.rating).reduce((acc, amount)=> acc+amount);
-          let r = this.reviews;
-          let review_length = r.reviews.reduce((count, rate) => {
-          if (rate.rating != null) count++
-          return count
-            }, 0)
-          return avgRating = (avgRating/review_length)
-        }
         
     },
     components:{
         StarRating
     },
-     mounted(){
-          console.log(this.avgDocRating)
-    //   console.log(this.$route.params.doctorID)
-    //   console.log("hello World!! It Works!!!")
-    //   if(this.currentUserType){
-    //       reviewService.listReviewByDoctorId(this.currentUserProfile.doctorId).then(response => {
-    //         this.reviews = response.data
-    //     }).catch(error => {
-    //         console.log(error)
-    //         this.error = true
-    //     })
-    //   }else{
-    //       reviewService.listReviewByDoctorId(this.$route.params.doctorID).then(response => {
-    //         this.reviews = response.data
-    //     }).catch(error => {
-    //         console.log(error)
-    //         this.error = true
-    //     })
-    //   }
-    //   //this.avgRating = 9;
-     },
+    mounted(){
+      console.log(this.$route.params.doctorID)
+      console.log("hello World!! It Works!!!")
+
+      if(this.$route.params != null){
+        if(this.currentUserType){
+          reviewService.listReviewByDoctorId(this.currentUserProfile.doctorId).then(response => {
+            this.reviews = response.data
+        }).catch(error => {
+            console.log(error)
+            this.error = true
+        })
+          }else{
+              reviewService.listReviewByDoctorId(this.$route.params.doctorID).then(response => {
+                this.reviews = response.data
+            }).catch(error => {
+                console.log(error)
+                this.error = true
+            })
+          }
+      } else{
+        this.$router.push('/')
+      }
+      //this.avgRating = 9;
+      this.avgRating = this.reviews.map(review => review.rating).reduce((acc, amount)=> acc+amount);
+      /*Will want to change JSON.parse to take actual JSON String*/
+      //var body = JSON.parse(this.reviews);
+      this.avgRating = (this.avgRating/5 /*body.value.length*/)
+    },
     methods:{
       //must change array object name
       averageRating(){
@@ -191,7 +190,6 @@ export default {
                 console.log(error.response.status);
             })
       }
-        
     }
 
 }

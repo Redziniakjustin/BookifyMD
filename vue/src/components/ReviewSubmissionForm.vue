@@ -4,10 +4,10 @@
         <h2 class="margin">Write a review for: {{doctor.name}}</h2>
         <input name="review" type="text" class="review-desc"
         placeholder="Tell us about your experience with us." v-model="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
-        <star-rating v-model="reviewSubmissionForm.rating"/>
+        <star-rating @rating-selected ="setRating"/>
          <!-- <button type="submit">Submit Review</button>   -->
-         <td class = "button">
-       <v-btn type="submit" color="accent" elevation="7" outlined raised text tile>Submit Review</v-btn>
+        <v-btn type="submit" color="accent" elevation="7" outlined raised text tile>Submit Review</v-btn>
+        <td class = "button">
        </td>
     </form>
     <button @click="dummySubmit">dummy</button>
@@ -17,7 +17,7 @@
 
 <script>
 import StarRating from 'vue-star-rating';
-import addReview from '@/services/ReviewService';
+import reviewService from '@/services/ReviewService';
 
 export default {
     data(){
@@ -30,10 +30,10 @@ export default {
                 patientLastName: "", 
                 doctorFirstName: "",
                 doctorLastName: "",
-                officeId: "",
+                officeName: "",
                 reviewDate: "", 
                 reviewDesc: "",
-                rating: 0,
+                reviewRating: 3,
              }
         }
     },
@@ -67,13 +67,18 @@ export default {
 
     },
     methods:{
+        setRating: function(rating){
+            let num
+            num = parseInt(rating);
+            return num
+        },
         dummySubmit(){
             console.log(this.reviewSubmissionForm)
         },
 
          //TODO Import as a function from service 
         submitReviewSubmissionForm(){
-            addReview(this.reviewSubmissionForm).then((response)=> {
+            reviewService.addReview(this.reviewSubmissionForm).then((response)=> {
                 if(response.status == 201){
                     this.$router.push('/')
                 }
