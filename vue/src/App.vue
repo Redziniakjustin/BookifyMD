@@ -9,6 +9,10 @@
     
     <router-view/>
 
+    <div class="page-end">
+      <!-- <adaptive-photo-layout/> -->
+      <footer-bar/>
+    </div>
   </div>
 </template>
 
@@ -16,10 +20,15 @@
 <script>
 import NavBar from './components/NavBar.vue'
 import 'vuetify/dist/vuetify.min.css'
+import FooterBar from './components/FooterBar.vue'
+// import AdaptivePhotoLayout from './components/AdaptivePhotoLayout.vue'
 
 export default {
   components: { 
-    NavBar },
+    NavBar,
+    FooterBar,
+    // AdaptivePhotoLayout 
+    },
   name: 'app'
 }
 </script>
