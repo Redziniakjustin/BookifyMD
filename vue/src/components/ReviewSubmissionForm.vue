@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="submitReviewSubmissionForm"> <!--Will need to pass through DOctor id, appointment id, clinic name, current user to DB -->
-        <p>Write a review for {{doctor.name}}</p>
+        <h2 class="margin">Write a review for: {{doctor.name}}</h2>
         <input name="review" type="text" class="review-desc"
         placeholder="Tell us about your experience with us." v-model="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
         <star-rating v-model="reviewSubmissionForm.rating"/>
@@ -120,5 +120,8 @@ p {
      white-space:pre-line;  
   position:relative;
   top:-7px;
+}
+.margin{
+    margin-top: 10px;
 }
 </style>
