@@ -45,6 +45,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 3%;
    }
 .appointment-body{
     margin: 20px 0 0px 20px;
@@ -52,5 +53,8 @@ export default {
    }
 .ap-p{
 margin-right: 20px;
+}
+.appointment-photo-array{
+  padding-top: 2%;
 }
 </style>

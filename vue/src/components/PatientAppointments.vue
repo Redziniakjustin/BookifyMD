@@ -164,9 +164,12 @@ export default {
   margin: 30px 0 30px;
 }
 .app-table{
-  padding: 10px 20px 10px 20px;
+  padding: 10px 30px 10px 20px;
   border: 1px solid;
   width: 100%;
+  align-content: center;
+ 
+
 }
 .tr{
   height: 1.8em;

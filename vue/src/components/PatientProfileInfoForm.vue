@@ -1,7 +1,8 @@
 <template>
   <div class="pat-prof-form-container">
+    <div class = "column1">
     <form @submit.prevent="registerPatientProfile">
-      <h2>Patient Personal Information</h2>
+      <h2><u>Patient Personal Information:</u> </h2>
 
       <label for="firstName">First Name:</label>
       <input id="firstName" type="text" v-model="patient.firstName"
@@ -32,9 +33,16 @@
       <label for="patientEmail"> Email: </label>
       <input type="email" id="patientEmail" v-model="patient.email">
       
-      <button type="submit"> Submit </button>
+         <td class = "button">
+      <v-btn type="submit" color="accent" elevation="7" outlined raised text tile>Submit</v-btn>
+      </td>
     </form>
+    </div>
+    
+<div class = "column2">
+      </div>
   </div>
+  
 </template>
 
 <script>
@@ -101,4 +109,27 @@ export default {
 </script>
 
 <style scoped>
+
+
+.pat-prof-form-container{
+  padding-top: 5%;
+margin: 0 auto; 
+width:350px;
+   box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+        0 100px 80px rgba(0, 0, 0, 0.12);
+        padding: 22px;
+        background: white;
+        border-radius: 5px;
+}
+.button{
+    padding-top: 3%;
+}
+h2{
+  padding: 3%;
+}
 </style>

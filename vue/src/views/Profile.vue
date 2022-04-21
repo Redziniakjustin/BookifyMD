@@ -60,6 +60,7 @@ export default {
     justify-content: center;
    }
    .photo-array{
+     padding-top: 2%;
     display: flex;
     flex-direction: row;
     align-items: center;
