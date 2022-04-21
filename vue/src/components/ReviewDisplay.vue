@@ -17,14 +17,14 @@
           </tr>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td><b>Doctor: </b> {{review.doctor}}</td>
-          </tr>
+          </tr> -->
           <tr>
             <td><b>Office: </b>{{review.office}}</td>
           </tr>
           <tr>
-            <td><b>Review: </b>{{review.reviewDesc}}</td>
+            <td class = "reviews"><b>Review: </b>{{review.reviewDesc}}</td>
           </tr>
           <tr>
             <td class = "ratings">  <star-rating 
@@ -214,6 +214,9 @@ export default {
 }
 .respond-fix{
   z-index: auto;
+}
+.reviews{
+  font-size: 100px;
 }
 
 
