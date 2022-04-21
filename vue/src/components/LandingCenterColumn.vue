@@ -24,7 +24,7 @@
                 <li>Improves patient engagement and provider responsiveness.</li>
                 <li>Convenient access to provider reviews and appointments.</li>
               </ul>
-              <h1 class="air"> Empower your patients to access their health and 
+              <h1 class="new"> Empower your patients to access their health and 
                 care information whenever they need it.</h1>
               <ul>
                 <li>24/7 online scheduling</li>
@@ -53,7 +53,7 @@
           <ul class="list-testimonial">
             <li>
             “The service we've received from BookifyMD leadership has been 
-            beyond belief.” -Hospitals of the University of Fennsylvania
+            beyond belief.” -Hospitals of the University of Pennsylvania
             -Fenn Presbyterian
             </li>
             <li>
@@ -116,6 +116,9 @@ export default {
 .air{
   padding:5px 0 15px 0;
 }
+.new{
+  padding-top: 20px;
+}
 
 .lcc-sec-1-img{
   float: left;
@@ -128,7 +131,6 @@ export default {
 .lcc-sec-2-img{
   float: right;
 }
-
 
 .lcc-sec-1{
  
