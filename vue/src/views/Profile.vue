@@ -49,7 +49,8 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start space-between;
+    min-height: calc(100vh - 148px);
    }
 .profile-body{
     margin: 80px 0 10px 0;

@@ -36,7 +36,7 @@ export default {
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    /* margin-top: 180px; */
+    margin-top: 180px;
     align-content: center;
     min-height: calc(100vh - 70px);
    }
