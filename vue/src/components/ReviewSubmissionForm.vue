@@ -2,15 +2,15 @@
   <div>
     <form @submit.prevent="submitReviewSubmissionForm"> <!--Will need to pass through DOctor id, appointment id, clinic name, current user to DB -->
         <h2 class="margin">Write a review for: {{doctor.name}}</h2>
-        <input name="review" type="text" class="review-desc"
-        placeholder="Tell us about your experience with us." v-model="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
+        <textarea name="review" type="text" class="review-desc"
+        placeholder="Tell us about your experience." v-model="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
         <star-rating @rating-selected ="setRating"/>
          <!-- <button type="submit">Submit Review</button>   -->
         <v-btn type="submit" color="accent" elevation="7" outlined raised text tile>Submit Review</v-btn>
         <td class = "button">
        </td>
     </form>
-    <button @click="dummySubmit">dummy</button>
+    <!-- <button @click="dummySubmit">dummy</button> -->
   </div>
 </template>
 
@@ -94,6 +94,9 @@ export default {
 p {
     padding-top: 2%;
     padding-bottom: 2%;
+}
+form{ overflow-wrap: break-word;
+     display: inline-block;
 }
 .review-desc{
     padding: 5%;
