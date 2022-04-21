@@ -41,9 +41,9 @@
                 <td v-on:click="clicked" v-if="user.role=='patient'">
             </tr> -->
           <tr>
-            
+            <div class="btn-sub-rev">
             <td>
-              <button class="table-btn">
+              <v-btn class="table-btn">
                 <router-link
                   class="no-hyper"
                   id="reviews"
@@ -58,11 +58,11 @@
                   }"
                   >Reviews</router-link
                 >
-              </button>
+              </v-btn>
             </td>
             <!--Must Pass through all of the default params params Will need a query that shows where the doctor is on a certain day will need to be accomplished on backend-->
             <td v-if="!currentUserType">
-              <button class="table-btn">
+              <v-btn class="table-btn">
                 <router-link
                    class="no-hyper"
                   id="schedule"
@@ -77,8 +77,9 @@
                     },
                   }"
                   >Schedule</router-link>
-              </button>
+              </v-btn>
             </td>
+            </div><!--btn-rev-sub-end-->
           </tr>
           </div>
         </tbody>
@@ -270,5 +271,12 @@ export default {
 @import "../assets/styles/styles.css";
 .dc-plus {
   margin: 184px 0 10px 0;
+}
+btn-sub-rev{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin: 10px 0 10px 0;
 }
 </style>
