@@ -61,9 +61,9 @@ public class JdbcReviewDao implements ReviewDao{
                 "RETURNING review_id;";
         Long doctorId = findDoctorIdByName(newReview.getDoctorFirstName(), newReview.getDoctorLastName());
         Long patientId = findPatientIdByName(newReview.getPatientFirstName(), newReview.getPatientLastName());
-        Long officeId = findOfficeIdByName(newReview.getOfficeName());
+//        Long officeId = findOfficeIdByName(newReview.getOfficeName());
         try {
-            reviewId = jdbcTemplate.queryForObject(sql, Long.class, doctorId, patientId, officeId,
+            reviewId = jdbcTemplate.queryForObject(sql, Long.class, doctorId, patientId, newReview.getOfficeId(),
                     newReview.getReviewDate(), newReview.getReviewDesc(), newReview.getReviewRating() );
             if(reviewId != null){
                 isSuccessful = true;

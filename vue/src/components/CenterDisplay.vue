@@ -50,6 +50,7 @@
                     name: 'review',
                     params: {
                       doctorID: doctor.doctorId,
+                      officeID: doctor.officeId,
                       firstName: doctor.firstName,
                       lastName: doctor.lastName,
                     },

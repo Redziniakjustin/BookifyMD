@@ -2,8 +2,8 @@
   <div>
     <form @submit.prevent="submitReviewSubmissionForm"> <!--Will need to pass through DOctor id, appointment id, clinic name, current user to DB -->
         <p>Write a review for {{doctor.name}}</p>
-        <textarea name="review" type="text" class="placeholder"
-        placeholder="Tell us about your experience with us." :value="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
+        <input name="review" type="text" class="review-desc"
+        placeholder="Tell us about your experience with us." v-model="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
         <star-rating v-model="reviewSubmissionForm.rating"/>
          <!-- <button type="submit">Submit Review</button>   -->
          <td class = "button">
@@ -30,7 +30,7 @@ export default {
                 patientLastName: "", 
                 doctorFirstName: "",
                 doctorLastName: "",
-                officeName: "",
+                officeId: "",
                 reviewDate: "", 
                 reviewDesc: "",
                 rating: 0,
@@ -59,9 +59,10 @@ export default {
         this.reviewSubmissionForm.reviewDate = (new Date()).toISOString().split('T')[0];
         this.reviewSubmissionForm.doctorFirstName = this.$route.params.firstName;
         this.reviewSubmissionForm.doctorLastName = this.$route.params.lastName;
+        this.reviewSubmissionForm.officeId = this.$route.params.officeID;
         console.log(this.doctor.name);
         } else {
-            this.$router.push('/review')
+            this.$router.push('/')
         }
 
     },
@@ -90,12 +91,34 @@ p {
     padding-top: 2%;
     padding-bottom: 2%;
 }
-.placeholder{
+.review-desc{
     padding: 5%;
     border-style: solid;
+    height: 200px;
 }
 .button{
     padding-top: 3%;
     align-content: center;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  white-space:pre-line;  
+  position:relative;
+  top:-7px;
+  
+}
+::-moz-placeholder { /* Firefox 19+ */
+     white-space:pre-line;  
+  position:relative;
+  top:-7px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    white-space:pre-line;  
+  position:relative;
+  top:-7px;
+}
+:-moz-placeholder { /* Firefox 18- */
+     white-space:pre-line;  
+  position:relative;
+  top:-7px;
 }
 </style>
