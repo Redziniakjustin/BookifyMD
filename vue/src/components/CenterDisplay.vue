@@ -89,7 +89,7 @@
       <h2 v-if="this.$store.state.profile.firstName === null">
         Please Update Profile Here:
         <router-link :to="{ name: 'profileRegister' }"
-          >Register Profile</router-link>
+          >Register</router-link>
       </h2>
       <notification-column />
     </div>

@@ -38,7 +38,7 @@
           <tr>
             <td class = "button">
               <!--Will need to make this a v-if for state.isDoctor-->
-              <v-btn color="accent" elevation="7" outlined raised text tile>
+              <v-btn class="respond-fix" color="accent" elevation="7" outlined raised text tile>
               <!-- <button @click="addReviewParamsAndShowForm(review.id)"> -->
                 Respond
                 </v-btn>
@@ -213,6 +213,9 @@ export default {
 }
 .ratings{
   align-content: center;
+}
+.respond-fix{
+  z-index: auto;
 }
 
 
