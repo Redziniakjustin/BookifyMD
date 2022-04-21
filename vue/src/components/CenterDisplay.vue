@@ -45,6 +45,7 @@
             <td>
               <button class="table-btn">
                 <router-link
+                  class="no-hyper"
                   id="reviews"
                   :to="{
                     name: 'review',
@@ -63,6 +64,7 @@
             <td v-if="!currentUserType">
               <button class="table-btn">
                 <router-link
+                   class="no-hyper"
                   id="schedule"
                   :to="{
                     name: 'schedule',
