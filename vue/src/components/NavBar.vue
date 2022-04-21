@@ -14,28 +14,28 @@
                   <ul>
                     <li class="inline" v-if="isHome===false">
                         <v-btn color="accent" elevation="7" outlined raised text tile> 
-                            <router-link id="home-link no-hyper" 
+                            <router-link class="home-link no-hyper" 
                             :to="{ name: 'home' }">Home
                             </router-link>
                         </v-btn>         
                     </li>
                     <li class="inline" v-if="isProfile===false">
                       <v-btn color="accent" elevation="7" outlined raised text tile>
-                        <router-link id="profile-link no-hyper" 
+                        <router-link class="profile-link no-hyper" 
                         :to="{ name: 'profile' }">Profile</router-link><!-- Patient -->
                       </v-btn>
                     </li>
 
                     <li class="inline" v-if="isAppointment===false"> 
                       <v-btn color="accent" elevation="7" outlined raised text tile>
-                        <router-link id="appointment-link no-hyper" 
+                        <router-link class="appointment-link no-hyper" 
                         :to="{ name: 'appointment' }">Appointments</router-link>
                       </v-btn>
                     </li>
 
                     <li class="inline" v-if="isReview===false">
                       <v-btn color="accent" elevation="7" outlined raised text tile>
-                          <router-link id="review-link no-hyper" 
+                          <router-link class="review-link no-hyper" 
                           :to="{ name: 'review' }">Review
                           </router-link>
                       </v-btn>

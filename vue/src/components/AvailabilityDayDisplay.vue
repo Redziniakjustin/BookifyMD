@@ -4,13 +4,15 @@
 <!-- ONCE INSIDE A DAYS AVAILABILITY - DROPDOWN TO CHANGE DAY SELECTED -->
     <button id="display-availability">Availability</button>
       <table>
-        <thead>
-            <th>
-                <td>Day of The Week</td>
-                <td>Appointment Time</td>
-                <td>Select to Reserve</td>
+           <div class="availability-header">
+            <thead> 
+            <th  >
+                <td style="margin-left:20px">Day of The Week</td>
+                <td style="margin-left:20px">Appointment Time</td>
+                <td style="margin-left:20px">Select to Reserve</td>
             </th>
-        </thead>
+            </thead>
+         </div>
         <tbody>
             <tr v-for="availability in availabilities" :key="availability.id">
                 <td>{{availability.dayOfWeek}}</td>
@@ -65,4 +67,15 @@ export default {
 
 
 <style>
+
+.availability-header{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: end;
+  
+    padding: 10px;
+    margin: 10px, 10px, 10px, 10px;
+}
+
 </style>
