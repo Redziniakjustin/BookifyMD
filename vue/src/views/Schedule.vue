@@ -4,7 +4,7 @@
        <h1>Schedule</h1>
 <!--<h3>Set Schedule</h3> -->
     </div>
-    <div class="schedule-body">
+    <div class="schedule-body elevated-box">
         <div><img src="../assets/sched-1.png" alt=""></div>
 
         <schedule-appointment-form class="sched-app-form"/>
@@ -36,8 +36,9 @@ export default {
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    margin-top: 180px;
+    /* margin-top: 180px; */
     align-content: center;
+    min-height: calc(100vh - 70px);
    }
    .schedule-body{
     margin: 30px 0 10px 0;

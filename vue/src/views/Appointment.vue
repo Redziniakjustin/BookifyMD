@@ -44,8 +44,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start space-between;
     padding-bottom: 3%;
+    z-index: 1;
+    min-height: calc(100vh - 148px);
    }
 .appointment-body{
     margin: 20px 0 0px 20px;

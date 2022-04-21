@@ -4,22 +4,22 @@
             </div> 
       <div class="footer-body">
             <div class="f-row-1">
-               <div class="location">
+               <div class="location air">
                 <h5>Headquarters</h5> 
                 1500 E. Market St.
                 Philadelphia, Pa 19199 
                 </div>
-                <div class="contact">
+                <div class="contact air">
                     <span>Contact</span> 
                     <span>1-888-215-5555</span>
                 </div>
-                <div class="legal">
+                <div class="legal air">
                 <h5> Legal</h5> 
                 <a> Privacy Policy </a>
                 <a> Terms of Service </a>
                 </div>
             
-                <div class="disclosure">
+                <div class="disclosure air">
                 <h5>Disclosure</h5>
                 <p>
                 BookifyMD reviews constitute the
@@ -31,7 +31,7 @@
               
                 </div>
 
-                <div class="about-small">
+                <div class="about-small air">
                     <h5> About</h5>
                     <p>BookifyMD is a healthcare portal that frees
                     providers to focus on patients by connecting
@@ -40,10 +40,14 @@
                 </div>
              </div><!--row-1--> 
              
-               <div class="copyright">
+               <div class="copyright air">
                 <span>2022 &copy; BookifyMD. All Rights Reserved.</span>
                     <span>Site Design and Development by TEJAVAGRN</span>
-                </div>    
+                </div>
+     <br> <!--replace w padding b-->
+     <br>
+     <br>
+     <br>    
       </div>
     </div>
 </template>
@@ -74,14 +78,18 @@ margin-top: auto
 .f-row-1{
 display: flex;
 flex-direction: row;
-align-items: center;
+align-items: start;
 justify-content: center;
-margin: 5px 0 5px 0;
+margin: 5px 0 10px 0;
 }
 .copyright{
     text-align: center;
 }
-.gradient{
-    background-color: rgb(81, 56, 104), thistle, white, transparent;
+/* .gradient{
+    max-height: 10px;
+    background-color: linear-gradient(white,rgb(81, 56, 104));
+} */
+.air{
+    margin: 0 10px 0 10px;
 }
 </style>

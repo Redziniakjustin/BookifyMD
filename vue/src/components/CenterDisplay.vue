@@ -266,12 +266,7 @@ export default {
 
 <style scoped>
 @import "../assets/styles/styles.css";
-
 .dc-plus {
   margin: 184px 0 10px 0;
 }
-/* .tb{
-  padding: 10px 0 10px 0;
-} */
-
 </style>
