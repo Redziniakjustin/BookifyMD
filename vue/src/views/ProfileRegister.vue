@@ -4,8 +4,10 @@
      <div class="prof-reg-bod"> 
           <patient-profile-info-form v-if="isPatient"/>
           <doctor-profile-info-form v-if=" !isPatient" />
-          <button v-if="isPatient"  @click="registerAsDoctor()">Are you a Doctor or Practioner?</button>
-          <button v-else @click="registerAsPatient()">Are You A Patient?</button>
+        <div class="btn">  
+          <v-btn v-if="isPatient"  @click="registerAsDoctor()">Are you a Doctor or Practioner?</v-btn>
+          <v-btn v-else @click="registerAsPatient()">Are You A Patient?</v-btn>
+        </div>
       </div>
 
   </div>
@@ -43,9 +45,14 @@ export default {
 
 <style>
  .prof-reg-container{
-    margin-top: 184px;
     align-content: center;
-   }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 148px);
+    margin-top: 184px;
+ }
    .prof-reg-body{
      display: flex;
      flex-direction: row;
@@ -53,5 +60,8 @@ export default {
      justify-content: space-between;
      margin: 80px 0 10px 0;
      font-size: 0.75rem;
+   }
+   .btn{
+     margin: 10px 0 10px 0;
    }
 </style>
