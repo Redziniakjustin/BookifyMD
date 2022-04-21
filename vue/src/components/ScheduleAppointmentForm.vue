@@ -6,52 +6,61 @@
         <h3>Schedule Appointment with: {{doctorName}} </h3> 
 
           <label for="apdate">appointmentDate</label>
+          <input type='date'
+            name="apdate"
+            :value='scheduleAppForm.appointmentDate'
+            @input='scheduleAppForm.appointmentDate = new Date($event.target.value)'
+          >
              <br> 
               <!-- Link to home.view doctor selected on @click this.$store.state -->
-          <input type="date" id="apdate" name="apdate" 
-          v-model="scheduleAppForm.appointmentDate">
           <br> 
-          <availability-day-display/>
-          <!-- <label for="aptime">time:</label><br>
-          <vue-timepicker 
-          id="time" 
-          name="time" 
-          v-model="scheduleAppForm.appointmentTime"
-          format="HH:mm:ss" 
-          :minute-interval="0" 
-          :second-interval="60"
-          hide-disabled-seconds
-          :hour-range="[[8,17]]"
-          /> -->
-
-          <label for="desc">desciption:</label><br>
+          <div class="availability-day-container">
+            <table>
+                <div class="availability-header">
+                  <thead> 
+                  <th  >
+                      <td style="margin-left:20px">Day of The Week</td>
+                      <td style="margin-left:20px">Appointment Time</td>
+                      <td style="margin-left:20px">Select to Reserve</td>
+                  </th>
+                  </thead>
+              </div>
+              <tbody>
+                  <tr v-for="availability in availabilities" :key="availability.id">
+                      <td>{{availability.dayOfWeek}}</td>
+                      <td>{{availability.startTime}}-{{availability.endTime}}</td>
+                      <!-- <td></td> -->
+                      <td>
+                          <v-btn @click="passAvailId(availability.availId)">Schedule</v-btn>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+          <label for="desc">description:</label><br>
           <input type="text" id="desc" name="desc" 
           v-model="scheduleAppForm.description">
 
           <input type="submit" id="submit" name="submit">
       </form>
-      <button @click="dummySubmit">dummy Submit</button>
-      <!-- <div>
-         <availability-day-display/>
-      </div> -->
-
-
   </div>
 </template>
 
 <script>
 import appointmentService from '@/services/AppointmentService'
-import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue';
-// import VueTimepicker from 'vue2-timepicker'
-// import 'vue2-timepicker/dist/VueTimepicker.css'
+import availabilityService from '@/services/AvailabilityService'
+
+
+//import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue';
 export default {
   // components: { 
   //   AvailabilityDayDisplay },
     data(){
         return{
+        availabilities:[],
         scheduleAppForm:{
           appointmentDate: "",
-          appointmentTime: "",
+          availId: "",
           patientId: "",
           doctorId: "", 
           officeId: "",
@@ -62,7 +71,6 @@ export default {
       }
     },
     components:{
-      AvailabilityDayDisplay
     },
     computed:{
         currentUser(){
@@ -82,6 +90,12 @@ export default {
         }
     },
     mounted(){
+      console.log(this.$route.params.doctorID)
+        availabilityService.currentDoctorAvailability(this.$route.params.doctorID)
+        .then(response=> {
+            this.availabilities = response.data;
+        });
+        console.log(this.availabilities)
       console.log(this.$route.params.doctorFirstName, this.$route.params.doctorLastName)
       if(this.$route.params != null){
       this.scheduleAppForm.patientId = this.$route.params.patientID; 
@@ -95,24 +109,33 @@ export default {
       
     },
     methods:{
-        dummySubmit(){
-          console.log(this.scheduleAppForm)
-        },
         submitAppointmentForm(){
           appointmentService.addAppointment(this.scheduleAppForm)
           .then((response)=>{
             if(response.status == 201){
                     console.log("successful submit")
-                    this.$router.push('/appointment')
+                    this.$router.push('/')
                 }
             }).catch((error)=>{
                 console.log(error.response.status);
           })
-        }
+        },
+        passAvailId: function(availableID) {
+          this.scheduleAppForm.availId = availableID;
+}
     }
 }
 </script>
 
-<style scoped>
+<style>
+.availability-header{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: end;
+  
+    padding: 10px;
+    margin: 10px, 10px, 10px, 10px;
+}
 
 </style>

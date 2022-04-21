@@ -17,6 +17,7 @@
     "vue-select": "^3.18.3",
     "vue-star-rating": "^1.7.0",
     "vue2-timepicker": "^1.1.6",
+    "vuejs-datepicker": "^1.6.2",
     "vuetify": "^2.6.4",
     "vuex": "^3.6.2"
   },
