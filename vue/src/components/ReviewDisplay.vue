@@ -74,51 +74,51 @@ export default {
             reviewResponseId: "",
             //reviews:[],
             reviews:[
-            {
-              id: 2,
-              patientFirstName: "Percy", 
-              office: "presbyterian",
-              doctor:"smit rehan",
-              reviewDate:"2022-10-23",
-              reviewDesc: "I came to Dr. Rehan with a toothache and lost my kidneys",
-              rating: 5
-            },
-            {
-              id: 5,
-              patientFirstName: "john", 
-              office: "HUP",
-              doctor:"Duquan Ali",
-              reviewDate:"2022-04-23",
-              reviewDesc: "I came to Dr. Ali with a toothache and lost my kidneys",
-              rating: 3
-            },
-            {
-              id: 7,
-              patientFirstName: "Betsie", 
-              office: "Lutheran",
-              doctor:"John Jacob",
-              reviewDate:"2022-04-23",
-              reviewDesc: "I came to Dr. Ali with a toothache and lost my kidneys",
-              rating: 1
-            },
-            {
-              id: 3,
-              patientFirstName: "Capt'n Crunch", 
-              office: "presbyterian",
-              doctor:"smit rehan",
-              reviewDate:"2022-04-23",
-              reviewDesc: "I came to Dr. Ali with a toothache and lost my kidneys",
-              rating: 5
-            },
-            {
-              id: 10,
-              patientFirstName: "Julien", 
-              office: "presbyterian",
-              doctor:"Julie Metta",
-              reviewDate:"2022-04-23",
-              reviewDesc: "I came to Dr. Ali with a toothache and lost my kidneys",
-              rating: 4
-            },
+            // {
+            //   id: 2,
+            //   patientFirstName: "Percy", 
+            //   office: "presbyterian",
+            //   doctor:"smit rehan",
+            //   reviewDate:"2022-10-23",
+            //   reviewDesc: "I came to Dr. Rehan with a toothache and lost my kidneys",
+            //   rating: 5
+            // },
+            // {
+            //   id: 5,
+            //   patientFirstName: "john", 
+            //   office: "HUP",
+            //   doctor:"Duquan Ali",
+            //   reviewDate:"2022-04-23",
+            //   reviewDesc: "I came to Dr. Ali with a toothache and lost my kidneys",
+            //   rating: 3
+            // },
+            // {
+            //   id: 7,
+            //   patientFirstName: "Betsie", 
+            //   office: "Lutheran",
+            //   doctor:"John Jacob",
+            //   reviewDate:"2022-04-23",
+            //   reviewDesc: "I came to Dr. Ali with a toothache and lost my kidneys",
+            //   rating: 1
+            // },
+            // {
+            //   id: 3,
+            //   patientFirstName: "Capt'n Crunch", 
+            //   office: "presbyterian",
+            //   doctor:"smit rehan",
+            //   reviewDate:"2022-04-23",
+            //   reviewDesc: "I came to Dr. Ali with a toothache and lost my kidneys",
+            //   rating: 5
+            // },
+            // {
+            //   id: 10,
+            //   patientFirstName: "Julien", 
+            //   office: "presbyterian",
+            //   doctor:"Julie Metta",
+            //   reviewDate:"2022-04-23",
+            //   reviewDesc: "I came to Dr. Ali with a toothache and lost my kidneys",
+            //   rating: 4
+            // },
         ]
       }
     },
