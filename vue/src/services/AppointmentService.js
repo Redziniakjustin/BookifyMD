@@ -8,8 +8,8 @@ export default {
   getAppointment(id) {
       return axios.get('/appointments/${id}', id)
   },
-  addAppointment(){
-      return axios.post('/appointments')
+  addAppointment(appointment){
+      return axios.post('/appointments', appointment)
   }, 
   updateAppointment(id){
       return axios.put('/appointments/${id}', id)

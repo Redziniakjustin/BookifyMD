@@ -1,17 +1,25 @@
 <template>
   <div class="schedule-app-form">
-      <form class="form-schedule" action="">
+      <form class="form-schedule" @submit.prevent="submitAppointmentForm">
           <!--include an h2 or h3 element that has the name of the chosen doctor and their office-->
-        <h3>Schedule Appointment with: {{scheduleAppForm.doctorID}} </h3> 
+        <h3>Schedule Appointment with: {{doctorName}} </h3> 
 
-          <label for="apdate">appointmentDate:</label><br>  <!-- Link to home.view doctor selected on @click this.$store.state -->
+          <label for="apdate">appointmentDate ( please Select Minutes and Seconds!):</label><br>  <!-- Link to home.view doctor selected on @click this.$store.state -->
           <input type="date" id="apdate" name="apdate" v-model="scheduleAppForm.appointmentDate"><br> 
 
           <label for="aptime">time:</label><br>
-          <input type="time" id="time" name="time" v-model="scheduleAppForm.appointmentTime">
-
-          <label for="aploc">location:</label><br>
-          <input type="text" id="aploc" name="aploc" v-model="scheduleAppForm.officeID">
+          <vue-timepicker 
+          id="time" 
+          name="time" 
+          v-model="scheduleAppForm.appointmentTime"
+          format="HH:mm:ss" 
+          :minute-interval="0" 
+          :second-interval="60"
+          hide-disabled-seconds
+          :hour-range="[[8,17]]"
+          />
+          <!-- </vue-timepicker> -->
+          <!-- <input type="time"> -->
 
           <label for="desc">desciption:</label><br>
           <input type="text" id="desc" name="desc" v-model="scheduleAppForm.description">
@@ -19,43 +27,38 @@
           <input type="submit" id="submit" name="submit">
       </form>
 
-      <div>
+      <!-- <div>
          <availability-day-display/>
-      </div>
+      </div> -->
 
 
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue';
-
+//import AvailabilityDayDisplay from './AvailabilityDayDisplay.vue';
+import appointmentService from '@/services/AppointmentService'
+import VueTimepicker from 'vue2-timepicker'
+import 'vue2-timepicker/dist/VueTimepicker.css'
 export default {
-  components: { 
-    AvailabilityDayDisplay },
+  // components: { 
+  //   AvailabilityDayDisplay },
     data(){
         return{
-            schedule:[
-        {
-          appointmentDate: "04/14/2022",
-          time: "8:00am-8:30am",
-          patient: "Omari",
-          location: "W.Philly Hospital",
-          description: "General Check-Up",
-          delayed: true
-        },     
-        ],
         scheduleAppForm:{
           appointmentDate: "",
           appointmentTime: "",
-          patientID: "",
-          doctorID: "", 
-          officeID: "",
+          patientId: "",
+          doctorId: "", 
+          officeId: "",
           description: "",
           status: "scheduled"
-        }
+        },
+        doctorAvailability:[]
       }
+    },
+    components:{
+      VueTimepicker 
     },
     computed:{
         currentUser(){
@@ -67,9 +70,16 @@ export default {
         currentUserProfile(){
             return this.$store.state.profile;
         },
+        doctorName(){
+          return "Dr. " + 
+          this.$route.params.doctorFirstName + 
+          " " + 
+          this.$route.params.doctorLastName
+        }
     },
-    created(){
-      if(this.$route.params){
+    mounted(){
+      console.log(this.$route.params.doctorFirstName, this.$route.params.doctorLastName)
+      if(this.$route.params != null){
       this.patientID = this.$route.params.patientID; 
       this.officeID =  this.$route.params.officeID;
       this.doctorID = this.$route.params.doctorID;
@@ -77,17 +87,18 @@ export default {
       } else {
             this.$router.push('appointments')
         }
+      
     },
     methods:{
-        //Import as a function from service 
-        //Omari Will complete
-        submitScheduleAppForm(){
-          axios.post('/endpoint', this.scheduleAppForm).then((response)=>{
-            if (response.status === 201){
-              this.$router.push('home')
-              }
-          }).catch((error)=>{
-              console.log(error.response.status);
+        submitAppointmentForm(){
+          appointmentService.addAppointment(this.scheduleAppForm)
+          .then((response)=>{
+            if(response.status == 201){
+                    console.log("successful submit")
+                    this.$router.push('/appointment')
+                }
+            }).catch((error)=>{
+                console.log(error.response.status);
           })
         }
     }

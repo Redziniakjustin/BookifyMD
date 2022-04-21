@@ -57,14 +57,7 @@ export default {
         },
     },
   mounted(){
-    this.doctor = this.$store.state.profile
-    console.log(this.doctor)
-    // getDoctorProfileById(this.$store.user.id).then((response)=>{
-    //   this.doctor = response.data;
-    // }).catch(error => {
-    //       console.log(error)
-    //       this.error = true
-    //   })
+    this.doctor = this.currentUserProfile;
   }
 }
 </script>
