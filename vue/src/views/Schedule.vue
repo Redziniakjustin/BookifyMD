@@ -4,8 +4,12 @@
        <h1>Schedule</h1>
 <!--<h3>Set Schedule</h3> -->
     </div>
-    <div class="schedule-body display-container">
-        <schedule-appointment-form/>
+    <div class="schedule-body">
+        <div><img src="../assets/sched-1.png" alt=""></div>
+
+        <schedule-appointment-form class="sched-app-form"/>
+
+        <div><img src="../assets/ScreenDoctorWoman.png" alt="Doctor with Schedule"></div>
     </div>      
   </div>
 </template>
@@ -27,18 +31,21 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center space-between;
+    justify-content: center;
     flex-wrap: nowrap;
     margin-top: 180px;
     align-content: center;
    }
    .schedule-body{
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     justify-content: space-between;
-     margin: 30px 0 10px 0;
-     font-size: 0.75rem;
+    margin: 30px 0 10px 0;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center space-between;
+   }
+   .sched-app-form{
+     flex-basis: 60%;
+     margin: 0 20px 0 20px;
    }
    .lift{
      box-shadow:
@@ -52,5 +59,6 @@ export default {
         padding: 22px;
         background: white;
         border-radius: 5px;
+        width: 100%;
    }
 </style>

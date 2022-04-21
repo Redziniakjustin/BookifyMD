@@ -1,7 +1,10 @@
 <template>
-    <div class="footer-container"> 
+    <div class="footer-container">
+        <div class="gradient">
+            </div> 
       <div class="footer-body">
-        `       <div class="location">
+            <div class="f-row-1">
+               <div class="location">
                 <h5>Headquarters</h5> 
                 1500 E. Market St.
                 Philadelphia, Pa 19199 
@@ -15,12 +18,17 @@
                 <a> Privacy Policy </a>
                 <a> Terms of Service </a>
                 </div>
-
+            
                 <div class="disclosure">
                 <h5>Disclosure</h5>
                 <p>
-                BookifyMD reviews constitute the subjective opinions of individual end users based on their own experiences and do not represent the views of BookifyMD or its affiliates.
+                BookifyMD reviews constitute the
+                subjective opinions of individual
+                end users based on their own experiences
+                and do not represent the views of BookifyMD
+                or its affiliates.
                 </p>
+              
                 </div>
 
                 <div class="about-small">
@@ -30,7 +38,9 @@
                     Professionals anytime, anywhere and with any device.
                     </p>
                 </div>
-                <div class="copyright">
+             </div><!--row-1--> 
+             
+               <div class="copyright">
                 <span>2022 &copy; BookifyMD. All Rights Reserved.</span>
                     <span>Site Design and Development by TEJAVAGRN</span>
                 </div>    
@@ -47,5 +57,29 @@ export default {
 <style scoped>
 .footer-container{
 background: rgb(81, 56, 104);
+color:whitesmoke;
+position: fixed;
+width: 100%;
+max-height: 300px;
+}
+.footer-body{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-top: auto 
+}
+.f-row-1{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+margin: 5px 0 5px 0;
+}
+.copyright{
+    text-align: center;
+}
+.gradient{
+    background-color: rgb(81, 56, 104), thistle, white, transparent;
 }
 </style>
