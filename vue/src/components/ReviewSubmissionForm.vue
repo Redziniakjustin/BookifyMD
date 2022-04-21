@@ -1,7 +1,8 @@
 <template>
   <div>
     <form @submit.prevent="submitReviewSubmissionForm"> <!--Will need to pass through DOctor id, appointment id, clinic name, current user to DB -->
-        <h2 class="margin">Write a review for: {{doctor.name}}</h2>
+        <h2 class="margin">Write a review for: </h2>
+        <h2> {{doctor.name}} </h2>
         <textarea name="review" type="text" class="review-desc"
         placeholder="Tell us about your experience." v-model="reviewSubmissionForm.reviewDesc"/> <!-- 'What Did you Think of Your Visit with?' -->
         <star-rating @rating-selected ="setRating"/>
