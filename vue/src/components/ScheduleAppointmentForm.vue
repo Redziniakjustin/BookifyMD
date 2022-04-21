@@ -26,7 +26,7 @@
 
           <input type="submit" id="submit" name="submit">
       </form>
-
+      <button @click="dummySubmit">dummy Submit</button>
       <!-- <div>
          <availability-day-display/>
       </div> -->
@@ -80,9 +80,9 @@ export default {
     mounted(){
       console.log(this.$route.params.doctorFirstName, this.$route.params.doctorLastName)
       if(this.$route.params != null){
-      this.patientID = this.$route.params.patientID; 
-      this.officeID =  this.$route.params.officeID;
-      this.doctorID = this.$route.params.doctorID;
+      this.scheduleAppForm.patientId = this.$route.params.patientID; 
+      this.scheduleAppForm.officeId =  this.$route.params.officeID;
+      this.scheduleAppForm.doctorId = this.$route.params.doctorID;
       console.log(this.patientID, this.officeID, this.doctorID);
       } else {
             this.$router.push('appointments')
@@ -90,6 +90,9 @@ export default {
       
     },
     methods:{
+        dummySubmit(){
+          console.log(this.scheduleAppForm)
+        },
         submitAppointmentForm(){
           appointmentService.addAppointment(this.scheduleAppForm)
           .then((response)=>{

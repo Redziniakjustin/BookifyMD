@@ -8,7 +8,7 @@
       v-bind:increment="0.01"/> -->
       <!-- <span>{{avgRating}}</span> -->
       <table>
-        <tbody v-for="review in reviews" :key=review>
+        <tbody v-for="review in reviews" :key="review.id">
           <div class="ReviewBox">
           <tr>
             <td>
@@ -49,7 +49,7 @@
         </tbody>
       </table>
      </div>
-    <div v-if="isResponse">
+    <div v-if="this.currentUserType">
         <form @submit.prevent="submitResponse">
           <h2>Respond to review</h2>
           <input type="text" v-model="reviewResponse">
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-//import listReviewByDoctorId from '@/services/ReviewService'
+import reviewService from '@/services/ReviewService'
 import addReviewResponse from '@/services/ReviewService'
 import StarRating from 'vue-star-rating';
 
@@ -69,7 +69,6 @@ export default {
 
  data(){
         return{
-            isResponse: false,
             avgRating: {},
             reviewResponse: "",
             reviewResponseId: "",
@@ -128,7 +127,7 @@ export default {
             return this.$store.state.user
             },
         currentUserType(){
-            return this.$store.profileType.isDoctor;
+            return this.$store.state.profileType.isDoctor;
         },
         currentUserProfile(){
             return this.$store.state.profile;
@@ -138,22 +137,23 @@ export default {
         StarRating
     },
     mounted(){
+      console.log(this.$route.params.doctorID)
       console.log("hello World!! It Works!!!")
-      // if(this.$store.profileType.isDoctor){
-      //     listReviewByDoctorId(this.$state.profile.doctorId).then(response => {
-      //       this.reviews = response.data
-      //   }).catch(error => {
-      //       console.log(error)
-      //       this.error = true
-      //   })
-      // }else{
-      //     listReviewByDoctorId(this.$route.params.doctorID).then(response => {
-      //       this.reviews = response.data
-      //   }).catch(error => {
-      //       console.log(error)
-      //       this.error = true
-      //   })
-      // }
+      if(this.currentUserType){
+          reviewService.listReviewByDoctorId(this.currentUserProfile.doctorId).then(response => {
+            this.reviews = response.data
+        }).catch(error => {
+            console.log(error)
+            this.error = true
+        })
+      }else{
+          reviewService.listReviewByDoctorId(this.$route.params.doctorID).then(response => {
+            this.reviews = response.data
+        }).catch(error => {
+            console.log(error)
+            this.error = true
+        })
+      }
       //this.avgRating = 9;
       this.avgRating = this.reviews.map(review => review.rating).reduce((acc, amount)=> acc+amount);
       /*Will want to change JSON.parse to take actual JSON String*/

@@ -49,7 +49,7 @@
                   :to="{
                     name: 'review',
                     params: {
-                      doctorID: doctor.doctorID,
+                      doctorID: doctor.doctorId,
                       firstName: doctor.firstName,
                       lastName: doctor.lastName,
                     },

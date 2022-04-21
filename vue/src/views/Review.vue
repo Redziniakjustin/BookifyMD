@@ -24,7 +24,7 @@
      </div>    
      <div class="right-column"> 
        <img src="../assets/review_1.png" alt="Doctor Photo 2">
-         <review-submission-form/>
+         <review-submission-form v-if="isReview"/>
      </div>   
     </div>
 
@@ -47,6 +47,15 @@ export default {
   components: { 
     ReviewSubmissionForm,
     ReviewDisplay },
+  computed:{
+    isReview(){
+          let showReview= false;
+          if(this.$route.params != null){
+            showReview = true;
+          }
+          return showReview
+        }
+  }
 }
 </script>
 

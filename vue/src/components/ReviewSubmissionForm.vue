@@ -8,6 +8,7 @@
          <!-- <button type="submit">Submit Review</button>   -->
        <v-btn type="submit" color="accent" elevation="7" outlined raised text tile>Submit Review</v-btn>
     </form>
+    <button @click="dummySubmit">dummy</button>
   </div>
 </template>
 
@@ -30,7 +31,7 @@ export default {
                 officeName: "",
                 reviewDate: "", 
                 reviewDesc: "",
-                rating: "",
+                rating: 0,
              }
         }
     },
@@ -39,7 +40,7 @@ export default {
             return this.$store.state.user
             },
         currentUserType(){
-            return this.$store.profileType.isDoctor;
+            return this.$store.state.profileType.isDoctor;
         },
         currentUserProfile(){
             return this.$store.state.profile;
@@ -51,18 +52,22 @@ export default {
     created(){
         if(this.$route.params != null) {
         this.doctor.name = ("Dr. "+ this.$route.params.firstName + " " +this.$route.params.lastName);
-        this.reviewSubmissionForm.patientFirstName = this.$state.profile.firstName;
-        this.reviewSubmissionForm.patientLastName = this.$state.profile.lastName;
+        this.reviewSubmissionForm.patientFirstName = this.currentUserProfile.firstName;
+        this.reviewSubmissionForm.patientLastName = this.currentUserProfile.lastName;
         this.reviewSubmissionForm.reviewDate = (new Date()).toISOString().split('T')[0];
         this.reviewSubmissionForm.doctorFirstName = this.$route.params.firstName;
         this.reviewSubmissionForm.doctorLastName = this.$route.params.lastName;
         console.log(this.doctor.name);
         } else {
-            this.$router.push('home')
+            this.$router.push('/review')
         }
 
     },
     methods:{
+        dummySubmit(){
+            console.log(this.reviewSubmissionForm)
+        },
+
          //TODO Import as a function from service 
         submitReviewSubmissionForm(){
             addReview(this.reviewSubmissionForm).then((response)=> {
@@ -79,8 +84,8 @@ export default {
 </script>
 
 <style scoped>
-{
+/* {
     padding-top: 10%;
   text-align: center;
-}
+} */
 </style>
