@@ -188,10 +188,6 @@ export default {
     },
   }, //Will be used to populate the doctors list.
   mounted() {
-      console.log(1);
-    console.log("Recognized user: " + this.currentUser.id);
-
-    console.log("Calling Doctor List");
     //Will be used to populate the doctors list.
     profileService
       .listDoctor()
@@ -204,9 +200,6 @@ export default {
         this.error = true;
       })
       .finally(() => (this.loading = false));
-    console.log(this.doctors);
-
-    console.log("Calling Office List");
     //Will be used to populate providers list.
     profileService.listOffices()
       .then((response) => {
@@ -218,9 +211,6 @@ export default {
         this.error = true;
       })
       .finally(() => (this.loading = false));
-    console.log(this.offices);
-
-        console.log('Set Authentication, why?')
     //Set Store state authenticated
     if (this.$store.state.user.id != null) {
       let authenticated = true;
@@ -238,7 +228,6 @@ export default {
     console.log("UserTypeFailed");
     }
     });
-        console.log("Calling Profile");
     //Method to set user Profile
     if (this.currentUserType) {
       profileService

@@ -32,14 +32,6 @@
                         :to="{ name: 'appointment' }">Appointments</router-link>
                       </v-btn>
                     </li>
-
-                    <!-- <li class="inline" v-if="isReview===false">
-                      <v-btn color="accent" elevation="7" outlined raised text tile>
-                          <router-link class="review-link no-hyper" 
-                          :to="{ name: 'review' }">Review
-                          </router-link>
-                      </v-btn>
-                    </li> -->
                   </ul>
                   </div>
                   <!--Doctor -->
@@ -55,7 +47,7 @@
                     <li class="inline" v-if="isProfile===false">
                     <v-btn  color="accent"  elevation="7"   outlined  raised  text  tile> 
                       <router-link class="profile-link no-hyper" 
-                      :to="{ name: 'profile' }">Doctor Profile</router-link>
+                      :to="{ name: 'profile', params }">Doctor Profile</router-link>
                     </v-btn>
                     </li>
 

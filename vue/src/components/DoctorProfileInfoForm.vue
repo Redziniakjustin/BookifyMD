@@ -16,7 +16,7 @@
             
             <label for="doctorPhoneNumber">Phone Number: </label>
             <input type="text" id="doctorPhoneNumber"
-            v-model="doctor.phoneNumber"
+            v-model="doctor.phone"
             required>
             
             <label for="doctorEmail">Email: </label>
@@ -27,7 +27,7 @@
               <!-- @click="displayOffice() -->
               <label for="office">Choose Primary Office:</label>
               <!--Change the the options to offices change :reduce-->
-              <v-select id="office" single v-model="doctor.officeId" :options="offices" :reduce="name => name.id" label="name"/>
+              <v-select id="office" single v-model="doctor.officeId" :options="options" :reduce="name => name.id" label="name"/>
             </div>
           
             <label for="doctorCost">Hourly Rate ($): </label>
@@ -51,10 +51,10 @@ export default {
     data(){
         return{
           doctor: {
-            userTypeId: "",
+            userTypeId: this.$store.state.profileType.userTypeId,
             firstName: "",
             lastName: "",
-            phoneNumber: "",
+            phone: "",
             email: "",
             costHourly: "",
             officeId: ""
@@ -63,16 +63,16 @@ export default {
           //Will remove later 
           options:[
             {id: 1,
-            name: "spruce"
+            name: "Penn Hospital University"
             },
             {id: 2,
-            name: "locust"
+            name: "Temple University"
             },
             {id: 3,
-            name: "diamond"
+            name: "Drexel Medical School"
             },
             {id: 4,
-            name: "girard"
+            name: "Nova Care Center"
             },
 
           ]
@@ -83,7 +83,7 @@ export default {
             return this.$store.state.user
             },
         currentUserType(){
-            return this.$store.profileType.isDoctor;
+            return this.$store.state.profileType.isDoctor;
         },
         currentUserProfile(){
             return this.$store.state.profile;
@@ -91,12 +91,13 @@ export default {
     },
       methods:{
         registerDoctorProfile(){
+          //this.doctor.userTypeId = ;
           if(this.doctor.firstName != null){
               profileService.addDoctor(this.doctor)
               .then((response) => {
                 if(response.status == 201){
                   this.$router.push({
-                      path: '/login',
+                      path: '/',
                       query: { registration: 'success' },
                     });
                 }
@@ -107,26 +108,7 @@ export default {
               });
             } 
           }
-    },
-     mounted(){
-     profileService
-     .getUserTypeIdByUsername(this.$route.query.username)
-     .then(response => {
-       this.doctor.userTypeId = response.data;
-     }).catch(error => {
-            console.log(error)
-            this.error = true
-        })
-      profileService.listOffices()
-        .then(response => {
-          this.office = response.data;
-          console.log(this.office);
-        }).catch(error => {
-                console.log(error)
-                this.error = true
-            })
-
-   }
+    }
 }
 </script>
 

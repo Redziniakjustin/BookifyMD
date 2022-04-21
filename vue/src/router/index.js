@@ -47,7 +47,7 @@ const router = new Router({
       name: "logout",
       component: Logout,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -63,7 +63,7 @@ const router = new Router({
       name: "profileRegister",
       component: ProfileRegister,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -79,7 +79,7 @@ const router = new Router({
       name: "profile",
       component: Profile,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -87,7 +87,7 @@ const router = new Router({
       name: "appointment",
       component: Appointment,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -95,7 +95,7 @@ const router = new Router({
       name: "schedule",
       component: Schedule,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -103,7 +103,7 @@ const router = new Router({
       name: "scheduleDoctor",      //TODO should this name be repeated
       component: Schedule,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     }
   ]

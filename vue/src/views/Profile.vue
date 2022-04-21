@@ -43,7 +43,7 @@ export default {
           return this.$store.state.user
           },
       currentUserType(){
-          return this.$store.profileType.isDoctor;
+          return this.$store.state.profileType.isDoctor;
       },
       currentUserProfile(){
           return this.$store.state.profile;

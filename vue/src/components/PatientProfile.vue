@@ -32,12 +32,6 @@ export default {
     return {
       patient:{},
       isActive: false,
-//       patient: {
-//         lastName: "kyle",
-//         firstName: "martin",
-//         Address: "1001 Spruce St",
-//         phoneNumber: "555-555-5555"
-// }
     }
   },
   computed:{
