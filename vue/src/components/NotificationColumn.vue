@@ -3,18 +3,18 @@
         <h1 class="agenda">Notifications</h1>
         <tbody>
             <tr v-for="notification in notifications" :key="notification.id">
-                <br><br>
+                
                 <td> {{notification.appointmentDate}} </td>
                 <td> {{notification.startTime}} </td>
-                <br><br>
+              
                 <td> {{notification.officeName}} </td>
-                <br><br>
+                
                 <td> {{notification.doctorLastName}} </td>
-                <br><br>
+                
                 <td> {{notification.description}} </td>
-                <br><br>
+              
                 <td> {{notification.appointmentStatus}} </td>
-                <br><br>
+                
                 <!-- <td> {{notification.description}} </td> -->
             </tr>
         </tbody>
@@ -87,7 +87,7 @@ data() {
       .then((response)=>{
         if(response.status==200){
           this.notifications = response.data
-          console.log("response.data")
+        
         }else{
           console.log("Unable to get Notifications")
         }
