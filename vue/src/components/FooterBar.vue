@@ -58,7 +58,7 @@ export default {
 .footer-container{
 background: rgb(81, 56, 104);
 color:whitesmoke;
-position: fixed;
+position: relative;
 width: 100%;
 max-height: 300px;
 z-index: -1;

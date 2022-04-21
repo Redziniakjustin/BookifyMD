@@ -63,6 +63,7 @@ img{
         align-items: flex-start;
         justify-content: center space-between;
         flex-wrap: nowrap;
+        z-index: 1;
       }      
       .left-column{
         display: flex;
