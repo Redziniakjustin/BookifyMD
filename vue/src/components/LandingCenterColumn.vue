@@ -4,25 +4,28 @@
         <div class="lcc-sec-1 air ">
               <h1 style="margin-bottom:10px"> Healthcare Through Human Connection</h1>  
               <div class="lcc-sec-1-img">
-                <img src="..\assets\family.png"
-                alt="Welcome Photo 1">
+                <img src="..\assets\family.png" alt="Welcome Photo 1">
         </div>
-          <h3> BookifyMDis a portal that integrates the day-to-day busy work and frees your staff and to keep the focus on what matters most: providing the best patient care. </h3>
-        <div class="welcome-content"> <!--Welcome-->
+          <h3 class ="bookifymd"> BookifyMDis a portal that integrates the day-to-day busy work and frees your staff and to keep the focus on what matters most: providing the best patient care. </h3>
+          
+         <div class="welcome-content"> <!--Welcome-->
           <h1 class="air">Welcome to BookifyMd your one stop for medical appointment management</h1> 
         </div>
         </div>
       <h1 class="about-us"></h1>
         <div class="lcc-sec-2 air">
+          <div class="lcc-sec-2-img">
           <img src="..\assets\hands.png" alt="read more about us">
+            </div>
           <div class="about-us-content"> <!--About Us-->
+          
               <h3 class="air">What can BookifyMD do for you?</h3>
               <ul>
                 <li>Improves patient engagement and provider responsiveness.</li>
                 <li>Convenient access to provider reviews and appointments.</li>
               </ul>
-              <h3 class="air">Empower your patients to access their health and 
-                care information whenever they need it.</h3>
+              <h1 class="air"> Empower your patients to access their health and 
+                care information whenever they need it.</h1>
               <ul>
                 <li>24/7 online scheduling</li>
                 <li>Make it easy for patients to digitally schedule and 
@@ -41,7 +44,7 @@
         </div>
       <h1 class="testimonials"></h1>
         <div class="lcc-sec-3 air">
-        <img src="..\assets\1on1.png" alt="testimonials">
+        <!-- <img src="..\assets\1on1.png" alt="testimonials"> -->
         <div class="testimonial">
 
           <h1 class="air">The benefits of engaging patients 
@@ -49,7 +52,7 @@
             </h1>
           <ul class="list-testimonial">
             <li>
-            “the service we've received from BookifyMD leadership has been 
+            “The service we've received from BookifyMD leadership has been 
             beyond belief.” -Hospitals of the University of Fennsylvania
             -Fenn Presbyterian
             </li>
@@ -93,15 +96,46 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+.bookifymd{
+  padding-top:2%;
+  text-align: center;
+}
+
+.welcome-content{
+   padding-top: 70px;
+    text-decoration: underline;
+}
+
 .lcc-container{
   padding: 5%;
+   box-shadow: 5px 10px;
 }
 .air{
-  padding:20px 0 20px 0;
+  padding:5px 0 15px 0;
 }
+
+.lcc-sec-1-img{
+  float: left;
+  padding:0px;
+   margin: 5px; 
+   max-width: 400px !important;
+  
+}
+
+.lcc-sec-2-img{
+  float: right;
+}
+
+
 .lcc-sec-1{
+ 
+ 
 }
 .lcc-sec-2{
+ 
 
 }
 .lcc-sec-3{
