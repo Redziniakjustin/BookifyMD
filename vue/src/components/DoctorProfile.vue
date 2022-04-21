@@ -12,9 +12,9 @@
       
     <div id="buttonContainer">
      
-      <button id="updateAvailability">Update Availability and Location</button>
-      <button id="createAvailability">Create Availability</button>
-      <button id="deleteAvailability">Delete Availability</button>
+      <v-btn id="updateAvailability">Update Availability and Location</v-btn>
+      <v-btn id="createAvailability">Create Availability</v-btn>
+      <v-btn id="deleteAvailability">Delete Availability</v-btn>
      
     </div>
   </div>

@@ -15,8 +15,8 @@
           </tr>
       </tbody>
       
-      <button v-if="!isActive" @click="isActive = !isActive">Update Information</button>
-      <button v-else @click="isActive=!isActive">Close Update Form</button>
+      <v-btn v-if="!isActive" @click="isActive = !isActive">Update Information</v-btn>
+      <v-btn v-else @click="isActive=!isActive">Close Update Form</v-btn>
       <div class="patient-profile" v-if="isActive"> 
         <patient-profile-info-form/><!--Add  CSS to make hidden and visible during on-click event with button-->
       </div>
