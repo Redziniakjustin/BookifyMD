@@ -47,14 +47,20 @@ img{
       }
       h1 {
         font-size: 1.5em; /* 40px/16=2.5em */
+        font-family: 'Lato', sans-serif;
       }
       
       h2 {
         font-size: 1.175em; /* 30px/16=1.875em */
+        font-family: 'Lato', sans-serif;
+      }
+      h3{
+        font-family: 'Merriweather', serif;;
       }
       
       p {
         font-size: 0.9em; /* 14px/16=0.875em */
+        font-family: 'Merriweather', serif;
       }
       /* 3 Column Layout Main */
       .display-container {
