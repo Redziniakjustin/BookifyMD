@@ -5,7 +5,7 @@
            the chosen doctor and their office-->
         <h3>Schedule Appointment with: {{doctorName}} </h3> 
 
-          <label for="apdate">appointmentDate</label>
+          <label for="apdate">Appointment Date</label>
           <input type='date'
             name="apdate"
             @input='scheduleAppForm.appointmentDate = new Date($event.target.value)'
