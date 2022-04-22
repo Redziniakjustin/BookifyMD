@@ -35,7 +35,7 @@
             v-model="doctor.costHourly"
             required
             min="0">
-            <button type="submit">Submit</button>
+            <v-btn type="submit">Submit</v-btn>
           </form>
       </div>
 </template>
