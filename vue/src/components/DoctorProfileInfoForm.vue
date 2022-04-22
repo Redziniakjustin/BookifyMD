@@ -32,7 +32,7 @@
           
             <label for="doctorCost">Hourly Rate ($): </label>
             <input type="number" id="doctorCost"
-            v-model="doctor.hourlyCost"
+            v-model="doctor.costHourly"
             required
             min="0">
             <button type="submit">Submit</button>

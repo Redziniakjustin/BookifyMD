@@ -8,7 +8,6 @@
           <label for="apdate">appointmentDate</label>
           <input type='date'
             name="apdate"
-            :value='scheduleAppForm.appointmentDate'
             @input='scheduleAppForm.appointmentDate = new Date($event.target.value)'
           >
              <br> 

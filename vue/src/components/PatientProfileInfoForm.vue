@@ -55,11 +55,11 @@ export default {
             userTypeId: "",
             firstName: "",
             lastName: "",
-            phoneNumber: "",
-            street: "",
+            phone: "",
+            streetAddress: "",
             city: "",
-            state: "", 
-            zipCode: "", 
+            stateName: "", 
+            zip: "", 
             email: "",
         }
       }
@@ -69,7 +69,7 @@ export default {
             return this.$store.state.user
             },
         currentUserType(){
-            return this.$store.profileType.isDoctor;
+            return this.$store.state.profileType.isDoctor;
         },
         currentUserProfile(){
             return this.$store.state.profile;
