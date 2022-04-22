@@ -2,7 +2,7 @@
   <div>
     <div>
       <table class="app-table">
-        <tbody v-for="appointment in appointments" :key=appointment>
+        <tbody v-for="appointment in appointments" :key="appointment.id">
           <tr class="tr">
             <td>{{appointment.appointmentDate}}</td>
             <br>
@@ -27,7 +27,7 @@
     <div v-if="isPastAppointment = isPastAppointment">
      
       <table class="app-table">
-        <tbody v-for="appointment in pastAppointments" :key=appointment>
+        <tbody v-for="appointment in pastAppointments" :key="appointment.id">
           <tr>
             <td>{{appointment.appointmentDate}}</td>
             <td>{{appointment.startTime}}</td>
@@ -57,40 +57,7 @@ export default {
     data(){
         return{
             isPastAppointment: false,
-            appointments:[
-        {
-          appointmentDate: "04/14/2022",
-          time: "8:00am-8:30am",
-          doctor: "Dr.Omari",
-          location: "W.Philly Hospital",
-          description: "General Check-Up",
-          delayed: true
-        },
-        {
-          appointmentDate: "04/16/2022",
-          time: "3:30pm-4:15pm",
-          doctor: "Dr.Kyle",
-          location: "CC General",
-          description: "Spinal Tap",
-          delayed: true
-        },
-        {
-          appointmentDate: "04/15/2022",
-          time: "1:30pm-2:00pm",
-          doctor: "Dr.Eric",
-          location: "S.Philly Clinic",
-          description: "Foot Exam",
-          delayed: true
-        },
-        {
-          appointmentDate: "04/13/2022",
-          time: "10:00am-10:30am",
-          doctor: "Dr.Justin",
-          location: "Montgomery Hospital",
-          description: "General Check-Up",
-          delayed: true
-        }
-      ],
+            appointments:[],
       pastAppointments:[
         { 
           appointmentID: 1,
@@ -136,7 +103,7 @@ export default {
             return this.$store.state.user
             },
         currentUserType(){
-            return this.$store.profileType.isDoctor;
+            return this.$store.state.profileType.isDoctor;
         },
         currentUserProfile(){
             return this.$store.state.profile;
