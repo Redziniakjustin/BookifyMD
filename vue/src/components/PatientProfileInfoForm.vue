@@ -13,11 +13,11 @@
       required>
       
       <label for="phoneNumber">Phone Number:</label>
-      <input id="phoneNumber" type="text" v-model="patient.phoneNumber" 
+      <input id="phoneNumber" type="text" v-model="patient.phone" 
       required> <!-- change to number ?  -->
       
       <label for="patientStreetAddress"> Street: </label>
-      <input type="text" id="patientStreetAddress" v-model="patient.street"
+      <input type="text" id="patientStreetAddress" v-model="patient.streetAddress"
       required>
       
       <label for="patientCity"> City: </label>
@@ -25,10 +25,10 @@
       required>
       
       <label for="patientState"> State: </label>
-      <input type="text" id="patientState" v-model="patient.state">
+      <input type="text" id="patientState" v-model="patient.stateName">
       
       <label for="patientZipCode"> Zip Code: </label>
-      <input type="text" id="patientZipCode" v-model="patient.zipCode">
+      <input type="text" id="patientZipCode" v-model="patient.zip">
       
       <label for="patientEmail"> Email: </label>
       <input type="email" id="patientEmail" v-model="patient.email">
@@ -38,7 +38,6 @@
       </td>
     </form>
     </div>
-    
 <div class = "column2">
       </div>
   </div>
@@ -50,9 +49,8 @@ import profileService from '@/services/ProfileService';
 export default {
   data(){
       return{
-        //userType: "patient",
         patient:{
-            userTypeId: "",
+            userTypeId: this.$store.state.profileType.userTypeId,
             firstName: "",
             lastName: "",
             phone: "",

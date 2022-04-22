@@ -26,12 +26,6 @@ export default {
   data() {
     return {
       doctor:{},
-      // doctor: {
-      //   lastName: "kyle",
-      //   firstName: "martin",
-      //   Address: "1001 Spruce St",
-      //   phoneNumber: "555-555-5555"
-      // },
       office:{
         officeName: "",
         officeAddress: "",
