@@ -6,9 +6,9 @@
 
 ## 👨‍⚕️ User Types
 The following user types exist in the system:
-Doctor - they can manage availability and communicate with patients about appointments and respond to patient reviews. 
-Patient - can view information about doctor's office including schedule. They can also book appointments through the app and leave reviews 
-Admin - that manages the API and are responsible for adding new offices when they open up.
+# Doctor - they can manage availability and communicate with patients about appointments and respond to patient reviews. 
+# Patient - can view information about doctor's office including schedule. They can also book appointments through the app and leave reviews 
+# Admin - that manages the API and are responsible for adding new offices when they open up.
 
 ## 💥 Features
 As a doctor or a patient I need to be able to create an account so that I can manage my schedule and other personal information.
