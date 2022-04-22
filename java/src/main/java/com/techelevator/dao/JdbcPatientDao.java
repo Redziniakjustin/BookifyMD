@@ -110,6 +110,7 @@ public class JdbcPatientDao implements PatientDao{
         patient.setLastName(row.getString("last_name"));
         patient.setPhone(row.getString("phone"));
         patient.setStreetAddress(row.getString("street_address"));
+        patient.setCity(row.getString("city"));
         patient.setStateName(row.getString("state_name"));
         patient.setZip(row.getString("zip"));
         patient.setEmail(row.getString("email"));
