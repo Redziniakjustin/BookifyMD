@@ -27,6 +27,10 @@ export default {
     return {
       doctor:{},
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
 =======
     
 >>>>>>> Stashed changes
