@@ -20,11 +20,9 @@
           <!-- <tr>
             <td><b>Doctor: </b> {{review.doctor}}</td>
           </tr> -->
+
           <tr>
-            <td><b>Office: </b>{{review.office}}</td>
-          </tr>
-          <tr>
-            <td class = "reviews"><b>Review: </b>{{review.reviewDesc}}</td>
+            <td class = "reviews"><h3><b>Review: </b></h3>{{review.reviewDesc}}</td>
           </tr>
           <tr>
             <td class = "ratings">  <star-rating 
