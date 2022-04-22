@@ -26,6 +26,10 @@ export default {
   data() {
     return {
       doctor:{},
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
       office:{
         officeName: "",
         officeAddress: "",

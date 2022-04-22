@@ -28,9 +28,9 @@ public class JdbcAppointmentDao implements AppointmentDao{
     @Override
     public List<Appointment> findAllByPatientId(Long patientId) {
         List<Appointment> appointments = new ArrayList<>();
-        String sql = "SELECT a.appointment_id, a.doctor_id, p.last_name, a.patient_id, a.office_id, o.office_name, a.avail_id, doa.start_time, doa.end_time, a.appointment_date, a.appointment_status, a.description " +
+        String sql = "SELECT a.appointment_id, a.doctor_id, doctor.last_name,  a.patient_id, a.office_id, o.office_name, a.avail_id, doa.start_time, doa.end_time, a.appointment_date, a.appointment_status, a.description " +
                 "FROM appointment as a JOIN doctor_office_availability as doa ON a.avail_id = doa.avail_id " +
-                "JOIN patient as p ON a.patient_id = p.patient_id " +
+                "JOIN doctor ON a.doctor_id = doctor.doctor_id " +
                 "JOIN office as o ON a.office_id = o.office_id " +
                 "WHERE a.patient_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
