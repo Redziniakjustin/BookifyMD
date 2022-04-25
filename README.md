@@ -19,7 +19,7 @@ The following user types exist in the system:
 ![image](https://user-images.githubusercontent.com/47091126/165093860-d7145969-7a58-4d3f-a511-45293e683032.png)
 
 ## 📅 Planning
-
+![image](https://user-images.githubusercontent.com/47091126/165094078-7c4bc25d-dd7c-45f5-b09d-06dc37239fd5.png)
   
 ## 🥵 Challenges
 - Time management: Balancing design and implementation
@@ -27,9 +27,6 @@ The following user types exist in the system:
 - Importance of Vertical integration
 - Documentation
 - Git for version control
-
-## 🐛 Known Bugs
-
   
 ## 🚀 Technologies Used
 Java, Spring Boot, JDBC, PostgreSQL, HTML, CSS, Javascript, Vue.js
