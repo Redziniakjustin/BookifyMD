@@ -2,7 +2,8 @@
 
 ## 💸 Summary
 
-
+BookifyMD is a browser based application that is meant to streamline communication between doctors and their patients. Our applications main feature is  save individual offices on labor and allow healthcare professional to focus on people rather than logistics.
+![image](https://user-images.githubusercontent.com/47091126/165093730-c24f5147-9340-49a9-b57c-f24a6ec6b706.png)
 
 ## 👨‍⚕️ User Types
 The following user types exist in the system:
@@ -11,35 +12,27 @@ The following user types exist in the system:
 - Admin - that manages the API and are responsible for adding new offices when they open up.
 
 ## 💥 Features
-- As a doctor or a patient I need to be able to create an account so that I can manage my schedule and other personal information.
-- As a user of the application, I need the ability to login so that I can have access to my personal information.
-- As a doctor I need to be able to add or update information about my office to help patients when planning their visit.
-- As a doctor I need to be able to set my schedule so that patients know when I am open for appointments.
-- As a patient I need to be able to see my doctor’s availability so that I can book appointments with them.
-- As a patient, once I have found an available time slot, I should be able to book it.
-- As a doctor I should be notified when a patient books an appointment so that I can be sure not to miss it.
-- As a doctor I should be able to see my upcoming appointments and the patient associated with them so that I can be ready for their visit.
-- As a patient I should be able to see reviews for all doctors’ offices.
-- As a patient I should be able to leave reviews for my doctor’s office so that other patients can have more information when choosing their doctor.
-- As a doctor I should be able to see the reviews of my office and respond to them.
-- As a doctor I should be able to update a delay indicator in the office information if we are running behind schedule with appointments.
-- As a patient I should be able to select a reason for my visit when scheduling an appointment. Once my appointment is scheduled I should be given more information about the reason that I have selected for my visit.
-- As a doctor I should be able to reschedule or cancel an appointment if needed.
-- As a patient I should be notified when a doctor reschedules or cancels my appointment so that I can update my plans accordingly.
 
-
+- As a Patient, I want to be able to schedule my appointments without dealing with the wait time associated with an indemand doctor. Rather than waiting for the office to communicate their schedule I can view it myself online and request an appointment. This will allow me to feel more control over my healthcare experience.
+- As a health care professional, I want to be able to use BookfiyMD as a daily reference so I don’t have to store my schedule in my head and I can update my availability to on the fly given a pressing personal or professional concern. I look forward to v2 of BookifyMD when patient appointments are reinforced by email and text notifications to ensure they show up on time and can be informed of any updates to their booking.
+- As a System manager, I would offer BookifyMD as a service to local care providers. Giving them the ability to abstract away patient scheduling from their day-to-day practices. Once on boarded I would refer their information to our database manager so their office information can be added and given credentials. From that point their individual practitioners could create an account and list their ability with the associated office.
+![image](https://user-images.githubusercontent.com/47091126/165093860-d7145969-7a58-4d3f-a511-45293e683032.png)
 
 ## 📅 Planning
 
   
 ## 🥵 Challenges
-
+- Time management: Balancing design and implementation
+- Learned value of Agile Methodology.
+- Importance of Vertical integration
+- Documentation
+- Git for version control
 
 ## 🐛 Known Bugs
 
   
 ## 🚀 Technologies Used
-
+Java, Spring Boot, JDBC, PostgreSQL, HTML, CSS, Javascript, Vue.js
 
 ## ✊🏼 Team
 Justin Redziniak, Eric Hilkowitz, Atul Mishra, Omari R.I Bigham, Kyle Martin
